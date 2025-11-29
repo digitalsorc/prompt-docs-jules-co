@@ -79,6 +79,18 @@ All documents include YAML front matter with:
 ✓ No broken internal links
 ```
 
+## Known Issues
+
+### Source File Naming Discrepancies
+
+The following source PDFs appear to be mislabeled (filename does not match content):
+
+| Original Filename | Actual Content |
+|-------------------|----------------|
+| Visual_Instruction_Tuning.pdf | Research paper about proton-induced reactions on lanthanum |
+
+*Note: The conversion correctly extracted the PDF content. The issue is with the original source file naming.*
+
 ## Files Ready for AI Systems
 
 All 217 converted markdown files are optimized for:

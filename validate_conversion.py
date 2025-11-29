@@ -39,16 +39,25 @@ def validate_markdown_syntax(content, filename):
     errors = []
     lines = content.split('\n')
     
-    # Check for broken headers - but ignore known false positives
-    # like shebangs, math notation, and code
+    # Track code block state properly
+    in_code_block = False
+    
     for i, line in enumerate(lines, 1):
+        # Track code blocks
+        if line.strip().startswith('```'):
+            in_code_block = not in_code_block
+            continue
+        
+        # Skip checking inside code blocks
+        if in_code_block:
+            continue
+        
+        # Check for broken headers - but ignore known false positives
         if re.match(r'^#+[^#\s]', line):
             # Skip known false positives
             if line.startswith('#!/'):  # Shebang
                 continue
             if '#(' in line or '#{' in line:  # Math cardinality notation
-                continue
-            if '```' in lines[max(0, i-10):i]:  # Inside code block
                 continue
             errors.append(f"Line {i}: Missing space after header marker")
     
