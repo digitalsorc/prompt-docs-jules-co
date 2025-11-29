@@ -1,0 +1,3048 @@
+[
+  {
+    "original_path": "./Zero_Shot_Clinical_NLP.pdf",
+    "filename": "Zero_Shot_Clinical_NLP.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./RAG_Optimization_Strategies.pdf",
+    "filename": "RAG_Optimization_Strategies.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 26,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Maieutic_Prompting_Logical.pdf",
+    "filename": "Maieutic_Prompting_Logical.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 14,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./07_Promptware_Engineering_Software_Engineering.pdf",
+    "filename": "07_Promptware_Engineering_Software_Engineering.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 18,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./16_Zero_Shot_Clinical_NLP_Evaluation.pdf",
+    "filename": "16_Zero_Shot_Clinical_NLP_Evaluation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./36_Prompts_Are_Programs_Too.pdf",
+    "filename": "36_Prompts_Are_Programs_Too.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 24,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Autono_ReAct_Robust_Agent_Framework.pdf",
+    "filename": "Autono_ReAct_Robust_Agent_Framework.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 10,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./MMLU_Multitask_Language_Understanding.pdf",
+    "filename": "MMLU_Multitask_Language_Understanding.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 28,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./28_LLM_Prompt_Chaining_Legal_Documents.pdf",
+    "filename": "28_LLM_Prompt_Chaining_Legal_Documents.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Enhancing_Security_Copilot_Prompt_Engineering.pdf",
+    "filename": "Enhancing_Security_Copilot_Prompt_Engineering.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 7,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Visual_Instruction_Tuning.pdf",
+    "filename": "Visual_Instruction_Tuning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 28,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Monitoring_LLM_Systems.pdf",
+    "filename": "Monitoring_LLM_Systems.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 29,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Boosted_Prompt_Ensembles.pdf",
+    "filename": "Boosted_Prompt_Ensembles.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 24,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Adaptive_RAG_Dynamic_Retrieval.pdf",
+    "filename": "Adaptive_RAG_Dynamic_Retrieval.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 5,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LLM_Serving_Infrastructure.pdf",
+    "filename": "LLM_Serving_Infrastructure.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 30,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./From_Prompts_to_Templates.pdf",
+    "filename": "From_Prompts_to_Templates.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Canvas_Literature_Based_Guide.pdf",
+    "filename": "Prompt_Canvas_Literature_Based_Guide.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./26_Maieutic_Prompting_Logical_Reasoning.pdf",
+    "filename": "26_Maieutic_Prompting_Logical_Reasoning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 14,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Customizing_LLMs_Business_Context.pdf",
+    "filename": "Customizing_LLMs_Business_Context.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 51,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Multimodal_Chain_of_Thought.pdf",
+    "filename": "Multimodal_Chain_of_Thought.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 25,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Decoding_LLMs_Socio_Technical.pdf",
+    "filename": "Decoding_LLMs_Socio_Technical.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 28,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Medical_LLM_Applications.pdf",
+    "filename": "Medical_LLM_Applications.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 64,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Code_Generation_Evaluation.pdf",
+    "filename": "Code_Generation_Evaluation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 11,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./PERFECT_Prompt_Free_Few_Shot.pdf",
+    "filename": "PERFECT_Prompt_Free_Few_Shot.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 15,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Autonomous_Prompt_Engineering.pdf",
+    "filename": "Autonomous_Prompt_Engineering.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 38,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Creative_Writing_Assistance.pdf",
+    "filename": "Creative_Writing_Assistance.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 50,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./lilianwang-prompt-engineering.pdf",
+    "filename": "lilianwang-prompt-engineering.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 18,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": false
+    }
+  },
+  {
+    "original_path": "./Domain_Specific_Benchmarks.pdf",
+    "filename": "Domain_Specific_Benchmarks.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 14,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./ReST_meets_ReAct_Self_Improvement.pdf",
+    "filename": "ReST_meets_ReAct_Self_Improvement.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Educational_AI_Tutors.pdf",
+    "filename": "Educational_AI_Tutors.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 33,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Context_PEFT_Multi_Modal.pdf",
+    "filename": "Context_PEFT_Multi_Modal.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 13,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LLM_Production_Best_Practices.pdf",
+    "filename": "LLM_Production_Best_Practices.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Unleashing_Potential_Prompt_Engineering.pdf",
+    "filename": "Unleashing_Potential_Prompt_Engineering.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 46,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Robust_Federated_Fine_Tuning.pdf",
+    "filename": "Robust_Federated_Fine_Tuning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 9,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Universal_Self_Adaptive_Prompting.pdf",
+    "filename": "Universal_Self_Adaptive_Prompting.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./amatria-prompt-engineering-101.pdf",
+    "filename": "amatria-prompt-engineering-101.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": false
+    }
+  },
+  {
+    "original_path": "./Hallucination_Detection_Methods.pdf",
+    "filename": "Hallucination_Detection_Methods.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 92,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./RED_Representation_Editing.pdf",
+    "filename": "RED_Representation_Editing.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 20,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./RAG_Evaluation_Benchmarks.pdf",
+    "filename": "RAG_Evaluation_Benchmarks.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 41,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Vision_Language_Models_Survey.pdf",
+    "filename": "Vision_Language_Models_Survey.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 14,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Chain_of_Thought_Prompting.pdf",
+    "filename": "Chain_of_Thought_Prompting.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 43,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Multimodal_Retrieval_Systems.pdf",
+    "filename": "Multimodal_Retrieval_Systems.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 30,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./21_Exploring_Prompt_Based_Few_Shot_Dialog.pdf",
+    "filename": "21_Exploring_Prompt_Based_Few_Shot_Dialog.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Empathetic_AI_Conversations.pdf",
+    "filename": "Empathetic_AI_Conversations.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 34,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./From_LLM_Reasoning_Autonomous_Agents.pdf",
+    "filename": "From_LLM_Reasoning_Autonomous_Agents.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 44,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Pattern_Catalog.pdf",
+    "filename": "Prompt_Pattern_Catalog.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Safeguarding_System_Prompts.pdf",
+    "filename": "Safeguarding_System_Prompts.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./11_Chain_of_Thought_Prompting_Reasoning.pdf",
+    "filename": "11_Chain_of_Thought_Prompting_Reasoning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 43,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Error_Recovery_Strategies_Dialogue.pdf",
+    "filename": "Error_Recovery_Strategies_Dialogue.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./prompthub.us-prompt-engineering-for-ai-agents.pdf",
+    "filename": "prompthub.us-prompt-engineering-for-ai-agents.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 10,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": false
+    }
+  },
+  {
+    "original_path": "./PREFER_Prompt_Ensemble_Learning.pdf",
+    "filename": "PREFER_Prompt_Ensemble_Learning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Decoding_LLMs_Socio_Technical_Impacts.pdf",
+    "filename": "Decoding_LLMs_Socio_Technical_Impacts.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 28,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./03_Prompt_Canvas_Literature_Based_Guide.pdf",
+    "filename": "03_Prompt_Canvas_Literature_Based_Guide.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Advanced_RAG_Techniques.pdf",
+    "filename": "Advanced_RAG_Techniques.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 37,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./23_Boosted_Prompt_Ensembles_LLMs.pdf",
+    "filename": "23_Boosted_Prompt_Ensembles_LLMs.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 24,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./RAG_Survey_Comprehensive.pdf",
+    "filename": "RAG_Survey_Comprehensive.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 21,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./25_Better_Zero_Shot_Self_Adaptive.pdf",
+    "filename": "25_Better_Zero_Shot_Self_Adaptive.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 22,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LLMs_Algorithm_Design_Survey.pdf",
+    "filename": "LLMs_Algorithm_Design_Survey.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 35,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./ALoRA_Allocating_Low_Rank.pdf",
+    "filename": "ALoRA_Allocating_Low_Rank.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 20,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./skywork-prompt-engineering-github-copilot.pdf",
+    "filename": "skywork-prompt-engineering-github-copilot.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 18,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": false
+    }
+  },
+  {
+    "original_path": "./LOKE_Linked_Open_Knowledge_Extraction.pdf",
+    "filename": "LOKE_Linked_Open_Knowledge_Extraction.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Brittle_Foundations_ReAct.pdf",
+    "filename": "Brittle_Foundations_ReAct.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 21,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./A_B_Testing_LLM_Deployments.pdf",
+    "filename": "A_B_Testing_LLM_Deployments.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 22,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./24_PREFER_Prompt_Ensemble_Learning.pdf",
+    "filename": "24_PREFER_Prompt_Ensemble_Learning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Unified_Multimodal_Framework.pdf",
+    "filename": "Unified_Multimodal_Framework.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LLM_Prompt_Chaining_Legal.pdf",
+    "filename": "LLM_Prompt_Chaining_Legal.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Continuous_Integration_LLMs.pdf",
+    "filename": "Continuous_Integration_LLMs.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 6,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./08_PromptWizard_Task_Aware_Optimization.pdf",
+    "filename": "08_PromptWizard_Task_Aware_Optimization.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 33,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Error_Recovery_Strategies.pdf",
+    "filename": "Error_Recovery_Strategies.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Data_Analysis_SQL_Generation.pdf",
+    "filename": "Data_Analysis_SQL_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 20,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Technical_Documentation_Gen.pdf",
+    "filename": "Technical_Documentation_Gen.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 14,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./30_PromptChainer_Visual_Programming.pdf",
+    "filename": "30_PromptChainer_Visual_Programming.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 10,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./ai-agent-programming-best-practices.pdf",
+    "filename": "ai-agent-programming-best-practices.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 14,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": false
+    }
+  },
+  {
+    "original_path": "./Prompt_Alchemy_Code_Generation.pdf",
+    "filename": "Prompt_Alchemy_Code_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./10_LLM_Agentic_Reasoning_Frameworks.pdf",
+    "filename": "10_LLM_Agentic_Reasoning_Frameworks.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 51,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Canvas_Literature_Guide.pdf",
+    "filename": "Prompt_Canvas_Literature_Guide.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Improving_ChatGPT_Prompt_Code_Generation.pdf",
+    "filename": "Improving_ChatGPT_Prompt_Code_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./SVFT_Singular_Vectors_Fine_Tuning.pdf",
+    "filename": "SVFT_Singular_Vectors_Fine_Tuning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./31_Safeguarding_System_Prompts_LLMs.pdf",
+    "filename": "31_Safeguarding_System_Prompts_LLMs.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./20_Template_Free_Prompt_Tuning_NER.pdf",
+    "filename": "20_Template_Free_Prompt_Tuning_NER.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Self_Agreement_Improves_Reasoning.pdf",
+    "filename": "Self_Agreement_Improves_Reasoning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 23,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Copilot_Loop_Fixing_Code_Smells.pdf",
+    "filename": "Copilot_Loop_Fixing_Code_Smells.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 5,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Re_Reading_Improves_Reasoning.pdf",
+    "filename": "Re_Reading_Improves_Reasoning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 27,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Automated_Code_Review_Practice.pdf",
+    "filename": "Automated_Code_Review_Practice.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./13_Brittle_Foundations_ReAct_Prompting.pdf",
+    "filename": "13_Brittle_Foundations_ReAct_Prompting.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 21,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Exploring_ReAct_Task_Oriented.pdf",
+    "filename": "Exploring_ReAct_Task_Oriented.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 11,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./22_Self_Agreement_Improves_Reasoning.pdf",
+    "filename": "22_Self_Agreement_Improves_Reasoning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 23,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./RAG_Patterns_Best_Practices.pdf",
+    "filename": "RAG_Patterns_Best_Practices.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 18,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./AutoAgents_Automatic_Agent_Generation.pdf",
+    "filename": "AutoAgents_Automatic_Agent_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 30,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./KD_LoRA_Hybrid_Approach.pdf",
+    "filename": "KD_LoRA_Hybrid_Approach.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LLM_Judge_Evaluation_Framework.pdf",
+    "filename": "LLM_Judge_Evaluation_Framework.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 6,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Canvas_Guide.pdf",
+    "filename": "Prompt_Canvas_Guide.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Image_Text_Alignment.pdf",
+    "filename": "Image_Text_Alignment.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./MM_REACT_Multimodal_Reasoning.pdf",
+    "filename": "MM_REACT_Multimodal_Reasoning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 31,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Translation_Localization.pdf",
+    "filename": "Translation_Localization.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 42,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./32_Autonomous_Prompt_Engineering_LLMs.pdf",
+    "filename": "32_Autonomous_Prompt_Engineering_LLMs.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 38,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./PromptBreeder_Self_Improvement.pdf",
+    "filename": "PromptBreeder_Self_Improvement.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 64,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./RAG_Retrieval_Augmented_Generation.pdf",
+    "filename": "RAG_Retrieval_Augmented_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Model_Versioning_Management.pdf",
+    "filename": "Model_Versioning_Management.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./PromptChainer_Visual_Programming.pdf",
+    "filename": "PromptChainer_Visual_Programming.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 10,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./SCOOP_Proactive_Collaboration_Social.pdf",
+    "filename": "SCOOP_Proactive_Collaboration_Social.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 5,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Report_Systematic_Survey.pdf",
+    "filename": "Prompt_Report_Systematic_Survey.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 80,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./GraphRAG_Knowledge_Graphs.pdf",
+    "filename": "GraphRAG_Knowledge_Graphs.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 59,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./MT_Bench_Multi_Turn.pdf",
+    "filename": "MT_Bench_Multi_Turn.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 29,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Refining_Responses_LLMs.pdf",
+    "filename": "Refining_Responses_LLMs.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 7,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./gemini-for-google-workspace-prompting-guide-101.pdf",
+    "filename": "gemini-for-google-workspace-prompting-guide-101.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 68,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Context Engineering for AI Agents.txt",
+    "filename": "Context Engineering for AI Agents.txt",
+    "extension": ".txt",
+    "file_type": "text",
+    "metadata": {
+      "line_count": 241,
+      "word_count": 1349
+    }
+  },
+  {
+    "original_path": "./MMLU_Multitask_Understanding.pdf",
+    "filename": "MMLU_Multitask_Understanding.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 28,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Customer_Service_Automation.pdf",
+    "filename": "Customer_Service_Automation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 13,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./1LoRA_Summation_Compression.pdf",
+    "filename": "1LoRA_Summation_Compression.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Production_Monitoring_Framework.pdf",
+    "filename": "Production_Monitoring_Framework.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 14,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./05_Unleashing_Potential_Prompt_Engineering_LLMs.pdf",
+    "filename": "05_Unleashing_Potential_Prompt_Engineering_LLMs.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 46,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Optimal_Decision_Making_Data_Composition.pdf",
+    "filename": "Optimal_Decision_Making_Data_Composition.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 11,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Practices_Challenges_Using_Copilot.pdf",
+    "filename": "Practices_Challenges_Using_Copilot.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 6,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./google-prompting-strategies.md",
+    "filename": "google-prompting-strategies.md",
+    "extension": ".md",
+    "file_type": "markdown",
+    "metadata": {
+      "line_count": 360,
+      "word_count": 3990
+    }
+  },
+  {
+    "original_path": "./Conversation_Flow_Design.pdf",
+    "filename": "Conversation_Flow_Design.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 38,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Scaling_LLM_Applications.pdf",
+    "filename": "Scaling_LLM_Applications.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Cross_Modal_Reasoning.pdf",
+    "filename": "Cross_Modal_Reasoning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./GitHub_Copilot_Role_Software_Development.pdf",
+    "filename": "GitHub_Copilot_Role_Software_Development.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 10,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./PathOCL_Path_Based_Prompt_OCL.pdf",
+    "filename": "PathOCL_Path_Based_Prompt_OCL.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Evaluating_LLMs_Medical_Examination.pdf",
+    "filename": "Evaluating_LLMs_Medical_Examination.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 26,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./29_Prompt_Chaining_Stepwise_Summarization.pdf",
+    "filename": "29_Prompt_Chaining_Stepwise_Summarization.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Copilot_in_Loop_Fixing_Code_Smells.pdf",
+    "filename": "Copilot_in_Loop_Fixing_Code_Smells.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 5,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Corrective_RAG_Self_Reflection.pdf",
+    "filename": "Corrective_RAG_Self_Reflection.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 30,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./REX_Rapid_Exploration_Exploitation.pdf",
+    "filename": "REX_Rapid_Exploration_Exploitation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Causal_Explanations_Sequential_Decision.pdf",
+    "filename": "Causal_Explanations_Sequential_Decision.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 31,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./HydraLoRA_Asymmetric_Architecture.pdf",
+    "filename": "HydraLoRA_Asymmetric_Architecture.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Brex's Prompt Engineering Guide.md",
+    "filename": "Brex's Prompt Engineering Guide.md",
+    "extension": ".md",
+    "file_type": "markdown",
+    "metadata": {
+      "line_count": 1212,
+      "word_count": 9405
+    }
+  },
+  {
+    "original_path": "./02_Prompt_Design_and_Engineering_Introduction.pdf",
+    "filename": "02_Prompt_Design_and_Engineering_Introduction.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 26,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./17_UPRISE_Universal_Prompt_Retrieval.pdf",
+    "filename": "17_UPRISE_Universal_Prompt_Retrieval.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 20,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Repository_Level_Prompt_Generation.pdf",
+    "filename": "Repository_Level_Prompt_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 22,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./HybridRAG_Multi_Source_Retrieval.pdf",
+    "filename": "HybridRAG_Multi_Source_Retrieval.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 15,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./PETapter_Few_Shot_PEFT.pdf",
+    "filename": "PETapter_Few_Shot_PEFT.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 14,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./techniques_to_improve_reliability.md",
+    "filename": "techniques_to_improve_reliability.md",
+    "extension": ".md",
+    "file_type": "markdown",
+    "metadata": {
+      "line_count": 573,
+      "word_count": 5964
+    }
+  },
+  {
+    "original_path": "./Chatbot_Arena_Human_Preferences.pdf",
+    "filename": "Chatbot_Arena_Human_Preferences.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 29,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LLM_Prompt_Chaining_Documents.pdf",
+    "filename": "LLM_Prompt_Chaining_Documents.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LLM_Inference_Serving_Survey.pdf",
+    "filename": "LLM_Inference_Serving_Survey.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Design_Engineering.pdf",
+    "filename": "Prompt_Design_Engineering.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 26,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./ToolExpNet_Optimizing_Multi_Tool_Selection.pdf",
+    "filename": "ToolExpNet_Optimizing_Multi_Tool_Selection.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Code_Understanding_Generation.pdf",
+    "filename": "Code_Understanding_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 10,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./19_Universal_Self_Adaptive_Prompting.pdf",
+    "filename": "19_Universal_Self_Adaptive_Prompting.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Design_Engineering_Introduction.pdf",
+    "filename": "Prompt_Design_Engineering_Introduction.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 26,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Engineering_Prompt_Engineer.pdf",
+    "filename": "Prompt_Engineering_Prompt_Engineer.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 39,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Scientific_Literature_Mining.pdf",
+    "filename": "Scientific_Literature_Mining.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 10,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./New_Solutions_LLM_Acceleration.pdf",
+    "filename": "New_Solutions_LLM_Acceleration.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Cost_Optimization_Strategies.pdf",
+    "filename": "Cost_Optimization_Strategies.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 7,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Scaling_Autonomous_Agents_Reward_Modeling.pdf",
+    "filename": "Scaling_Autonomous_Agents_Reward_Modeling.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 32,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Multimodal_Prompt_Engineering.pdf",
+    "filename": "Multimodal_Prompt_Engineering.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 5,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Demystifying_Practices_Challenges_Copilot.pdf",
+    "filename": "Demystifying_Practices_Challenges_Copilot.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Task_Oriented_Dialogue_Systems.pdf",
+    "filename": "Task_Oriented_Dialogue_Systems.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 18,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Conversation_Design_Principles.pdf",
+    "filename": "Conversation_Design_Principles.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 11,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./04_Prompt_Pattern_Catalog_ChatGPT.pdf",
+    "filename": "04_Prompt_Pattern_Catalog_ChatGPT.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./01_The_Prompt_Report_Systematic_Survey.pdf",
+    "filename": "01_The_Prompt_Report_Systematic_Survey.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 80,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./15_Exploring_ReAct_Prompting_Task_Oriented.pdf",
+    "filename": "15_Exploring_ReAct_Prompting_Task_Oriented.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 11,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LLM_Judge_Evaluation.pdf",
+    "filename": "LLM_Judge_Evaluation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 6,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./When_Show_Suggestion_Human_Feedback.pdf",
+    "filename": "When_Show_Suggestion_Human_Feedback.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 25,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./MT_Bench_Multi_Turn_Conversations.pdf",
+    "filename": "MT_Bench_Multi_Turn_Conversations.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 29,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Persona_Consistency_Dialogue.pdf",
+    "filename": "Persona_Consistency_Dialogue.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 23,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Pattern_Catalog_ChatGPT.pdf",
+    "filename": "Prompt_Pattern_Catalog_ChatGPT.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Dialogue_State_Tracking.pdf",
+    "filename": "Dialogue_State_Tracking.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 24,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Optimizing_LMs_Grammatical_Acceptability.pdf",
+    "filename": "Optimizing_LMs_Grammatical_Acceptability.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Injection_Tool_Selection_Attack.pdf",
+    "filename": "Prompt_Injection_Tool_Selection_Attack.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 24,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Multi_Turn_Dialogue_Management.pdf",
+    "filename": "Multi_Turn_Dialogue_Management.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 25,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Exploring_Prompt_Few_Shot_Dialog.pdf",
+    "filename": "Exploring_Prompt_Few_Shot_Dialog.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Reasoning_Benchmarks_Survey.pdf",
+    "filename": "Reasoning_Benchmarks_Survey.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 82,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./ReAct_Synergizing_Reasoning_Acting.pdf",
+    "filename": "ReAct_Synergizing_Reasoning_Acting.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 33,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Video_Understanding_LLMs.pdf",
+    "filename": "Video_Understanding_LLMs.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 30,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Legal_AI_Systems.pdf",
+    "filename": "Legal_AI_Systems.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 5,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./18_PERFECT_Prompt_Free_Few_Shot.pdf",
+    "filename": "18_PERFECT_Prompt_Free_Few_Shot.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 15,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Promptware_Engineering_Software.pdf",
+    "filename": "Promptware_Engineering_Software.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 18,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./azure-prompt-engineering-techniques.pdf",
+    "filename": "azure-prompt-engineering-techniques.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 20,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": false
+    }
+  },
+  {
+    "original_path": "./Beyond_Efficiency_Resource_Efficient_LLMs.pdf",
+    "filename": "Beyond_Efficiency_Resource_Efficient_LLMs.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 70,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Dialogue_Agents_Comprehensive_Guide.pdf",
+    "filename": "Dialogue_Agents_Comprehensive_Guide.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 37,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./From_Prompts_to_Templates_Analysis.pdf",
+    "filename": "From_Prompts_to_Templates_Analysis.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./claude-prompt-engineering.md",
+    "filename": "claude-prompt-engineering.md",
+    "extension": ".md",
+    "file_type": "markdown",
+    "metadata": {
+      "line_count": 73,
+      "word_count": 565
+    }
+  },
+  {
+    "original_path": "./KoMA_Knowledge_Multi_Agent_Framework.pdf",
+    "filename": "KoMA_Knowledge_Multi_Agent_Framework.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 13,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Audio_Language_Integration.pdf",
+    "filename": "Audio_Language_Integration.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 31,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Conceptual_Framework_Autonomous_Cognitive.pdf",
+    "filename": "Conceptual_Framework_Autonomous_Cognitive.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 38,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Chaining_Summarization.pdf",
+    "filename": "Prompt_Chaining_Summarization.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Financial_Document_Analysis.pdf",
+    "filename": "Financial_Document_Analysis.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 22,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Better_Zero_Shot_Self_Adaptive.pdf",
+    "filename": "Better_Zero_Shot_Self_Adaptive.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 22,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Coding_by_Design_GPT4_Agile_MDD.pdf",
+    "filename": "Coding_by_Design_GPT4_Agile_MDD.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Efficient_Fine_Tuning_GPT.pdf",
+    "filename": "Prompt_Efficient_Fine_Tuning_GPT.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 39,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./The_Prompt_Report_Systematic_Survey.pdf",
+    "filename": "The_Prompt_Report_Systematic_Survey.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 80,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./33_Prompt_Alchemy_Code_Generation.pdf",
+    "filename": "33_Prompt_Alchemy_Code_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./PromptSet_Programmers_Dataset.pdf",
+    "filename": "PromptSet_Programmers_Dataset.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 8,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Context_Aware_Response_Generation.pdf",
+    "filename": "Context_Aware_Response_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 32,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Knowledge_Enhanced_LLMs_Scientific_Research.pdf",
+    "filename": "Knowledge_Enhanced_LLMs_Scientific_Research.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 25,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./PromptWizard_Task_Aware_Optimization.pdf",
+    "filename": "PromptWizard_Task_Aware_Optimization.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 33,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./37_From_Prompts_to_Templates_Analysis.pdf",
+    "filename": "37_From_Prompts_to_Templates_Analysis.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Efficient_Generative_LLM_Serving.pdf",
+    "filename": "Efficient_Generative_LLM_Serving.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 35,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LLMs_for_Algorithm_Design_Survey.pdf",
+    "filename": "LLMs_for_Algorithm_Design_Survey.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 35,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Towards_System_2_Reasoning_Meta_CoT.pdf",
+    "filename": "Towards_System_2_Reasoning_Meta_CoT.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 100,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./GitHub_Copilot_Asset_or_Liability.pdf",
+    "filename": "GitHub_Copilot_Asset_or_Liability.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 27,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./AdaptiveLLM_Selecting_Optimal_Cost_Efficient.pdf",
+    "filename": "AdaptiveLLM_Selecting_Optimal_Cost_Efficient.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 13,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./MMReview_Peer_Review_Automation.pdf",
+    "filename": "MMReview_Peer_Review_Automation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 29,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Balancing_Autonomy_Alignment_Multi_Agent.pdf",
+    "filename": "Balancing_Autonomy_Alignment_Multi_Agent.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 40,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompt_Tuning_Soft_Prompts.pdf",
+    "filename": "Prompt_Tuning_Soft_Prompts.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 15,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./AdaptiveLLM_Cost_Efficient_Selection.pdf",
+    "filename": "AdaptiveLLM_Cost_Efficient_Selection.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 13,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LoRA_Low_Rank_Adaptation.pdf",
+    "filename": "LoRA_Low_Rank_Adaptation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 26,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./14_MM_REACT_Multimodal_Reasoning_Action.pdf",
+    "filename": "14_MM_REACT_Multimodal_Reasoning_Action.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 31,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./34_PromptBreeder_Self_Improvement.pdf",
+    "filename": "34_PromptBreeder_Self_Improvement.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 64,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prefix_Tuning_Conditional_Generation.pdf",
+    "filename": "Prefix_Tuning_Conditional_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 21,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./UPRISE_Universal_Prompt_Retrieval.pdf",
+    "filename": "UPRISE_Universal_Prompt_Retrieval.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 20,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./06_Prompt_Engineering_a_Prompt_Engineer.pdf",
+    "filename": "06_Prompt_Engineering_a_Prompt_Engineer.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 39,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./35_Refining_Responses_LLMs_Themselves.pdf",
+    "filename": "35_Refining_Responses_LLMs_Themselves.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 7,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./09_ReAct_Synergizing_Reasoning_Acting.pdf",
+    "filename": "09_ReAct_Synergizing_Reasoning_Acting.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 33,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./12_ReST_meets_ReAct_Self_Improvement.pdf",
+    "filename": "12_ReST_meets_ReAct_Self_Improvement.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 19,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Resource_Efficient_LLMs.pdf",
+    "filename": "Resource_Efficient_LLMs.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 70,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Adversarial_Robustness_Testing.pdf",
+    "filename": "Adversarial_Robustness_Testing.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 17,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./27_Repository_Level_Prompt_Generation.pdf",
+    "filename": "27_Repository_Level_Prompt_Generation.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 22,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Riemannian_Preconditioned_LoRA.pdf",
+    "filename": "Riemannian_Preconditioned_LoRA.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 29,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Content_Moderation_Systems.pdf",
+    "filename": "Content_Moderation_Systems.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 14,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Prompts_Are_Programs_Too.pdf",
+    "filename": "Prompts_Are_Programs_Too.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 24,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Transforming_Software_Development_Copilot.pdf",
+    "filename": "Transforming_Software_Development_Copilot.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 13,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Latency_Optimization_Techniques.pdf",
+    "filename": "Latency_Optimization_Techniques.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 89,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./LLM_Agentic_Reasoning_Frameworks.pdf",
+    "filename": "LLM_Agentic_Reasoning_Frameworks.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 51,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Template_Free_Prompt_Tuning.pdf",
+    "filename": "Template_Free_Prompt_Tuning.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 12,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  },
+  {
+    "original_path": "./Chain_Evidences_Context_Grounded.pdf",
+    "filename": "Chain_Evidences_Context_Grounded.pdf",
+    "extension": ".pdf",
+    "file_type": "pdf",
+    "metadata": {
+      "page_count": 16,
+      "has_images": "unknown",
+      "has_tables": "unknown",
+      "is_readable": true,
+      "error": null,
+      "has_text": true
+    }
+  }
+]
