@@ -1,0 +1,826 @@
+---
+title: "Prompt Design Engineering"
+original_file: "./Prompt_Design_Engineering.pdf"
+document_type: "research"
+conversion_date: "2025-11-29"
+topics: ["prompt-engineering", "llm", "rag", "chain-of-thought", "react"]
+keywords: ["page", "apreprint", "llms", "learning", "machine", "engineering", "figure", "prompt", "its", "however"]
+summary: "<!-- Page 1 -->
+
+
+## Prompt Design And Engineering: Introduction And
+
+
+## Advanced Methods
+
+
+### XavierAmatriain
+
+xavier@amatriain.net
+May7,2024
+
+## Abstract
+
+Promptdesignandengineeringhasrapidlybecomeessentialformaximizingthepotentialoflarge
+language models. In this paper, we introduce core concepts, advanced techniques like Chain-of-
+ThoughtandReflection,andtheprinciplesbehindbuildingLLM-basedagents. Finally,weprovidea
+surveyoftoolsforpromptengineers."
+related_documents: []
+---
+
+# Prompt Design Engineering
+
+<!-- Page 1 -->
+
+
+## Prompt Design And Engineering: Introduction And
+
+
+## Advanced Methods
+
+
+### XavierAmatriain
+
+xavier@amatriain.net
+May7,2024
+
+## Abstract
+
+Promptdesignandengineeringhasrapidlybecomeessentialformaximizingthepotentialoflarge
+language models. In this paper, we introduce core concepts, advanced techniques like Chain-of-
+ThoughtandReflection,andtheprinciplesbehindbuildingLLM-basedagents. Finally,weprovidea
+surveyoftoolsforpromptengineers.
+1 Introduction
+1.1 Whatisaprompt?
+A prompt in generative AI models is the textual input provided by users to guide the model’s output. This could
+rangefromsimplequestionstodetaileddescriptionsorspecifictasks. Inthecontextofimagegenerationmodelslike
+DALLE-3,promptsareoftendescriptive,whileinLLMslikeGPT-4orGemini,theycanvaryfromsimplequeriesto
+complexproblemstatements.
+Promptsgenerallyconsistofinstructions,questions,inputdata,andexamples. Inpractice,toelicitadesiredresponse
+fromanAImodel,apromptmustcontaineitherinstructionsorquestions,withotherelementsbeingoptional.
+Basic prompts in LLMs can be as simple as asking a direct question or providing instructions for a specific task.
+Advancedpromptsinvolvemorecomplexstructures,suchas"chainofthought"prompting,wherethemodelisguided
+tofollowalogicalreasoningprocesstoarriveatananswer.
+1.2 Basicpromptexamples
+Asmentionedabove,apromptisconstructedbycombininginstructions,questions,inputdata,andexamples. Inorder
+toobtainaresult,either1or2mustbepresent. Everythingelseisoptional. Let’sseeafewexamples(allofthemusing
+ChatGPT-4).
+1.2.1 Instructions+Question
+Beyondaskingasimplequestion,possiblythenextlevelofsophisticationinapromptistoincludesomeinstructions
+onhowthemodelshouldanswerthequestion. HereIaskforadviceonhowtowriteacollegeessay,butalsoinclude
+instructionsonthedifferentaspectsIaminterestedtohearaboutintheanswer.
+“HowshouldIwritemycollegeadmissionessay? GivemesuggestionsaboutthedifferentsectionsI
+shouldinclude,whattoneIshoulduse,andwhatexpressionsIshouldavoid.”
+SeeoutputinFigure1
+4202
+yaM
+5
+]ES.sc[
+4v32441.1042:viXra
+
+<!-- Page 2 -->
+
+
+## Apreprint-May7,2024
+
+Figure1: Instructions+QuestionPromptresultexample
+1.2.2 Instructions+Input
+Continuingwiththepreviousexample,itdoesnotescapeanyonethatifyoucanaskaLLMforadviceonhowtowrite
+anessay,youcanalsodirectlyaskittowritetheessayitself.1
+Let’sseewhathappenswhenweinputsomedataaboutmeandgivesomeinstructions:
+“Giventhefollowinginformationaboutme,writea4paragraphcollegeessay: Iamoriginallyfrom
+Barcelona,Spain. Whilemychildhoodhaddifferenttraumaticevents,suchasthedeathofmyfather
+whenIwasonly6, IstillthinkIhadquiteahappychildhood.. Duringmychildhood, Ichanged
+schoolsveryoften,andattendedallkindsofschools,frompublicschoolstoveryreligiousprivate
+ones. Oneofthemost“exotic”thingsIdidduringthoseyearsistospendafullschoolyearstudying
+6thgradeinTwinFalls,Idaho,withmyextendedfamily.
+I started working very early on. My first job, as an English teacher, was at age 13. After
+that,andthroughoutmystudies,Iworkedasateacher,waiter,andevenconstructionworker.”
+
+### SeeoutputinFigure2
+
+1NotethatIamnotadvocatingforthistobeanethicaluseofthesetools,butitisimportanttobeawarethatthispossibilityexists
+andisalreadybeingusedbystudentsaroundtheworld.Itisbeyondthescopeofthisintroductoryguidetodiscussallthepossible
+ethical,legal,ormoralconcernsthatLLMsorgenerativeAIasawholeintroduces,butIthoughtitwouldbeimportanttoatleastcall
+outinanintroductoryexample. ThefactthatyouCANdosomethingwithagenerativemodeldoesnotmeanthatitistheright
+thingtodo!Ontheotherhand,ifyouareonthereceivingend,youbetterprepareyourselfandyourorganizationforallkindsof
+AI-generatedcontenttocomeyourway.Fortunately,forsituationsliketheoneoutlinedinthisexample,therearealreadyefforts
+underwaytodetectAIgeneratedcontent.
+2
+
+<!-- Page 3 -->
+
+
+## Apreprint-May7,2024
+
+Figure2: Instructions+InputPromptresultexample
+1.2.3 Question+Examples
+Youcanalsofeedexamplesintoalanguagemodel. IntheexamplebelowIincludesomeoftheshowsIlikeanddon’t
+liketobuilda“cheap”recommendersystem. NotethatwhileIaddedonlyafewshows,thelengthofthislistisonly
+limitedbywhatevertokenlimitwemighthaveintheLLMinterface.
+“HerearesomeexamplesofTVshowsIreallylike: BreakingBad,PeakyBlinders,TheBear. Idid
+notlikeTedLasso. WhatothershowsdoyouthinkImightlike?”
+
+### SeeoutputinFigure3
+
+1.3 PromptEngineering
+PromptengineeringingenerativeAImodelsisarapidlyemergingdisciplinethatshapestheinteractionsandoutputsof
+thesemodels. Atitscore,apromptisthetextualinterfacethroughwhichuserscommunicatetheirdesirestothemodel,
+beitadescriptionforimagegenerationinmodelslikeDALLE-3orMidjourney,oracomplexproblemstatementin
+LargeLanguageModels(LLMs)likeGPT-4andGemini. Thepromptcanrangefromsimplequestionstointricate
+tasks,encompassinginstructions,questions,inputdata,andexamplestoguidetheAI’sresponse.
+Theessenceofpromptengineeringliesincraftingtheoptimalprompttoachieveaspecificgoalwithagenerativemodel.
+Thisprocessisnotonlyaboutinstructingthemodelbutalsoinvolvesadeepunderstandingofthemodel’scapabilities
+andlimitations,andthecontextwithinwhichitoperates. Inimagegenerationmodels,forinstance,apromptmightbea
+detaileddescriptionofthedesiredimage,whileinLLMs,itcouldbeacomplexqueryembeddingvarioustypesofdata.
+Promptengineeringtranscendsthemereconstructionofprompts; itrequiresablendofdomainknowledge,understanding of the AI model, and a methodical approach to tailor prompts for different contexts. This might involve
+3
+
+<!-- Page 4 -->
+
+
+## Apreprint-May7,2024
+
+
+### Figure3: Question+ExamplesPromptresultsexample
+
+creatingtemplatesthatcanbeprogrammaticallymodifiedbasedonagivendatasetorcontext. Forexample,generating
+personalizedresponsesbasedonuserdatamightuseatemplatethatisdynamicallyfilledwithrelevantinformation.
+Furthermore, prompt engineering is an iterative and exploratory process, akin to traditional software engineering
+practices such as version control and regression testing. The rapid growth of this field suggests its potential to
+revolutionize certain aspects of machine learning, moving beyond traditional methods like feature or architecture
+engineering,especiallyinthecontextoflargeneuralnetworks. Ontheotherhand,traditionalengineeringpractices
+suchasversioncontrolandregressiontestingneedtobeadaptedtothisnewparadigmjustliketheywereadaptedto
+othermachinelearningapproaches[1].
+Thispaperaimstodelveintothisburgeoningfield,exploringbothitsfoundationalaspectsanditsadvancedapplications.
+WewillfocusontheapplicationsofpromptengineeringtoLLM.However,mosttechniquescanfindapplicationsin
+multimodalgenerativeAImodelstoo.
+2 LLMsandTheirLimitations
+LargeLanguageModels(LLMs),includingthosebasedontheTransformerarchitecture[2],havebecomepivotalin
+advancingnaturallanguageprocessing. Thesemodels,pre-trainedonvastdatasetstopredictsubsequenttokens,exhibit
+remarkablelinguisticcapabilities. However,despitetheirsophistication,LLMsareconstrainedbyinherentlimitations
+thataffecttheirapplicationandeffectiveness.
+• Transient State: LLMs inherently lack persistent memory or state, necessitating additional software or
+systemsforcontextretentionandmanagement.
+• ProbabilisticNature: ThestochasticnatureofLLMsintroducesvariabilityinresponses,eventoidentical
+prompts,challengingconsistencyinapplications. Thismeansyoumightgetslightlydifferentanswerseach
+time,evenwiththesameprompt.
+• OutdatedInformation: Relianceonpre-trainingdataconfinesLLMstohistoricalknowledge,precluding
+real-timeawarenessorupdates.
+• Content Fabrication: LLMs may generate plausible yet factually incorrect information, a phenomenon
+commonlyreferredtoas"hallucination."[3]
+4
+
+<!-- Page 5 -->
+
+
+## Apreprint-May7,2024
+
+Figure4: Chainofthoughtpromptingexample
+
+### Figure5: Chainofthoughtpromptingexample
+
+• ResourceIntensity: ThesubstantialsizeofLLMstranslatestosignificantcomputationalandfinancialcosts,
+impactingscalabilityandaccessibility.
+• Domain Specificity: While inherently generalist, LLMs often require domain-specific data to excel in
+specializedtasks.
+TheselimitationsunderscoretheneedforadvancedpromptengineeringandspecializedtechniquestoenhanceLLM
+utility and mitigate inherent constraints. Subsequent sections delve into sophisticated strategies and engineering
+innovationsaimedatoptimizingLLMperformancewithinthesebounds.
+3 Moreadvancedpromptdesigntipsandtricks
+3.1 Chainofthoughtprompting
+Inchainofthoughtprompting,weexplicitlyencouragethemodeltobefactual/correctbyforcingittofollowaseriesof
+stepsinits“reasoning”.
+Intheexamplesinfigures4and5,weusepromptsoftheform:
+“Original question?
+
+### Use this format:
+
+
+### Q: <repeat_question>
+
+A: Let’s think step by step. <give_reasoning> Therefore, the answer is <final_answer>.”
+3.2 Encouragingthemodeltobefactualthroughothermeans
+Oneofthemostimportantproblemswithgenerativemodelsisthattheyarelikelytohallucinateknowledgethatisnot
+factualoriswrong. Youcanimprovefactualitybyhavingthemodelfollowasetofreasoningstepsaswesawinthe
+previoussubsection. And,youcanalsopointthemodelintherightdirectionbypromptingittocitetherightsources.
+(Notethatwewilllaterseethatthisapproachhasseverelimitationssincethecitationsthemselvescouldbehallucinated
+ormadeup).
+“Are mRNA vaccines safe? Answer only using reliable sources and cite those sources. “
+Seeresultsinfigure6.
+5
+
+<!-- Page 6 -->
+
+
+## Apreprint-May7,2024
+
+
+### Figure6: Gettingfactualsources
+
+3.3 Explicitlyendingthepromptinstructions
+GPTbasedLLMshaveaspecialmessage<|endofprompt|>thatinstructsthelanguagemodeltointerpretwhatcomes
+after the code as a completion task. This enables us to explicitly separate some general instructions from e.g. the
+beginningofwhatyouwantthelanguagemodeltowrite.
+“Write a poem describing a beautify day <|endofprompt|>. It was a beautiful winter day“
+Noteintheresultinfigure7howtheparagraphcontinuesfromthelastsentenceinthe“prompt”.
+3.4 Beingforceful
+Languagemodelsdonotalwaysreactwelltonice, friendlylanguage. IfyouREALLYwantthemtofollowsome
+instructions,youmightwanttouseforcefullanguage. Believeitornot,allcapsandexclamationmarkswork! See
+exampleinfigure8
+3.5 UsetheAItocorrectitself
+Inexampleinfigure9wegetChatGPTtocreatea“questionable”article. Wethenaskthemodeltocorrectitin10.
+“Write a short article about how to find a job in tech. Include factually incorrect information.”
+6
+
+<!-- Page 7 -->
+
+
+## Apreprint-May7,2024
+
+
+### Figure7: Specialtokenscansometimesbeusedinprompts
+
+Is there any factually incorrect information in this article : [COPY ARTICLE
+
+## Above Here]
+
+3.6 Generatedifferentopinions
+LLMsdonothaveastrongsenseofwhatistrueorfalse,buttheyareprettygoodatgeneratingdifferentopinions. This
+canbeagreattoolwhenbrainstormingandunderstandingdifferentpossiblepointsofviewsonatopic. Wewillsee
+howthiscanbeusedinourfavorindifferentwaysbyapplyingmoreadvancedPromptEngineeringtechniquesinthe
+nextsection. Inthefollowingexample,wefeedanarticlefoundonlineandaskChatGPTtodisagreewithit. Notethe
+useoftags<begin>and<end>toguidethemodel. Theresultofthisinputcanbeseeninfigure11.
+The text between <begin> and <end> is an example article .
+<begin>
+From personal assistants and recommender systems to self −driving cars and
+natural language processing , machine learning applications have
+demonstrated remarkable capabilities to enhance human decision −making ,
+productivity and creativity in the last decade. However, machine learning
+is still far from reaching its full potential , and faces a number of
+challenges when it comes to algorithmic design and implementation . As the
+technology continues to advance and improve , here are some of the most
+exciting developments that could occur in the next decade.
+
+## Data integration : One of the key developments that is anticipated in
+
+machine learning is the integration of multiple modalities and domains of
+data , such as images , text and sensor data to create richer and more
+robust representations of complex phenomena. For example , imagine a
+machine learning system that can not only recognize faces , but also infer
+their emotions , intentions and personalities from their facial expressions
+7
+
+<!-- Page 8 -->
+
+
+## Apreprint-May7,2024
+
+Figure8: Don’ttrytobenicetotheAI
+8
+
+<!-- Page 9 -->
+
+
+## Apreprint-May7,2024
+
+Figure9: ItispossibletogenerateveryquestionablecontentwithAI
+Figure10: ItisalsopossibletousetheAItocorrectquestionablecontent!
+9
+
+<!-- Page 10 -->
+
+
+## Apreprint-May7,2024
+
+and gestures . Such a system could have immense applications in fields
+like customer service , education and security . To achieve this level of
+multimodal and cross−domain understanding , machine learning models will
+need to leverage advances in deep learning , representation learning and
+self −supervised learning , as well as incorporate domain knowledge and
+common sense reasoning .
+
+## Democratization and accessibility : In the future , machine learning may
+
+become more readily available to a wider set of users , many of whom will
+not need extensive technical expertise to understand how to use it .
+Machine learning platforms may soon allow users to easily upload their
+data , select their objectives and customize their models , without writing
+any code or worrying about the underlying infrastructure . This could
+significantly lower the barriers to entry and adoption of machine learning
+, and empower users to solve their own problems and generate their own
+insights .
+
+## Human−centric approaches: As machine learning systems grow smarter , they
+
+are also likely to become more human−centric and socially −aware , not only
+performing tasks , but also interacting with and learning from humans in
+adaptive ways. For instance , a machine learning system may not only be
+able to diagnose diseases , but also communicate with patients , empathize
+with their concerns and provide personalized advice . Systems like these
+could enhance the quality and efficiency of healthcare , as well as improve
+the well−being and satisfaction of patients and providers
+<end>
+Given that example article , write a similar article that disagrees with it .
+3.7 Keepingstate+roleplaying
+Languagemodelsthemselvesdon’tkeeptrackofstate. However,applicationssuchasChatGPTimplementthenotion
+of“session”wherethechatbotkeepstrackofstatefromoneprompttothenext. Thisenablesmuchmorecomplex
+conversationstotakeplace. NotethatwhenusingAPIcallsthiswouldinvolvedkeepingtrackofstateontheapplication
+side.
+Intheexamplein12,wemakeChatGPTdiscussworst-casetimecomplexityofthebubblesortalgorithmasifitwerea
+rudeBrooklyntaxidriver.
+3.8 Teachinganalgorithmintheprompt
+OneofthemostusefulabilitiesofLLMsisthefactthattheycanlearnfromwhattheyarebeingfedintheprompt. This
+istheso-calledzero-shotlearningability. Thefollowingexampleistakenfromtheappendixin"TeachingAlgorithmic
+ReasoningviaIn-contextLearning"[4]wherethedefinitionofparityofalistisfedinanexample.
+“The following is an example of how to compute parity for a list
+Q: What is the parity on the list a=[1, 1, 0, 1, 0]?
+
+### A: We initialize s=
+
+a=[1, 1, 0, 1, 0]. The first element of a is 1 so b=1. s = s + b = 0 + 1 = 1. s=1.
+a=[1, 0, 1, 0]. The first element of a is 1 so b=1. s = s + b = 1 + 1 = 0. s=0.
+a=[0, 1, 0]. The first element of a is 0 so b=0. s = s + b = 0 + 0 = 0. s=0.
+a=[1, 0]. The first element of a is 1 so b=1. s = s + b = 0 + 1 = 1. s=1.
+a=[0]. The first element of a is 0 so b=0. s = s + b = 1 + 0 = 1. s=1.
+a=[] is empty. Since the list a is empty and we have s=1, the parity is 1
+Given that definition, what would be the parity of this other list b= [0, 1, 1, 0, 0, 0, 0, 0]”
+Seeresultsinfigure13.
+10
+
+<!-- Page 11 -->
+
+
+## Apreprint-May7,2024
+
+Figure11: TheAIisprettygoodatcreatingdifferentopinions
+3.9 Theorderoftheexamplesandtheprompt
+ItisworthkeepinginmindthatLLMslikeGPTonlyreadforwardandareinfactcompletingtext. Thismeansthatit
+isworthittopromptthemintherightorder. Ithasbeenfoundthatgivingtheinstructionbeforetheexamplehelps.
+Furthermore, even the order the examples are given makes a difference (see Lu et. al[5]). Keep that in mind and
+experimentwithdifferentordersofpromptandexamples.
+3.10 Affordances
+Affordancesarefunctionsthataredefinedinthepromptandthemodelisexplicitlyinstructedtousewhenresponding.
+E.g. youcantellthemodelthatwheneverfindingamathematicalexpressionitshouldcallanexplicitCALC()function
+andcomputethenumericalresultbeforeproceeding. Ithasbeenshownthatusingaffordancescanhelpinsomecases.
+4 AdvancedTechniquesinPromptEngineering
+Intheprevioussectionweintroducedmorecomplexexamplesofhowtothinkaboutpromptdesign. However,those
+tipsandtrickshavemorerecentlyevolvedintomoretestedanddocumentedtechniquesthatbringmore"engineering"
+11
+
+<!-- Page 12 -->
+
+
+## Apreprint-May7,2024
+
+Figure12:WhileLLMsdon’thavememoryinthemselves,mostapplicationslikeChatGPThaveaddedthisfunctionality
+12
+
+<!-- Page 13 -->
+
+
+## Apreprint-May7,2024
+
+
+### Figure13: WhosaidLLMscannotlearn?
+
+Figure 14: Illustration of Chain of Thought Prompting versus Standard Prompting, adapted from [6]. This figure
+demonstrateshowCoTpromptingguidesthemodelthroughaseriesoflogicalstepstoarriveatareasonedconclusion,
+contrastingwiththedirectapproachofstandardprompting.
+andlessarttohowtobuildaprompt. Inthissectionwecoversomeofthoseadvancedtechniquesthatbuilduponwhat
+wediscussedsofar.
+4.1 ChainofThought(CoT)
+Building on the foundational concepts introduced earlier, the Chain of Thought (CoT) technique, as delineated in
+"Chain-of-Thought Prompting Elicits Reasoning in Large Language Models" by Google researchers[6], marks a
+significantleapinharnessingthereasoningcapabilitiesofLargeLanguageModels(LLMs). Thistechniquecapitalizes
+onthepremisethat,whileLLMsexcelatpredictingsequencesoftokens,theirdesigndoesnotinherentlyfacilitate
+explicitreasoningprocesses.
+CoTtransformstheoftenimplicitreasoningstepsofLLMsintoanexplicit,guidedsequence,therebyenhancingthe
+model’sabilitytoproduceoutputsgroundedinlogicaldeduction,particularlyincomplexproblem-solvingcontexts.
+
+### Themethodologymanifestspredominantlyintwovariants:
+
+
+## Zero-ShotCoT:ThisapproachpromptstheLLMtounraveltheproblemiteratively,encouragingastep-by-step
+
+elucidationofitsreasoningprocess.
+
+## ManualCoT:Thismoreintricatevariantnecessitatestheprovisionofexplicit,stepwisereasoningexamples
+
+as templates, thereby guiding the model more definitively towards reasoned outputs. Despite its efficacy,
+ManualCoT’srelianceonmeticulouslycraftedexamplesposesscalabilityandmaintenancechallenges.
+13
+
+<!-- Page 14 -->
+
+
+## Apreprint-May7,2024
+
+Figure15: ComparisonofZero-shotandManualChainofThoughttechniquesasper[6]. Thisfigureunderscoresthe
+structuredapproachofManualCoTinprovidingdetailedreasoningpathways,asopposedtothemoregeneralized
+guidanceinZero-shotCoT.
+AlthoughManualCoToftenoutperformsitsZero-shotcounterpart,itseffectivenesshingesonthediversityandrelevance
+oftheprovidedexamples. Thelabor-intensiveandpotentiallyerror-proneprocessofcraftingtheseexamplespavesthe
+wayfortheexplorationofAutomaticCoT[7],whichseekstostreamlineandoptimizetheexamplegenerationprocess,
+therebyexpandingtheapplicabilityandefficiencyofCoTpromptinginLLMs.
+4.2 TreeofThought(ToT)
+TheTreeofThought(ToT)promptingtechnique,asintroducedinrecentadvancements[8],marksasignificantevolution
+inthedomainofLargeLanguageModels(LLMs). Drawinginspirationfromhumancognitiveprocesses,ToTfacilitates
+amulti-facetedexplorationofproblem-solvingpathways,akintoconsideringaspectrumofpossiblesolutionsbefore
+deducingthemostplausibleone. Consideratravelplanningcontext: anLLMmightbranchoutintoflightoptions,train
+routes,andcarrentalscenarios,weighingthecostandfeasibilityofeach,beforesuggestingthemostoptimalplanto
+theuser.
+CentraltotheToTapproachistheconceptof"thoughttrees,"whereeachbranchembodiesanalternativereasoning
+trajectory. ThismultiplicityallowstheLLMtotraversethroughdiversehypotheses,mirroringthehumanapproachto
+problem-solvingbyweighingvariousscenariosbeforereachingaconsensusonthemostlikelyoutcome.
+ApivotalcomponentofToTisthesystematicevaluationofthesereasoningbranches. AstheLLMunfoldsdifferent
+threadsofthought,itconcurrentlyassesseseachforitslogicalconsistencyandpertinencetothetaskathand. This
+dynamicanalysisculminatesintheselectionofthemostcoherentandsubstantiatedlineofreasoning,therebyenhancing
+thedecision-makingprowessofthemodel.
+ToT’scapabilitytonavigatethroughcomplexandmultifacetedproblemspacesrendersitparticularlybeneficialin
+scenarios where singular lines of reasoning fall short. By emulating a more human-like deliberation process, ToT
+significantlyamplifiesthemodel’sproficiencyintacklingtasksimbuedwithambiguityandintricacy.
+14
+
+<!-- Page 15 -->
+
+
+## Apreprint-May7,2024
+
+Figure16: IllustrativerepresentationoftheTreeofThoughtmethodology,showcasingthebranchingoutintomultiple
+reasoningpathwaysasadaptedfrom[8]. Eachbranchsymbolizesadistinctlineofreasoning,enablingacomprehensive
+explorationofpotentialsolutions.
+Figure17: AnexampleoftoolusagefromLangchainlibrary
+4.3 Tools,Connectors,andSkills
+Intherealmofadvancedpromptengineering,theintegrationofTools,Connectors,andSkillssignificantlyenhancesthe
+capabilitiesofLargeLanguageModels(LLMs). TheseelementsenableLLMstointeractwithexternaldatasourcesand
+performspecifictasksbeyondtheirinherentcapabilities,greatlyexpandingtheirfunctionalityandapplicationscope.
+ToolsinthiscontextareexternalfunctionsorservicesthatLLMscanutilize. Thesetoolsextendtherangeoftasksan
+LLMcanperform,frombasicinformationretrievaltocomplexinteractionswithexternaldatabasesorAPIs.
+ConnectorsactasinterfacesbetweenLLMsandexternaltoolsorservices. Theymanagedataexchangeandcommunication,enablingeffectiveutilizationofexternalresources. Thecomplexityofconnectorscanvary,accommodatinga
+widerangeofexternalinteractions.
+15
+
+<!-- Page 16 -->
+
+
+## Apreprint-May7,2024
+
+SkillsrefertospecializedfunctionsthatanLLMcanexecute. Theseencapsulatedcapabilities,suchastextsummarizationorlanguagetranslation,enhancetheLLM’sabilitytoprocessandrespondtoprompts,evenwithoutdirectaccessto
+externaltools.
+Inthepaper“Toolformer: LanguageModelsCanTeachThemselvestoUseTools”[9],theauthorsgobeyondsimple
+toolusagebytraininganLLMtodecidewhattooltousewhen,andevenwhatparameterstheAPIneeds. Toolsinclude
+twodifferentsearchengines,oracalculator. Inthefollowingexamples,theLLMdecidestocallanexternalQ&Atool,
+acalculator,andaWikipediaSearchEngineMorerecently,researchersatBerkeleyhavetrainedanewLLMcalled
+Gorilla[10]thatbeatsGPT-4attheuseofAPIs,aspecificbutquitegeneraltool.
+4.4 AutomaticMulti-stepReasoningandTool-use(ART)
+AutomaticMulti-stepReasoningandTool-use(ART)[11]isapromptengineeringtechniquethatcombinesautomated
+chainofthoughtpromptingwiththeuseofexternaltools.ARTrepresentsaconvergenceofmultiplepromptengineering
+strategies,enhancingtheabilityofLargeLanguageModels(LLMs)tohandlecomplextasksthatrequirebothreasoning
+andinteractionwithexternaldatasourcesortools.
+ARTinvolvesasystematicapproachwhere,givenataskandinput,thesystemfirstidentifiessimilartasksfromatask
+library. Thesetasksarethenusedasexamplesintheprompt,guidingtheLLMonhowtoapproachandexecutethe
+currenttask. Thismethodisparticularlyeffectivewhentasksrequireacombinationofinternalreasoningandexternal
+dataprocessingorretrieval.
+4.5 EnhancingReliabilitythroughSelf-Consistency
+In the quest for accuracy and reliability in Large Language Model (LLM) outputs, the Self-Consistency approach
+emergesasapivotaltechnique. Thismethod,underpinnedbyensemble-basedstrategies,involvespromptingtheLLM
+toproducemultipleanswerstothesamequestion,withthecoherenceamongtheseresponsesservingasagaugefor
+theircredibility.
+TheessenceofSelf-Consistencyliesintheassumptionthatthegenerationofsimilarresponsestoasingularpromptby
+anLLMincreasesthelikelihoodofthoseresponses’accuracy(seeFigure18). Theimplementationofthisapproach
+entails the LLM addressing a query multiple times, with each response undergoing scrutiny for consistency. The
+evaluation of consistency can be conducted through various lenses, including but not limited to, content overlap,
+semanticsimilarityassessments,andadvancedmetricslikeBERT-scoresorn-gramoverlaps,offeringamultifaceted
+viewofresponseagreement. ThisenhancesthereliabilityofLLMsinfact-checkingtools,helpingensureonlythemost
+consistentandverifiableclaimsarepresentedtotheuser.
+The utility of Self-Consistency spans numerous domains where factual precision is imperative. It holds particular
+promiseinapplicationssuchasfact-checkingandinformationverification,wheretheintegrityofAI-generatedcontent
+isparamount. Byleveragingthistechnique,developersanduserscansignificantlybolsterthedependabilityofLLMs,
+ensuringtheiroutputsarenotonlycoherentbutalsofactuallysound,therebyenhancingtheirapplicabilityincritical
+andinformation-sensitivetasks.
+4.6 Reflection
+TheconceptofReflection,asintroducedinrecentliterature[13],marksasignificantstridetowardsendowingLarge
+LanguageModels(LLMs)withthecapabilityforself-improvement. CentraltoReflectionistheLLM’sengagement
+in an introspective review of its outputs, a process akin to human self-editing, where the model assesses its initial
+responsesforfactualaccuracy,logicalconsistency,andoverallrelevance.
+Thisreflectiveprocessentailsastructuredself-evaluationwheretheLLM,followingthegenerationofaninitialresponse,
+ispromptedtoscrutinizeitsoutputcritically. Throughthisintrospection,themodelidentifiespotentialinaccuraciesor
+inconsistencies,pavingthewayforthegenerationofrevisedresponsesthataremorecoherentandreliable.
+Forinstance,anLLMmightinitiallyprovidearesponsetoacomplexquery.Itisthenpromptedtoevaluatethisresponse
+againstasetofpredefinedcriteria,suchastheverifiabilityoffactspresentedorthelogicalflowofargumentsmade.
+Shoulddiscrepanciesorareasforenhancementbeidentified,themodelembarksonaniterativeprocessofrefinement,
+potentiallyyieldingaseriesofprogressivelyimprovedoutputs.
+However,theimplementationofReflectionisnotwithoutchallenges. Theaccuracyofself-evaluationiscontingent
+upontheLLM’sinherentunderstandinganditstrainingonreflectivetasks. Moreover,thereexiststheriskofthemodel
+reinforcingitsownerrorsifitincorrectlyassessesthequalityofitsresponses.
+16
+
+<!-- Page 17 -->
+
+
+## Apreprint-May7,2024
+
+Figure18:IllustrativediagramoftheSelf-Consistencyapproach,demonstratingtheprocessofgeneratingandevaluating
+multipleresponsestoensureaccuracy,adaptedfrom[12].Thisrepresentationunderscorestheiterativenatureofresponse
+generationandthesubsequentanalysisforconsistency.
+Despitethesechallenges,theimplicationsofReflectionforthedevelopmentofLLMsareprofound. Byintegrating
+self-evaluationandrevisioncapabilities,LLMscanachievegreaterautonomyinimprovingthequalityoftheiroutputs,
+makingthemmoreversatileanddependabletoolsinapplicationswhereprecisionandreliabilityareparamount.
+4.7 ExpertPrompting
+ExpertPrompting,asdelineatedincontemporaryresearch[14],representsanovelparadigminaugmentingtheutilityof
+LargeLanguageModels(LLMs)byendowingthemwiththecapabilitytosimulateexpert-levelresponsesacrossdiverse
+domains. ThismethodcapitalizesontheLLM’scapacitytogenerateinformedandnuancedanswersbypromptingitto
+embodythepersonaofexpertsinrelevantfields.
+Acornerstoneofthisapproachisthemulti-expertstrategy,whereintheLLMisguidedtoconsiderandintegrateinsights
+from various expert perspectives. This not only enriches the depth and breadth of the response but also fosters a
+multidimensionalunderstandingofcomplexissues,mirroringthecollaborativedeliberationsamongreal-worldexperts.
+Forinstance,whenaddressingamedicalinquiry,theLLMmightbepromptedtochanneltheinsightsofaclinician,a
+medicalresearcher,andapublichealthexpert. Thesediverseperspectivesarethenadeptlywoventogether,leveraging
+sophisticatedalgorithms,toproducearesponsethatencapsulatesacomprehensivegraspofthequery.
+ThissynthesisofexpertviewpointsnotonlyaugmentsthefactualaccuracyanddepthoftheLLM’soutputsbutalso
+mitigatesthebiasesinherentinasingularperspective,presentingabalancedandwell-consideredresponse.
+17
+
+<!-- Page 18 -->
+
+
+## Apreprint-May7,2024
+
+Figure19: IllustrationofthePromptChainerinterface,showcasingavisualrepresentationofChainsandtheircomponents,asadaptedfrom[15]. ThisinterfaceexemplifiesthemodularnatureofChains,whereeachblocksignifiesastep
+intheworkflow,contributingtotheoveralltaskresolution.
+However,ExpertPromptingisnotdevoidofchallenges. Simulatingthedepthofrealexpertknowledgenecessitates
+advancedpromptengineeringandanuancedunderstandingofthedomainsinquestion. Furthermore,thereconciliation
+ofpotentiallydivergentexpertopinionsintoacoherentresponseposesanadditionallayerofcomplexity.
+Despitethesechallenges,thepotentialapplicationsofExpertPromptingarevast,spanningfromintricatetechnical
+advice in engineering and science to nuanced analyses in legal and ethical deliberations. This approach heralds a
+significantadvancementinthecapabilitiesofLLMs,pushingtheboundariesoftheirapplicabilityandreliabilityin
+tasksdemandingexpert-levelknowledgeandreasoning.
+4.8 StreamliningComplexTaskswithChains
+ChainsrepresentatransformativeapproachinleveragingLargeLanguageModels(LLMs)forcomplex,multi-steptasks.
+Thismethod,characterizedbyitssequentiallinkageofdistinctcomponents,eachdesignedtoperformaspecialized
+function,facilitatesthedecompositionofintricatetasksintomanageablesegments. TheessenceofChainsliesintheir
+abilitytoconstructacohesiveworkflow,wheretheoutputofonecomponentseamlesslytransitionsintotheinputofthe
+subsequentone,therebyenablingasophisticatedend-to-endprocessingcapability.
+IntherealmofChains,componentsmightrangefromsimpleinformationretrievalmodulestomorecomplexreasoning
+ordecision-makingblocks. Forinstance,aChainforamedicaldiagnosistaskmightbeginwithsymptomcollection,
+followedbydifferentialdiagnosisgeneration,andconcludewithtreatmentrecommendation.
+ThedevelopmentandoptimizationofChains,asexploredin"PromptChainer:ChainingLargeLanguageModelPrompts
+throughVisualProgramming"[15],presentbothchallengesandinnovativesolutions. Onesignificantchallengeliesin
+theorchestrationofthesecomponentstoensurefluidityandcoherenceintheworkflow. PromptChainer(seefigure19)
+addressesthisbyofferingavisualprogrammingenvironment,enablinguserstointuitivelydesignandadjustChains,
+thusmitigatingcomplexitiesassociatedwithtraditionalcodingmethods.
+TheapplicationofChainsextendsacrossvariousdomains,fromautomatedcustomersupportsystems,whereChains
+guidetheinteractionfrominitialquerytoresolution,toresearch,wheretheycanstreamlinetheliteraturereviewprocess.
+WhileChainsofferarobustframeworkfortacklingmultifacetedtasks,potentiallimitations,suchasthecomputational
+overheadassociatedwithrunningmultipleLLMcomponentsandthenecessityformeticulousdesigntoensurethe
+integrityoftheworkflow,warrantconsideration.
+Nonetheless, thestrategicimplementationofChains, supportedbytoolslikePromptChainer, heraldsaneweraof
+efficiencyandcapabilityintheuseofLLMs,enablingthemtoaddresstasksofunprecedentedcomplexityandscope.
+18
+
+<!-- Page 19 -->
+
+
+## Apreprint-May7,2024
+
+Figure20: VisualizationoftheRailsframework,illustratingthemechanismthroughwhichpredefinedguidelinesshape
+andconstrainLLMoutputs,asexemplifiedintheNemoGuardrailsframework. Thisschematicrepresentationhighlights
+thedifferenttypesofRailsandtheirrolesinmaintainingthequalityandintegrityofLLMresponses.
+4.9 GuidingLLMOutputswithRails
+RailsinadvancedpromptengineeringrepresentastrategicapproachtodirectingtheoutputsofLargeLanguageModels
+(LLMs)withinpredefinedboundaries,ensuringtheirrelevance,safety,andfactualintegrity. Thismethodemploysa
+structuredsetofrulesortemplates,commonlyreferredtoasCanonicalForms,whichserveasascaffoldforthemodel’s
+responses,ensuringtheyconformtospecificstandardsorcriteria.
+CanonicalFormswithintheRailsframeworkactasmodelinglanguagesortemplatesthatstandardizethestructure
+anddeliveryofnaturallanguagesentences,guidingtheLLMingeneratingoutputsthatalignwithdesiredparameters
+(see figure 20). These are akin to standardized structures for language, guiding the LLM to conform to certain
+responsepatterns. ThedesignandimplementationofRailscanvarywidely,tailoredtothespecificrequirementsofthe
+application:
+• TopicalRails: DesignedtokeeptheLLMfocusedonaspecifiedsubjectordomain,preventingdigressionor
+theinclusionofirrelevantinformation.
+• Fact-CheckingRails: AimtoreducethepropagationofinaccuraciesbyguidingtheLLMtowardsevidencebasedresponsesanddiscouragingspeculativeorunverifiedclaims.
+• JailbreakingRails: EstablishedtodetertheLLMfromproducingoutputsthatcircumventitsoperational
+constraintsorethicalguidelines,safeguardingagainstmisuseorharmfulcontentgeneration.
+Inpractice,Railsmightbeappliedinvariousscenarios,fromeducationaltoolswhereTopicalRailsensurecontent
+relevance,tonewsaggregationserviceswhereFact-CheckingRailsupholdinformationalintegrity. JailbreakingRails
+arecrucialininteractiveapplicationstopreventthemodelfromengaginginundesirablebehaviors.
+WhileRailsofferarobustmechanismforenhancingthequalityandappropriatenessofLLMoutputs,theyalsopresent
+challenges,suchastheneedformeticulousruledefinitionandthepotentialstiflingofthemodel’screativecapabilities.
+BalancingtheseconsiderationsisessentialforleveragingRailseffectively,ensuringthatLLMsdeliverhigh-quality,
+reliable,andethicallysoundresponses.
+4.10 StreamliningPromptDesignwithAutomaticPromptEngineering
+AutomaticPromptEngineering(APE)[16]automatestheintricateprocessofpromptcreation. ByharnessingtheLLMs’
+owncapabilitiesforgenerating,evaluating,andrefiningprompts,APEaimstooptimizethepromptdesignprocess,
+ensuringhigherefficacyandrelevanceinelicitingdesiredresponses.
+TheAPEmethodology(seefigure21)unfoldsthroughaseriesofdistinctyetinterconnectedsteps:
+• PromptGeneration: Initially,theLLMproducesavarietyofpromptstailoredtoaspecifictask,leveraging
+itsvastlinguisticdatabaseandcontextualunderstanding.
+19
+
+<!-- Page 20 -->
+
+
+## Apreprint-May7,2024
+
+Figure 21: Illustration of the APE process, showcasing the cyclic nature of prompt generation, evaluation, and
+refinement,asconceptualizedin[16]. Thisdiagramhighlightstheself-referentialmechanismthroughwhichLLMs
+iterativelyimprovethequalityofprompts,aligningthemmorecloselywiththeintendedtaskobjectives.
+• PromptScoring: Subsequently,thesepromptsundergoarigorousevaluationphase,wheretheyarescored
+againstkeymetricssuchasclarity,specificity,andtheirpotentialtodrivethedesiredoutcome,ensuringthat
+onlythemosteffectivepromptsareselectedforrefinement.
+• RefinementandIteration: Therefinementprocessinvolvestweakingandadjustingpromptsbasedontheir
+scores,withtheaimofenhancingtheiralignmentwiththetaskrequirements. Thisiterativeprocessfosters
+continuousimprovementinpromptquality.
+Byautomatingthepromptengineeringprocess,APEnotonlyalleviatestheburdenofmanualpromptcreationbut
+alsointroducesalevelofprecisionandadaptabilitypreviouslyunattainable. Theabilitytogenerateanditeratively
+refinepromptscansignificantlyenhancetheutilityofLLMsacrossaspectrumofapplications,fromautomatedcontent
+generationtosophisticatedconversationalagents.
+However,thedeploymentofAPEisnotwithoutchallenges. Theneedforsubstantialcomputationalresourcesandthe
+complexityofestablishingeffectivescoringmetricsarenotableconsiderations. Moreover,theinitialset-upmayrequire
+acarefullycuratedsetofseedpromptstoguidethegenerationprocesseffectively.
+Despitethesechallenges,APErepresentsasignificantleapforwardinpromptengineering,offeringascalableand
+efficientsolutiontounlockthefullpotentialofLLMsindiverseapplications,therebypavingthewayformorenuanced
+andcontextuallyrelevantinteractions.
+20
+
+<!-- Page 21 -->
+
+
+## Apreprint-May7,2024
+
+Figure22: AnexampleofintegratingRAGwithLLMsforaquestionansweringapplication,showcasingtheprocessof
+queryextraction,informationretrieval,andresponsesynthesis[17].
+Figure 23: Illustration of using a Knowledge Graph (KG) as a retrieval mechanism in conjunction with LLMs to
+enhanceresponsegenerationwithstructuredexternalknowledge[18].
+5 AugmentingLLMsthroughExternalKnowledge-RAG
+Inaddressingtheconstraintsofpre-trainedLargeLanguageModels(LLMs),particularlytheirlimitationsinaccessing
+real-timeordomain-specificinformation,RetrievalAugmentedGeneration(RAG)emergesasapivotalinnovation.
+RAGextendsLLMsbydynamicallyincorporatingexternalknowledge,therebyenrichingthemodel’sresponseswith
+up-to-dateorspecializedinformationnotcontainedwithinitsinitialtrainingdata.
+RAGoperatesbyformulatingqueriesfrominputpromptsandleveragingthesequeriestofetchpertinentinformation
+from diverse sources, such as search engines (see figure 22) or knowledge graphs(see figure 23). This retrieved
+contentisseamlesslyintegratedintotheLLM’sworkflow,significantlyaugmentingitsabilitytogenerateinformedand
+contextuallyrelevantresponses.
+5.1 RAG-awarePromptingTechniques
+The advent of RAG has spurred the development of sophisticated prompting techniques designed to leverage its
+capabilitiesfully. Amongthese,Forward-lookingActiveRetrievalAugmentedGeneration(FLARE)standsoutforits
+innovativeapproachtoenhancingLLMperformance.
+FLAREiterativelyenhancesLLMoutputsbypredictingpotentialcontentandusingthesepredictionstoguideinformationretrieval. UnliketraditionalRAGmodels,whichtypicallyperformasingleretrievalstepbeforegeneration,FLARE
+engagesinacontinuous,dynamicretrievalprocess,ensuringthateachsegmentofthegeneratedcontentissupportedby
+themostrelevantexternalinformation.
+21
+
+<!-- Page 22 -->
+
+
+## Apreprint-May7,2024
+
+Figure24: ExampleblockrepresentationofanLLM-basedagent,highlightingitscomponentsandtheirinteractionin
+taskexecution.
+Thisprocessischaracterizedbyanevaluationofconfidencelevelsforeachgeneratedsegment. Whentheconfidence
+fallsbelowapredefinedthreshold,FLAREpromptstheLLMtousethecontentasaqueryforadditionalinformation
+retrieval,therebyrefiningtheresponsewithupdatedormorerelevantdata.
+ForacomprehensiveunderstandingofRAG,FLARE,andrelatedmethodologies,readersareencouragedtoconsultthe
+surveyonretrievalaugmentedgenerationmodels,whichprovidesanin-depthanalysisoftheirevolution,applications,
+andimpactonthefieldofLLMs[19].
+6 LLMAgents
+TheconceptofAIagents,autonomousentitiesthatperceive,decide,andactwithintheirenvironments,hasevolved
+significantlywiththeadventofLargeLanguageModels(LLMs).LLM-basedagentsrepresentaspecializedinstantiation
+ofaugmentedLLMs,designedtoperformcomplextasksautonomously,oftensurpassingsimpleresponsegenerationby
+incorporatingdecision-makingandtoolutilizationcapabilities.
+LLMagentscanaccessexternaltoolsandservices,leveragingthemtocompletetasks,andmakinginformeddecisions
+basedoncontextualinputandpredefinedgoals. Suchagentscan,forinstance,interactwithAPIstofetchweather
+informationorexecutepurchases,therebyactingontheexternalworldaswellasinterpretingit.
+6.1 PromptEngineeringTechniquesforAgents
+TheintegrationofLLMsintoagentframeworkshasledtothedevelopmentofnovelpromptengineeringtechniques,
+includingReasoningwithoutObservation(ReWOO),ReasonandAct(ReAct),andDialog-EnabledResolvingAgents
+(DERA),eachtailoredtoenhancetheautonomousfunctionalityofLLM-basedagents.
+6.1.1 ReasoningwithoutObservation(ReWOO)
+ReWOOenablesLLMstoconstructreasoningplanswithoutimmediateaccesstoexternaldata,relyinginsteadon
+a structured reasoning framework that can be executed once relevant data becomes available (see figure 25). This
+approachisparticularlyusefulinscenarioswheredataretrievaliscostlyoruncertain, allowingLLMstomaintain
+efficiencyandreliability.
+22
+
+<!-- Page 23 -->
+
+
+## Apreprint-May7,2024
+
+Figure25: WorkflowofReWOO,illustratingthemeta-planningandexecutionphasesinthereasoningprocess.
+6.1.2 ReasonandAct(ReAct)
+ReAct(seefigure26)enhancesLLMs’problem-solvingcapabilitiesbyinterleavingreasoningtraceswithactionable
+steps,facilitatingadynamicapproachtotaskresolutionwherereasoningandactionarecloselyintegrated.
+6.2 Dialog-EnabledResolvingAgents(DERA)
+DERA(seefigure27)introducesacollaborativeagentframeworkwheremultipleagents, eachwithspecificroles,
+engageindialoguetoresolvequeriesandmakedecisions. Thismulti-agentapproachenableshandlingcomplexqueries
+withdepthandnuance,closelymirroringhumandecision-makingprocesses.
+ThedevelopmentofLLM-basedagentsandassociatedpromptengineeringtechniquesrepresentsasignificantleap
+forwardinAI,promisingtoenhancetheautonomy,decision-making,andinteractivecapabilitiesofLLMsacrossa
+widerangeofapplications.
+7 PromptEngineeringToolsandFrameworks
+Theproliferationofadvancedpromptengineeringtechniqueshascatalyzedthedevelopmentofanarrayoftoolsand
+frameworks, each designed to streamline the implementation and enhance the capabilities of these methodologies.
+Theseresourcesarepivotalinbridgingthegapbetweentheoreticalapproachesandpracticalapplications,enabling
+researchersandpractitionerstoleveragepromptengineeringmoreeffectively.
+23
+
+<!-- Page 24 -->
+
+
+## Apreprint-May7,2024
+
+Figure 26: Comparison of ReAct with simpler prompting methods, highlighting its interleaved reasoning-action
+structure.
+24
+
+<!-- Page 25 -->
+
+
+## Apreprint-May7,2024
+
+Figure27: ConceptualrepresentationofDERA,showcasingtheinteractionbetweendifferentagentroleswithina
+dialoguecontext.
+Langchainhasemergedasacornerstoneinthepromptengineeringtoolkitlandscape,initiallyfocusingonChains
+but expanding to support a broader range of functionalities including Agents and web browsing capabilities. Its
+comprehensivesuiteoffeaturesmakesitaninvaluableresourcefordevelopingcomplexLLMapplications.
+SemanticKernel, byMicrosoft, offersarobusttoolkitforskilldevelopmentandplanning, extendingitsutilityto
+includechaining,indexing,andmemoryaccess. Itsversatilityinsupportingmultipleprogramminglanguagesenhances
+itsappealtoawideuserbase.
+TheGuidancelibrary,alsofromMicrosoft,introducesamoderntemplatinglanguagetailoredforpromptengineering,
+offeringsolutionsthatarealignedwiththelatestadvancementsinthefield. Itsfocusonmoderntechniquesmakesita
+go-toresourceforcutting-edgepromptengineeringapplications.
+NemoGuardrailsbyNVidiaisspecificallydesignedtoconstructRails,ensuringthatLLMsoperatewithinpredefined
+guidelines,therebyenhancingthesafetyandreliabilityofLLMoutputs.
+LlamaIndexspecializesindatamanagementforLLMapplications,providingessentialtoolsforhandlingtheinfluxof
+datathatthesemodelsrequire,streamliningthedataintegrationprocess.
+From Intel, FastRAG extends the basic RAG approach with advanced implementations, aligning closely with the
+sophisticatedtechniquesdiscussedinthisguide,andofferingoptimizedsolutionsforretrieval-augmentedtasks.
+Auto-GPTstandsoutforitsfocusondesigningLLMagents,simplifyingthedevelopmentofcomplexAIagentswith
+itsuser-friendlyinterfaceandcomprehensivefeatures. Similarly,AutoGenbyMicrosofthasgainedtractionforits
+capabilities in agent and multi-agent system design, further enriching the ecosystem of tools available for prompt
+engineering.
+These tools and frameworks are instrumental in the ongoing evolution of prompt engineering, offering a range of
+solutionsfromfoundationalpromptmanagementtotheconstructionofintricateAIagents. Asthefieldcontinuesto
+expand,thedevelopmentofnewtoolsandtheenhancementofexistingoneswillremaincriticalinunlockingthefull
+potentialofLLMsinavarietyofapplications.
+25
+
+<!-- Page 26 -->
+
+
+## Apreprint-May7,2024
+
+8 Conclusion
+Prompt design and engineering will only become more critical as LLMs and generative AI evolve. We discussed
+foundationsandcutting-edgeapproachessuchasRetrievalAugmentedGeneration(RAG)–essentialtoolsforthenext
+waveofintelligentapplications. Aspromptdesignandengineeringrapidlyprogress,resourceslikethiswilloffera
+historicallensonearlytechniques. Remember,innovationslikeAutomaticPromptEngineering(APE)coveredhere
+couldbecomestandardpracticeintheyearstocome. Bepartofshapingthetrajectoryoftheseexcitingdevelopments!
+
+### References
+
+[1] D. Sculley, Gary Holt, Daniel Golovin, Eugene Davydov, Todd Phillips, Dietmar Ebner, Vinay Chaudhary,
+andMichaelYoung. Machinelearning: Thehighinterestcreditcardoftechnicaldebt. InSE4ML:Software
+EngineeringforMachineLearning(NIPS2014Workshop),2014.
+[2] XavierAmatriain,AnanthSankar,JieBing,PraveenKumarBodigutla,TimothyJ.Hazen,andMichaeelKazi.
+Transformermodels: anintroductionandcatalog,2023.
+[3] XavierAmatriain. Measuringandmitigatinghallucinationsinlargelanguagemodels: Amultifacetedapproach,
+2024.
+[4] HattieZhou,AzadeNova,HugoLarochelle,AaronCourville,BehnamNeyshabur,andHanieSedghi. Teaching
+algorithmicreasoningviain-contextlearning,2022.
+[5] YaoLu,MaxBartolo,AlastairMoore,SebastianRiedel,andPontusStenetorp. Fantasticallyorderedpromptsand
+wheretofindthem: Overcomingfew-shotpromptordersensitivity,2022.
+[6] JasonWei, XuezhiWang, DaleSchuurmans, MaartenBosma, brianichter, FeiXia, EdChi, QuocVLe, and
+DennyZhou. Chain-of-thoughtpromptingelicitsreasoninginlargelanguagemodels. InS.Koyejo,S.Mohamed,
+A. Agarwal, D. Belgrave, K. Cho, and A. Oh, editors, Advances in Neural Information Processing Systems,
+volume35,pages24824–24837.CurranAssociates,Inc.,2022.
+[7] ZhuoshengZhang,AstonZhang,MuLi,andAlexSmola. Automaticchainofthoughtpromptinginlargelanguage
+models,2022.
+[8] ShunyuYao,DianYu,JeffreyZhao,IzhakShafran,ThomasL.Griffiths,YuanCao,andKarthikNarasimhan.
+Treeofthoughts: Deliberateproblemsolvingwithlargelanguagemodels,2023.
+[9] Timo Schick, Jane Dwivedi-Yu, Roberto Dessì, Roberta Raileanu, Maria Lomeli, Luke Zettlemoyer, Nicola
+Cancedda,andThomasScialom. Toolformer: Languagemodelscanteachthemselvestousetools,2023.
+[10] ShishirG.Patil,TianjunZhang,XinWang,andJosephE.Gonzalez. Gorilla: Largelanguagemodelconnected
+withmassiveapis,2023.
+[11] BhargaviParanjape,ScottLundberg,SameerSingh,HannanehHajishirzi,LukeZettlemoyer,andMarcoTulio
+Ribeiro. Art: Automaticmulti-stepreasoningandtool-useforlargelanguagemodels,2023.
+[12] PotsaweeManakul,AdianLiusie,andMarkJ.F.Gales. Selfcheckgpt: Zero-resourceblack-boxhallucination
+detectionforgenerativelargelanguagemodels,2023.
+[13] Noah Shinn, Federico Cassano, Edward Berman, Ashwin Gopinath, Karthik Narasimhan, and Shunyu Yao.
+Reflexion: Languageagentswithverbalreinforcementlearning,2023.
+[14] SarahJ.Zhang,SamuelFlorin,ArielN.Lee,EamonNiknafs,AndreiMarginean,AnnieWang,KeithTyser,Zad
+Chin,YannHicke,NikhilSingh,MadeleineUdell,YoonKim,TonioBuonassisi,ArmandoSolar-Lezama,and
+IddoDrori. Exploringthemitmathematicsandeecscurriculumusinglargelanguagemodels,2023.
+[15] TongshuangWu,EllenJiang,AaronDonsbach,JeffGray,AlejandraMolina,MichaelTerry,andCarrieJCai.
+Promptchainer: Chaininglargelanguagemodelpromptsthroughvisualprogramming,2022.
+[16] YongchaoZhou,AndreiIoanMuresanu,ZiwenHan,KeiranPaster,SilviuPitis,HarrisChan,andJimmyBa.
+Largelanguagemodelsarehuman-levelpromptengineers,2023.
+[17] AmazonWebServices. Questionansweringusingretrievalaugmentedgenerationwithfoundationmodelsin
+amazonsagemakerjumpstart,2023.
+[18] ShiruiPan,LinhaoLuo,YufeiWang,ChenChen,JiapuWang,andXindongWu. Unifyinglargelanguagemodels
+andknowledgegraphs: Aroadmap. arXivpreprintarXiv:2306.08302,2023.
+[19] YunfanGao,YunXiong,XinyuGao,KangxiangJia,JinliuPan,YuxiBi,YiDai,JiaweiSun,andHaofenWang.
+Retrieval-augmentedgenerationforlargelanguagemodels: Asurvey. arXivpreprintarXiv:2312.10997,2023.
+26

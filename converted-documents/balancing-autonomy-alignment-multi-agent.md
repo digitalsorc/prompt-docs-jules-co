@@ -1,0 +1,2619 @@
+---
+title: "Balancing Autonomy Alignment Multi Agent"
+original_file: "./Balancing_Autonomy_Alignment_Multi_Agent.pdf"
+document_type: "research"
+conversion_date: "2025-11-29"
+topics: ["prompt-engineering", "llm", "rag", "chain-of-thought", "react"]
+keywords: ["agent", "user", "task", "page", "multi", "poweredmulti", "agentsystems", "autonomy", "alignment", "systems"]
+summary: "<!-- Page 1 -->
+
+
+## Balancing Autonomy And Alignment:
+
+
+## A Multi-Dimensional Taxonomy For Autonomous
+
+
+## Llm-Powered Multi-Agent Architectures
+
+
+### ThorstenHändler
+
+FerdinandPorscheMobileUniversityofAppliedSciences(FERNFH)
+
+### WienerNeustadt,Austria
+
+thorsten.haendler@fernfh.ac.at
+
+## Abstract
+
+Largelanguagemodels(LLMs)haverevolutionizedthefieldofartificialintelligence,endowingitwithsophisticatedlanguageunderstandingandgenerationcapabilities. However,
+whenfacedwithmorecomplexandinterconnec"
+related_documents: []
+---
+
+# Balancing Autonomy Alignment Multi Agent
+
+<!-- Page 1 -->
+
+
+## Balancing Autonomy And Alignment:
+
+
+## A Multi-Dimensional Taxonomy For Autonomous
+
+
+## Llm-Powered Multi-Agent Architectures
+
+
+### ThorstenHändler
+
+FerdinandPorscheMobileUniversityofAppliedSciences(FERNFH)
+
+### WienerNeustadt,Austria
+
+thorsten.haendler@fernfh.ac.at
+
+## Abstract
+
+Largelanguagemodels(LLMs)haverevolutionizedthefieldofartificialintelligence,endowingitwithsophisticatedlanguageunderstandingandgenerationcapabilities. However,
+whenfacedwithmorecomplexandinterconnectedtasksthatdemandaprofoundanditerativethoughtprocess,LLMsrevealtheirinherentlimitations. AutonomousLLM-powered
+multi-agentsystemsrepresentastrategicresponsetothesechallenges. Suchsystemsstrive
+for autonomously tackling user-prompted goals by decomposing them into manageable
+tasksandorchestratingtheirexecutionandresultsynthesisthroughacollectiveofspecializedintelligentagents. EquippedwithLLM-poweredreasoningcapabilities,theseagents
+harness the cognitive synergy of collaborating with their peers, enhanced by leveraging
+contextualresourcessuchastoolsanddatasets. Whilethesearchitecturesholdpromising
+potentialinamplifyingAIcapabilities,strikingtherightbalancebetweendifferentlevelsof
+autonomyandalignmentremainsthecrucialchallengefortheireffectiveoperation. This
+paperproposesacomprehensivemulti-dimensionaltaxonomy,engineeredtoanalyzehow
+autonomousLLM-poweredmulti-agentsystemsbalancethedynamicinterplaybetween
+autonomyandalignmentacrossvariousaspectsinherenttoarchitecturalviewpointssuchas
+goal-driventaskmanagement,agentcomposition,multi-agentcollaboration,andcontext
+interaction. Italsoincludesadomain-ontologymodelspecifyingfundamentalarchitectural
+concepts. Ourtaxonomyaimstoempowerresearchers,engineers,andAIpractitionersto
+systematicallyanalyze,compare,andunderstandthearchitecturaldynamicsandbalancing
+strategiesemployedbytheseincreasinglyprevalentAIsystems, thuscontributingtoongoingeffortstodevelopmorereliableandefficientsolutions. Theexploratorytaxonomic
+classificationofselectedrepresentativeLLM-poweredmulti-agentsystemsillustratesits
+practicalutilityandrevealspotentialforfutureresearchanddevelopment.
+Keywords Taxonomy,autonomousagents,multi-agentcollaboration,largelanguagemodels(LLMs),AI
+systemclassification,alignment,softwarearchitecture,architecturalviewpoints,software-designrationale,
+contextinteraction,artificialintelligence,domain-ontologydiagram,featurediagram,radarchart.
+1 Introduction
+In recent years, the emergence and the technological feasibility of large language models (LLMs) have
+revolutionizedthefieldofartificialintelligence[11,56,76,15,98]. Pre-trainedonvastamountsoftextdata,
+thesemodelshavecatalyzedsignificantadvancementsbyenablingsophisticatedlanguageunderstandingand
+generationcapabilities,openingdoorstoabroadrangeofapplications[9,13,32].Yet,despitetheirremarkable
+capabilities,LLMsalsohaveinherentlimitations.
+WhileLLMsexcelatgeneratingoutputsbasedonpatternsidentifiedintheirtrainingdata,theylackagenuine
+understandingoftherealworld. Consequently,theiroutputsmightseemplausibleonthesurface,butcanbe
+3202
+tcO
+5
+]IA.sc[
+1v95630.0132:viXra
+
+<!-- Page 2 -->
+
+factuallyincorrectorevenhallucinated[45,30]. Moreover,despitetheirproficiencyinhandlingvastamounts
+oftextualinformationandtheirrapidprocessingandpatternrecognitioncapabilities,LLMsstrugglewith
+maintaining consistent logic across extended chains of reasoning. This deficiency hinders their ability to
+engageinadeliberate,in-depth,anditerativethoughtprocess(akaslowthinking)[74,33,20,43]. Asaresult,
+LLMsencounterdifficultieswhenitcomestohandlingmorecomplexandinterconnectedtasks[37,90].
+These limitations of individual LLMs have led to the exploration of more sophisticated and flexible AI
+architecturesincludingmulti-agentsystemsthataimataccomplishingcomplextasks,goals,orproblemswith
+thecognitivesynergyofmultipleautonomousLLM-poweredagents[77,51,79,59,70,41,71,28]. Such
+systemstackleuser-promptedgoalsbyemployingadivide&conquerstrategy,bybreakingthemdowninto
+smallermanageabletasks. Thesetasksarethenassignedtospecializedagents,eachequippedwithadedicated
+roleandthereasoningcapabilitiesofanLLM,aswellasfurthercompetenciesbyutilizingcontextualresources
+likedatasets,tools,orfurtherfoundationmodels. TakingacuefromMinsky’ssocietyofmindtheory[48],
+thekeytothesystems’problem-solvingcapabilityliesinorchestratingtheiterativecollaborationandmutual
+feedbackbetweenthesemoreorless’mindless’agentsduringtaskexecutionandresultsynthesis.
+Forthispurpose,LLM-poweredmulti-agentsystemsrealizeaninteractionlayer[4]. Externally,thislayer
+facilitatestheinteractionbetweentheLLManditscontextualenvironment. Thisincludesinterfacingwith
+externaldatasources,tools,models,andothersoftwaresystemsorapplications. Theseexternalentitiescan
+eithergenerateormodifymulti-modalartefactsorinitiatefurtherexternalprocesses. Internally,theinteraction
+layer allows for organizing the task-management activity by providing a workspace for the collaboration
+betweentheLLM-poweredagents. Thereby,LLM-poweredmulti-agentsystemsarecharacterizedbydiverse
+architecturesimplementingvariousarchitecturaldesignoptions.
+OneofthecentralchallengesfortheeffectiveoperationofLLM-poweredmulti-agentarchitectures(aswith
+manyAIsystems)liesinfindingtheoptimalbalancebetweenautonomyandalignment[97,10,66,92,28].
+On the one hand, the systems should be aligned to the goals and intentions of human users; on the other
+hand,thesystemsshouldaccomplishtheuser-promptedgoalinaself-organizingmanner. However,asystem
+withhighautonomymayhandlecomplextasksefficiently,butrisksstrayingfromitsintendedpurposeifnot
+sufficientlyaligned,resultinginunexpectedconsequencesanduncontrollablesideeffects. Conversely,ahighly
+alignedsystemmayadherecloselytoitsintendedpurposebutmaylacktheflexibilityandinitiativetorespond
+adequatelytonovelsituations. Currentsystemsexhibitdiverseapproachesandmechanismstointertwinethese
+cross-cuttingconcerns[35]throughouttheirarchitecturalinfrastructureanddynamics.
+However, existing taxonomies and analysis frameworks for autonomous systems [12, 94, 44, 21, 78] and
+multi-agentsystems[7,19,82,50]fallshortinprovidingmeanstocategorizeandunderstandthesechallenges
+andinvolvedarchitecturalcomplexitiesposedbyLLM-poweredmulti-agentsystems.
+Thispaperaimstobridgethisgapbyintroducingasystematicapproachintermsofacomprehensivemultidimensionaltaxonomy. ThistaxonomyisengineeredtoanalyzeandclassifyhowautonomousLLM-powered
+multi-agentsystemsbalancetheinterplaybetweenautonomyandalignmentacrossdifferentarchitectural
+viewpoints,encompassingtheirinherentaspectsandmechanisms.
+Alignment
+real-time
+responsive L2
+user- L1
+guided Architectural
+
+### Viewpoints
+
+integrated L0
+context interaction
+multi-agent collaboration
+
+## L0 L1 L2
+
+agent composition
+Autonomy goal-driven task management
+static / adaptive / self-organizing
+Figure1: Asimplifiedrepresentationoftheproposedmulti-dimensionaltaxonomyforautonomousLLM-
+poweredmulti-agentsystems. Thex-axisrepresentsthelevelofautonomy,they-axisthelevelofalignment,
+andthez-axisthefourappliedarchitecturalviewpoints. CharacteristicsofLLM-poweredmulti-agentsystems
+canbeassessedandclassifiedbylocatingthemwithinthistaxonomicstructure. Foranin-depthdiscussionof
+thetaxonomy,refertoSection4.
+2
+
+<!-- Page 3 -->
+
+Theproposedtaxonomyisbuiltontheidentificationandspecificationofarchitecturalcharacteristicsofsuch
+systems. Itaimsatunderstandingthecomplexitiesarisingfromtheinterplayofinterdependentarchitectural
+aspects and mechanisms, each characterized by distinct levels of autonomy and alignment. A simplified
+overviewofthedimensionsandlevelsappliedinourtaxonomyisrepresentedbythecuboidshowninFig.1.
+First,thesynergybetweenautonomyandalignmentmanifestsasatwo-dimensionalmatrixwithmultiplehierarchicallevels. Thismatrixcapturesaspectrumofninedistinctsystemconfigurations,rangingfromsystems
+thatstrictlyadheretopredefinedmechanisms(rule-drivenautomation,L0/L0)tothosethatdynamicallyadapt
+inreal-time,guidedbyevolvingconditionsanduserfeedback(user-responsiveautonomy,L2/L2).
+Second,theseconfigurationoptionsarenotimposedtotheLLM-poweredmulti-agentsystemflatly. Instead,
+theyareappliedtomultipledistinctarchitecturalviewpoints[38],suchasthesystem’sfunctionality(goaldriventaskmanagement), itsinternalstructure(agentcomposition), itsdynamicinteractions(multi-agent
+collaboration)aswellastheinvolvementofcontextualresourcessuchastoolsanddata(contextinteraction).
+Stemmingfromthesefourviewpoints,wehavediscerned12architecturalaspects,eachwithdistinctautonomy
+andalignmentlevels. Whenintegratedintoourtaxonomicsystem,theyculminatein108singleconfiguration
+optionsavailableforfurthercombination. Thisgranularityfacilitatesanuancedanalysisandassessmentof
+thesystem’sarchitecturaldynamicsresultingfromtheinterplaybetweenautonomyandalignmentacrossthe
+systemarchitecture,layingthefoundationsforfurtheranalysisandreasoningaboutdesigndecisions.
+
+### Thecontributionsofthispapercanbecategorizedasfollows:
+
+(1) Architecture Specification: We outline the architectural characteristics of autonomous LLM-
+poweredmulti-agentsystemsandproposeadomain-ontologymodelrepresentedasaUMLclass
+diagramstructuringthearchitecturalconceptsandtheirinterrelationsrelevantforourtaxonomy.
+(2) Multi-dimensionalTaxonomy:Weintroduceacomprehensivemulti-dimensionaltaxonomytailored
+toanalyzeandunderstandhowautonomousLLM-poweredmulti-agentarchitecturesbalancethe
+dynamicinterplaybetweenautonomyandalignmentacrossdifferentarchitecturalviewpoints. For
+thispurpose,ourtaxonomyprovideshierarchicallevelsforbothautonomyandalignment,which
+areappliedtosystemviewpointssuchasgoal-driventaskmanagement,agentcomposition,multiagentcollaboration,andcontextinteraction,thusincorporatingathirddimension. Levelcriteriafor
+autonomyandalignmentarespecifiedforseveralarchitecturalaspectsinherenttotheseviewpoints.
+(3) TaxonomicClassificationofSelectedSystems: Wedemonstratetheapplicabilityandeffectiveness
+ofourtaxonomybyassessingandcomparingaselectionofsevenrepresentativeautonomousLLM-
+poweredmulti-agentsystems. Thistaxonomicclassificationprovidesinsightsintothearchitectural
+dynamicsandbalancingstrategiesoftheanalyzedsystems. Moreover,itidentifieschallengesand
+developmentpotentials,notonlyconcerningtheinterplaybetweenautonomyandalignment. The
+applicationofthetaxonomyalsoservesasafirstempiricalvalidation.
+Through these contributions, we aim to provide a systematic framework for analyzing, comparing, and
+understanding the architectural dynamics and complexities of LLM-powered multi-agent systems, thus
+contributingtotheongoingeffortstowardsbuildingmorereliableandefficientmulti-agentsystems.
+StructureofthePaper. Theremainderofthispaperisstructuredasfollows. Section2discussesrelatedwork
+ontaxonomiesforintelligentsystemsandgivesanoverviewofexistingautonomousLLM-basedmulti-agent
+systems. Section3outlinesthekeycharacteristicsandspecifiesfoundationalconceptsofautonomousLLM-
+poweredmulti-agentarchitecturesrelevantforthetaxonomy. InSection4,weintroduceourmulti-dimensional
+taxonomy, which incorporates specifications of autonomy and alignment levels and their application to
+architecturalviewpointsandaspectsofLLM-poweredmulti-agentsystems. Section5showcasestheutilityof
+ourtaxonomy,asweanalyzeandcategorizeselectedcurrentmulti-agentsystems. InSection6,wediscussthe
+insightsgainedfromthisanalysis. Finally,Section7concludesthepaper.
+2 BackgroundandRelatedWork
+In this section, we discuss theapplication of taxonomies for autonomousagents and multi-agent systems
+(Section2.1)andgiveanoverviewofthestate-of-the-artofLLM-poweredmulti-agentsystems(Section2.2).
+2.1 TaxonomiesandIntelligentSystems
+Taxonomiesrepresentstructuredclassificationschemesemployedtocategorizeobjectsinahierarchicalmanner
+according to specific criteria. They are a popular means for structuring, measuring or comparing various
+3
+
+<!-- Page 4 -->
+
+kindsofapproachessuchasmethods,techniquesortechnologies. Theyfindapplicationsinawiderangeof
+disciplinesanddomainssuchassoftwareengineering[81]orexplainableartificialintelligence(XAI)[2].
+Thefieldofintelligentandautonomoussystemsspansavarietyofconfigurationsandoperationalstructures,
+withsomesystemsoperatingasindividualentitiesandothersinvolvingmultipleinteractingagents. Reflecting
+thisvariety,thetaxonomiesproposedovertheyearshavelargelyfollowedtwomaintrajectories:thosefocusing
+onautonomoussystemsandthosefocusingonmulti-agentsystems.
+TaxonomiesforAutonomousSystemsmainlycategorizesystemsbasedonthelevelandtypeofautonomy,
+intelligence,learningcapabilities,andabilitytointeractwiththeirenvironment. Thesetaxonomies,suchas
+thoseby[94,12,44,21,78],areessentialforunderstandingthespectrumofcapabilitiesandcomplexities
+inherenttothesesystems. Inparticular,WooldridgeandJennings[94]presentacomprehensivetaxonomy
+that classifies intelligent agents based on key properties such as autonomy, social ability, reactivity, and
+proactiveness. Their classification sheds light on the independent operational capabilities of single-agent
+systems. Inaddition,Brustoloni[12]introducesataxonomycenteredaroundtheideaofautonomylevels,
+drawingthedistinctionbetweenautonomous,semi-autonomous,andnon-autonomoussystems. Thisprovides
+avaluablelensthroughwhichtheextentofanagent’sindependencecanbeanalyzed. Maes’taxonomy[44]
+focusesonsituatingagentswithinalandscapedefinedbytheirreasoningandlearningcapabilities. Thework
+providesarobustframeworkforassessingthecognitivedimensionsofanagent,rangingfromreflexagentsto
+learningagents. FranklinandGraesser[21],intheirwork,delveintotheinteractionbetweenautonomous
+agentsandtheirenvironment,leadingtoataxonomythatisheavilycontextualandenvironmental-dependent.
+Lastly,TosicandAgha[78]putforthataxonomythatembracesthediversityinthefield,offeringamultifacetedperspectiveonautonomousagents,takingintoconsiderationtheirdesign,behavior,andinteraction
+capabilities. Besidesthesescientificframeworks,furtherindustry-focusedandmorepragmatictaxonomies
+are in use, such as the taxonomy provided by SAE international [29] serving as a foundational standard
+for self-driving cars with definitions for levels of driving automation; from no driving automation to full
+automation.
+However,whilethesetaxonomiesoffervaluableinsightsintothecapabilitiesandbehaviorsofautonomous
+systems,theydon’tinherentlyaddressthecomplexityandnuancesinvolvedwhenmultipleagentspoweredby
+largelanguagemodelsareworkingtogetherwithinamulti-agentarchitecture. Hence,theneedforadedicated
+taxonomyforsuchsystemsisevident.
+TaxonomiesforMulti-AgentSystems,ontheotherhand,extendbeyondtheconfinesofindividualagent
+characteristics, integrating the dynamics of interactions and collaborations among multiple agents. The
+landscapeofmulti-agentsystemstaxonomiesprovidesvariousworksfocusingondifferentaspectsofthese
+complexsystems[7,19,82,50]. Inparticular,Birdetal.developedataxonomyrootedinthecommunication
+andcooperationstrategiesamongagents,investigatingcrucialfactorssuchascommunicationmethods,task
+decomposition, resource sharing, and conflict resolution [7]. Similarly, Dudek et al. offered a taxonomy
+specificallyformulti-robotsystems[19]. Thistaxonomy,whileprimarilyfocusingonroboticapplications,
+canbegeneralizedtoothermulti-agentsystems,consideringimportantaspectsliketeamsize,communication
+topology,teamorganization,andteamcomposition. Inadifferentvein,VanDykeParunaketal.proposeda
+taxonomyfordistributedAIsystems,puttingemphasisonenvironmentalaspectsandinteractionmodalities,
+thushighlightingtheimportanceoftheagents’abilitytointeractwithandmanipulatetheirenvironment[82].
+Furtherbroadeningthefield,Moyaetal.proposedacomprehensivetaxonomyformulti-agentsystemsbased
+oncharacteristicssuchasthenatureoftheagents,theenvironmentinwhichtheyoperate,thecommunication
+protocolstheyuse,andthetaskstheyperform[50]. Thetaxonomyalsothoroughlyexaminedthevarioustypes
+ofinteractionsamongtheagents,includingcooperation,coordination,andnegotiation.
+Whilethesetaxonomieshavecontributedsignificantlytoourunderstandingofcommunicationprotocolsand
+agentconstellationwithinmulti-agentsystems,theyweredevelopedpriortotheadventoflargelanguage
+models(LLMs),andthusdonotencapsulatethecharacteristicchallengesassociatedwithLLM-basedmultiagent architectures. In this context, autonomous agents, also as members of multi-agent networks, often
+havebeenusedasakindofmetaphor[21]forintelligentandinteractingcomponentsfollowingrule-based
+communicationprotocolsandbundlingasetofspecificskillstointeractwiththeirenvironment(e.g.,equipped
+with certain sensors and actuators, cf. multi-robot systems [19]). LLMs have introduced a new degree of
+reasoningcapabilities,enablingthecreationofgenuinelyintelligentagentsoperatingwithincollaborative
+networksinanautonomousmanner.
+Moreover,whiletheconceptsofautonomyandalignmentareoftendiscussedinAIliterature[52,65]and
+also the system’s architecture plays a fundamental role in software engineering [4], none of the existing
+taxonomiesforautonomoussystemsorformulti-agentsystemshassofarappliedasystematicapproachto
+4
+
+<!-- Page 5 -->
+
+eitherinvestigatearchitecturalaspectsorcombinetheconceptsofautonomyandalignmentforanalyzingthe
+systems.
+Inthelightoftheselimitations, ourworkseekstodevelopanewtaxonomyspecificallytailoredtoLLM-
+poweredmulti-agentsystems.Ouraimistoprovideataxonomythatcapturestheuniqueaspectsandchallenges
+ofLLM-poweredarchitectures,especiallywithregardtohowautonomyandalignmentarebalancedacross
+architecturalaspectsandviewpoints,offeringasystematicframeworkforunderstandinganddesigningthese
+complexsystems.
+2.2 CurrentLLM-basedAgentSystems
+The advent and widespread use of large language models (LLMs) like GPT-3 [11] have opened up new
+opportunitiesforcreatingincreasinglysophisticatedandhuman-likeAIsystems. Thesemodelsempower
+thedesignofintelligentagentswithadvancedcapabilitiestocomprehendandgeneratehuman-liketext,thus
+enrichingtheinteractionandexperienceforend-users. However,theapplicationofLLMsalsobringsforth
+severalchallenges,ashighlightedby[32]. Amongthese,onemainchallengeliesinhandlingtaskcomplexity,
+particularly when dealing with intricate tasks that necessitate a well-coordinated execution of numerous
+interconnectedsub-tasks[70]andtheinteractionwithfurthertoolsanddata. Inresponsetothis,autonomous
+multi-agentsystemsutilizingthereasoningabilitiesofLLMshaveemerged.Thesesystemsaddresscomplexity
+byintelligentlybreakingdownlargergoalsintomanageabletasks,whicharethenaccomplishedbymultiple
+collaboratingagentsspecializinginaspecificroleandequippedwithdistinctcompetencies. Forthispurpose,
+these systems realize an interaction layer [4] providing a workspace for multiple collaborating agents,
+eachconnectedwithanLLM.Thereasoningcompetenciesareenhanced,asneeded,bytheagent’saccess
+to contextual resources, such as specific expert tools, data sets, further foundation models, and external
+applications,whichallowtheagentstogaininformationfromandtoimpacttheirenvironmentbycreatingor
+modifyingmulti-modalartefactsorbytriggeringexternalprocesses. Theagentscollaborate,bringingtheir
+capabilitiestobearontheproblem,andtheirresultsaresubsequentlycombinedtoachievetheoverallgoal.
+Currently, several projects are established that aim at realizing such autonomous AI architectures for accomplishing complex tasks based on multiple interacting agents and powered by large language models
+(LLMs). Exemplary but representative autonomous multi-agent systems are AUTOGPT [77], BABYAGI
+[51], SUPERAGI [79], HUGGINGGPT [70], CAMEL [41], AGENTGPT [71]and METAGPT [28]. Fora
+categorization and comparison of these selected system architectures using the developed taxonomy, see
+Section5. Amongthesesystems,wecandistinguishthoseprovidinggeneral-purposetaskmanagementand
+problemsolvingwithgenericagenttypesandcollaborationmechanics[77,51,79,70]andthosesystems
+designedforspecificapplicationdomainswithcorrespondingdomainagentsandprocesses,suchasforthe
+domainofsoftwaredevelopment[28,41,61].
+Someoftheserecentmulti-agentsystemsaswellasfurtherrelatedprojectssuchasGORILLA[60]orVOYAGER
+[83]arebuiltuponthe LANGCHAIN Pythonframework[14], whichallowstorealizetheaforementioned
+interaction layer to define agents and chains of tasks as well as the access to and interplay between large
+languagemodelsandcontextualresourcesintermsofdataresources(suchasvectordatabases[31])orvarious
+experttools. Forthispurpose,predefinedcomponentssuchasagenttypesandprompttemplates,suchasfor
+datainteraction,canbereused.
+Besidestheseopen-sourcesoftwareprojects,furtherscientificprojectsandapproachesareidentifiablethat
+leveragemultipleagentsorpersonaspoweredbyLLMsfortaskmanagementandproblemsolving[88,26].
+Moreover,theinterplaybetweenmultipleLLM-poweredagentsisalsoaddressedinotherrelatedcontexts,
+suchasforsimulatingtheinteractionbetweenmultiplepersonasorroles[59,22],especiallywithfocuson
+debatingandtherebyaddressingchallengesofhallucinations[18]orthedegeneration-of-thought(DoT)[42],
+orfordevelopingconversationsandbehaviorprovidedbynon-playablecharacters(NPCs)inrole-playing
+videogames[17].
+ArecentsurveyofLLM-poweredautonomousagentsisprovidedby[84],whichfocusesoninvestigating
+andcomparingtheagents’characteristicsandcapabilitiesintermsofprofilegeneration,memoryoperations
+andstructures,planning,toolintegrationandlearningstrategies. Complementingthis,anotherrecentsurvey
+[95]offersanexpansiveoverviewofexistingapproaches,contextualizingthemwithfoundationaltechnical,
+methodical,andconceptualparadigmsformativeforLLM-poweredmulti-agentsystems.
+However,aswediveintothespecificsofcurrentautonomousLLM-poweredmulti-agentsystems,striking
+therightbalancebetweenautonomyandalignmentemergesasacentralchallenge. TheseAIsystemsmust
+navigateafineline–beingautonomousenoughtoorganizetheinterplaybetweenmultipleLLM-powered
+5
+
+<!-- Page 6 -->
+
+agentsandcontextualresourcestoaccomplishcomplextasksconsistingofvariousinterconnectedsub-tasks,
+butalsoadequatelyalignedtotheintentionsandgoalsofusers. Thisespeciallyproveschallenging,sincethe
+specifiedandpromptedusergoalmightnotexactlyrepresenttheuser’sintentions[8],resultinginunexpected
+consequencesanduncontrollablesideeffects.
+Giventheexploratorystateofthefield,currentsystemsexhibitawiderangeofarchitectures,eachwithits
+uniqueblendofautonomyandalignmentdispersedacrossvariousarchitecturalcomponentsandmechanisms.
+Thediversityinthesesystemsilluminatesthedifferentstrategiesanddesignsadoptedtoaddressthisbalancing.
+However,italsosignifiesthelackofasystematicapproach,underscoringtheimportanceofataxonomythat
+canprovideastructuredunderstandingandcomparisonofthesesystems.
+3 ArchitectureSpecification
+In this section, we specify architectural foundations relevant for our taxonomy. Section 3.1 provides an
+overviewofarchitecturalandbehavioralcharacteristicsofautonomousLLM-poweredmulti-agentsystems.
+Following this, we delve deeper into the architectural key concepts and their interrelationships through a
+domain-ontologymodel(seeSection3.2).
+User Interface Agent-Interaction Layer
+interacts
+with Prompt
+
+### Task
+
+Human Preferences Goal
+
+### User break
+
+Response down Task
+
+### Result
+
+synthesis
+
+### Large Language
+
+Model (LLM) executes
+
+## A
+
+collaborate
+Context Prompt
+C Agent
+
+### Prompt
+
+Expert Tools
+develops
+
+### Agent
+
+
+### Data specifies
+
+
+### Role Memory System
+
+Foundation Models B Architect
+Alignment Techniques
+...
+
+## G
+
+
+## M
+
+Figure 2: Overview of the primary characteristics of autonomous multi-agent systems powered by large
+languagemodels(LLMs)andenhancedbycontextualresourcesliketoolsanddata. Adescriptionofthese
+characteristicsisprovidedinSection3.1,andforanin-depthexplorationofarchitecturalconcepts,referto
+Section3.2.
+3.1 CharacteristicsOverview
+Inthefollowing,weoutlinethemainarchitecturalcharacteristicsofautonomousLLM-poweredmulti-agent
+systems,asillustratedinFig.2.
+G Goal-drivenTaskManagement. AutonomousLLM-poweredmulti-agentsystemsaredesigned
+to accomplish user-prompted goals or complex tasks. For this purpose, the system employs an
+interactiveandmulti-perspectivestrategyforproblemsolving,oftenreferredtoasdeepreasoningor
+slowthinking[33]enabledbythecapabilitiesoflargelanguagemodels(LLMs)andtheadvantagesof
+contextualresources. Whenfacedwithsuchchallenges,thesystemadeptlybreaksdownthecomplex
+taskintosmaller,manageabletasks. Thesesub-tasksaresubsequentlydistributedamongvarious
+agents,eachequippedwithspecificcompetencies. Acrucialaspectofthisdivide&conquerstrategy
+liesintheeffectiveorchestrationoftheseinterconnectedsub-tasksandthesubsequentsynthesisof
+partialresults,ensuringaseamlessandcohesivefinalresult.
+6
+
+<!-- Page 7 -->
+
+A LLM-PoweredIntelligentAgents. Atthecoreofthesesystems,intelligentagentsstructurethe
+systemasthefoundationalcomponents. Eachagentisendowedwithauniquesetofcompetencies,
+whichincludeaclearlydefinedrole,anindividualmemory,aswellasaccesstofurthercontextual
+resources, such as data, tools, or foundation models (see below), required for solving the tasks
+assignedtothem. Thebackboneoftheirreasoningandinterpretativecapabilitiesisrootedinthe
+incorporationoflargelanguagemodels(LLMs). Thisenablestheagentsnotonlytoreflectuponthe
+tasksortoplanandprocesstheassignedtasksefficiently,butalsotoaccessandutilizecontextual
+resources,aswellastocommunicatewithotheragents.
+M Multi-AgentCollaboration. Theinteractionlayerprovidestheworkspaceforanetworkofsuch
+collaboratingLLM-poweredagents. Whileexecutingtheassignedtasks,thesespecializedagents
+collaboratewitheachotherviaprompt-drivenmessageexchangestodelegateresponsibilities,seek
+assistance,orevaluatetheresultsoftasksundertakenbytheirpeers.Keytotheagents’collaborationis
+toeffectivelycombinethestrengthsofeachagenttocollectivelymeetthedefinedgoals,exemplifying
+cognitivesynergy. Whileindividualskillsareimportant,thepowerofthesesystemsemergesfrom
+thecoordinatedeffortsofthecollective,aconceptarticulatedbyMinskyinhisideaofthesocietyof
+mind[48].
+C Context Interaction. Some tasks require the utilization of contextual resources, such as expert
+tools,data,furtherspecializedfoundationmodels,orotherapplications. Theseresourcesextendtheir
+abilitytogatherenvironmentalinformation,createormodifyartefacts,orinitiateexternalprocesses.
+Leveragingtheseresourcesenablestheagentstobetterunderstandandrespondtotheiroperational
+contextandtoeffectivelyexecutecomplextasks. Thiscapacityforcontextualadaptation,augmented
+bytheintegrationofvariousresources,contributestoamoreversatileandcomprehensivesystemthat
+canaddressdiversechallengesandrequirements.
+B BalancingAutonomyandAlignment. ThedynamicsofLLM-poweredmulti-agentsystemsare
+characterizedbyacomplexinterplaybetweenautonomyandalignment. AscapturedinFig.3,this
+complexity can be traced back to the triadic interplay and inherent tensions among the primary
+decision-makingentities: humanusers,LLM-poweredagents,andgoverningmechanismsorrules
+integratedintothesystem. Alignment,inthiscontext,ensuresthatthesystem’sactionsareinsync
+withhumanintentionsandvalues. Ontheothersideofthespectrum,autonomydenotestheagents’
+inherentcapacityforself-organizedstrategyandoperation,allowingthemtofunctionindependent
+ofpredefinedrulesandmechanismandwithouthumansupervision. Moreover,insystemssteered
+byuser-promptedgoals,itbecomespivotaltodifferentiatebetweengenericalignmentaspects,in
+termsofmechanismspredefinedbysystemarchitectstoinformcorefunctionalities,anduser-specific
+preferencescustomizedbythesystemusersthemselves.
+n
+o
+A ut o A m li a g t n i o
+m
+n /
+e
+
+## C
+
+n
+u
+t st o mizati H
+
+## U
+
+u
+s
+m
+e
+a
+r
+n S u p erv C is o
+io
+ll
+n
+a
+/
+b
+A o u r t a o t n i o o m n y
+Automation / Autonomy
+
+### System Operation
+
+Rules & LLM-powered
+
+### Mechanisms Agents
+
+Figure 3: Triadic interplay and dynamic tensions between the decision-making entities in LLM-powered
+multi-agentsystems.
+However,fromanarchitecturalperspective,autonomyandalignmenttransformintocross-cutting
+concerns [35]. They traverse components and mechanisms across the entirety of the system’s
+architecture,influencingthecommunicationbetweenagents,theinteractionwithcontextualresources,
+andmore. Achievingabalancedconfigurationofautonomyandalignmentisacrucialchallenge,
+whichdirectlyimpactsthesystem’sefficiencyandeffectiveness.
+7
+
+<!-- Page 8 -->
+
+InthefollowingSection3.2,weelaborateonthearchitecturaldetailsofthesecharacteristics.
+strivesToComplete
+1 targets 1 * *
+translatesTo 1 Decompose * G Task-Mgmt
+
+### Goal
+
+interactsWith * User 1 resultsIn Task Activity
+
+### Interface *
+
+* * 1 i 1 nitiates 1 C T r a e s a k te * 1
+Human * User 1 Task assigns Decomposition
+User Prompt 1 1 1 Delegate *
+* 1
+B sub-task Task Activity 0..1
+addr.
+0..1 Memory
+System * Response 1 p fo e r r m - s Execute * Orchestration 1
+
+### Architect Task Result Task
+
+* specifies 1 Activity Log 0..1
+* * 1 1
+* forms assesses Evaluate *
+T A e li c g h n n m iq e u n e t * Preference Total 1 Result Synthesis 1 Library *
+* * * 0..1 Result combines Merge *
+relatesTo Result
+appliesTo guides
+1 * 1
+Int L e a ra y c e t r ion * Artefact * involves * * Action * Co P m ro m t u o n co ic l at. *
+*
+0..1 * 0..1 *
+triggers
+* Impact * informs * M * performs
+
+### Agent *
+
+Response uses
+Prompt
+* * *
+* processedBy
+
+### Context generates 1 *
+
+Utilization provides *network
+0..1 1 1 1
+* 1 Context LLM generates Agent
+C informs * Information isRefinedBy 0..1 A
+API * Prompt Task-Mgmt.
+
+### Context
+
+integrates * Augmentation Agent
+
+### Domain
+
+Role Agent
+Foundation
+
+### Tool Data
+
+Model Technical
+* Agent
+Search Structured Natural Lang. Prompt
+Tool Text Data Processing Template
+0..1 1
+
+### Role
+
+Execution Unstructured Computer
+
+### Tool Text Data Vision
+
+Reasoning Multimodal 0..1 Memory 0..1
+
+### Audio
+
+
+### Tool Data
+
+Development Domain-spec. Multimodal 0..1
+Tool Data Actions Log
+Communic.
+
+### Tool
+
+Figure 4: Domain-ontology model represented as UML class diagram structuring selected architectural
+conceptsandconceptrelationsrelevantforthedomainofautonomousLLM-poweredmulti-agentsystems.
+Foracomprehensiveexplorationofthismodel,refertoSection3.2.
+3.2 SpecificationofArchitecturalComponents
+Fig.4illustratesastructuredoverviewofselectedconceptsandtheirinterrelationsrelevantfortheaddressed
+domainofautonomousLLM-poweredmulti-agentsystemsintermsofadomain-ontologymodel. Domain
+ontologies,embracedacrossfieldsfromphilosophytoinformationsystems,facilitateasharedunderstanding
+ofdomain-specificconcepts[75]. Whiletheyaidautomatedknowledgedisseminationamongsoftwareentities
+8
+
+<!-- Page 9 -->
+
+asformalontologies[23],theyarealsodevisedasconceptualmodelstosupporthumanunderstandingofthe
+addresseddomain[36,24,25].
+OurdomainontologyisrepresentedasaconceptualmodelintermsofaclassdiagramoftheUnifiedModeling
+Language(UML2)[55],whichallowsfororganizingtheidentifiedconceptsasclassesandtheirrelationships
+in terms of generalizations and kinds of associations with indicated multiplicities (i.e. amount of objects
+involvedinarelationship). Forfurtherdetailsontheapplieddiagramnotations,theUMLspecificationserves
+asacomprehensiveguide[55].
+TheprimaryobjectiveofthepresentedmodelinFig.4istomirrorarchitecturalconceptsespeciallyrelevantto
+ourtaxonomy’sscope. Indoingso,itdeliberatelyadoptsahigh-levelview,abstractingfromtechnicaldetails
+andspecificstypicalofindividualsystemstosupportclarityandaccessibility. Forexample,whiledivinginto
+thecomplexitiesoftheagent’smemoryusage,asforreflectingandcombiningtaskinstructionsorforplanning
+stepsandactions,isundoubtedlyworthyofthoroughexploration[59,85],itfallsoutsidethenarrowscopeof
+ourtaxonomy. Thisapproachensuresthatactualmulti-agentsystemscanberegardedaspotentialinstancesof
+thisconceptualframework. It’sworthnotingthatthisdoesn’tprecludetheadditionofmorespecifictechnical
+componentsandmechanismsassystemsevolve.
+Thedomain-ontologymodelderivesfromanexaminationofthecodeandarchitecturaldocumentationof
+severalrepresentativemulti-agentarchitectures,especiallyAUTOGPT[77],SUPERAGI[79],andMETAGPT
+[28],theGenerativeAgentsproject[59],aswellastheLANGCHAINframework[14]. Thelatterservesasthe
+foundationalinfrastructureforsomeoftheassessedmulti-agentsystems(refertoSection2.2). Throughan
+iterativeprocess,weanalyzedthesesystemsandframeworkstounderstandtheircomponents,interactions,and
+overarchingstructures. Thisanalysisfacilitatedtheidentificationandabstractionofrecurrentarchitectural
+characteristicsprevalentamongthesearchitectures.
+The concepts of the model are arranged into thematic blocks corresponding to the system characteristics
+identifiedinSection3.1,suchas G .Inthefollowing,wedelveintotheseconceptsandtheirmaininterrelations.
+Furtherdetailsareprovidedinthedomain-ontologydiagramillustratedinFig.4.
+G ConceptsofGoal-drivenTaskManagement. Typically,aHuman Userinitiatessystemoperationsviaa
+User PromptthroughtheUser Interface. Mostofthesesystemsemploysingle-turnpromptingtoconvey
+intricateGoals[68]. Thepromptscanbeenrichedwithdetailedinstructions,exemplificationslikereasoning
+sequences[90],rolespecifications,oroutputexpectations[32]. Systemsmayalsopermitthedefinitionof
+PreferencestobetteralignAIoperationswithuserobjectives. Besidestextualuserinput,speech,images,
+videos,ormodecombinationsareconceivable,forexample. Internally,thisuser-promptedGoal(whichmight
+representadirective,problem,question,ormission)undergoesdecompositionintoTasksorSub-Tasksto
+bemanageablebytheAgents. Thesetaskscanbeinterconnectedindifferentways,suchassequentialtasks
+orgraphtasks[70],whichrequiresappropriatetaskprioritization. Taskdecompositionisthefirstofthreecore
+phaseswithintheTask-Management Activity:
+• Decomposition: BreakingdowncomplextasksintomanageableTasksandSub-Tasks;optionally
+resolvingdependenciesbetweenthem,resultinginaprioritizedlistofTasks.
+• Orchestration: OrganizingthedistributionanddelegationofTasksamongsuitableAgents.
+• Synthesis: EvaluatingandcombiningTask ResultsaswellasfinallypresentingaunifiedTotal
+Result.
+Furthermore,eachTask-Management ActivityembodiesanActivity LogandanActivity Memory.
+TomaintaintransparencyandtraceabilityofallActionsperformed,anActivity Logcapturesallrelevant
+actiondetailsthroughoutanactivity,whiletheActivity Memorydistillsandretainskeyinsights. Inaddition,
+systemsmightfeatureaLibrary,arepositorystoringbestpractices,lessonslearned,orreusableknowledge,
+suchasPrompt Templates[91]orspecificinformationlikeAPIcredentials. Actionswithinthisactivity
+aredelegatedtospecializedAgents—eachcharacterizedbyadistinctRole,Type,andfurthercompetencies.
+Essential for the actions’ success is their interaction with various kinds Context —ranging from Data
+andexpertToolstofoundationalModels(detailedbelow). Onceallpartialtasksarecompleted,theTask
+Results are integrated and combined into a Total Result addressing the prompted Goal. This result
+might alsoinclude multiple Artefacts, encompassing text, graphics, multimedia, andmore. The nature
+andinvolvementoftoolsapplied,suchasExecutionorDevelopment Tools,canleadtovariedImpacts,
+suchastriggeringexternalprocesses. Finally,theResponse,asummationoftheresult,isrelayedtotheuser
+throughtheuserinterface.
+9
+
+<!-- Page 10 -->
+
+A Concepts of LLM-Powered Intelligent Agents. Within each Task-Management Activity, a set
+of intelligent Agents collaborate, forming a multi-agent Network. These agents derive their advanced
+reasoningcapabilitiesfromLarge Language Models(LLMs)[11,32,53],whichareinvolvedinperforming
+different kinds of Actions, each related to a certain Task and/or contributing to its Task Result. Each
+agentisdifferentiatedbyitsuniqueRoleintheactivityandpossessesanindividualMemory—arepository
+thatencompassescondensedexperiencesandknowledgegainedbytheagent. Itcanmanifestinmultiple
+formats—beittextualrecords,structureddatabases,orembeddings.Orientedtohumanmemorization,inmultiagentsystems,wealsoseeacombinationofshort-termmemory(i.e.,compressedinformationtransmissionvia
+thecontextwindow)andapproachesforlong-termmemory[87,86],suchasbyleveragingvectordatabases
+(seebelow). Theencapsulatedhistoryoftheagent’sactionsmightalsobechronicledinanActions Log.
+Furthermore, different generic Agent types can be distinguished in terms of their roles, and their unique
+functionalitieswithinthecollaborativeagentnetwork.
+• Task-Management Agents: Theseagentsarespecializedinorganizingtheprocessesrelatedtothe
+task-managementactivity[77,51,41].
+– Task-Creation Agent: Generatingnewtasks,whichoptionallyalsoincludesderivingtasks
+bybreakingdowncomplextasks.
+– Task-Prioritization Agent: Assigningurgencyorimportancetotasks,whichincludesto
+resolvethedependenciesbetweenthetasks.
+– Task-Execution Agent: Ensuringefficienttaskcompletion.
+• Domain Role Agents: Theseagentsaredomain-specificexperts. Theyexcelinspecializedroles
+within the application domain [59], collaborating with peer role agents when needed. Examples
+encompassrolesinthesoftware-developmentprocess,suchasprojectmanager,softwarearchitect,
+developer,orQAengineer[28,41].
+• Technical Agents: Theseagentsaretech-savvies,typicallytaskedwithinterfacingwithtechnical
+platformsordevelopmenttools. ExemplarytechnicalagentsarerepresentedbytheSQL Agentfor
+databaseinteractionsorthePython AgentfordevelopingPythonscripts[14,28].
+Anessentialdistinctiontonoteisthevariabilityinagentmemoryreliance. Whilesomeagentsharnessthe
+power of memory or an action log, e.g., for reflecting or planning tasks, others function devoid of these
+recollections. Specifically, fortechnicalaspectsoractionsthatdemandanunprejudicedorunbiasedlens,
+agentswithoutmemoriesareoftenpreferred.
+M Concepts of Multi-Agent Collaboration. As detailed above, each Task-Management Activity
+involvesasetofmultiplecollaboratingAgentswithdifferentrolesandcompetenciesaswellasdrivenbythe
+reasoningcapabilitiesofutilizedlargelanguagemodels(LLMs). Thisreasoningpowerenablestheagentsto
+reflect,planandprocesstheassignedtasks[85,59]aswellastointeractwithotheragents[28]. Inparticular,
+theAgentsexecutedifferentkindsofActionswhichinsumaimatachievingtheuser-promptedGoal. In
+particular,thefollowingsub-typesofActionperformedbytheAgentscanbedistinguished:
+• DecomposeTask: Breakingdownataskintomultiplesub-tasks,optionallyorderingandprioritizing
+thetasks.
+• Create Task: Definingandgeneratingnewtasks.
+• DelegateTask: Delegatingatasktoanotheragent,addressedasReceiver.
+• ExecuteTask: Actuallyexecutingagiventask.
+• EvaluateResult: Assessingtheoutcomesofatask.
+• MergeResult: Integratingorcombiningtwoormoretaskresults.
+Thereby,eachActioncanbepartofanotherAction,whichare,however,performedinthecontextofacertain
+phaseof the Task-Management Activity (seeFig. 4). Furthermore, each Action can includemultiple
+interactionswithanLLM.TheLLM’sreasoningcapabilitiesareemployedinmultipledirectionswithinan
+Action,suchasforreflectingmemoriesandinstructions,observingexistingresults,planningstepsand/or
+weighingoptionstoproceed[85,59,28]. Forthispurpose,anAgent PromptgeneratedbyanAgentand
+triggeredwithinacertainActionissendtoandthenprocessedbytheLLM,whichgeneratesaResponse
+informingand/orguidingthenextstepswithinthetriggeringaction. AnactionmightalsoincludeContext
+Utilization. BeforetheLLMreceivestheAgent Prompt,itmayundergoPrompt Augmentation[72].
+This process can integrate additional specifics like the aspects or parts of the agent’s Role or Memory,
+10
+
+<!-- Page 11 -->
+
+Context Information (e.g., data excerpts) acquired from previous Context Utilization, or chosen
+Prompt Templatespreparedand/oradaptedforcertainkindsofactions[14]. Suchagent-drivenprompt
+engineeringispivotalforLLM-poweredmulti-agentsystems.
+Directcollaborationsinvolvingtwoormoreagentstypicallyrelyonprompt-drivencommunicationsequences
+orcycles. Forinstance,aDelegate Taskactiondirectedatareceiveragentmightconveyinformation,
+placearequest,initiateaquery,orsuggestapotentialcourseofaction. Subsequently,theEvaluate Result
+actionprovidesfeedbackbyvalidatingorrefuting,andagreeingordisagreeingwiththepresentedresults[93].
+ACommunication Protocolprovidesastructuredframeworkandmethodologyforagents’collaboration,
+guiding the execution of specific Actions by establishing rules and mechanisms for message exchanges
+withinthemulti-agentnetwork[73,39,93]. Forinstance,inLLM-poweredmulti-agentsystems,thefollowing
+distinctprotocolsareobservable,eachbuiltuponthebasicmechanismsofaninterplaybetweeninstruction
+andexecution,withoptionalsubsequentresultevaluation:
+• Strictfiniteprocessesorexecutionchainswithpredefinedactionsequences,interactionsbetween
+predefinedagents,andtypicallyhavingawell-definedendpoint,whichmightrepresenttheproduction
+ofaspecificoutputorartefact[28].
+• DialoguecyclescharacterizedbyalternatingDelegateTaskandExecuteTaskactionsbetweentwo
+agents,creatingafeedbackloopofinstructionandexecution[41].
+• Multi-cycleprocessframeworkswithinteractionsbetweengenericagenttypes,allowingforgreater
+dynamisminagentinteractions[77,51].
+Inalltheseexemplarycases,dedicatedAgent Typesaredefinedandcoupledwiththecorrespondingtypes
+ofAction. FurtherdetailsarediscussedinSection5.2.
+C ConceptsofContextInteraction. Forexecutingthetask-relatedactions,theLLM-poweredagentsare
+abletoleveragespecializedcompetenciesandfurtherinformationprovidedbyadditionalContextwhichcan
+bedistinguishedintoTools,Data,andFoundation Models[70](seeFig.4).
+• Toolsintermsofcontextualresourcesformulti-agentsystemscanbecategorizedintothefollowing
+distinctgroups:
+– Search and Analysis Tools: These tools offer specialized capabilities for probing and
+analyzingdata,allowingagentstoderiveinsightsfromvastinformationpoolsefficiently;such
+assearchenginesfortheweb.
+– Execution Tools: Theseareresponsibleforinterfacingwithandexecutingtaskswithinother
+environments,likesoftwareapplications,ensuringseamlessoperationacrossplatforms.
+– Reasoning Tools: Enhancingthecapacityforlogicalthought,thesetoolsbolsterreasoning
+capabilitiesinspecializedareassuchascomputationalintelligence. Forinstance,platformslike
+WOLFRAMALPHAempoweragentswithadvancedcomputationalskills.
+– Development Tools: Tailoredforsoftwaredevelopmentendeavors,thesetoolsstreamlinethe
+processofcoding,debugging,anddeployingsolutionswithinthemulti-agentframework.
+– Communication Tools: These facilitate interactions with external entities by supporting
+functionalitieslikesendingandreceivingemails,ensuringagentscaneffectivelycommunicate
+outsidetheirnativeenvironments.
+• Datatypesinmulti-agentarchitecturesencompass:
+– Structured Text Data: Thisreferstodatathatadherestoadefinedmodelorschema,such
+asdatafoundintraditionalrelationaldatabases. Itofferspredictabilityandiseasilyqueryable.
+– Unstructured Text Data:Thisdatalacksapre-definedmodel. Anexampleiscontentfound
+withinPDFdocuments. ForoptimalprocessingbyLLMs,unstructuredtextistypicallystored
+invectordatabaseslikePINECONEorCHROMA. Thesedatabasessupportsemanticsearches
+throughvectorembeddings,bridgingthegapbetweenstructuredandunstructureddata[47,31].
+– Multimodal Data: Beyond just text, this category encapsulates various formats including
+videos,pictures,andaudio. Specializedtoolsareemployedtoextracttextualinformationfrom
+theseformats,makingthemamenabletoprocessingbyLLMs.
+– Domain-specific Data: This data is tailored for particular sectors or areas of expertise.
+Examplesincludeproprietarycompanydataorexternaldatasourcesspecifictofieldslikelawor
+medicine.
+11
+
+<!-- Page 12 -->
+
+• Foundation Modelsrefertoexpansivemachinelearningmodelstrainedonvastamountsofdata.
+Thesemodelsareversatile,suitableforaddressingavarietyoftasksacrossdifferentmodalitiessuch
+aslanguage,vision,andaudio/speech,aswellascombinationsthereof[9]. Basedontheirmodalities,
+wecategorizethemasfollows:
+– Natural Language Processing (NLP) Models: Thesefocusprimarilyonunderstanding
+andgeneratinghumanlanguage. LLMsfallunderthiscategoryofNLP Models. Whilethereare
+general-purposeLLMsavailable,specializedmodelstailoredtospecificdomainsandtasksalso
+exist,havingbeentrainedoncorrespondingnichedatasets.
+– Computer Vision Models: Aimedatprocessingandunderstandingimagesorvideos.
+– Audio Models: Specializedinprocessingandinterpretingaudiosignals,includingspeech.
+– Multimodal Models: Designedtohandlemultipletypesofdatasimultaneously,combining
+aspectsofNLP,Vision,andAudio.
+Themachinelearninglandscapeshowsamultitudeofspecializedfoundationmodels,withLarge
+LanguageModels(LLMs)standingoutprominently[100]. Platformslike HUGGING FACE even
+offeraccesstonumerousmodelsprovidedbytheglobalmachinelearningcommunity.
+AccesstoLLMs,aswellasassociatedresourcessuchastools,foundationmodels,andexternaldataresources,
+istypicallyfacilitatedthroughApplicationProgrammingInterfaces(APIs)[60]. Theaccessdetailsforthese
+APIs are integrated into the Interaction Layer. For instance, these details might be housed within a
+dedicatedLibrarymoduleforstreamlinedinterfacing(seeabove). Moreover,multipleofthesecontextual
+resourcescanbecombinedwithinasingleAction. Forexample,acertainexperttoolcouldemployaselected
+foundationmodeltoanalyzeagivendataset. Finally, Context Utilizationmightinvolvethecreation
+ormodificationofArtefacts. Beyondmereartefactmanipulation,thisutilizationcanmanifestasexternal
+Impact, such as initiating external processes in other software applications or triggering workflows that
+influencebroadersystems.
+B ConceptsofBalancingAutonomyandAlignment. Autonomyandalignmentrepresentcross-cutting
+concerns[35],influencingvariousarchitecturalconceptsandmechanisms. Nevertheless,theyalsodistinctly
+materialize in specific concepts within our ontology model. Alignment, on the one hand, primarily manifeststhroughtheimplementationofdedicatedAlignment TechniquesbytheSystem Architectintothe
+systemarchitectureoftheInteraction Layer. Thesetechniquesmightincludefoundationalinfrastructuralapproachesorproceduralcontrolsforsystemcomponents,framedasconstraints,rules,orlimitations.
+Moreover,alignmentcanbeexpressedbytheSystem User. Theuser-promptedGoalcanbefurtherrefined
+pre-runtimethroughsupplementaryPreferencesprovidedbytheHuman UserviatheUser Interface.
+Inaddition,real-timeadaptabilitycanbeofferedbymulti-agentsystems,necessitatinginstantaneoussystem
+responsiveness. Amorein-depthexplorationofthisisavailableinSection4.1.2. However,apartfromthe
+alignmentachievedwithintheinteractionlayerbythemulti-agentsystem,whichourtaxonomyaddresses,
+therealsoexistalignmentmethodologiesspecificallytailoredfortheemployedLLMsorfoundationmodels
+[3,92]. Autonomy,ontheotherhand,primarilysurfacesfromthecapabilityofthemulti-agentsystemtofulfill
+thedesignatedGoalautonomouslythroughself-organizedstrategyandtaskexecution. Notonlydoindividual
+collaborativeintelligentAgentsutilizetheLLMforreflecting,planning,orperformingreasoning-intensive
+actionspertinenttotheirroles,buttheoverarchingorganizationoftheTask-Management Activity,along
+withotherinfrastructuralordynamicelements,mightalsobedirectedinaself-organizedmanner,steered
+byLLM-poweredAgents. FurtherdetailsonthiscanbefoundinSection4.1.1. Navigatingthecomplex
+interplaybetweenautonomyandalignmentpresentsanongoingchallengeforLLM-poweredmulti-agent
+systems. Strikingtherightbalanceiscrucialtoensureanefficientandeffectivetask-executionprocessthat
+faithfullyaccomplishestheuser-definedGoal.
+In the following Section 4, we explain how our taxonomy addresses these challenges of analyzing and
+balancingtheinterplaybetweenautonomyandalignmentacrossarchitecturalaspectsandviewpoints.
+4 Multi-DimensionalTaxonomy
+In this section, we introduce the system of our multi-dimensional taxonomy, engineered to methodically
+analyzetheinterplaybetweenautonomyandalignmentacrossarchitecturesofautonomousLLM-powered
+multi-agent systems. The taxonomy weaves three crucial dimensions, i.e. levels of autonomy, levels of
+alignmentaswellasarchitecturalviewpoints. Together,theyformathree-dimensionalmatrix,servingasa
+comprehensiverepositoryofarchitecturaldesignoptions(seeFig.1).
+12
+
+<!-- Page 13 -->
+
+Section4.1delvesintothecomplexitiesoftheinterplaybetweenautonomyandalignment,exploringhowthe
+synergiesofdifferentlevelsofautonomyandalignmentcancharacterizeasystem’sdynamics. Subsequently,
+Section4.2,underscorestheimportanceofincorporatingarchitecturalviewpointsintothetaxonomicsystem.
+Ratherthanapplyingtheautonomy-alignmentmatrixflatly,weproposeanalyzingeacharchitecturalviewpoint
+aswellasfurtherinherentarchitecturalcharacteristicsindividually. Suchaviewpoint-focusedapproachallows
+foradeeperandmorenuancedunderstandingofthesystems,reflectingthecomplexityoftheirarchitectural
+designandresultingdynamics. Finally,inSection4.3,weunifythesecomponents,mappingtheautonomyalignmentdimensionsandlevelsontotheidentifiedarchitecturalviewpoints,thusintroducingathirddimension
+intoourtaxonomy. Furthermore,wedistinguisharchitecturalaspectsinherenttotheseviewpointsandspecify
+correspondinglevelcriteriaforbothautonomyandalignment.
+ThisframeworkprovidesacomprehensiveclassificationofautonomousLLM-poweredmulti-agentsystems,
+revealing distinct insights into the complexities arising from the interplay of interdependent architectural
+aspects. Each aspect is characterized by its levels of autonomy and alignment, influencing the systems’
+behavior,interactions,composition,andinteractionwithcontextualresources.
+4.1 InterplaybetweenAutonomyandAlignment
+Autonomy and alignment, as interdependent and interplaying concepts, have their roots in management
+sciencesandorganizationalbehavior,playingintegralrolesinthewaysteamsandsystemsfunction[49,57].In
+thesefields,autonomytypicallyreferstothedegreeofdiscretionemployeesorteamspossessovertheirtasks,
+whilealignmentdenotesthedegreetowhichthesetaskscorrespondtotheorganization’soverallobjectives.
+When shifting focus to the AI landscape, the interplay between autonomy and alignment remains pivotal
+[67, 10]. AI systems, by nature, operate with varying degrees of independence and are often designed to
+accomplishtasksthataremultifaceted,interconnected,andpotentiallybeyondthecapabilitiesofindividual
+humanoperators. However,completeautonomycanposerisks. IfthegoalsofanAIsystemdeviatefrom
+those of its human supervisors, it could lead to unforeseen consequences or uncontrollable side effects.
+Therefore,controllingthelevelofautonomyiscrucialtomaintainthebalancebetweenoperationalefficiency
+andsafety. Assuch, understandinganddefiningtheboundsofautonomyandalignmentbecomesvitalto
+appropriately guide system behavior and prevent unwanted consequences, especially when dealing with
+autonomousmulti-agentsystemspoweredbyLLMs.
+In order to efficiently address the characteristics of current and forthcoming autonomous LLM-powered
+multi-agentsystems,weadoptapragmaticandtechnicalperspectiveonbothautonomyandalignment. In
+thefollowingsections,weexplainthisperspectiveandelaborateindetailonthedimensionsandlevelsof
+autonomyandalignmentappliedbyourtaxonomy. Table1givesanoverviewoftheemployedlevelsandthe
+resultingspectrumofpotentialcombinations.
+LevelsofAutonomy L0: Static L1: Adaptive L2: Self-Organizing
+&Alignment
+L2: Real-time 3 User-Supervised 6 User-Collaborative 9 User-Responsive
+
+### Responsive Automation Adaptation Autonomy
+
+L1: User-Guided 2 User-Guided 5 User-Guided 8 User-Guided
+
+### Automation Adaptation Autonomy
+
+L0: Integrated 1 Rule-Driven Automa- 4 Pre-Configured 7 BoundedAutonomy
+tion Adaptation
+Table1:Matrixshowcasingtheinterplaybetweengradationsofalignment(vertical)andautonomy(horizontal)
+inthecontextofLLM-poweredmulti-agentarchitectures.Eachcellsignifiesauniquecombinationofautonomy
+andalignmentlevels. RefertoSections4.1.1and4.1.2fordetailsontheappliedlevels. Section4.1.3provides
+detailsontheresultingmatrixcombinations.
+4.1.1 Autonomy
+ThedegreeofautonomyreferstotheextenttowhichanAIsystemcanmakedecisionsandactindependently
+of rules and mechanisms defined by humans. For LLM-powered multi-agent systems, this translates to a
+system’sproficiencyinaddressingthegoalsortasksspecifiedbytheuserinaself-organizingmanner,adapting
+andre-calibratingtothecomplexitiesofagivensituation. Autonomousmulti-agentsystemsarebynature
+13
+
+<!-- Page 14 -->
+
+strivingforthisend-to-endautomaticgoalcompletionandtaskmanagementfromauserperspective. While
+automationoftengetsconflatedwithautonomy,it’sessentialtodifferentiatethetwo. Automationpertains
+totasksbeingcarriedoutwithouthumaninput[12,29],whileautonomypertainstodecisionsabouttasks
+beingmadewithouthumanintervention[21,58,6]. InthedomainofLLM-poweredmulti-agentsystems,
+welookbeyondmeretaskautomation,focusingonhowthesesystemsinternallymanagetheirdynamicsto
+fulfilluserobjectives. Ourtaxonomy,therefore,distinguishessystemsonaspectrumofautonomy. Drawing
+fromthetriadicinterplayillustratedinFig.3,ontheoneendofthespectrum,weseesystemsthatheavily
+relyonpredefinedrulesandframeworks,setbytheirhumansystemarchitects. Whiletheymayexecutetasks
+autonomously,theirdecision-makingprocessisconstrainedwithinafixedsetofparameters(lowautonomy).
+Ontheotherhand, weencountersystemscharacterizedbytheirabilityforself-organisationanddynamic
+self-adaptation. Ratherthanrelyingonhard-codedmechanisms,theyharnessthepowerofLLMstointerpret,
+decide,andact,makingthemmoreadaptabletochangingsituations(highautonomy).
+AutonomyLevels. Thelevelsofautonomy,representedonthex-axisinourmatrix(seeFig.1andTable
+1), articulate the degree of agency of the LLM-powered agents in making decisions regarding the system
+operationindependentlyfrompredefinedandautomatedmechanisms.
+L0: Static Autonomy - At this foundational level, systems are primarily automated, relying heavily
+on the rules, conditions, and mechanisms embedded by system architects. The systems follow
+definedrulesandpredeterminedmechanisms. This,however,includessomedegreeofflexibility
+resulting from rule-based options and alternatives. Anyway, the agents in these systems, are not
+empowered to modify rules during runtime. For instance, their function here is limited to the
+effectiveexecutionofassignedtasks. Dependingonthealignmentlevel,thisresultsinRule-Driven
+Automation,User-GuidedAutomation,orUser-SupervisedAutomation(seeTable1).
+L1: AdaptiveAutonomy-Evolvingfromthestaticlevel,systemsatthisstagepossessthecapabilityto
+adapttheirbehaviorwithinastructureandproceduralguidelinesestablishedbythesystemarchitects.
+The LLM-powered agents are capable of adjusting the system’s operations within this provided
+framework(suchasflexibleinfrastructuresandprotocols)duetotheneedsofthegivenapplication
+scenarios,butnotbeyond. Dependingonthealignmentlevel,thisleadstoPre-ConfiguredAdaptation,
+User-GuidedAdaptation,orUser-CollaborativeAdaptation.
+L2: Self-OrganizingAutonomy-Atthishighestlevelofautonomy,LLM-poweredagentsemergeas
+theprincipalactors,capableofself-organization,activelylearninganddynamicallytailoringtheir
+operations in real-time based on environmental cues and experiences. The autonomy lies not in
+beingindependentfromuserintervention,butinbeingindependentofarchitect-definedrulesand
+mechanisms. However,thismightalsoincludehighlygenericinfrastructuresthataremodifiableby
+theLLM-poweredagentsandthusallowselforganisation. Dependingonthealignmentlevel,this
+resultsinBoundedAutonomy,User-GuidedAutonomy,orUser-ResponsiveAutonomy.
+Theselevelsofautonomynotonlyapplytothesystemasawhole,buttoarchitecturalviewpointsandinvolved
+architecturalcharacteristics(seeSection4.3).
+4.1.2 Alignment
+InthecontextofAI,thetermalignmenttraditionallyreferstothechallengeofensuringthatanAIsystem’s
+behavioralignswithhumanintentions,valuesorgoals. Thisintricateproblem,oftenframedasthecontrol
+problem, is a cornerstone of AI safety discourse [10, 65]. However, when viewed through a practical
+lens,especiallyinthecontextofautonomousLLM-poweredmulti-agentsystems,thealignmentparadigm
+acquiresamoreinteractive,user-centricperspective[1]. Here,alignmenttechniquescanbeseenasadetailed
+calibrationofconditionstiedtouser-specifiedobjectivesorcomplextasks. Thisincludespreferences,policies,
+constraints,andboundarieswhichcollectivelysteerorregulatethesystem’strajectorytowardsachievingits
+settargets. Importantly,withinthisframework,alignmentisnotseenascountertoautonomy. Instead,itacts
+tocomplementandrefineit,beingapplicableacrossvariouslevelsofautonomy.
+Itisalso importanttonotethat thesealignmentaspectsarefocused ontheagent-interactionlayer anddo
+not,oratleastonlyindirectly,concerntheutilizedlargelanguagemodels(LLMs)[3,92]orothercontextual
+resources,suchasfoundationmodels. However,theagent-interactionlayerextendsalignmentpossibilities
+byintegratingrulesandmechanismstocontrolagentinteractions,forexample,byincorporatingreal-time
+monitoringviainterceptors[4]. Suchmeasures,asdelineatedby[40,27]enableprecisecontroloveragent
+interactionsaswellastheirinteractionswithLLMsandcontextualresources,ensuringthattheyadhereto
+predeterminedconditionsandbehaviors. Moreover,employingmethodologieslikedesignbycontract[46]
+14
+
+<!-- Page 15 -->
+
+furtheraugmentsthiscontrol. Throughthisparadigm,softwarecomponents’formal,verifiablespecifications,
+orcontracts,candelineateconditionsforagentinteractions,especiallywhentheyengagewithfoundational
+resourceslikeLLMs. Suchcontractscanspecifyacceptablebehaviors,constraints,andcriteria,ensuringthe
+systembehavesreliablyandasintended. WhilefoundationalmodelslikeLLMshavetheirinherentchallenges,
+theagent-interactionlayerintroducesadistinctdimensionofcomplexity. Itisimperativetoensurebothare
+seamlesslyandsecurelyintegrated,ensuringalignmentacrossalllevelsofthesystem.
+Forourtaxonomy,wecombinetwoimportantdimensionsofalignment: itsoriginandtiming,reflectingthe
+dynamictensionbetweenautomatedalignmentmechanismsandhumancustomization,asillustratedinFig.3.
+Theorigindelvesintowhodictatesthealignment,thesystemarchitectorthesystemuser. Meanwhile,timing
+referstowhenthealignmentisspecified,encompassingphaseslikepre-deployment,post-deploymentbutprior
+toruntime,orevenduringruntime.AutonomousLLM-poweredmulti-agentsystemsstriveforachievingagoal
+oraccomplishingataskpromptedbythesystemuser. Giventhisuser-centricmodel,thealignmenttechniques
+thatareintegratedintothesystemarchitecturemightaddressgenericaspects,whicharenotdirectlyrelated
+tothenuancesandcharacteristicsofspecificusergoals. Toaddressthis,we’vecategorizedalignmentinto
+levels. Thebaselevel,orlowalignmentlevel,signifiesalignmentthat’salreadyembeddedintothesystem’s
+designbythesystemarchitects. Thisintrinsicalignmentsetsbroadbehavioralboundarieswithoutfocusingon
+specificuserpreferences. Ontheotherhand,thehighalignmentlevelsaremoreadaptableandcenteredaround
+user-specifiedalignment. Here,usershavetheflexibilitytosettheirpreferenceseitherbeforethesystementers
+itsruntimeor,ultimately,duringitsactiveoperation. Thisdynamicrangeensuresatighterfittouserobjectives,
+allhoweverbuiltuponmechanismsintegratedintothesystemarchitecture.
+AlignmentLevels. Thelevelsofalignment,representedonthey-axisinourmatrix(seeFig.1andTable1),
+measurethedegreetowhichusersofthesystemcaninfluenceoradjustthesystem’sbehavior.
+L0: IntegratedAlignment-Atthisfoundationallevel,thealignmenttechniquesarebuiltdirectlyintothe
+system’sarchitecture.Insuchsystem,alignmentmechanismsarestaticandrule-driven,andcannotbe
+alteredbytheusers. Dependingontheautonomylevel,thisresultsinRule-DrivenAutomation,Pre-
+ConfiguredAdaptation,orBoundedAutonomy,whereuserinteractionwiththesystem’salignmentis
+notprovided(seeTable1).
+L1: User-Guided Alignment - Evolving from the previous level, the User-Guided Alignment offers
+a degree of customization. This level empowers users by allowing them to set or adjust specific
+alignmentparameters,suchasconditions,rules,orboundaries,beforethesystemstartsitsoperation.
+Theseinteractionsareprimarilyfacilitatedviauserinterfacesdesignedtocaptureuserpreferences
+inastructuredmanner. Dependingontheautonomylevel,thisresultsinUser-GuidedAutomation,
+User-GuidedAdaptation,orUser-GuidedAutonomy.
+L2: Real-Time Responsive Alignment - The highest level of alignment is represented by means to
+adjustthesystem’sbehaviorinreal-time. Thankstointegratedreal-timemonitoringmechanisms,
+thesystemcanactivelysolicituserfeedbackuserdecisionsatcriticaljuncturesordecisionpoints.
+Thisresponsivenessenablesahighlevelofcollaborationintermsofongoingfeedbackbetweenthe
+userandthesystem. Dependingontheautonomylevel,thisresultsinUser-SupervisedAutomation,
+User-CollaborativeAdaptation,orUser-ResponsiveAutonomy.
+Thehierarchicalalignmentstructuremirrorsthechallengescommonlyfacedinsoftwaredevelopment,especiallyasvisualizedbytheconeofuncertainty[8]. Thisconedepictshowuncertainties,predominantinthe
+earlystagesofaproject,graduallydiminishasdevelopersgainbetterclarity. Transferredtothealignment
+ofLLM-poweredmulti-agentsystems,initialalignmentchallengesareapproachedwithabroadbrushstroke
+bysystemarchitects. Theirmainfocusistoensurefoundationalsystemfunctionality. Atthisjuncture,the
+specificityofuser-driventasks,withtheiruniquenuancesandintricacies,willhardlybeanticipatedbysystem
+architects. Inturn,auser-guided,pre-runtimealignmentallowsuserstospecifypreferencesandlimitations
+basedonamoreconcreteunderstandingofpossiblechallengesassociatedtoagiventask. However,even
+atthisstage,itisbarelypossiblefortheusertoanticipateallalignmentchallenges. Factorslikeambiguous
+prompts,incompletetaskspecifications,or,ingeneral,unclearexpectations,caninadvertentlysteerthesystem
+off course resulting in unintended outcomes and uncontrollable side effects. Thus, once the system is in
+operation,suchdeviationsfromuser’sintentionsmightfirstbecomeobvioustotheuserduringruntimeand
+requireadjustmentinreal-time. Thisallowsthesystemtore-alignbasedonimmediateuserfeedback.
+Theselevelsofalignmentnotonlyapplytothesystemasawhole,buttoarchitecturalviewpointsandinvolved
+architecturalcharacteristics(seeSection4.3).
+15
+
+<!-- Page 16 -->
+
+4.1.3 CombinationsofAutonomyandAlignment
+Bycombiningthesetwodimensionsinourmatrix(seeTable1),weprovideacomprehensiveviewofthe
+interplaybetweendiversegradationsofautonomyandalignmentwithinLLM-poweredmulti-agentsystems.As
+illustratedinFig.5,departingfromstaticandrule-drivensystemconfigurations(automation),thisautonomyalignmentmatrixcapturestheprogressionofdynamismandresponsibilitiesaswemovealongtheaxes. On
+they-axis,alignmentlevelsrepresentthegradationofhumanusers’involvement—fromintegratedsystems
+wheretheuser’sroleispassive(L0),toreal-timeresponsivesetupsdemandingactiveparticipation(L2). On
+they-axis,theautonomylevelssignifytheevolvingcapabilitiesofLLM-poweredagents,progressingfrom
+staticbehaviors(L0)toadaptive(L1)and,ultimately,self-organizingmechanisms(L2). Thismatrixstructure
+reflectsthetriadicinterplayanddynamictensionsillustratedinFig.3. Aswedelvedeeperintothematrix,the
+challengebecomesevident: ensuringbalancebetweentheevolvingresponsibilitiesofLLM-poweredagents
+andthegoalsandintentionsbythehumanusers,ultimatelyresultinginadynamiccollaborationbetween
+agentsandhumans.
+Alignment Balance
+user-responsive
+
+## L2 9
+
+autonomy
+user-guided
+
+## L1 5
+
+adaptation
+rule-driven
+
+## L0 1
+
+automation
+
+## L0 L1 L2
+
+
+### Automation Autonomy
+
+Figure5: Interplaybetweenautonomyandalignment: balancingevolvinglevelsofdynamismandresponsibilitiesofbothLLM-poweredagents(autonomy)andhumanusers(alignment).
+Inthefollowing,wedetailtheresultingninecombinationsprovidedinTable1.
+1 Rule-DrivenAutomation(L0Autonomy/L0Alignment): Inthisconfiguration,bothautonomyand
+alignmentareatthelowestlevels. Suchsystemoperatesbasedonscriptedmechanismsandfixed
+conditionsdefinedbythesystemarchitects. Thealignmentaspectsareintegratedintothesystem
+duringthedevelopmentstage. Atthislevel, thebehaviorcannotbeaffectedbytheuser, neither
+pre-runtimeorduringruntime. However,thisbalancedsetupisidealforrepetitive,well-definedtasks
+thatrequireminimalvariabilityoradaptability.
+2 User-GuidedAutomation(L0Autonomy/L1Alignment): Here,whiletheautonomyofthesystem
+remains at the lowest level, users can guide the system’s behavior within predefined parameters
+beforeruntime. Theusercannotmakereal-timeadjustments,butcaninfluencethesystem’sbehavior
+withinthepredefinedstructure. Itallowsacertainlevelofcustomizationwithoutgrantingcomplete
+control,whichcanbeidealforscenarioswhereuserexpertisecanrefinetheoperationbutthetask
+managementremainsstatic.
+3 User-SupervisedAutomation(L0Autonomy/L2Alignment): Thisconfigurationallowstheuser
+to supervise and make real-time adjustments to the system, despite the system’s autonomy level
+remainingatthelowest. Theuserhasmorecontroloverthesystem’sbehavior,beingabletoguide
+andcorrectitasnecessaryinreal-time. Thisconfigurationissuitablefortasksrequiringreal-time
+userfeedbackandsupervision,butwheretheprocessesthemselvesareperformedinapre-scripted
+manner.
+4 Pre-ConfiguredAdaptation(L1Autonomy/L0Alignment): Atthislevelcombination,themultiagentsystemcanadaptitsbehaviorwithincertainpredefinedparameters,butthealignmentaspects
+arestillintegratedintothesystemduringthedevelopmentstage,withnoroomforadjustmentsby
+theuserduringruntime. Thisallowstheagentstohandleagreatervarietyofscenariosthanstrictly
+rule-drivensystems,whilestillmaintainingaclearboundaryonitsbehaviorsetbythepredefined
+parameters.
+5 User-GuidedAdaptation(L1Autonomy/L1Alignment): Here,thesystemcanadaptitsoperations
+withinpredefinedparameters,andtheusercanalsoguidethesystem’sbehaviorwithinapredefined
+structure. It offers a balanced mix of system adaptation and user guidance. This combination
+16
+
+<!-- Page 17 -->
+
+canbeusefulwhenthetasksorenvironmenthavesomelevelofunpredictabilitythatrequiresthe
+LLM-poweredagentstoadaptwithinpredefinedbounds,andwheretheuser’sguidancecaninform
+thesystem’sdecisions.
+6 User-Collaborative Adaptation (L1 Autonomy/L2 Alignment): This configuration allows the
+systemtoadaptitsoperationsandalsoberesponsivetoreal-timeuseradjustments.Itoffersadynamic
+interactionbetweentheuserandtheagents. Thisconfigurationiswell-suitedtoenvironmentsthatare
+unpredictableandrequirethesystemtoadaptandrespondquicklytotheuser’sreal-timeinstructions.
+7 BoundedAutonomy(L2Autonomy/L0Alignment):Here,themulti-agentsystemcanself-organize
+andlearnfromtheenvironment,butthealignmentisintegratedduringthedevelopmentstageand
+cannotbeadjustedbyusersduringruntime. Thisprovidesthesystemwithagreatdegreeofflexibility
+tohandlecomplextasksandenvironments,whilestilladheringtoadefinedsetoflimitationsand
+constraintsspecifiedbythesystemarchitect.
+8 User-GuidedAutonomy(L2Autonomy/L1Alignment): Atthislevel,whilethesystemcanselforganizeandlearnfromtheenvironment,theusercanguidethesystem’sbehaviorwithinpredefined
+parameters. Thissystemconfigurationleveragestheagents’self-organizingabilitieswhileallowing
+userguidancepre-runtime. Itcombinesthestrengthsofautonomousdecisionmakingandlearning,
+withtheassuranceofuser-specifiedboundaries.
+9 User-ResponsiveAutonomy(L2Autonomy/L2Alignment): Thisisthehighestlevelofautonomy
+andalignment,wheretheLLM-poweredagentscanself-organize,learnfromtheenvironmentand
+user’sreal-timeadjustments. Itoffersabalancedcollaborativeenvironmentbetweentheuserandthe
+agents,beingidealforcomplex,unpredictableenvironmentswherebothautonomousstrategyand
+actionaswellasreal-timeuser-responsivenessareneeded.
+Inthefollowingsections,weexplorehowtheautonomy-alignmentmatrixcanbeappliedwithinthecontext
+of architectural viewpoints and further architectural aspects inherent to these viewpoints on autonomous
+LLM-poweredmulti-agentsystems.
+4.2 ArchitecturalViewpoints
+Architecturalviewpointsareastructuredmeanstoanalyzeandassesscomplexsystemsfromdiverseperspectivesfocusingonselectedaspectsandlayersofanarchitecture[4,16]. Centraltotheseviewpointsisthe
+considerationofstakeholderconcerns,whichinformanddeterminethehighlightedaspectsandtheirinterrelationsineachviewpoint. Providingacombinedmulti-perspectiveanalysis,viewpointsserveasaneffective
+frameworktoexaminethestructuresanddynamicsofsoftwarearchitectures. Forourtaxonomy,weleverage
+viewpointsonautonomousLLM-poweredmulti-agentsystems. Ratherthanmappingtheautonomy-alignment
+taxonomyflatlyontothesystem,whichoversimplifiesthemulti-facetednatureofthesesystems,analyzing
+eacharchitecturalviewpointindividuallyoffersatailoredlens,enablingtocomprehendtheroleandimpactof
+autonomyandalignmentwithinthesystem. Eachviewpointrevealsdistinctinsightsintothesystem’sbehavior,
+internalinteractions,composition,andcontextinteraction,leadingtoamorenuancedandcomprehensive
+classification[64].
+Functional G Development A
+Viewpoint Viewpoint
+
+### Goal-driven Agent
+
+Task Mgmt. Composition
+«uses»
+Process M Physical C
+Viewpoint Viewpoint
+
+### Multi-Agent Context
+
+
+### Collaboration Interaction
+
+Figure6: Architecturalviewpointsorientedtothe4+1viewmodelofsoftwarearchitecture[38]appliedto
+autonomousLLM-poweredmulti-agentsystems.
+17
+
+<!-- Page 18 -->
+
+4.2.1 AppliedViewpoints
+For our taxonomy, we orient to Kruchten’s renowned 4+1 view model of software architecture [38], an
+establishedstandardviewpointmodelforsoftwarearchitecture,adaptingittosuitthearchitecturalcharacteristicsofLLM-poweredmulti-agentsystems(seeSection3). Ourtaxonomyencompassesthefollowingfour
+architecturalviewpointsonthesesystems(refertoFig.6):
+G Goal-drivenTaskManagement(FunctionalViewpoint): Kruchten’sfunctionalviewpointrefersto
+thesystem’svisiblefunctionalitiesasexperiencedbyitsusers[38]. Inthecontextofautonomous
+LLM-poweredmulti-agentsystems,weseeGoal-driven Task Managementasamanifestationof
+thisfunctionalviewpoint. Itentailsthesystem’scapabilitiesandmechanismstodecomposeuserpromptedgoalsorcomplextasksintosmaller,moremanageabletasks,andsubsequently,orchestrate
+taskexecution,combinetheresults,anddeliverthefinalresultformingtheresponsefortheuser(see
+Figs.2and4).
+A AgentComposition(DevelopmentViewpoint): AccordingtoKruchten,thedevelopmentviewpoint
+isprimarilyfocusingonthesystem’ssoftwarearchitecture,thebreakdownintocomponents,and
+theirorganization[38]. Inourcontext,weinterpretthisasAgent Composition,focusingonthe
+system’sinternalcomposition,particularlytheassemblyandconstellationofagents. Itincludesthe
+typesandrolesofagents,theirmemoryusage,therelationshipsbetweenagents(seeFigs.2and4).
+M Multi-AgentCollaboration(ProcessViewpoint): Kruchten’sprocessviewpointconcernsthedynamicaspectsofasystem,specificallythesystemproceduresandinteractionsbetweencomponents
+[38]. We apply this to the Multi-Agent Collaboration in our model, emphasizing the collaborative task execution and interactions among agents. This encompasses the application of
+communicationprotocols,thedynamicsofactionsmanagement,suchastheactualtaskexecution,
+mutualtaskdelegation,aswellastheevaluationandmergingoftaskresultsonagentlevel,aswellas
+themanagementofcommunicationcomponentssuchaspromptsandprompttemplates(seeFigs.2
+and4).
+C ContextInteraction(PhysicalViewpoint): AccordingtoKruchten,thephysicalviewpointinvolves
+thesystem’smappingtophysicalresources[38].WeextendthistoContext Interaction,focusing
+on the system’s interaction with the external environment. It includes how the system acquires,
+integrates,andutilizescontextualresourcessuchasexternaldata,experttools,andfurtherfoundation
+modelsaswellastheorganizeddistributionandutilizationofcontextualresourceswithintheagent
+network(seeFigs.2and4).
+4.2.2 ViewpointInterdependencies
+ToeffectivelydesignandunderstandautonomousLLM-poweredmulti-agentsystems,it’sessentialtorecognize
+therelationshipsandinterdependenciesbetweenarchitecturalcomponentsandviewpoints[99,64]. Fig.6
+illustratestheseinterrelatedarchitecturalviewpointsformulti-agentarchitectures. Thefigureincludesuse
+dependenciesbetweentheviewpoints,denotedasdottedlinesindicatingthedirectionsofusage[55]. These
+dependenciesarisefromtheinterconnectednatureoftheseviewpoints,astheycollectivelyshapethebehavioral
+featuresprovidedbythesystem,hereexpressedintermsoftheGoal-driven Task Managementviewpoint.
+Theinterplaybetweenarchitecturalviewpointsisnotablyinfluencedbytheautonomylevelsofthesystems.
+Withregardtothelevelsofautonomy,wecandistinguishthefollowingtwotypesofdependenciesbetween
+architecturalviewpoints,i.e.,availability-drivendependenciesforlow-autonomysystemsandrequirementsdrivendependenciesforhigh-autonomysystems. Fig.7illustratesthetwotypesinasimplifiedmanner. For
+furtherdetailsondependenciesbetweenarchitecturalaspectsinherenttotheviewpoints,alsoseethefeature
+diagraminFig.8.
+Availability-drivenDependencies(Low-AutonomySystem). Forlow-autonomymulti-agentsystems,as
+depictedinFig.7(a),thearchitectureoperatespredominantlyunderpre-establishedautomation. Inthese
+systems,functionalitylargelyreliesonpre-configuredrulesandmechanisms. Thus,thefunctionalityofsuch
+multi-agentsystemiscontingentuponthepredefinedcapabilitiesofthesystemprocesses,whicharedefined
+bythestructureofthesystemandtheresourcesavailable.
+• Insuchsystems,Goal-driven Task Managementdependsonallotherdimensions,asitrepresents
+theculminationofthesystem’soperationsintermsofthekeyfunctionalityasperceivedbytheuser.
+Thecapabilitiesregardingthedecompositionandorchestrationoftaskexecutiontowardscompleting
+18
+
+<!-- Page 19 -->
+
+Availability-driven Dependencies Requirements-driven Dependencies
+
+### Low-Autonomy High-Autonomy
+
+
+### Multi-Agent System Multi-Agent System
+
+Goal-driven Multi-Agent Agent Context Goal-driven Multi-Agent Agent Context
+Task Mgmt. Collaboration Composition Interaction Task Mgmt. Collaboration Composition Interaction
+«relies on capabilities of» «adapts capabilities to»
+(a) (b)
+Figure7: TypesofdependenciesdistinguishedbydifferentlevelsofautonomyprovidedbyLLM-powered
+multi-agentarchitectures.
+the prompted task are essentially influenced by the predefined composition and constellation of
+agents(suchascompetencies,roles,types,andnetwork),theirscriptedmodeofcollaborationfor
+taskexecution,andtherule-basedintegrationandutilizationofcontextualresources.
+• Inturn,Multi-Agent CollaborationderivesitsoperationalmodusfromthefoundationalstructuresestablishedbytheAgent CompositionandContext Interaction. Themodeofcollaborationfortaskexecutionamongagentsisdictatedbypredefinedcharacteristicsandcompetencies
+(types, roles) of the agents involved and their relationships and organization as network (Agent
+Composition),aswellasbytheaccessibilityintermsoftheeffectiveintegrationandutilizationof
+contextualinformation,toolsandmodelstoexecutethegiventasks(Context Interaction).
+• Finally,Agent Compositionalsoreliesontheavailabilityofcontextualresources(ContextInteraction). Thetypesandnumberofagentsneededinthesystemaswellastheirrolesandcompetencies
+aredirectlyinfluencedbythecontextualenvironment(e.g.,theavailability,accessibility,andquality
+ofdata,foundationmodels,andexperttools)usedbythesystemandhowtheyareutilizedwithinthe
+task-managementactivity.
+Requirements-drivenDependencies(High-AutonomySystem).Inturn,high-autonomymulti-agentsystems,
+illustratedinFig.7(b),havetheabilitytoself-organize. Inthesesystems,thearchitecturalinfrastructureand
+dynamicsaswellasthecontextinteractionareself-organizingandthuscapableofadaptingtheircapabilities
+totheneedsandrequirementssetbyagivengoal. Thus,comparedtosystemswithlowautonomy,thereisan
+inversedependencyrelationship.
+• In highly-autonomous multi-agent systems, the user-prompted goal delineates the requirements,
+chartingthecoursefortheentirearchitecturaledificeofthesystem. Allotherviewpointsadaptto
+theenvisionedfunctionalbehaviorexpressedasGoal-driven Task Management. Basedonthe
+complexityofthegoal,itsdecompositionintotasksandtheirdistribution,theotherarchitectural
+aspects inherent to the three further viewpoints undergo adaptations to fit the needs of the given
+situation.
+• In addition, Agent Composition, encompassing agents’ roles, types, and their memory usage,
+as well as Context Interaction, including the integration and utilization of resources, adapt
+to the requirements set by the modes of collaboration to tackle the assigned tasks, including the
+communicationprotocol(Multi-Agent Collaboration).
+• Finally, also Agent Composition sets the requirement for the adaptation of Context
+Interaction. The specific roles of agents within the system mandate particular resource integration. For instance, an agent with analytical responsibilities might necessitate the inclusion of
+specificdatastreamsorcomputationaltools.
+IntertwinedDependencies(MixedAutonomyLevels). Thetwodistinguishedtypes, availability-driven
+andrequirements-drivendependencies,addressthechallengeofinterconnectedarchitecturalviewpointsinan
+illustrative,butsimplifiedmanner. Ontheonehand,theviewpointsofamulti-agentsystemmightprovide
+differentautonomylevels;ontheotherhand,alsotheaspectsormechanismswithinaviewpointmightbeon
+19
+
+<!-- Page 20 -->
+
+differentlevelsofautonomy. Bothcasesresultinintertwineddependencies. Itisimportanttonotethatthe
+autonomylevelssetforoneviewpointoraspectscanhaveanimpactonothersviewpointsoraspectsdueto
+theirinterconnectednature(seeabove). Theintertwineddependenciesmightproverisky. Theycanintroduce
+complexitiesandunpredictabilities,potentiallyjeopardizingsystemefficiencyandeffectiveness.Itunderscores
+thenecessityofincorporatingrobustcontrolmechanismstonavigateandmanagetheseinterdependencies,
+whichisillustratedbythefollowingillustrativeexample.
+Example. ConsiderapracticalscenariowhereanautonomousLLM-poweredmulti-agentsystemisoperating
+inthefollowingdynamicenvironment:
+• Decomposition Dynamics: Within the Goal-driven Task Management viewpoint, tasks are
+dynamicallydecomposedintosub-tasksbasedonuserrequirements,andthisdecompositionoperates
+withaL2autonomylevel,whichsignifiesaself-organizingmanner.
+• AgentCollaborationDynamics: Similarly,theMulti-Agent Collaborationviewpoint,which
+encompasseshowagentscollaboratefortaskexecution,operatesonthesameL2autonomy. Agents
+decideon-the-flyhowtointeract,delegatetasks,andmergeresults.
+• ContextualInteractionLimitation: Contrastingtheabove,theContext Interactionviewpoint
+isconstrainedbyL0autonomylevel. Here,thesystem’saccessandinteractionwiththeexternal
+environment(contextualresources)arelimitedbypredefinedrules. Thesystemcannotautonomously
+decidetoreachouttonewresourcesormodifythewayitinteractswithexistingones.
+Giventheseconditions,apotentialissuearises: Astasksaredecomposedandagentsplantheircollaborations,
+theymight,basedontheirL2autonomy,decidetoutilizecertaincontextualresources. However,whenit’s
+timetoaccesstheseresources,theymightfindtheminaccessibleduetotheL0constraintsintheContext
+Interactionviewpoint. Thisdiscrepancyinautonomylevelscancauseoperationaldead-ends. Forinstance,
+anagentmightanticipateusinganexternaldatasourcetocompleteitstask,buttheL0constraintspreventit
+fromaccessingthatsource,leavingthetaskincomplete.
+Suchissueshighlighttheimportanceofhavingrobustcontrolmechanismsinplacethatcanpreemptively
+identifyandmitigatethesediscrepancies,ensuringsmoothsystemoperations.
+Foradetailedillustrationofdependenciesbetweenviewpoint-specificaspects,refertoSection4.3.2.
+4.3 InterplayofAutonomyandAlignmentintheSystemArchitecture
+As already illustrated, both autonomy and alignment serve as cross-cutting concerns [35] impacting the
+operationalefficiencyofvariousarchitecturalaspectsacrossLLM-poweredmulti-agentsystems. Thus,in
+thefollowing,wemapourmatrixofautonomyandalignmentlevelsontothearchitecturalviewpoints. This
+projectioncraftsathree-dimensionalmatrix,offeringaprismthroughwhichthesesystemscanbeanalyzedand
+categorized(alsoseeFig.1). InSection4.3.1,wegivesystematicoverviewoftheresultingviewpoint-specific
+combinationsofautonomyandalignmentlevels. Section4.3.2detailsthearchitecturalaspectsassociatedto
+theseviewpointsandspecifiescorrespondinglevelcriteriathatestablishthefoundationforthetaxonomic
+classification.
+4.3.1 MappingAutonomy-AlignmentLevelstoViewpoints
+Table2showcasestheinterplayofautonomy,alignment,andthedistinctarchitecturalviewpoints. Itapplies
+theautonomy-alignmentmatrix,asillustratedinTable1,totheidentifiedarchitecturalviewpointsinherentto
+autonomousLLM-poweredmulti-agentsystems. Eachcellinthismatrixsignifiesauniquearchitecturaldesign
+choice,representingadistinctsystemconfiguration. Thearchitecturalviewpoints(horizontal;seeSection
+4.2)arecategorizedintoGoal-driven Task Management,whichhighlightsthesystem’sfunctionalities;
+Agent Composition, emphasizing its intrinsic structure; Multi-Agent Collaboration, denoting the
+dynamicsofagentinteractions;andContext Interaction,detailingthesystem’srapportwithitsexternal
+environmentintermsofdataandtools. Alongsidetheseviewpoints,theninecombinationsofautonomyand
+alignmentlevels(vertical;seeSection4.1)describethesystem’sbehavior. AutonomyrangesfromStatic
+toSelf-Organizing,determiningthesystem’sdegreeofself-organization. Meanwhile,alignmentvaries
+fromIntegratedtoReal-Time Responsive,capturingthedepthofhumaninfluenceoverthesystem’s
+operations. Combining these dimensions results in 36 system architectural design options available for
+configuringmulti-agentsystems.
+20
+
+<!-- Page 21 -->
+
+Matrix Autonomy- G Goal-driven A Agent M Multi-Agent C Context
+# Alignment TaskManagement Composition Collaboration Interaction
+
+### Levels
+
+1 Rule-DrivenAutoma- Rule-driventaskman- Rule-driven agent Rule-drivencollabora- Rule-driven interaction: Static & Inte- agement. composition and tionprotocols. tion with contextual
+grated(L0&L0) constellation. resources.
+2 User-Guided Au- User-guidedtaskman- User-guided agent User-guidedcollabora- User-guided context
+tomation: Static & agement. composition and tionprotocols. integrationandutiliza-
+User-Guided (L0 & constellation. tion.
+
+## L1)
+
+3 User-Supervised Taskmanagementad- Agent composition Agent collaboration Context integration
+Automation: Static justedduringruntime. and constellation ad- adjusted during run- and utilization ad-
+&Real-TimeRespon- justedduringruntime. time. justedduringruntime.
+sive(L0&L2)
+4 Pre-Configured Adaptive task man- Adaptive agent com- Adaptivecollaboration Pre-integrated adap-
+Adaptation:Adaptive agement with prede- position and constel- protocols. tive contextual re-
+&Integrated(L1&L0) finedoptions. lationwithpredefined sources.
+flexibility.
+5 User-GuidedAdapta- User-adjusted adap- User-adjusted adap- User-adjusted adap- User-adjusted adaption:Adaptive&User- tive task manage- tiveagentcomposition tivecollaboration. tivecontextintegration
+Guided(L1&L1) ment. andconstellation. andutilization.
+6 User-Collaborative Adaptive task man- Adaptive agent com- Adaptivecollaboration Adaptivecontextinte-
+Adaptation:Adaptive agementadjusteddur- position and constel- adjusted during run- grationandutilization
+&Real-TimeRespon- ingruntime. lationadjustedduring time. adjusted during runsive(L1&L2) runtime. time.
+7 BoundedAutonomy: Taskmanagementor- Agents self-organize Collaborationstrategy Agentsselectfroma
+Self-Organizing&Inte- ganically based on basedoncurrentsce- evolvesorganically. poolofcontextualregrated(L2&L0) currentneeds. nario. sources.
+8 User-Guided Auton- User-guided self- User-guided agent User-guidedcollabora- User-guided selfomy:Self-Organizing organizing task self-organization. tionevolution. organized selection
+&User-Guided(L2& management. from contextual re-
+L1) sources.
+9 User-Responsive Self-organizing task Agent self- Collaboration evolu- Self-organized selec-
+Autonomy: Self- managementadjusted organizationadjusted tion adjusted during tionfromcontextualre-
+Organizing & Real- duringruntime. duringruntime. runtime. sourcesadjusteddur-
+TimeResponsive(L2 ingruntime.
+
+## &L2)
+
+Table 2: Mapping autonomy and alignment levels (vertical, #1–9 resulting from Table 1) to architectural
+viewpoints(horizontal)onautonomousLLM-poweredmulti-agentsystemsresultingin36viewpoint-specific
+systemconfigurations. AdetailedexplanationoftheautonomyandalignmentlevelsisprovidedinSection4.1.
+Foranoverviewoftheappliedviewpoints,refertoSection4.2.
+InthefollowingSection4.3.2,weexplorefurtherviewpoint-specificaspectsandtheirinterdependencies,in
+ordertoderivelevelcriteriaforthetaxonomicclassification.
+4.3.2 Viewpoint-specificAspectsandLevelCriteria
+Asoutlinedabove,architecturalviewpointsprovidemeanstoanalyzecertainaspectsandaspectrelationsof
+thesystem’sarchitectureinamulti-perspectivemanner[64]. Drawingfromthedomain-ontologymodel(Fig.
+4),wenowsystematizetheviewpoint-specificaspectsemployedinourtaxonomy. Subsequently,wespecify
+levelcriteriaforautonomyandalignmentcorrespondingtoeachaspect. Furthermore,weoutlinethemain
+interdependenciesamongtheseaspects.
+Fig. 8 gives an overview of our taxonomy’s characteristics, structured through a feature diagram [5, 69].
+Employedpredominantlyinsoftwareengineering,featurediagramsvisuallyexpressfeaturemodels,which
+aimtoorganizethehierarchicalstructureaswellasdependenciesamongsystemfeatures.
+Inparticular, Fig.8(a)structurestheviewpoint-specifictaxonomicstructure. Eachofthefourintegrated
+viewpointsprovidesacertaincombinationofautonomyandalignmentlevels. AsillustratedinFigs.8(b–e),
+thisstructureisrefinedbyviewpoint-specificaspectsandtheirinterdependenciesintermsofrequirementsdrivendependencies(adapts-to),presumingahigh-autonomysystemconfiguration,asdiscussedinSection
+
+#### Thesedependenciessuggestthatthecapabilitiesofadependentaspectevolveinlinewiththeneeds
+
+andstipulationsoftheaspectitpointsto. Inturn,alsotheseviewpoint-specificaspectscanbeassessedbythe
+autonomyandalignmentlevels,resultinginamorenuancedtaxonomicclassification.
+21
+
+<!-- Page 22 -->
+
+
+### Multi-Agent
+
+(a) Architectural Viewpoint
+Alignment
+
+### Level
+
+
+### Goal-driven Multi-Agent Agent Context
+
+Task Mgmt. Collaboration Composition Interaction
+Autonomy
+
+### Level
+
+Integrated User-Guided Real-Time
+(L0) (L1) Respons. (L2)
+Static Adaptive Self-Organizing
+alternatives (L0) (L1) (L2)
+mandatory
+«adapts to»
+(b) (c)
+Goal-driven Multi-Agent
+
+## G M
+
+
+### Task Mgmt. Collaboration
+
+
+### Communication Prompt Action
+
+Decomposition Orchestration Synthesis
+Protocol Mgmt. Engineering Management
+(d) (e)
+Agent Context
+
+## A C
+
+
+### Composition Interaction
+
+
+### Agent Role Memory Network Resources Resources
+
+Generation Definition Usage Management Integration Utilization
+Figure8: Featurediagramshowcasingthetaxonomicstructure. Eachviewpointintegratesautonomyand
+alignmentlevels(a).Thediagramfurtherillustratesviewpoint-specificaspectsandmechanisms(b–e)alongside
+theadapts-todependenciesamongthem.
+Acrossthefourdistinctviewpoints, atotalof12characteristicaspectsareidentified(asillustratedinFig.
+8). Each of these aspects can be assessed and classified by its corresponding autonomy and alignment
+levels,yielding9possibleconfigurationoptionsperaspect(detailedinTable1). Thus,giventheviewpoints
+V ,V ,V ,V withrespectiveaspectcountsA =A =3,A =4,andA =2,andalevelcountL=3for
+1 2 3 4 1 2 3 4
+bothautonomyandalignment,wedefine:
+4
+(cid:88)
+T = A , (TotalAspects) (1)
+A i
+i=1
+S =L2, (SingleConfigurationOptionsperAspect) (2)
+
+## C
+
+T =T S , (TotalSingleConfigurationOptions) (3)
+
+## Sc A C
+
+T =(L2)A1+A2+A3+A4 =STA. (TotalCombinedConfigurations) (4)
+
+## Cc C
+
+Usingtheprovidedvalues,wefindT =108andT =912 ≈282×109.
+
+## Sc Cc
+
+22
+
+<!-- Page 23 -->
+
+In sum, mapping the autonomy-alignment matrix onto the identified aspects, our taxonomy captures 108
+distinctsingleconfigurationoptions. Whenconsideringallpossiblecombinationsoftheseconfigurations,
+we arrive at a total of 912, which equates to roughly 282 billion combinations available for configuring
+LLM-poweredmulti-agentarchitectures. Thisunderscoresthecomplexitychallengeposedbysuchsystems,
+furtheraccentuatedbythevariousoptionsforintertwineddependencies,asdetailedinSection4.2.2.
+Inthefollowing,weoutlinetheseviewpoint-specificaspects,drawingfromthearchitecturalspecifications
+detailedinSection3.2anddefinecorrespondingcriteriaforthelevelsofautonomyandalignment.
+G AspectsandLevelsofGoal-drivenTaskManagement.
+Taxonomic aspects of Goal-driven Task Management comprise the three constituting phases:
+Decomposition(howthegoalorcomplextaskisbrokendownintomanageablesub-tasks),Orchestration
+(howthesetasksaredistributedamongtheLLM-poweredagents),andSynthesis(howtheresultsofthe
+tasksarefinallycombined);refertoFig.8(b).
+
+### LevelCriteria:
+
+• StaticAutonomy(L0): Atthislevel,weobservescriptedprocessesandautomatedmechanicswith
+rule-basedoptionsandalternativesforthetask-managementactivity,includingthephasesoftask
+decomposition,distributingandorchestratingtheexecutionofsingletasks,orcombiningtheirresults.
+Thesescriptedautomatedprocessesmightdemonstratevariabilityandflexibilityincludingiterations
+basedonpredeterminedmechanicsandconditions. However,thislevelalsoincludesstrictprocesses
+orexecutionchainswithnovariations.
+• AdaptiveAutonomy(L1): Here,thesystemprovidespredefinedbutadaptiveproceduresforthe
+phasesofthetask-managementactivity. Basedonthesepredefinitionsintegratedintothesystem’s
+designand implementation, the LLM-poweredagents arevestedwith certainautonomytoadapt
+the managing and controlling of the task-management processes. For example, within a defined
+framework,theagentsareinvolvedinmanagingthetaskdecomposition,thedistributiontoother
+agents, or decisions about the synthesis of results. For this purpose, also patterns or prepared
+mechanicsarereused.
+• Self-Organizing Autonomy (L2): This level embodies the LLM-powered agents’ capability to
+architect and implement their own strategy for deconstructing and solving problems due to the
+characteristicsorcomplexityofagivengoal. Thismightalsoincludehigh-levelgenericframeworks
+scaffoldingtheagents’interactionsandprocesses, butleavingspacetoLLM-poweredagentsfor
+effectivelyself-organizingthephasesofthetask-managementprocess.
+• AlignmentLevels: Atthisjuncture,alignmentcanbeseenintermsofinformationandconstraints
+regardingthetask-managementactivity,especiallyregardingthemechanicsinthedecomposition,
+orchestrationorsynthesisofsub-processes,e.g.,decompositiondepthorconsensusoptionsforthe
+totalresult. Thealignmentiseitherintegratedintothesystem’sdesign(L0),configurablebytheuser
+beforeruntime(L1)oradjustableduringruntime(L2).
+M AspectsandLevelsofMulti-AgentCollaboration.
+For the taxonomic classification within Multi-Agent Collaboration, we consider
+Communication-Protocol Management (how the collaboration and dialogues between the agents
+are managed), Prompt Engineering (how prompts are applied during collaboration and executing the
+actions), and Action Management (how the different kinds of action, such as the delegation or actual
+executionoftasks,ortheresultevaluation,performedbytheagentsaremanaged);seeFig.8(c)).
+
+### LevelCriteria:
+
+• StaticAutonomy(L0): Atthislevel,collaborativeactionsandinteractionsamongagentsadhereto
+afixedscriptorsetofrules. Thecommunicationprotocols,promptuseandaugmentation,aswell
+asthemanagementofactionsarepre-definedanddon’tadjustdynamicallybasedonagentinputs
+orenvironmentalchanges. Agentscommunicate,delegatetasks,executeinstructions,andevaluate
+resultsbasedstrictlyonestablished,non-adaptableguidelines. Variabilityinthecollaborationprocess
+isminimalanddoesn’taccountforunforeseenscenariosorcomplexities.
+• Adaptive Autonomy (L1): This level introduces adaptability of collaboration aspects for LLM-
+poweredagentsbasedonpredefinedmechanisms. Forexample,thecommunicationprotocol,the
+prompttemplates,orthemanagementoftheagentactionsaremodifiable. Whilethefoundational
+23
+
+<!-- Page 24 -->
+
+mechanismsarepreset,theLLM-poweredagentscanautonomouslyselectandadaptthemduetothe
+evolvingrequirementsofthegivenscenario. Forthispurpose,theymightreusepreparedmechanisms
+orpatterns.
+• Self-OrganizingAutonomy(L2): Agentsoperatingatthislevelshowcasethecapabilitytoindependentlystrategizetheircollaborationfortaskexecution. Drivenbythespecificdemandsofthe
+setgoalsandtaskcomplexities,theseLLM-poweredagentsactivelyplanandexecutecollaboration
+strategiesthatbestaddressthescenarioathand. Forinstance,LLM-poweredagentscanself-organize
+protocolsforcollaboration, mechanismsofpromptengineeringandnegotiatecollaborativelythe
+executionofactionsamongtheagentnetwork.
+• AlignmentLevels: Relevantconsiderationsincludeinformationandconstraintslinkedtocollaborationmechanismsandpatternsbetweenagents,thespecificationofprompttemplates,constraintsfor
+promptaugmentation,orpreferencesfortheexecutionofactions. Thesecomponentscanbeeither
+embeddedwithinthesystem’sdesign(L0),madeavailableforuserconfigurationbeforeruntime(L1),
+orbeamenabletoreal-timeadjustments(L2).
+A AspectsandLevelsofAgentComposition.
+TheaspectsofAgent CompositionappliedbythetaxonomycompriseAgent Generation(howtheagents
+arecreated,includingthestrategiesandmechanismsemployed),Role Definition(howagents’rolesare
+specified),Memory Usage(howtheagentsutilizetheirmemory,i.e.,howinformationissummarizedand
+stored,orhowmemoryisusedforreflectinginstructionsorplanningactions),andNetwork Management
+(howtheconstellationandrelationshipsamongagentsaremanaged);refertoFig.8(d).
+
+### LevelCriteria:
+
+• StaticAutonomy(L0):Thislevelfeaturesapredefinedandrule-drivencompositionandconstellation
+ofagents. Rulesandmechanismsmanagethecreatingofagents,selecttheagenttypes,anddelineate
+theirrolesandcompetencies. Memoryutilizationfollowspredefinedmechanisms,aswellasthe
+relationshipbetweenagents.
+• AdaptiveAutonomy(L1): Whileasystematthislevelprovidespredefinedstructures,itgrantsa
+degreeofflexibility,permittingLLM-poweredagentstoadapttheircompositionandconstellation
+withinthegivenframeworkandduetogivenscenarios. Forexample,agentscanreplicateinstances,
+theircompetenciesareextensibleandrolesandfurtherattributes(suchasthesizeorcompression
+modefortheagentmemory)canbemodified. Agentscanmodifyorextendexistingrelationships,
+e.g.,byconnectingwithfurtheragents.
+• Self-OrganizingAutonomy(L2): LLM-poweredagentsoperatingatthislevelexhibittheability
+toautonomouslydefineandgeneratetypesandestablishcollaborativenetworks. Theimpetusfor
+suchself-organizationarisesfromanacuteunderstandingofthedemandsandnuancesofthegiven
+scenario. Insteadofadheringtopredefinedagenttypesandrolesorrelationships,agentsdynamically
+constituteandorganizebasedonreal-timeneeds.
+• AlignmentLevels: Pertinenttoagentcompositionareinformationandconstraintsregardingtheir
+creation,types,roles,andcompetencies. Further,themannerinwhichagentsinterrelateandhow
+theyarestructuredwithinthenetworkholdssignificance. Thesemechanicsandconfigurationscan
+beeitherdeeplyembeddedintothesystem’sdesign(L0),bemadeconfigurablebytheuserbefore
+runtime(L1),orbedynamicallyadjustableduringsystemoperation(L2).
+C AspectsandLevelsofContextInteraction.
+ForContext Interaction,thetaxonomicaspectscomprise(Resources Integration(howtheintegrationofcontextualresourcesintermsofdata,tools,models,andotherapplicationsisachieved),andResources
+Utilization(howtheseresourcesareactuallyutilizedforexecutingtasks);refertoFig.8(e).
+
+### LevelCriteria:
+
+• StaticAutonomy(L0): Atthislevel,contextualresources,includingdata,experttools,andspecializedfoundationmodels,arerigidlyintegratedbasedonthesystem’sinitialdesign. Theirutilizationis
+organizedbypredefinedrulesandpatternsrelatingscenariosandresourceapplication. However,this
+levelalsoincludesthecasethatcertainoranyresourcesmightnotbeavailableforuse.
+• AdaptiveAutonomy(L1): Certaincontextualresourcesarepre-integrated,butthesystemprovides
+adaptivemechanismsusablebyLLM-poweredagentsforintegratingmissingresourceswhenneeded.
+24
+
+<!-- Page 25 -->
+
+Tothisend,accesstocertainAPIsmightbeprepared. Basedonpredeterminedmechanisms,the
+LLM-poweredagentscanflexibledeterminehowtobestutilizeandcombinetheseprovidedresources,
+tailoringtheirapproachtotheuniquerequirementsofthegivenscenario.
+• Self-OrganizingAutonomy(L2): LLM-poweredagentspossesstheautonomytointerfacewitha
+diversepoolofcontextualresources(cf. HUGGINGFACE). Theycandiscerninglyselect,integrate,
+andharnesstheseresourcesbasedontheobjectivesathandandthespecificchallengestheyencounter.
+• Alignment Levels: Factors to consider encompass information and constraints pertaining to the
+integrationandapplicationofcontextualresources. Thesemayincludespecificationsorguidelineson
+whichresourcestoleverage,whenandhowtointegratethem,anylimitationsontheirutilization,and
+more. Thesespecificationsorguidelinesmightbebuiltintothesystem’sdesign(L0),madeavailable
+forusermodificationpriortoruntime(L1),orevenbeadaptedinrealtime(L2).
+InthefollowingSection5,weexploretheapplicationofourtaxonomytoreal-worldLLM-basedmulti-agent
+systems.
+5 ClassificationofSelectedSystems
+In order to demonstrate the practical utility of our taxonomy, we analyze and classify selected existing
+autonomous LLM-powered multi-agent systems. We have chosen a set of seven state-of-the-art multiagentsystemsforthisassessment: AUTOGPT[77],BABYAGI[51],SUPERAGI[79],HUGGINGGPT[70],
+METAGPT[28],CAMEL[41],andAGENTGPT[71]. Eachofthesesystemsismaintainedandavailable
+asopen-sourceproject. ForbasicinformationontheseandfurtherLLM-poweredmulti-agentsystems,refer
+to Section 2.2. For each selected system, we gathered relevant information by examining the technical
+documentationandresearchpapers,whereavailable,aswellasreviewingthecodebase. Wefurtherengaged
+witheachsystemtoexploreitsreal-timefunctionalities,withemphasisonalignmentmechanismsavailable
+beforeandduringruntime.
+In the following sections, we first report on the results of analyzing and classifying the selected systems
+(Section5.1). Then,wecompareandinterprettheresultsinSection5.2.
+Goal-drivenTaskMgmt. Multi-AgentCollaboration AgentComposition ContextInteract.
+
+### LLM-powered
+
+Multi-Agent Decom Orch Synth CommP PrEng ActM AGen RoleD MemU NetM Integ Util
+
+### Systems
+
+AU AL AU AL AU AL AU AL AU AL AU AL AU AL AU AL AU AL AU AL AU AL AU AL
+Auto-GPT[77] 2 0 0 0 1 0 0 0 1 0 2 0 0 0 1 0 0 0 0 0 0 0 2 0
+
+### BabyAGI[51] 2 0 0 0 1 0 0 0 1 0 2 0 0 0 1 0 0 0 0 0 0 0 2 0
+
+SuperAGI[79] 2 0 1 0 1 1 0 0 1 0 2 0 1 1 2 1 0 1 0 0 0 1 2 1
+HuggingGPT[70] 2 0 1 0 2 0 0 0 2 0 2 0 2 0 2 0 1 0 0 0 2 0 2 0
+MetaGPT[28] 2 0 0 0 2 0 1 0 1 0 2 0 0 0 0 0 0 0 1 0 0 0 2 0
+
+### Camel[41] 2 0 0 0 1 0 0 0 1 0 1 0 0 1 1 1 0 0 0 1 0 0 0 0
+
+AgentGPT[71] 2 1 1 0 1 0 0 0 1 0 2 0 1 1 2 0 0 0 0 0 0 0 2 1
+
+### Zapier*[62] 1 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 1 0 1
+
+Table3: Assessmentofautonomy(AU)andalignment(AL)levelsacrossviewpoint-specificaspectsofselected
+LLM-poweredmulti-agentsystems. Detailedlevelcriteriaforviewpoint-specificaspectsarediscussedin
+Section4.3.2. *ZAPIER,aworkflow-automationtool,hasbeenincludedtocontrasttheresults.
+5.1 TaxonomicClassification
+Thetaxonomicclassificationreliesonadetailedassessmentofautonomyandalignmentlevelsforviewpointspecificaspectsofthesystems. Table3reportsontheresultsofassessingtheselevelsofautonomy(AU)and
+alignment(AL)foraspectscharacterizingthefourarchitecturalviewpointsappliedbyourtaxonomy. Inparticular,forGoal-driven Task Management,theaspectsofdecomposition(Decom),orchestration(Orch),and
+25
+
+<!-- Page 26 -->
+
+synthesis(Synth);forMulti-Agent Collaboration,theaspectsofcommunication-protocolmanagement
+(CommP),promptengineering(PrEng),andactionmanagement(ActM);forAgent Composition,theaspects
+ofagentgeneration(AGen),roledefinition(RoleD),memoryusage(MemU),andnetworkmanagement(NetM);
+forContext Interaction,theaspectsofresourceintegration(Integ),andresourceutilizationUtilare
+distinguished. Anoverviewoftheseviewpoint-specificaspectsandcorrespondinglevelcriteriaappliedfor
+thisassessmentisprovidedinSection4.3.2.
+*Inordertocontrasttheclassificationresults,weincludedZAPIER[62]intoourcomparison,arenownedtool
+offeringtheautomationofworkflowsbasedonuser-specifiedtasks.
+(a) Auto-GPT (b) BabyAGI (c) SuperAGI
+
+### Decom Decom Decom
+
+
+### U�l Orch U�l Orch U�l Orch
+
+Integ Synth Integ Synth Integ Synth
+NetM CommP NetM CommP NetM CommP
+MemU PrEng MemU PrEng MemU PrEng
+RoleD ActM RoleD ActM RoleD ActM
+
+### AGen AGen AGen
+
+(d) HuggingGPT (e) MetaGPT (f) CAMEL
+
+### Decom Decom Decom
+
+
+### U�l Orch U�l Orch U�l Orch
+
+Integ Synth Integ Synth Integ Synth
+NetM CommP NetM CommP NetM CommP
+MemU PrEng MemU PrEng MemU PrEng
+RoleD ActM RoleD ActM RoleD ActM
+
+### AGen AGen AGen
+
+(g) AgentGPT (h) Zapier*
+
+### Decom Decom
+
+
+### U�l Orch U�l Orch
+
+
+### Integ Synth Integ Synth
+
+NetM CommP NetM CommP autonomy level
+alignment level
+MemU PrEng MemU PrEng Decom architectural aspect
+RoleD ActM RoleD ActM level scheme (L0, L1, L2)
+
+### AGen AGen
+
+Figure9: Radarchartsillustratingthesystemprofilesbasedonanassessmentofarchitecturalaspectsinterms
+ofautonomy(bluegraph)andalignment(greendashedgraph)levels. Detailedassessmentdatacanbefound
+inTable3.
+Fig.9displaysthederivedautonomyandalignmentlevelspermulti-agentsystemusingradar(orspider)charts
+[80]. Inparticular,architecturalaspectsformthemultipleaxes. Thelevelscheme(L0,L1,L2)forautonomy
+andalignmentisdepictedbygreycircleslinkingtheseaxes. Thebluegraphthenrepresentstheassessed
+autonomylevels,thegreendashedgraphthecorrespondingalignmentlevels.
+Inwhatfollows,weoutlinekeyresultsfromthetaxonomicassessmentforeachsystem.
+26
+
+<!-- Page 27 -->
+
+• AUTO-GPT[77]-enablesuserstospecifymultiplegoals,whichareautonomouslydecomposed
+intotasksandthenprioritized(L2autonomyforDecomposition);alsoseeFig.9(a). Thesystem
+encompassesthreedistincttask-managementagents: anexecutionagent,atask-creationagent,anda
+task-prioritizationagent.Alltasksareactuallyperformedbythissingularexecutionagentsequentially
+determinedbyprioritization(L0autonomyforOrchestration). Followingthecompletionofeach
+task,theagentevaluatestheintermediateresults,engaginginself-criticism. Thetasksareoptionally
+re-prioritized. Thefinalresultrepresentsanaggregateofallpartialresults,complementedwitha
+succinctsummary(L1autonomySynthesis). Thecommunicationbetweenthethreeagentsfollows
+apredefinedcommunicationprotocol. Prompt Engineeringisadaptivebasedontemplates(L1
+autonomy). Themanagementoftheperformedactionsisself-organized(L2autonomy). Agents
+in the system are pre-configured and instantiated once, showing L0 autonomy. The Role of the
+executionagentisadaptive(L1autonomy). BothMemory UsageandNetwork Managementadhere
+to predefined rules, marking L0 autonomy. AUTO-GPT is equipped with a suite of predefined
+contextualresources(L0autonomy),whichareutilizedinaself-organizingmannerduetotheneeds
+ofthescenario,demonstratingL2autonomy. Acrosstheaspects,thesystemprovidesalowlevelof
+userinteraction. Beyondthetransmissionofgoals,furtheruserinteractionisonlyavailableinterms
+ofauthorizingthesubsequentexecutionstep,whichhowever,canalsobeskippedviathecontinuous
+mode,leavinguserswithnofurtherinterventioncapabilities.
+• BABYAGI [51] - provides very similar functionalities and architectural characteristics to those
+demonstratedbyAUTO-GPT.Thissimilaritycanbevisuallyobservedintheradarchartsillustrated
+inFigs.9(a)and(b). Inparticular, bothsystemsmaintainahigh-autonomylevelregardinggoal
+Decomposition,themanagementofsingleactionsperformedbythetask-executionagent,andthe
+Utilizationofintegratedcontextualresourcesduetotherequirementsofthegiventasks. Furthermore,bothsystemsprovidetransparencybyreportingontheexecutionagent’splansandthinking
+operationsasbasisforexecutingthetasks. Theybothmaintainiterative,butfixedcommunication
+protocolsallowingforthetask-managementagentstoorganizethedecompositionandaspectsof
+resultsynthesis. BABYAGIextendsthesetoftask-managementagentsbyacontextagent,which
+isresponsibleforcontext-interactiontasks. Inaddition,italsoallowstheusertoconfigureafew
+constraintsgoverningtheuseoftheLLM.
+• SUPERAGI [79] - also allows users to specify a goals or complex task, which are decomposed
+autonomouslyintotaskstackledsequentiallybyanLLM-poweredagents. Thereby,itsfunctionalities
+and architectural characteristics are in some regards similar to AUTO-GPT and BABYAGI (see
+above). Forinstance,theexecutingagentisperformingtheassignedtasksautonomously,showcasing
+L2autonomyinAction Management;alsoseeFig.9(c). Thesystemsleveragespredefined,but
+adaptableprompttemplates(L1autonomyforPrompt Engineering). Contextualresourcesare
+alsoutilizedinanautonomousmanner,indicativeofL2autonomy. Divergingfromitscounterparts,
+SUPERAGInecessitatesthatuserscreateadedicatedagentforeverydistinctgoal. Incontrasttothe
+othertwosystems,therolesoftheseagentsarehighlytask-adaptive(L2autonomy)andcanbeinfluencedbyuser,attributingtoL1alignment. Moreover,theOrchestrationoftasksismoreadaptive
+(L1autonomy). AdistinctivefeatureofSUPERAGIisitsabilitytoincorporatevariousalignment
+strategies. Forinstance,itpermitsconstraintsregardingMemory Usage,allowinguserstocapthe
+contextwindow’slength,atraitofL1alignment. IntermsofContext Interaction,SUPERAGI
+comes with an array of pre-configured tools, all of which can be authorized for Utilization.
+Furthermore,datacanbeuploaded,empoweringagentstoseamlesslyincorporateandutilizeit(L1
+alignment). ThoughSUPERAGIcanhandlemultiplegoalsandagents,theseagentsworkinparallel,
+separately. Thereisnoactualcollaborationbetweentheagents,andnofurtherconfigurationoptions
+fortheuser,resultinginL0autonomyandalignmentforCommunication ProtocolandNetwork
+Management.
+• HUGGINGGPT[70]-followsadifferentstrategybyleveragingtheLLMasanautonomouscontroller
+thatcombinesvariousmulti-modalAImodelstosolvecomplextasks. Inthis,itintegrateswiththe
+HUGGINGFACEplatformthatprovidesalargepooloffoundationmodelsavailableforutilization.
+ThissingularcentralLLM-poweredagent,tailoredtosolvethegivengoal,isautonomousinbreaking
+downthegoalorcomplextaskintomanageabletasks(L2autonomyforDecomposition)aswellas
+inselecting,combining,andapplyingtheappropriatemodelsviaprompting,achievingL2autonomy
+forIntegrationandUtilizationofcontextualresourcesaswellasforPrompt Engineering,
+Action Management, Agent Generation, Role Definition. However, not every aspect of
+HUGGINGGPTexhibitssuchhighautonomy. Someproceduralaspectsarepredefined,butadaptive
+to the given task, such the high-level process framework consisting of the predefined phases of
+27
+
+<!-- Page 28 -->
+
+planning,modelselection,taskexecution,andresponsegeneration. Despiteitsautonomyinmany
+aspects,HUGGINGGPTdoesnotgrantusersanyfurtherdegreeofusercustomization,resultinginL0
+alignmentforallaspects;seeFig.9(d). Insum,basedonourautonomy-alignmentmatrix(seeTable
+1),thesystemshowstendencytowardsBounded Autonomy(#7;L2autonomyandL0alignment).
+• METAGPT[28]-aimstosolvecomplexprogrammingtasks(specificallyinPython)byleveraging
+thesynergiesofmultiplecollaboratingLLM-poweredroleagents. Thereby,theframeworksimulates
+humanworkflowsandresponsibilitiesinherenttosoftware-developmentproject. Forthispurpose,
+thetask-managementactivitycomprisesdistinctphasessimilartothewaterfallprocess(suchasRE,
+design,coding,testing),eachwithdedicatedroleagentsresponsibleforautonomouslyexecuting
+theassociatedtasks. Eachphasedeliverscertainartefactsthenprocessedbythenextphase(e.g.,
+designspecification). Inparticular,theuser-specifiedrequirementsareautonomouslytransferred
+intothesedifferentartefacts(L2autonomyforDecomposition),whicharefinallyalsocombined
+toproductatestedsoftwareprogram,achievingL2autonomyforSynthesis;alsoseeFig.9(e).
+Asmentionedaove,theactualOrchestrationfollowsadefinedscheme,termedasstandardized
+operationprocess,resultinginL0autonomy. BothAgent GenerationandRolesarepredefined
+(L0autonomy). Withintheirdesignatedphases,theagentsdisplaypronouncedautonomy,exhibiting
+adaptabilityintheirAction Managementcorrespondingtothespecificityoftasks,therebyreaching
+L2autonomy. Prompt Engineeringispredefined,butadaptedforinter-agentcollaboration(L1
+autonomy). Contextualresourcesareautonomouslyutilizedasneeded,markingL2autonomyfor
+Context Interaction. SimilartoHUGGINGGPT,METAGPTshowcaseslowlevelsofalignment
+fortheuser(L0),sinceitprovidesnofurtherconfigurationoradjustmentoptionsfortheuser.
+• CAMEL [41] - aims to explore the potentials of autonomous cooperation among communicative LLM-powered agents to accomplish complex tasks. Similar the most other multi-agent systems, it aspires to handle given user-prompted goals autonomously. To this end, a dedicated
+generictask-specifieragentbreaksdownthegoalintoalistofmanageabletasks(L2autonomyfor
+Decomposition),alsoseeFig.9(f).Subsequently,thesetasksareprocessedbyapairofagentsworkingintandemthroughacyclicaldialoguepattern,whereintheAI-useragentlaysoutthedirectives,
+andtheAI-assistantagentassumestheroleoftheexecutor. Thisstrictmodusoperandicorrespondsto
+L0autonomyinOrchestration,Communication Protocol,andNetwork Management. The
+specificRolesofthesepredefinedagentarchetypescanbeselectedbytheuser(L1alignment). Augmentingthisduoareotherspecializedagentsdesignedforspecificroles,includingtaskallocationand
+strategicplanning.Incontrasttomostotheranalyzedsystems(exceptMETAGPT),CAMELprovides
+actualcollaborationbetweenroleagentsexecutingthegiventasks. Duringthetask-executionphases,
+agentsoperatewithamarkedsenseofautonomy,achievingL2inbothPrompt Engineeringand
+Action Management. Alignment options for the user are provided via the definition of agents,
+encompassingtheirRolesandinterrelationintheNetwork,resultinginL1alignment.
+• AGENTGPT [71] - also strives to accomplish a user-prompted goal by leveraging a single taskexecutionagent,whocanbecreatedbytheuserbyspecifyingitsgoal,resultinginL1alignment
+for Agent Generation. The agent systematically addresses tasks, prioritizing them based on a
+predefinedlistandcapitalizingoncontextualresources,allinaself-organizedmannercorresponding
+toL2autonomy. Intermsofautonomylevelsacrossdifferentfacets,itcloselymirrorsSUPERAGI,as
+canbeobservedinFig.9(c)and(g). However,whenitcomestoalignmentpossibilities,AGENTGPT
+divergesslightly. Ontheonehand,itprovidesnoadjustmentoptionsregardingtheagent’sroleorthe
+Synthesisofresults(bothL0alignment). Ontheotherhand,itintroducestheoptiontoextendthe
+tasklistbyinsertingcustomtasks,achievingL1alignmentforDecomposition.
+• ZAPIER[62]-Unliketheotherentitiesdiscussed,ZAPIERfocusesonworkflowautomationbasedon
+user-specifiedtasksanddoesnotrepresentanLLM-poweredmulti-agentsystem. Itsinclusioninthis
+classificationservestocontrasttheresults,providingaclearerunderstandingofthecapabilitiesand
+potentiallimitsofLLM-poweredsystemswhenjuxtaposedwithtraditionaltask-orientedautomation
+platforms. Inparticular,inZAPIER,usersneedtodefinestep-by-stepinstructionstofacilitatethe
+automationprocess. Theresultingworkflowscanworkinparallel,butlackthecapabilityfordirect
+inter-taskinteractions. ZAPIERoffersconfigurationoptions(pre-runtime)fordiverseaspectsrelatedto
+Task ManagementandContext Interaction,resultingL1alignment;alsoseeFig.9(h). Given
+itsnon-relianceonLLM-poweredagents,itnaturallysecuresanL0rankinginbothautonomyand
+alignmentforagent-centricattributes. Nevertheless,itleveragesLLMstoprocesstextualtaskssuch
+aswritingemails,orfordecomposinguser-specifiedgoalsintotasks,afeatureuserscanoptionally
+activate(thusL1autonomyforDecomposition). Drawingfromourautonomy-alignmentmatrix,
+detailedinTable1,ZAPIERisaptlycategorizedasUser-Guided Automation(#2;signifyingL0
+28
+
+<!-- Page 29 -->
+
+autonomyandL1alignment).Givenitsuniquepositioningasaworkflowautomationsystem,ZAPIER
+providesanillustrativedeviationfromthesetrends. Itsstrategicapproachisdistinct,predominantly
+showcasinglowerlevelsofautonomy,astheLLMsareonlyleveragedforspecific,limitedtasks.
+Conversely, it favors a strategy of extensive user-guided alignment, applicable to all except the
+agent-specific aspects. Note, however, that alignment here is not applied as an enhancement or
+refinementtoactuallyalignthesystem’soperationtotheuser’sgoalorintention,butintermsof
+specificationsofprocessstepswithdetailedinstructionsessentialforthesystem’soperation.
+5.2 ComparativeAnalysis
+Inthefollowing,wediscussthedistributionofassessedlevels(Section5.2.1)andexplorestrategiesacross
+systemcategories(Section5.2.2).
+5.2.1 ComparisonofAssessedLevels
+Fig. 10 offers an overview of how the assessed levels of autonomy and alignment distribute over the 12
+categories of architectural aspects of the seven selected multi-agent systems. Detailed assessment data is
+providedinTable3.
+(a) Autonomy Levels
+Decom Orch Synth CommP PrEng ActM AGen RoleD MemU NetM Integ U�l
+L2 7 0 2 0 1 6 1 3 0 0 1 6
+L1 0 3 5 1 6 1 2 3 1 1 0 0
+L0 0 4 0 6 0 0 4 1 6 6 6 1
+(b) Alignment Levels
+Decom Orch Synth CommP PrEng ActM AGen RoleD MemU NetM Integ U�l
+L2 0 0 0 0 0 0 0 0 0 0 0 0
+L1 1 0 1 0 0 0 3 2 1 1 1 2
+
+### L0 6 7 6 7 7 7 4 5 6 6 6 5
+
+Figure10: Distributionofidentifiedautonomyandalignmentlevelsacrossarchitecturalaspectsofselected
+LLM-poweredmulti-agentsystems,representedasstackedbarchartswithcorrespondingdataprovidedbelow.
+Ontheonehand,threegroupsofaspectcategoriesemergewhenassessingautonomylevels,eachdisplayinga
+certaindegreeofhomogeneity. AdetailedrepresentationcanbefoundinFig.10(a).
+• High-AutonomyAspects: Amongthesystems,weencounterahigh-autonomystrategyforcertain
+aspects,demonstratedbyself-organizingandautonomouslydecidingLLM-poweredagents. This
+strategyisparticularlyevidentforthedecompositionofgoalsintomanageabletasks(Decom),forthe
+managementofactions,encompassingtheactualperformanceofdifferenttask-relatedactions(ActM),
+aswellasforutilizingthecontextualresourcessuchastoolsanddata(Util). Nearlyallsystems
+delegatetheresponsibilitiesfortheseaspectstotheLLM-poweredagents,whichcorrespondstoL2
+autonomy.
+29
+
+<!-- Page 30 -->
+
+• Medium-AutonomyAspects: Forotheraspects,systemsleantowardsasemi-autonomousstrategy
+(L1),featuringpredefinedmechanismsadaptablebytheLLM-poweredagents. Thisisprominently
+observedintwoaspects. First,inresultsynthesis(Synth),bycombiningthetaskresultsguidedbya
+predefinedframeworkadaptablebytheLLM-poweredagents. Second,intheengineeringofprompts
+(PrEng),suchduringpromptaugmentationbyadaptingpredefinedprompttemplates.
+• Low-Autonomy Aspects: Several architectural aspects showcase a deterministic strategy with
+rule-basedmechanismsandautomation,demonstratingL0autonomy,whichcanobservedforthe
+followingaspects:
+– orchestratinganddistributingthetasks(Orch).
+– guidingthecollaborationbetweentheagents(CommP).
+– managingtheutilizationofmemory,suchasforreflectingandplanning(MemU).
+– managingtheagentnetwork,suchasregardingtherelationshipsbetweentheagents(NetM).
+– integratingcontextualresources(Integ).
+Variable-Autonomy Aspects: The autonomy levels for the aspects of agent generation (AGen) and role
+definition(RoleD)displaynotablevariability,asdepictedinFig.10(a). Thisheterogeneityisreflectiveofthe
+differentstrategiesemployedbythemulti-agentsystemsunderanalysis(detailedinSection5.2.2).
+IntegratedandUser-GuidedAlignment: DrawinginsightsfromFig.10(b),itemergesthatthepredominant
+strategyacrossmostsystemsistomaintainlowerlevelsofalignmentacrossallassessedaspects.Thisprimarily
+manifestsinalignmenttechniquesalreadyintegratedintothesystemarchitecture(L0alignment),offering
+littletonooptionsforuseradjustment. Furthermore,low-autonomyaspectswithpredefinedandautomated
+mechanismscanbeusedtocontrolandalignotherhigher-autonomylevels. Thus,thesemechanismscanbe
+seenasmanifestationsofintegratedalignment. However,weobserveanoticeableinclinationforsystemsto
+provideuser-guidedalignment(L1)forspecificaspectcategories,namelytheagentgeneration(AGen),agent
+roledefinition(RoleD),andcontextualresourceutilization(Util). Furthermore,thedatarevealsaconsistent
+lackofreal-timeresponsivealignmentoptionsacrossallexaminedsystems. Nonetheless,inthiscontext,itis
+worthmentioningthatsomesystemsatleastfacilitatemonitoringfunctionalitiesavailableforsystemusers
+(oftentermedasverbosemode),whichprovidetransparencyofthereasoninganddecision-makingperformed
+bytheexecutionagentsduringtaskreflectionandplanning. Thistransparencygrantsuserstheleverageto
+eithergreenlightorhalttheimpendingactions. However,therearenopossibilitiestofurtherinfluencethetask
+planningorexecution,suchasbyadjustingorrefiningtaskplanning.
+IntertwinedDependencies: AsevidentfromtheradarchartsinFig.9,adiverserangeofautonomylevels
+manifestsbothwithinandacrossarchitecturalviewpointsoftheanalyzedsystems. Thisvarianceresultsin
+acomplexwebofintertwineddependenciesbetweentheaspects: Certainaspectshavetodealwithdiverse
+dependencies. Whiledependentonpredefinedmechanismsorresourcesprovidedbylow-autonomyaspects
+(availability-drivendependencies),theyhavetoadaptdynamicallyinresponsetosituationalimperativessetby
+otherhigh-autonomyaspects(requirements-drivendependencies). Thiscomplexityresultingfromintertwined
+dependenciescanbeseenaschallengingforensuringaccurateprocessexecution. Adetaileddescriptionof
+thesechallengesassociatedwitharchitecturaldependenciesisprovidedinSection4.2.2.
+5.2.2 StrategiesAcrossSystemGroups
+Wenowexplorehowdifferentcategoriesofsystemsbalancetheinterplaybetweenautonomyandalignment.
+BasedonourtaxonomicclassificationandtheresultingsystemprofilesasillustratedinFig.9,wecancategorize
+theselected7systemsunderanalysisintothreedistinctsystemgroups,whichencompassgeneral-purpose
+systems, central-controllersystems, androle-agentsystems. It’simportanttonotethatourcategorization
+intothesethreegroups,basedonthesystemschosenforthisexploration,doesn’tcapturetheentirespectrum
+ofautonomousLLM-poweredmulti-agentsystems. Foracomprehensiveoverviewofexistingsystemsand
+systemcategories,werecommendreferringtotherecentsurveysprovidedby[84,95]. Inthefollowing,the
+keycharacteristicsasobservedfromthecorrespondingsystemprofilesarediscussed.
+• General-Purpose Systems - representing multi-agent systems designed for and adaptable to a
+broad spectrum of tasks and applications. Within the analyzed set of multi-agent systems, the
+followingfallintothisgroup: AUTO-GPT[77],BABYAGI[51],SUPERAGI[79],andAGENTGPT
+[71]. Goals are decomposed autonomously and represented as prioritized task lists (L2 Decom).
+They employ a multi-cycle process framework performed by dedicated task-management agents
+representedbycertaingenericagenttypes,includingasingletask-executionagent(seeSection3.2).
+30
+
+<!-- Page 31 -->
+
+Relationsandcommunicationsbetweentheseagentsarestrictlypredefined,andagentconversations
+express as a monologue of the task-execution agent, resulting in low autonomy levels (L0) for
+communicationprotocol(CommP),andnetworkmanagement(NetM).Thetask-relatedactionsare
+performedautonomouslybythetask-executionagent(mostlyL2autonomyActM).whileresource
+integrationisbasedonprovidedmechanisms(Integ),theresourcesareselectedandutilizedbythe
+LLM-poweredinaself-organizingmanner(L2autonomyforUtil),exceptforCAMEL;resulting
+in similar autonomy profiles for the aforementioned aspects. Besides from these commonalities,
+thesesystemsdistinguishincertaincharacteristics. BothAUTO-GPTandBABYAGIemploygeneric
+task-execution agent, and provide no further alignment options at all. Moreover, these systems
+employ a generic task-execution agent with predefined agent roles and relations, reulting in L0
+autonomyforAGenandNetM.Incontrast,SUPERAGIandAGENTGPTemployexecutionagents
+withself-organizingagentroles(L2autonomyforRoleD),anadaptableorchestrationprocess(L1for
+Orch),andsomealignmentoptions,especiallyforagent-specificaspects. Moreover,thesesystems
+employexecutionagents,whoserolescanbecustomizedbytheuser(L1alignmentforAGen).
+• CentralLLMController-marksathirdgroupspecializedinleveragingandcombiningcontextual
+resourcesforaccomplishingthecomplexgoals. HUGGINGGPT[70]servesasanarchetypeofsuch
+systems,utilizingresourcesespeciallyintermsofexistingMLmodelsintegratedviaHUGGINGFACE.
+AsalreadydetailedinSection5.1,HUGGINGGPTischaracterizedbyasinglecentralLLM-powered
+controlagentwithmonologue-basedreflectionandplanning. Languageintermsofagentprompts
+asgenericinterfacetomanagetheinterplaybetweenmultiplespecializedfoundationmodels. In
+comparisontoothersystemsorsystemgroups,weseethehighestlevelsofautonomygrantedto
+thiscentralagent(mostlyL2);alsoseeFig.9(d). Furthermore,weseeafiniteandartefact-oriented
+processadaptablebytheLLM-poweredagentfororchestratingthedifferentmodel-relatedtasks(L1
+autonomy). Asalreadystatedabove,beyondpromptingthetask,therearenofurtheruser-centric
+alignmentoptions(L0alignment).
+• Role-AgentSystems-employaninterplayorsimulationbetweenmultiplededicatedrolesagents.
+Thiscollaborationcanservedifferentpurposes,suchassimulatingadiscussionorsolvingtasksthat
+demandforamulti-perspectivecollaboration. Withdefinedrolesinacertainenvironment(suchas
+inasoftwaredevelopmentproject),theirapplicationisboundtothisapplicationdomainorspecial
+purpose.Amongtheanalyzedsystems,METAGPT[28]andCAMEL[41]representsuchsystems.In
+contrasttothegeneral-purposesystems,theexecutionagentsplayroleswithdedicatedresponsibilities
+inacertainapplicationdomain. Furthermore,theseroleagentsactuallycollaboratedirectlywith
+eachother. Incaseofthetwoexemplarysystems,thiscollaborationisrealizedbycommunication
+protocols employing a dynamic exchange between agents with instructor and executor roles. In
+particular,CAMELemploystwosuchroleagentsbasedonpredefinedagenttypes,butadjustableby
+theuser. Inongoingstrictdialoguecycles,theAI-userroleagentsinstructstheAI-assistantroleagent
+toexecutethetasks(L0autonomyforCommP).SimilartoSUPERAGI,CAMELrequirestheuserto
+specifytheagents’roles(L1alignment). METAGPT,incontrast,internallyassignspredefinedroles
+withresponsibilitiesalongsideawaterfalldevelopmentprocess(L0alignment);thus,alsoexpressing
+afiniteandartefact-orientedprocess(L0autonomyforOrch),terminatingwiththeproducedand
+tested software program. However, like in real-world software project, refinement iterations can
+follow,optionalfeedbackcyclesmakeitadaptablefortheagents(L1autonomyforCommP).
+StrategyAssessment. Beyonddifferencesintheappliedcommunicationprotocols, itistheflexibilityof
+agentroles(inrelationtobothautonomyandalignment)andfurthercustomizationoptionsforagent-specific
+aspectsthatdistinguishesthesystems’strategies(seeabove). However,whenexamininghowthesystems
+deal with autonomy and alignment across further aspects, most systems and system groups show similar
+strategies. ThereasoningcapabilitiesofLLM-poweredagentsareespeciallyleveragedinareasdemanding
+highautonomy,suchasthegoaldecomposition,theactualexecutionoftask-relatedactions,andtheutilization
+ofcontextualresources. Interestingly,thesehigh-autonomyaspectsaremostlycombinedwithlowalignment
+levels,resultinginboundedautonomyaspects(refertoTable1). Acloserlookataspectinterdependencies,as
+depictedinFig.8,revealsthattheseinternallyunbalancedaspectsareaccompaniedbyotherlow-autonomy
+aspectsequippedwithlimitedflexibility,asfollows:
+• Autonomousdecompositiondirectlydependsontheuser-promptedgoal.
+• Autonomousactionmanagementdependsonstrictorpredefinedcommunicationprotocol.
+• Autonomousresourceutilizationdependsonstrictorpredefinedresourceintegration.
+Inthesecases,thepredefinedandrule-basedmechanismsserveasintegratedalignmentguidingandcontrolling
+theaccurateoperationofthedependentautonomousaspects.
+31
+
+<!-- Page 32 -->
+
+Basedonthefindingsofthetaxonomicclassification,inthenextSection6,wediscusschallengesforcurrent
+systemsandreflectonthetaxonomy’slimitationsandpotentials.
+6 Discussion
+Thispaperintroducesandappliesanovelcomprehensivetaxonomy,sheddinglightonthewaysautonomous
+LLM-poweredmulti-agentsystemsmanagethedynamicinterplaybetweenautonomyandalignmentwithin
+theirarchitectures. Wheninterpretedthroughthelensofourtaxonomy,weencounterchallengesanddevelopmentpotentialsforcurrentLLM-poweredmulti-agentsystems,whicharediscussedinSection6.1. Moreover,
+inSection6.2,wereflectonlimitationsandfurtherpotentialsofthetaxonomyitself.
+6.1 ChallengesforCurrentSystems
+OuranalysisofarchitecturaldynamicsinherenttocurrentLLM-poweredmulti-agentsystems,asdetailed
+inSection5,revealsanumberofchallengesregardingtheinterplaybetweenautonomyandalignment. In
+accordancewith[84],werecognizechallengesrelatedtotheadaptabilityofagentcollaboration. Moreover,
+ourexplorationindicatespotentialsforuser-centricalignmentoptionsandcontrollinghigh-autonomyaspects.
+AgentCollaboration. Amongthesystemsanalyzed,weespeciallyobservelimitationsregardingcollaboration
+modesandrole-playingcapabilities,aswellasriskstiedtoprompt-drivencollaborationtechniques.
+• Adaptability of Communication Protocols: As discussed in Section 5.2, the collaboration between agents is mainly characterized by restricted communication protocols between predefined
+task-execution agents, such as instructor-and-executor relationships, or sequential or multi-cycle
+processeswithpredefinedexecutionchains. EmployingLLM-poweredagentstomanageandadapt
+theconstellationoftheagentnetworkaswellastheircollaborationmodescouldpavethewayfor
+morecreativeproblem-solvingmethodsintaskexecution.
+• DynamicRole-Playing: Inparticular,wealsoseedevelopmentpotentialsviatheflexiblecollaborationbetweenself-organizingroleagents,suchasforsimulatingthecomplexinterplaywithina
+certainapplicationdomain. Asfarasobservable,thepotentialofengagingmultipleperspectives
+throughdifferentrolesandstandpointshasnotyetbeenfullysounded.
+• RobustnessofPrompt-drivenCollaboration: CollaborationbetweenLLM-poweredagentsbasicallyreliesonprompt-drivenmessageexchange, suchasbydelegatingtasks, askingquestions,
+or evaluating task results. This communication mechanism, founded on a sequence of prompts,
+heavilyreliesonthequalityofLLMresponses,whicharesusceptibletoerrorsintermsofincorrect
+or hallucinated results [45, 30]. However, without the integration of comprehensive and robust
+controlmechanismstocheckthequalityoftheseresponses,thesystemisvulnerabletoinaccuracies,
+misunderstandings,andinefficiencies[28].
+User-CentricAlignment. Withinthescopeofanalyzedsystems,user-centricalignmentoptionsareveryrare.
+Alignmentmechanismsarepredominantlyintegratedintothesystemarchitecture(seeSection5.2). Drawing
+fromthislimitation,weseepotentialsincertainuser-guidedandreal-timeresponsivealignmentoptions.
+• User-GuidedAlignmentOptions:Theoptionsforuserstoaccessandinfluencetheinternalworkings
+ofthesystemareverylimited. Theinternalcompositionandcollaborationoftheagentsaremostly
+opaquetotheuser,whichreducestransparencyofthesystemoperation. Exceptiontothisrepresents
+the runtime documentation of agents’ reflection and planning, provided by certain systems (see
+Section5.1). Thecustomizationofinternalmechanismsismostlynotprovidedtousers. Besides
+agentgenerationandroledefinition(offeredbyafewsystems),thereispotentialforusermodifications
+relatedtocommunicationprotocols,taskorchestration,orresultsynthesis. Correspondingtothe
+aspectadaptabilityforLLM-poweredagents(seeabove),modifyingtheseinternalmechanismswould
+enabletheuserinexploringalternativeproblem-solvingways.
+• Real-Time Responsiveness: The obvious lack of real-time adjustment capabilities can be seen
+founded in the nature of autonomous agent systems, which is accomplishing the user-prompted
+goalwithoutfurtherhumanintervention. However, aselaboratedoninSection4, autonomyand
+alignmentcanbeunderstoodascomplementaryaspects. Theabsenceofuserinteractionandcontrol
+duringruntimerestrictsthepotentialfordynamicalignment,therebylimitingthesystem’sflexibility
+in response to changes in the operational context. As detailed in Section 4.1.2, the interaction
+32
+
+<!-- Page 33 -->
+
+layerallowstheintegrationofinterceptormechanisms. Thisnotonlyallowsreal-timemonitoring,
+addressingkeyconcernsofexplainableAI[63,96],butalsotoimplementeffectivefeedbackand
+interventionoptions[40,27]. Collaborativeenvironmentsfosteringhybridteamwork,comprising
+autonomousagents(oragentssystems)andhumanco-workersareessentiallybuiltuponsuchrealtimeresponsiveness,ensuringdynamicrealignmentwhileworkingtowardssharedgoals[34,54,89].
+ControllingHigh-AutonomyAspects. Besidesprompting-relatedflawssuchasinaccurateorhallucinated
+responses(seeabove),ourengagementwiththeanalyzedmulti-agentsystemshasrevealedadditionaloperationalissues. Occasionally,wewitnessnon-terminatingactivities,wherethesystemfallsintoinfiniteloops.
+Forinstance,thiscanmanifestviasolutionscontinuallyfine-tunedunderthepremiseofimprovement,orthe
+systemoperationisstuckinaneverendingdialoguebetweentwoLLM-poweredagents. Conversely,system
+operationsmightterminateinadeadendwhenencounteringataskthatrequirescompetenciesorresourcesthat
+areeitherunavailableorinaccessible.Obviously,thecorrespondingcontrolmechanisms(integratedalignment)
+appliedinsuchsystemsareill-equippedtoefficientlycatchthesekindsofexceptions.Thisinsufficiencyproves
+particularlyconcerning,asitunderminesthereliabilityandeffectivenessofthesesystems. However,besides
+thissymptomatictreatment,thereasonsfortheseproblemscanbeseenfoundedinarchitecturalcomplexities,
+suchashigh-autonomylevelsnotadequatelyalignedorintertwineddependenciesresultingfromvaryinglevels
+ofautonomy(refertoSection4.2.2).
+6.2 LimitationsandPotentialsoftheTaxonomy
+Forengineeringthetaxonomicsystem,wechoseapragmaticandtechnicalperspective(seeSection4)and
+exploreditsutilitybytheexemplaryclassificationofsevenselectedLLM-poweredmulti-agentsystems(see
+Section5). However,departingfromthisexploration,certainlimitationsandfurtherpotentialsbecomeevident.
+Taxonomic System. Our taxonomy conceptualizes autonomy and alignment not as binary extremes in a
+one-dimensionalcontinuum,butasinteractingandsynergisticaspects. Thisdistinctionsallowsforminga
+two-dimensionalmatrix(seeSection4)combininghierarchiclevelsofautonomy(fromautomatedmechanisms
+to self-organizing agents) and alignment (from system-integrated to real-time responsive). This structure
+reflectstheaforementionedtriadicrelationshipbetweenthekeydecision-makingentitiesinthesystem(i.e.,
+human users, rules and mechanisms, as well as LLM-powered agents) and their dynamic interplay (i.e.,
+alignment,systemoperation,andcollaboration),asillustratedinFig.3. Augmentingthis,wemapthismatrix
+ontodifferentcharacteristicaspectsderivedfromfourappliedarchitecturalviewpoints(seeSection4.2).
+• AutonomyScope: Withinthis,wereferencehighautonomytotheagents’self-organizationcapabilitiesfordecision-makingandfurtheroperationalimpact(seeSection4.1.1). However,it’sessentialto
+considerthatautonomycanspanbeyondthisdefinition,encompassingfacetslikeanagent’sability
+forself-enhancementandproactiveagency.
+• AlignmentScope: Inturn,thealignmentdimensionemployedbythetaxonomyreflectstwokey
+aspects,i.e.,theoriginofthealignment,andthemomentofitscommunicationtothesystem(see
+Section4.1.2). Incombinationwiththearchitecturaldimension,wealsoreflectthearchitecturalor
+functionalscopeofthealignmenttechniqueintermsoftheviewpoint-specificaspects. However,one
+mustnotethatthisdimensiondoesnotreflectthequality,efficacy,ordepthoftheappliedtechniques.
+• ScopeofArchitecturalAspects: AsdetailedinSection4.3,thetaxonomyadopts12architectural
+aspectsinherenttothefourarchitecturalviewpointscharacteristicforLLM-poweredmulti-agent
+systems. TheviewpointsareorientedtoKruchten’sviewpointmodelforsoftwarearchitecture[38],a
+recognizedstandardinthisfield. However,asthereexistmoreviewpointmodelsreflectingfurther
+concerns and perspectives on software systems, there might also be further architectural aspects
+possibly relevant to autonomous LLM-powered multi-agent systems. Considering the ongoing
+evolutioninthefield,theseadaptionsbecomecrucial.
+ExpressivenessofTaxonomicClassification. Thescopeofthetaxonomicstructureformsthefoundationfor
+thetaxonomy’sanalyticalpowerenablingconclusionsabouttheclassifiedsystemsunderanalysis.
+• LevelsasStrengthsandWeaknesses: Itisimportanttounderstandthathigherlevelsinautonomy
+andalignment,termedasuser-responsiveautonomy(seeTable1),mightnotalwaysbetheoptimal
+systemconfigurationforeveryscenario. Indeed,highautonomycandeviatefromtheintendedgoal
+andthereforeneedstobealignedaccordingly. Incertainsituations,asystemwithmodestautonomy
+couldbeconsideredthebestchoice. Giventheintentiontoautomatearepetitivesetofroutinetasks
+33
+
+<!-- Page 34 -->
+
+withpredictablevariablesandcontextualrequirements,astaticautonomywithpredefinedrulesand
+mechanismswouldnotbejustsufficient,butalsoprovideahigherreliability. Ifthereisnoneedto
+includeuser-specificinformation,acombinationwithanintegratedalignmentcanbeseenasbest
+choice(rule-drivenautomation).
+• SystemEfficiencyandAccuracy: Aspreviouslyelaborated,ourtaxonomyfocusesonthearchitecturalcomplexitiesdrivenbythedynamicsbetweenautonomyandalignment,ratherthanevaluating
+functionalperformancemetricslikeoperationalefficiencyoraccuracy. Neitherrecentsurveysin
+thefield[84,30]domeasurethesystems’performance,suchasintermsofefficiency,accuracy,or
+scalability. However,whileengagingwiththeanalyzedsystems,weobservedsubstantialdifferences
+amongthem, reflectingtheexploratorystateandtheongoingrapidevolutionofthedomain. For
+measuringtheirfunctionalperformance,benchmarksandmethodscouldbeadoptedsimilartothose
+presentedin[13].
+• BalancingTechniques: AsreportedinSection5.2,wehaveidentifieddifferentbalancingstrategies
+across the system architectures. In this context, it is important to notice that aspects marked as
+unbalanced(forexample,combininghigh-autonomyandlow-alignmentlevels)mightbeactually
+controlledorbalancedviaautomatedmechanismsappliedbyanotheraspect(staticautonomyand
+integratedalignment). Withintheanalyzedsystems,user-centricalignmentoptionsarebarelyapplied
+tocurbthewildnessofhigh-autonomyaspects. Itwouldbeinteresting,toinvestigateandcomparein
+detail,howintegratedalignmenttechniquesareemployedtodealwiththechallengesandcomplexities
+ofagent-drivenautonomy.
+PracticalImplications. Drawingfromtheinformationvalueprovidedbytheclassificationresults,wecan
+distinguishconsiderationsregardingthepracticalutilityandrelevanceofthetaxonomy.
+• AnalysisPurposes: Theanalysisandunderstandingofthesedynamicarchitecturalcomplexitiescan
+servedifferentpurposes,suchas:
+– Comparing, selecting, and applying available multi-agent systems in the context of given
+scenarioswithcertainrequirementsforautonomyandalignment.
+– Reasoningaboutarchitecturaldesignoptionsforthedevelopmentofnovelmulti-agentsystems.
+– Scrutinizingandrethinkingstrategiesforbalancinglevelsofautonomyandalignment.
+– Buildingafoundationalframeworkforadditionalanalysistechniquesorcomplementingthem,
+suchasmeasuringthefunctionalsystemcapabilities(seeabove).
+• Ongoing Evolution: As underscored by recent surveys [84, 95], the field of autonomous LLM-
+poweredmulti-agentsystemsischaracterizedbyanongoingrapidevolutionshowcasingadynamically
+growingnumberofapproachesfeaturingdiversearchitecturesandawidespectrumofsystem-maturity
+levels. Whiledesignedtoabstractfromconcretesystemspecifics,thetaxonomicsystemmightneed
+periodicupdatestoaccommodatethisdynamicallyevolvinglandscape.
+• BroaderApplicability. TailoredtoaddressthecharacteristicsofautonomousLLM-poweredmultiagentarchitectures(refertoSection3),thefoundationalprinciplesofourtaxonomy,however,seem
+to be transferable to other AI systems. Certain segments of the taxonomic structure can be seen
+asuniversallyapplicableacrossAIarchitectures. Conversely,facetsspecificallytailoredtomultiagentsystems,suchastheaspectsinherenttotheagentcompositionandmulti-agentcollaboration
+viewpoints,wouldrequirecorrespondingadjustments.
+7 Conclusion
+Inthispaper,wehaveintroducedacomprehensivemulti-dimensionaltaxonomyengineeredtoanalyzehowautonomousLLM-poweredmulti-agentsystemsbalancethedynamicinterplaybetweenautonomyandalignment
+acrosstheirsystemarchitectures. Forthispurpose,thetaxonomyemploysamatrixthatcombineshierarchical
+levelsofautonomyandalignment. Thismatrixisthenmappedontovariousarchitecturalaspectsorganized
+byfourarchitecturalviewpointsreflectingdifferentcomplementaryconcernsandperspectives. Theresulting
+taxonomicsystemenablestheassessmentofinterdependentaspectconfigurationsinawidespectrum,ranging
+from simple configurations, such as predefined mechanisms combined with system-integrated alignment
+techniques(rule-drivenautomation),tosophisticatedconfigurations,suchasself-organizingagencyresponsive
+touserfeedbackandevolvingconditions(user-responsiveautonomy). Appliedto12distinctarchitectural
+aspectsinherenttoviewpoints,suchasgoal-driventaskmanagement,multi-agentcollaboration,agentcomposition,andcontextinteraction,thistaxonomyallowsforanuancedanalysisandunderstandingofarchitectural
+complexitieswithinautonomousLLM-poweredmulti-agentsystems.
+34
+
+<!-- Page 35 -->
+
+Through our taxonomy’s application to seven selected LLM-powered multi-agent systems, its practical
+relevance and utility has been illustrated. In particular, it has been shown that a combined assessment
+of autonomy and alignment levels across the architectural aspects of each multi-agent system allows for
+identifyingsystemprofilesthatcanindicatecertainstrategiesforbalancingthedynamicinterplaybetween
+autonomyandalignment. Thisexplorationofexemplarycurrentsystemsalsorevealedseveralchallenges.
+Mostprominently,weobservedalackofuser-centricalignmentoptionsacrossallsystems,withlittleuserguidedalignment,butnoreal-timeresponsivealignmentatall. Moreover,thesystemsexhibithighautonomy
+levelsmostlyforcertainaspects,suchasthegoaldecomposition,theactionmanagement,ortheutilizationof
+contextualresources. Incontrast,otherkeyaspectsofthesystemoperationshowlimitedautonomy;aspects
+suchasmanagingthecommunicationprotocol,memoryusage,oragentnetworkarelargelystatic,leaning
+heavilyonpredefinedmechanisms.
+Basedontheseandfurtherfindings,weespeciallyseetwopromisingavenuesfortheevolutionofautonomous
+LLM-powered multi-agent systems. Firstly, by employing adaptable and self-organizing communication
+protocolsandagentnetworks,thesystems’role-playingcapabilitiescouldbeenhances,whichenablesthemto
+bettersimulatecomplexmulti-perspectiveenvironments. Byreflectingandweighingupdiversestandpoints
+andstrategies,thiscouldalsopavethewayformorein-depthinter-agentdiscussionsandcreativityinproblem
+solving. Secondly,theexplorationofreal-timeresponsivesystems,whichcanadapttoevolvingconditionsas
+wellastouserfeedbackduringruntime,wouldfosterdynamiccollaborationandhybridteamworkbetween
+LLM-poweredagentsandhumanusers.
+Departingfromanexploratorystage,thefieldofautonomousLLM-poweredmulti-agentsystemsisrapidly
+evolving,resultinginagrowingnumberofpromisingapproachesandinnovativearchitectures. Withtheir
+currentcapabilitiesandinherentpotentials,suchasmulti-perspectivedomainsimulationsorcollaborative
+environmentsofautonomousagentsandhumancoworkers,thesesystemscouldsignificantlycontributeto
+the progression towards advanced stages of artificial intelligence, such as AGI or ASI. From a pragmatic
+perspective, there are numerous opportunities for combining LLMs as general purpose technology with
+thespecificsofvariousapplicationdomains. LLM-basedmulti-agentsystemscanserveasfoundationfor
+developingcorrespondingdomain-specificapplicationlayers.Thearchitecturalcomplexitiesresultingfromthe
+dynamicinterplaybetweenautonomyandalignmentcanbeseenasoneofthekeychallengesinsuchsystems.
+Byprovidingasystematicframeworkforanalyzingthesecomplexities,ourtaxonomyaimstocontributeto
+theseongoingefforts.
+Foroursubsequentendeavors,weaimatdevelopingacomprehensiveoverviewandcomparisonofexisting
+autonomousLLM-poweredmulti-agentsystems,complementingexistingliteraturereviewsinthefield[84,95].
+Tothisend,weintendtoanalyzeandclassifyavailablesystemsusingourtaxonomy. Theidentifiedsystem
+profilesandbalancingstrategiesresultingfromthisanalysiswillthenbecombinedwithfurtherinvestigations
+of functional system capabilities. In addition, driven by the potentials identified during the taxonomic
+classificationofselectedsystems, wecurrentlyexplorethedevelopmentofanLLM-poweredmulti-agent
+systemthataimsatcombininghighlevelsofagencywithreal-timeuser-centriccontrolmechanisms.
+Building on the foundation of our taxonomy, future initiatives could venture into the following areas: A
+dedicated exploration, assessment, and systematization of alignment techniques, particularly tailored for
+LLM-basedinteractionandapplicationlayers,couldserveasreferenceforfuturesystems. Moreover,the
+conceptionofamethodologicalframeworkwithinstrumentsandbenchmarksformeasuringthefunctional
+capabilitiesofLLM-poweredmulti-agentsystemscouldprovideastructuredtemplatetoevaluatekeymetrics
+likeefficiency,accuracy,andscalabilityofthesesystems.
+
+### Acknowledgements
+
+Theauthorgratefullyacknowledgesthesupportfromthe"GesellschaftfürForschungsförderung(GFF)"of
+LowerAustria,asthisresearchwasconductedatFerdinandPorscheMobileUniversityofAppliedSciences
+(FERNFH)aspartofthe"DigitalTransformationHub"projectfundedbytheGFF.
+35
+
+<!-- Page 36 -->
+
+
+### References
+
+[1] D.Amodei,C.Olah,J.Steinhardt,P.Christiano,J.Schulman,andD.Mané. ConcreteproblemsinAI
+safety. arXivpreprintarXiv:1606.06565,2016.
+[2] A.B.Arrieta, N.Díaz-Rodríguez, J.DelSer, A.Bennetot, S.Tabik, A.Barbado, S.García, S.Gil-
+López,D.Molina,R.Benjamins,etal. Explainableartificialintelligence(XAI):Concepts,taxonomies,
+opportunitiesandchallengestowardresponsibleAI. Informationfusion,58:82–115,2020.
+[3] A. Askell, Y. Bai, A. Chen, D. Drain, D. Ganguli, T. Henighan, A. Jones, N. Joseph, B. Mann,
+N. DasSarma, et al. A general language assistant as a laboratory for alignment. arXiv preprint
+arXiv:2112.00861,2021.
+[4] L.Bass,P.Clements,andR.Kazman. Softwarearchitectureinpractice. Addison-WesleyProfessional,
+2003.
+[5] D. Batory. Feature models, grammars, and propositional formulas. In 9th International Software
+ProductLineConference,pages7–20,2005.
+[6] J. M. Beer, A. D. Fisk, and W. A. Rogers. Toward a framework for levels of robot autonomy in
+human-robotinteraction. Journalofhuman-robotinteraction,3(2):74,2014.
+[7] S.D.Bird. Towardataxonomyofmulti-agentsystems. InternationalJournalofMan-MachineStudies,
+39(4):689–704,1993.
+[8] B.W.BoehmandP.N.Papaccio. Understandingandcontrollingsoftwarecosts. IEEEtransactionson
+softwareengineering,14(10):1462–1477,1988.
+[9] R.Bommasani,D.A.Hudson,E.Adeli,R.Altman,S.Arora,S.vonArx,M.S.Bernstein,J.Bohg,
+A.Bosselut,E.Brunskill,etal. Ontheopportunitiesandrisksoffoundationmodels. arXivpreprint
+arXiv:2108.07258,2021.
+[10] N.Bostrom. Superintelligence. Dunod,2017.
+[11] T. Brown, B. Mann, N. Ryder, M. Subbiah, J. D. Kaplan, P. Dhariwal, A. Neelakantan, P. Shyam,
+G.Sastry,A.Askell,etal. Languagemodelsarefew-shotlearners. Advancesinneuralinformation
+processingsystems,33:1877–1901,2020.
+[12] J.C.Brustoloni. Autonomousagents: Characterizationandrequirements. CarnegieMellonUniversity,
+1991.
+[13] S.Bubeck, V.Chandrasekaran, R.Eldan, J.Gehrke, E.Horvitz, E.Kamar, P.Lee, Y.T.Lee, Y.Li,
+S. Lundberg, et al. Sparks of artificial general intelligence: Early experiments with GPT-4. arXiv
+preprintarXiv:2303.12712,2023.
+[14] H.Chase. LangChain. https://github.com/langchain-ai/langchain,2022.
+[15] A. Chowdhery, S. Narang, J. Devlin, M. Bosma, G. Mishra, A. Roberts, P. Barham, H. W. Chung,
+C. Sutton, S. Gehrmann, et al. Palm: Scaling language modeling with pathways. arXiv preprint
+arXiv:2204.02311,2022.
+[16] P.Clements,D.Garlan,R.Little,R.Nord,andJ.Stafford. Documentingsoftwarearchitectures: views
+andbeyond. In25thInternationalConferenceonSoftwareEngineering,2003.Proceedings.,pages
+
+## 740–741.Ieee,2003.
+
+[17] L.M.Csepregi. Theeffectofcontext-awareLLM-basedNPCconversationsonplayerengagementin
+role-playingvideogames. 2023.
+[18] Y.Du,S.Li,A.Torralba,J.B.Tenenbaum,andI.Mordatch. Improvingfactualityandreasoningin
+languagemodelsthroughmultiagentdebate. arXivpreprintarXiv:2305.14325,2023.
+[19] G.Dudek,M.R.Jenkin,E.Milios,andD.Wilkes. Ataxonomyformulti-agentrobotics. Autonomous
+Robots,3:375–397,1996.
+[20] F. Fabiano, V. Pallagani, M. B. Ganapini, L. Horesh, A. Loreggia, K. Murugesan, F. Rossi, and
+B.Srivastava. Fastandslowplanning. arXivpreprintarXiv:2303.04283,2023.
+[21] S.FranklinandA.Graesser. Isitanagent,orjustaprogram?: Ataxonomyforautonomousagents. In
+Internationalworkshoponagenttheories,architectures,andlanguages,pages21–35.Springer,1996.
+[22] C.Gao,X.Lan,Z.Lu,J.Mao,J.Piao,H.Wang,D.Jin,andY.Li. S3: Social-networksimulation
+systemwithlargelanguagemodel-empoweredagents. arXivpreprintarXiv:2307.14984,2023.
+36
+
+<!-- Page 37 -->
+
+[23] T.R.Gruber. Towardprinciplesforthedesignofontologiesusedforknowledgesharing? International
+journalofhuman-computerstudies,43(5-6):907–928,1995.
+[24] G.Guizzardi,H.Herre,andG.Wagner. Onthegeneralontologicalfoundationsofconceptualmodeling.
+InConceptualModeling—ER2002: 21stInternationalConferenceonConceptualModelingTampere,
+Finland,October7–11,2002Proceedings21,pages65–78.Springer,2002.
+[25] T. Haendler and G. Neumann. Ontology-based analysis and design of educational games for softwarerefactoring. InComputerSupportedEducation: 11thInternationalConference,CSEDU2019,
+Heraklion,Crete,Greece,May2-4,2019,RevisedSelectedPapers,pages602–628.Springer,2020.
+[26] R.Hao,L.Hu,W.Qi,Q.Wu,Y.Zhang,andL.Nie. ChatLLMnetwork: Morebrains,moreintelligence.
+arXivpreprintarXiv:2304.12998,2023.
+[27] J.L.Hellerstein,Y.Diao,S.Parekh,andD.M.Tilbury. Feedbackcontrolofcomputingsystems. John
+Wiley&Sons,2004.
+[28] S.Hong, X.Zheng, J.Chen, Y.Cheng, C.Zhang, Z.Wang, S.K.S.Yau, Z.Lin, L.Zhou, C.Ran,
+et al. MetaGPT: Meta programming for multi-agent collaborative framework. arXiv preprint
+arXiv:2308.00352,2023.
+[29] S.International. Taxonomyanddefinitionsfortermsrelatedtodrivingautomationsystemsforon-road
+motorvehicles,2016.
+[30] Z.Ji,N.Lee,R.Frieske,T.Yu,D.Su,Y.Xu,E.Ishii,Y.J.Bang,A.Madotto,andP.Fung. Surveyof
+hallucinationinnaturallanguagegeneration. ACMComputingSurveys,55(12):1–38,2023.
+[31] J.Johnson,M.Douze,andH.Jégou. Billion-scalesimilaritysearchwithGPUs. IEEETransactionson
+BigData,7(3):535–547,2019.
+[32] J.Kaddour,J.Harris,M.Mozes,H.Bradley,R.Raileanu,andR.McHardy. Challengesandapplications
+oflargelanguagemodels. arXivpreprintarXiv:2307.10169,2023.
+[33] D.Kahneman. Thinking,fastandslow. Macmillan,2011.
+[34] R.Khosla. Engineeringintelligenthybridmulti-agentsystems. SpringerScience&BusinessMedia,
+1997.
+[35] G.Kiczales,J.Lamping,A.Mendhekar,C.Maeda,C.Lopes,J.-M.Loingtier,andJ.Irwin. Aspectorientedprogramming. InECOOP’97—Object-OrientedProgramming: 11thEuropeanConference
+Jyväskylä,Finland,June9–13,1997Proceedings11,pages220–242.Springer,1997.
+[36] B.A.Kitchenham,G.H.Travassos,A.VonMayrhauser,F.Niessink,N.F.Schneidewind,J.Singer,
+S.Takada,R.Vehvilainen,andH.Yang. Towardsanontologyofsoftwaremaintenance. Journalof
+SoftwareMaintenance: ResearchandPractice,11(6):365–389,1999.
+[37] T. Kojima, S. S. Gu, M. Reid, Y. Matsuo, and Y. Iwasawa. Large language models are zero-shot
+reasoners. Advancesinneuralinformationprocessingsystems,35:22199–22213,2022.
+[38] P. B. Kruchten. Architectural blueprints — the “4+1” view model of software architecture. IEEE
+software,12(6):42–50,1995.
+[39] Y.LabrouandT.Finin. Semanticsandconversationsforanagentcommunicationlanguage. arXiv
+preprintcs/9809034,1998.
+[40] P.A.Laplanteetal. Real-timesystemsdesignandanalysis. WileyNewYork,2004.
+[41] G.Li,H.A.A.K.Hammoud,H.Itani,D.Khizbullin,andB.Ghanem. CAMEL:Communicativeagents
+for"mind"explorationoflargescalelanguagemodelsociety. arXivpreprintarXiv:2303.17760,2023.
+[42] T.Liang,Z.He,W.Jiao,X.Wang,Y.Wang,R.Wang,Y.Yang,Z.Tu,andS.Shi.Encouragingdivergent
+thinkinginlargelanguagemodelsthroughmulti-agentdebate. arXivpreprintarXiv:2305.19118,2023.
+[43] B. Y. Lin, Y. Fu, K. Yang, P. Ammanabrolu, F. Brahman, S. Huang, C. Bhagavatula, Y. Choi, and
+X.Ren. SwiftSage: Agenerativeagentwithfastandslowthinkingforcomplexinteractivetasks. arXiv
+preprintarXiv:2305.17390,2023.
+[44] P.Maes. Artificiallifemeetsentertainment: lifelikeautonomousagents. CommunicationsoftheACM,
+38(11):108–114,1995.
+[45] J.Maynez, S.Narayan, B.Bohnet, andR.McDonald. Onfaithfulnessandfactualityinabstractive
+summarization. arXivpreprintarXiv:2005.00661,2020.
+[46] B.Meyer. Applying’designbycontract’. Computer,25(10):40–51,1992.
+37
+
+<!-- Page 38 -->
+
+[47] T.Mikolov,K.Chen,G.Corrado,andJ.Dean. Efficientestimationofwordrepresentationsinvector
+space. arXivpreprintarXiv:1301.3781,2013.
+[48] M.Minsky. TheSocietyofmind. SimonandSchuster,1988.
+[49] H.Mintzberg. Thestructuringoforganizations. Springer,1989.
+[50] L.J.MoyaandA.Tolk. Towardsataxonomyofagentsandmulti-agentsystems. InSpringSim(2),
+pages11–18,2007.
+[51] Y.Nakajima. BabyAGI. https://github.com/yoheinakajima/babyagi,2023.
+[52] K.S.NarendraandA.M.Annaswamy. Stableadaptivesystems. CourierCorporation,2012.
+[53] H. Naveed, A. U. Khan, S. Qiu, M. Saqib, S. Anwar, M. Usman, N. Barnes, and A. Mian. A
+comprehensiveoverviewoflargelanguagemodels. arXivpreprintarXiv:2307.06435,2023.
+[54] M. Neef. A taxonomy of human-agent team collaborations. In Proceedings of the 18th BeNeLux
+ConferenceonArtificialIntelligence(BNAIC2006),pages245–250,2006.
+[55] ObjectManagementGroup. UnifiedModelingLanguage–version2.5.1. https://www.omg.org/
+spec/UML/2.5.1,Dec.2017.
+[56] L.Ouyang,J.Wu,X.Jiang,D.Almeida,C.Wainwright,P.Mishkin,C.Zhang,S.Agarwal,K.Slama,
+A.Ray, etal. Traininglanguagemodelstofollowinstructionswithhumanfeedback. Advancesin
+NeuralInformationProcessingSystems,35:27730–27744,2022.
+[57] C.A.O’reillyIiiandM.L.Tushman. Ambidexterityasadynamiccapability: Resolvingtheinnovator’s
+dilemma. Researchinorganizationalbehavior,28:185–206,2008.
+[58] R.Parasuraman,T.B.Sheridan,andC.D.Wickens. Amodelfortypesandlevelsofhumaninteraction
+withautomation. IEEETransactionsonsystems,man,andcybernetics-PartA:SystemsandHumans,
+30(3):286–297,2000.
+[59] J.S.Park,J.C.O’Brien,C.J.Cai,M.R.Morris,P.Liang,andM.S.Bernstein. Generativeagents:
+Interactivesimulacraofhumanbehavior. arXivpreprintarXiv:2304.03442,2023.
+[60] S.G.Patil,T.Zhang,X.Wang,andJ.E.Gonzalez. Gorilla: Largelanguagemodelconnectedwith
+massiveAPIs. arXivpreprintarXiv:2305.15334,2023.
+[61] C.Qian,X.Cong,C.Yang,W.Chen,Y.Su,J.Xu,Z.Liu,andM.Sun. Communicativeagentsfor
+softwaredevelopment. arXivpreprintarXiv:2307.07924,2023.
+[62] A. Rahmati, E. Fernandes, J. Jung, and A. Prakash. IFTTT vs. Zapier: A comparative study of
+trigger-actionprogrammingframeworks. arXivpreprintarXiv:1709.02788,2017.
+[63] M.T.Ribeiro,S.Singh,andC.Guestrin. "whyshoulditrustyou?"explainingthepredictionsofany
+classifier. InProceedingsofthe22ndACMSIGKDDinternationalconferenceonknowledgediscovery
+anddatamining,pages1135–1144,2016.
+[64] N.RozanskiandE.Woods. Softwaresystemsarchitecture: workingwithstakeholdersusingviewpoints
+andperspectives. Addison-Wesley,2012.
+[65] S.Russell. Humancompatible: Artificialintelligenceandtheproblemofcontrol. Penguin,2019.
+[66] S. Russell. Artificial intelligence and the problem of control. Perspectives on Digital Humanism,
+page19,2022.
+[67] S.Russell,D.Dewey,andM.Tegmark.Researchprioritiesforrobustandbeneficialartificialintelligence.
+AImagazine,36(4):105–114,2015.
+[68] S.K.K.SantuandD.Feng. TELeR:AgeneraltaxonomyofLLMpromptsforbenchmarkingcomplex
+tasks. arXivpreprintarXiv:2305.11430,2023.
+[69] P.-Y.Schobbens,P.Heymans,J.-C.Trigaux,andY.Bontemps. Genericsemanticsoffeaturediagrams.
+Computernetworks,51(2):456–479,2007.
+[70] Y.Shen,K.Song,X.Tan,D.Li,W.Lu,andY.Zhuang. HuggingGPT:SolvingAItaskswithChatGPT
+anditsfriendsinHuggingFace. arXivpreprintarXiv:2303.17580,2023.
+[71] A.Shrestha, S.Subedi, andA.Watkins. AgentGPT. https://github.com/reworkd/AgentGPT,
+2023.
+[72] K.Shum,S.Diao,andT.Zhang. Automaticpromptaugmentationandselectionwithchain-of-thought
+fromlabeleddata. arXivpreprintarXiv:2302.12822,2023.
+38
+
+<!-- Page 39 -->
+
+[73] M.P.Singh. Agentcommunicationlanguages: Rethinkingtheprinciples. Computer,31(12):40–47,
+1998.
+[74] S.A.Sloman. Theempiricalcasefortwosystemsofreasoning. Psychologicalbulletin,119(1):3,1996.
+[75] J.F.Sowa. Top-levelontologicalcategories. Internationaljournalofhuman-computerstudies,43(5-
+6):669–685,1995.
+[76] R.Thoppilan,D.DeFreitas,J.Hall,N.Shazeer,A.Kulshreshtha,H.-T.Cheng,A.Jin,T.Bos,L.Baker,
+Y.Du,etal. Lamda: Languagemodelsfordialogapplications. arXivpreprintarXiv:2201.08239,2022.
+[77] Torantulinoetal. Auto-GPT. https://github.com/Significant-Gravitas/Auto-GPT,2023.
+[78] P.T.TosicandG.A.Agha. Towardsahierarchicaltaxonomyofautonomousagents. In2004IEEE
+InternationalConferenceonSystems,ManandCybernetics(IEEECat.No.04CH37583),volume4,
+pages3421–3426.IEEE,2004.
+[79] TransformerOptimus et al. SuperAGI. https://github.com/TransformerOptimus/SuperAGI,
+2023.
+[80] E.R.Tufte. Thevisualdisplayofquantitativeinformation,volume2. GraphicspressCheshire,CT,
+2001.
+[81] M.Usman,R.Britto,J.Börstler,andE.Mendes. Taxonomiesinsoftwareengineering: Asystematic
+mappingstudyandarevisedtaxonomydevelopmentmethod. InformationandSoftwareTechnology,
+85:43–59,2017.
+[82] H.VanDykeParunak,S.Brueckner,M.Fleischer,andJ.Odell. Adesigntaxonomyofmulti-agent
+interactions. In Agent-Oriented Software Engineering IV: 4th InternationalWorkshop, AOSE 2003,
+Melbourne,Australia,July15,2003.RevisedPapers4,pages123–137.Springer,2004.
+[83] G.Wang,Y.Xie,Y.Jiang,A.Mandlekar,C.Xiao,Y.Zhu,L.Fan,andA.Anandkumar. Voyager: An
+open-endedembodiedagentwithlargelanguagemodels. arXivpreprintarXiv:2305.16291,2023.
+[84] L.Wang,C.Ma,X.Feng,Z.Zhang,H.Yang,J.Zhang,Z.Chen,J.Tang,X.Chen,Y.Lin,etal. A
+surveyonlargelanguagemodelbasedautonomousagents. arXivpreprintarXiv:2308.11432,2023.
+[85] L.Wang,W.Xu,Y.Lan,Z.Hu,Y.Lan,R.K.-W.Lee,andE.-P.Lim.Plan-and-solveprompting:Improvingzero-shotchain-of-thoughtreasoningbylargelanguagemodels. arXivpreprintarXiv:2305.04091,
+2023.
+[86] Q.Wang,L.Ding,Y.Cao,Z.Tian,S.Wang,D.Tao,andL.Guo. Recursivelysummarizingenables
+long-termdialoguememoryinlargelanguagemodels. arXivpreprintarXiv:2308.15022,2023.
+[87] W.Wang,L.Dong,H.Cheng,X.Liu,X.Yan,J.Gao,andF.Wei. Augmentinglanguagemodelswith
+long-termmemory. arXivpreprintarXiv:2306.07174,2023.
+[88] Z.Wang,S.Mao,W.Wu,T.Ge,F.Wei,andH.Ji. Unleashingcognitivesynergyinlargelanguagemodels: Atask-solvingagentthroughmulti-personaself-collaboration. arXivpreprintarXiv:2307.05300,
+2023.
+[89] J.Wei,K.Shuster,A.Szlam,J.Weston,J.Urbanek,andM.Komeili. Multi-partychat: Conversational
+agentsingroupsettingswithhumansandmodels. arXivpreprintarXiv:2304.13835,2023.
+[90] J.Wei,X.Wang,D.Schuurmans,M.Bosma,F.Xia,E.Chi,Q.V.Le,D.Zhou,etal. Chain-of-thought
+promptingelicitsreasoninginlargelanguagemodels. AdvancesinNeuralInformationProcessing
+Systems,35:24824–24837,2022.
+[91] J.White,Q.Fu,S.Hays,M.Sandborn,C.Olea,H.Gilbert,A.Elnashar,J.Spencer-Smith,andD.C.
+Schmidt. A prompt pattern catalog to enhance prompt engineering with ChatGPT. arXiv preprint
+arXiv:2302.11382,2023.
+[92] Y.Wolf,N.Wies,Y.Levine,andA.Shashua. Fundamentallimitationsofalignmentinlargelanguage
+models. arXivpreprintarXiv:2304.11082,2023.
+[93] M.Wooldridge. Anintroductiontomultiagentsystems. Johnwiley&sons,2009.
+[94] M.WooldridgeandN.R.Jennings. Intelligentagents: Theoryandpractice. Theknowledgeengineering
+review,10(2):115–152,1995.
+[95] Z.Xi,W.Chen,X.Guo,W.He,Y.Ding,B.Hong,M.Zhang,J.Wang,S.Jin,E.Zhou,etal. Therise
+andpotentialoflargelanguagemodelbasedagents: Asurvey. arXivpreprintarXiv:2309.07864,2023.
+39
+
+<!-- Page 40 -->
+
+[96] F.Xu,H.Uszkoreit,Y.Du,W.Fan,D.Zhao,andJ.Zhu. ExplainableAI:Abriefsurveyonhistory,
+researchareas,approachesandchallenges. InNaturalLanguageProcessingandChineseComputing:
+8thCCFInternationalConference,NLPCC2019,Dunhuang,China,October9–14,2019,Proceedings,
+PartII8,pages563–574.Springer,2019.
+[97] E. Yudkowsky. The AI alignment problem: why it is hard, and where to start. Symbolic Systems
+DistinguishedSpeaker,4,2016.
+[98] S.Zhang,S.Roller,N.Goyal,M.Artetxe,M.Chen,S.Chen,C.Dewan,M.Diab,X.Li,X.V.Lin,
+etal. OPT:Openpre-trainedtransformerlanguagemodels. arXivpreprintarXiv:2205.01068,2022.
+[99] J.Zhao. Usingdependenceanalysistosupportsoftwarearchitectureunderstanding. arXivpreprint
+cs/0105009,2001.
+[100] W.X.Zhao,K.Zhou,J.Li,T.Tang,X.Wang,Y.Hou,Y.Min,B.Zhang,J.Zhang,Z.Dong,etal. A
+surveyoflargelanguagemodels. arXivpreprintarXiv:2303.18223,2023.
+40
+
+## Tables
+
+**Table (Page 2):**
+
+|  |  |  |
+|---|---|---|
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+
+**Table (Page 6):**
+
+| Agent-Interaction Layer |
+|---|
+| G Task Goal ... break down Task Result synthesis |
+| executes A M collaborate Prompt Agent Prompt Agent Role Memory B |
+
+
+**Table (Page 6):**
+
+| Preferences |
+|---|
+| Response |
+
+
+**Table (Page 8):**
+
+|  | translates interactsWith * User Interface * Human * User User Prompt B System * Response Architect * specifies * Alignment * Preference Technique | To 1 | strivesToComplete 1 targets 1 * * 1 Decompose * G Task-Mgmt Goal 1 resultsIn Task Activity * * 1 i 1 nitiates 1 C T r a e s a k te * 1 Task assigns Decomposition 1 1 1 Delegate * * 1 sub-task Task Activity 0.. addr. 0..1 Memory per- Execute * 1 forms Orchestration Task Result Task 1 Activity Log 0.. * * 1 1 forms assesses Evaluate * Result Synthesis 1 Library * |  |
+|---|---|---|---|---|
+|  |  |  |  | 1 |
+|  |  | 1 |  |  |
+|  |  |  |  | 1 |
+|  |  |  |  |  |
+
+
+**Table (Page 8):**
+
+|  |  |  |  | ets 1 1 Decompose * sIn Task tes Create * Task 1 igns 1 1 Delegate * Task er- Execute * rms Task 1 1 sses Evaluate * Result |  |  |  |
+|---|---|---|---|---|---|---|---|
+|  |  | result * initia 1 |  |  |  | Decompose Task |  |
+|  |  |  |  |  |  | Create Task |  |
+|  |  |  |  |  |  |  |  |
+|  | Task |  | ass | igns 1 er- rms |  |  | 1 Decomposition 1 Orchestration 1 Synthesis |
+|  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |
+|  |  |  |  | sses |  |  |  |
+
+
+**Table (Page 8):**
+
+| Human User |
+|---|
+|  |
+| System Architect |
+
+
+**Table (Page 8):**
+
+| Evaluate Result |
+|---|
+| Merge Result |
+
+
+**Table (Page 8):**
+
+| Interaction Layer |
+|---|
+|  |
+
+
+**Table (Page 8):**
+
+|  |
+|---|
+| * |
+
+
+**Table (Page 8):**
+
+|  |  |
+|---|---|
+|  |  |
+
+
+**Table (Page 8):**
+
+| Search Tool |
+|---|
+| Execution Tool |
+| Reasoning Tool |
+| Development Tool |
+| Communic. Tool |
+
+
+**Table (Page 8):**
+
+|  |
+|---|
+|  |
+|  |
+|  |
+
+
+**Table (Page 8):**
+
+|  |
+|---|
+|  |
+|  |
+
+
+**Table (Page 13):**
+
+|  | L0: Static | L1: Adaptive | L2: Self-Organizing |
+|---|---|---|---|
+| L2: Real-time Responsive | 3 User-Supervised Automation | 6 User-Collaborative Adaptation |  |
+| L1: User-Guided | 2 User-Guided Automation | 5 User-Guided Adaptation |  |
+| L0: Integrated |  |  |  |
+
+
+**Table (Page 16):**
+
+|  |  |  |
+|---|---|---|
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
+
+**Table (Page 17):**
+
+| Functional G Viewpoint Goal-driven Task Mgmt. |  |
+|---|---|
+|  | «uses» |
+| Process M Viewpoint Multi-Agent Collaboration |  |
+
+
+**Table (Page 19):**
+
+|  |  |  |
+|---|---|---|
+| Multi-Agent Collaboration |  | Agent Composition |
+
+
+**Table (Page 19):**
+
+|  |  |  |
+|---|---|---|
+| Multi-Agent Collaboration |  | Agent Composition |
+
+
+**Table (Page 21):**
+
+|  |  | G Goal-driven TaskManagement | A Agent Composition | M Multi-Agent Collaboration | C Context Interaction |
+|---|---|---|---|---|---|
+| 1 | Rule-DrivenAutoma- tion: Static & Inte- grated(L0&L0) | Rule-driventaskman- agement. | Rule-driven agent composition and constellation. | Rule-drivencollabora- tionprotocols. |  |
+| 2 | User-Guided Au- tomation: Static & User-Guided (L0 & L1) | User-guidedtaskman- agement. | User-guided agent composition and constellation. | User-guidedcollabora- tionprotocols. |  |
+| 3 | User-Supervised Automation: Static &Real-TimeRespon- sive(L0&L2) | Taskmanagementad- justedduringruntime. | Agent composition and constellation ad- justedduringruntime. | Agent collaboration adjusted during run- time. |  |
+| 4 | Pre-Configured Adaptation:Adaptive &Integrated(L1&L0) | Adaptive task man- agement with prede- finedoptions. | Adaptive agent com- position and constel- lationwithpredefined flexibility. | Adaptivecollaboration protocols. |  |
+| 5 | User-GuidedAdapta- tion:Adaptive&User- Guided(L1&L1) | User-adjusted adap- tive task manage- ment. | User-adjusted adap- tiveagentcomposition andconstellation. | User-adjusted adap- tivecollaboration. |  |
+| 6 | User-Collaborative Adaptation:Adaptive &Real-TimeRespon- sive(L1&L2) | Adaptive task man- agementadjusteddur- ingruntime. | Adaptive agent com- position and constel- lationadjustedduring runtime. | Adaptivecollaboration adjusted during run- time. |  |
+| 7 | BoundedAutonomy: Self-Organizing&Inte- grated(L2&L0) | Taskmanagementor- ganically based on currentneeds. | Agents self-organize basedoncurrentsce- nario. | Collaborationstrategy evolvesorganically. |  |
+| 8 | User-Guided Auton- omy:Self-Organizing &User-Guided(L2& L1) | User-guided self- organizing task management. | User-guided agent self-organization. | User-guidedcollabora- tionevolution. |  |
+| 9 | User-Responsive Autonomy: Self- Organizing & Real- TimeResponsive(L2 &L2) |  |  |  |  |
+
+
+**Table (Page 22):**
+
+|  |  | Agent Composition |  |  |
+|---|---|---|---|---|
+|  |  |  |  |  |
+| Agent Generation | Role Definition |  | Memory Usage | Network Management |
+
+
+**Table (Page 22):**
+
+|  | Context Interaction |  |
+|---|---|---|
+|  |  |  |
+| Resources Integration |  | Resources Utilization |
+
+
+**Table (Page 25):**
+
+|  | Goal-drivenTaskMgmt. |  |  |  |  |  | Multi-AgentCollaboration |  |  |  |  |  | AgentComposition |  |  |  |  |  |  |  | ContextInteract. |  |  |  |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|  | Decom |  | Orch |  | Synth |  | CommP |  | PrEng |  | ActM |  | AGen |  | RoleD |  | MemU |  | NetM |  | Integ |  | Util |  |
+|  | AU | AL | AU | AL | AU | AL | AU | AL | AU | AL | AU | AL | AU | AL | AU | AL | AU | AL | AU | AL | AU | AL | AU | AL |
+| Auto-GPT[77] | 2 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 2 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
+| BabyAGI[51] | 2 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 2 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
+| SuperAGI[79] | 2 | 0 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 0 | 2 | 0 | 1 | 1 | 2 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 2 | 1 |
+| HuggingGPT[70] | 2 | 0 | 1 | 0 | 2 | 0 | 0 | 0 | 2 | 0 | 2 | 0 | 2 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 2 | 0 | 2 | 0 |
+| MetaGPT[28] | 2 | 0 | 0 | 0 | 2 | 0 | 1 | 0 | 1 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 2 | 0 |
+| CAMEL[41] | 2 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| AgentGPT[71] | 2 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 2 | 0 | 1 | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 1 |
+| Zapier*[62] | 1 | 1 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 |
+
+
+**Table (Page 26):**
+
+| (a) Auto-GPT Decom U�l Orch Integ Synth NetM Comm MemU PrEng RoleD ActM AGen | P | (b) BabyAGI Decom U�l Orch Integ Synth NetM Comm MemU PrEng RoleD ActM AGen | P | (c) SuperAGI Decom U�l Orch Integ Synth NetM CommP MemU PrEng RoleD ActM AGen |
+|---|---|---|---|---|
+| (d) HuggingGPT Decom U�l Orch Integ Synth NetM Comm MemU PrEng RoleD ActM AGen | P | (e) MetaGPT Decom U�l Orch Integ Synth NetM Comm MemU PrEng RoleD ActM AGen | P | (f) CAMEL Decom U�l Orch Integ Synth NetM CommP MemU PrEng RoleD ActM AGen |
+| (g) AgentGPT Decom U�l Orch Integ Synth NetM Comm MemU PrEng RoleD ActM AGen | P | (h) Zapier* Decom U�l Orch Integ Synth NetM CommP MemU PrEng RoleD ActM AGen |  |  |
+
+
+**Table (Page 29):**
+
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+
+
+**Table (Page 29):**
+
+|  | Decom | Orch | Synth | CommP | PrEng | ActM | AGen | RoleD | MemU | NetM | Integ | U�l |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| L2 | 7 | 0 | 2 | 0 | 1 | 6 | 1 | 3 | 0 | 0 | 1 | 6 |
+| L1 | 0 | 3 | 5 | 1 | 6 | 1 | 2 | 3 | 1 | 1 | 0 | 0 |
+| L0 | 0 | 4 | 0 | 6 | 0 | 0 | 4 | 1 | 6 | 6 | 6 | 1 |
+
+
+**Table (Page 29):**
+
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+
+
+**Table (Page 29):**
+
+|  | Decom | Orch | Synth | CommP | PrEng | ActM | AGen | RoleD | MemU | NetM | Integ | U�l |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| L2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| L1 | 1 | 0 | 1 | 0 | 0 | 0 | 3 | 2 | 1 | 1 | 1 | 2 |
+| L0 | 6 | 7 | 6 | 7 | 7 | 7 | 4 | 5 | 6 | 6 | 6 | 5 |
