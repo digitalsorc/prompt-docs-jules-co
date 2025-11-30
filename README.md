@@ -1,6 +1,36 @@
 # Prompt Engineering Document Collection
 
-A comprehensive collection of 219 documents on prompt engineering, LLMs, and AI agents, optimized for AI knowledge systems.
+A comprehensive collection of 219 documents on prompt engineering, LLMs, and AI agents, optimized for AI knowledge systems. **Now includes a production-ready GUI application for bulk document conversion!**
+
+## 🚀 Document Converter Application
+
+This repository includes a modern web application for converting documents to optimized markdown format.
+
+### Features
+
+- 🎯 **Drag-and-drop file upload** - Upload PDFs, Markdown, and text files
+- 📊 **Queue management** - Process files in parallel with real-time progress
+- ⚙️ **Extensive configuration** - Customize every aspect of conversion
+- 👁️ **Live preview** - See converted content before downloading
+- 🌙 **Dark/light mode** - Modern, accessible interface
+- 🐳 **Docker support** - Easy deployment anywhere
+
+### Quick Start
+
+```bash
+# Option 1: Docker (easiest)
+docker-compose up
+# Open http://localhost:8000
+
+# Option 2: Local development
+pip install -r requirements.txt
+python -m app.main server
+# Open http://localhost:8000
+```
+
+See [docs/SETUP.md](docs/SETUP.md) for detailed installation instructions.
+
+---
 
 ## Overview
 
@@ -41,19 +71,32 @@ All documents have been converted to optimized markdown format with semantic met
 ## Directory Structure
 
 ```
-├── converted-documents/     # 219 optimized markdown files
-│   ├── prompt-engineering-*.md
-│   ├── llm-*.md
-│   ├── rag-*.md
-│   └── ...
-├── converted-assets/        # Extracted images and assets
-│   └── images/
-├── visual-context/          # Visual element descriptions
-├── original-documents/      # Archived source files
-├── _knowledge-index.md      # Concept-to-document mapping
-├── conversion-manifest.json # File inventory with metadata
-├── conversion-report.md     # Conversion statistics
-└── README.md               # This file
+├── app/                         # Document Converter Application
+│   ├── backend/                 # FastAPI backend
+│   │   ├── api.py              # REST API endpoints
+│   │   ├── converter.py        # Conversion engine
+│   │   ├── config.py           # Configuration management
+│   │   ├── queue_manager.py    # Job queue system
+│   │   └── database.py         # SQLite storage
+│   ├── frontend/               # React frontend
+│   │   └── src/
+│   │       ├── components/     # UI components
+│   │       └── services/       # API client
+│   └── main.py                 # Application entry point
+├── tests/                      # Unit and integration tests
+├── docs/                       # Documentation
+│   ├── SETUP.md               # Installation guide
+│   ├── USER_GUIDE.md          # User manual
+│   └── DEVELOPER.md           # Developer docs
+├── scripts/                    # Build and run scripts
+├── converted-documents/        # 219 optimized markdown files
+├── Dockerfile                  # Docker container
+├── docker-compose.yml          # Docker Compose config
+├── requirements.txt            # Python dependencies
+├── _knowledge-index.md         # Concept-to-document mapping
+├── conversion-manifest.json    # File inventory with metadata
+├── conversion-report.md        # Conversion statistics
+└── README.md                   # This file
 ```
 
 ## Document Categories
@@ -138,6 +181,14 @@ Content with preserved structure...
 ## Contributing
 
 ### Adding New Documents
+
+**Using the GUI (Recommended):**
+1. Open the Document Converter at http://localhost:8000
+2. Drag and drop your PDF/MD/TXT files
+3. Click Start to convert
+4. Download converted files
+
+**Using the Command Line:**
 1. Place PDF/MD/TXT in root directory
 2. Run `python3 analyze_repo.py` to update manifest
 3. Run `python3 convert_documents.py` to convert
@@ -150,6 +201,9 @@ Content with preserved structure...
 
 ## Tools Used
 
+- **Document Converter App** - Web-based GUI for bulk conversion
+- **FastAPI** - Modern Python web framework
+- **React** - Frontend UI library
 - **pdfplumber**: PDF text and table extraction
 - **Tesseract OCR**: Image-based PDF processing
 - **pypdf**: PDF metadata analysis

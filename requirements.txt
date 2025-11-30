@@ -1,0 +1,21 @@
+# Document Converter Application Dependencies
+
+# Web Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6
+
+# PDF Processing
+pdfplumber>=0.10.0
+pypdf>=3.17.0
+
+# Configuration
+pyyaml>=6.0.1
+
+# Utilities
+aiofiles>=23.2.1
+
+# Testing (optional)
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
+httpx>=0.26.0

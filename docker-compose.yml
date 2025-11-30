@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  document-converter:
+    build: .
+    container_name: document-converter
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./converted_output:/app/converted_output
+      - ./config_profiles:/app/config_profiles
+      - ./converter.db:/app/converter.db
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  uploads:
+  converted_output:
+  config_profiles:

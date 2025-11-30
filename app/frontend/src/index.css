@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Dropzone animation */
+.dropzone-active {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    border-color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.05);
+  }
+  50% {
+    border-color: #60a5fa;
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* Progress bar animation */
+.progress-bar {
+  transition: width 0.3s ease-in-out;
+}
+
+/* Toast animation */
+.toast-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.toast-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.3s ease-out;
+}
+
+.toast-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease-in;
+}
+
+/* Markdown preview */
+.markdown-preview {
+  @apply max-w-none;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.markdown-preview h1 {
+  @apply text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 mt-6;
+}
+
+.markdown-preview h2 {
+  @apply text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3 mt-5;
+}
+
+.markdown-preview h3 {
+  @apply text-lg font-medium text-slate-700 dark:text-slate-300 mb-2 mt-4;
+}
+
+.markdown-preview p {
+  @apply mb-4 text-slate-700 dark:text-slate-300;
+}
+
+.markdown-preview ul, .markdown-preview ol {
+  @apply mb-4 pl-6;
+}
+
+.markdown-preview li {
+  @apply mb-1 text-slate-700 dark:text-slate-300;
+}
+
+.markdown-preview pre {
+  @apply bg-slate-100 dark:bg-slate-800 p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.markdown-preview code {
+  @apply bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-sm font-mono;
+}
+
+.markdown-preview pre code {
+  @apply bg-transparent p-0;
+}
+
+.markdown-preview blockquote {
+  @apply border-l-4 border-slate-300 dark:border-slate-600 pl-4 italic text-slate-600 dark:text-slate-400 mb-4;
+}
+
+.markdown-preview table {
+  @apply w-full border-collapse mb-4;
+}
+
+.markdown-preview th,
+.markdown-preview td {
+  @apply border border-slate-300 dark:border-slate-600 px-3 py-2 text-left;
+}
+
+.markdown-preview th {
+  @apply bg-slate-100 dark:bg-slate-800 font-semibold;
+}
+
+.markdown-preview a {
+  @apply text-primary-600 dark:text-primary-400 underline;
+}
+
+.markdown-preview hr {
+  @apply border-slate-300 dark:border-slate-600 my-6;
+}
