@@ -14,7 +14,7 @@
   "add_front_matter": true,
   "generate_summary": true,
   "extract_keywords": true,
-  "max_workers": 8,
+  "max_workers": 32,
   "memory_limit_mb": 4048,
   "cleanup_temp_files": true
 }
