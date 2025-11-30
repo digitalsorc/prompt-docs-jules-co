@@ -28,6 +28,7 @@ UPLOAD_DIR = os.environ.get("UPLOAD_DIR", "uploads")
 OUTPUT_DIR = os.environ.get("OUTPUT_DIR", "converted_output")
 CONFIG_DIR = os.environ.get("CONFIG_DIR", "config_profiles")
 DB_PATH = os.environ.get("DB_PATH", "converter.db")
+FRONTEND_DIST_DIR = os.environ.get("FRONTEND_DIST_DIR", "app/frontend/dist")
 
 
 # Pydantic models for API
@@ -571,6 +572,5 @@ async def get_statistics():
 
 # Serve static files for frontend (in production)
 # Only mount if the dist directory exists (frontend has been built)
-FRONTEND_DIST_DIR = "app/frontend/dist"
 if os.path.exists(FRONTEND_DIST_DIR) and os.path.isdir(FRONTEND_DIST_DIR):
     app.mount("/", StaticFiles(directory=FRONTEND_DIST_DIR, html=True), name="static")
