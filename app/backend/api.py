@@ -24,6 +24,14 @@ from .queue_manager import QueueManager, get_queue_manager, ConversionJob, Queue
 from .database import Database, get_database
 
 
+# Environment configuration
+CORS_ORIGINS = os.environ.get("CORS_ORIGINS", "http://localhost:3000,http://localhost:8000").split(",")
+UPLOAD_DIR = os.environ.get("UPLOAD_DIR", "uploads")
+OUTPUT_DIR = os.environ.get("OUTPUT_DIR", "converted_output")
+CONFIG_DIR = os.environ.get("CONFIG_DIR", "config_profiles")
+DB_PATH = os.environ.get("DB_PATH", "converter.db")
+
+
 # Pydantic models for API
 class ConfigUpdate(BaseModel):
     """Configuration update request."""
@@ -93,21 +101,16 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS middleware
+# CORS middleware - configure origins via CORS_ORIGINS environment variable
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify allowed origins
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Global state
-UPLOAD_DIR = "uploads"
-OUTPUT_DIR = "converted_output"
-CONFIG_DIR = "config_profiles"
-DB_PATH = "converter.db"
-
+# Global state - use environment variable values
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

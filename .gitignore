@@ -43,6 +43,11 @@ logs/
 *.db
 *.sqlite
 
-# Upload files
+# Upload and output files (runtime data)
 uploads/
 temp_uploads/
+converted_output/*.md
+
+# Config profiles (except default)
+config_profiles/*
+!config_profiles/default.json
