@@ -1,0 +1,1401 @@
+---
+title: "Prompts Are Programs Too"
+original_file: "./Prompts_Are_Programs_Too.pdf"
+document_type: "research"
+conversion_date: "2025-11-29"
+topics: ["prompt-engineering", "llm", "rag", "chain-of-thought", "agents"]
+keywords: ["cid", "doi", "prompt", "eng", "fse", "vol", "page", "proc", "acmsoftw", "publicationdate"]
+summary: "Understanding How Developers
+Build Software Containing Prompts
+
+## Jennyt.Liang,
+
+CarnegieMellonUniversity,USA
+
+## Melissalin∗,
+
+CarnegieMellonUniversity,USA
+
+## Nikitharao∗,
+
+CarnegieMellonUniversity,USA
+
+## Bradmyers,
+
+
+### CarnegieMellonUniversity,USA
+
+Generativepre-trainedmodelspowerintelligentsoftwarefeaturesusedbymillionsofuserscontrolledby
+developer-writtennaturallanguageprompts.Despitetheimpactofprompt-poweredsoftware,littleisknown
+aboutitsdevelopmentprocessanditsrelationshiptoprogrammin"
+related_documents: []
+---
+
+# Prompts Are Programs Too
+
+<!-- Page 1 -->
+
+Prompts Are Programs Too! Understanding How Developers
+Build Software Containing Prompts
+
+## Jennyt.Liang,
+
+CarnegieMellonUniversity,USA
+
+## Melissalin∗,
+
+CarnegieMellonUniversity,USA
+
+## Nikitharao∗,
+
+CarnegieMellonUniversity,USA
+
+## Bradmyers,
+
+
+### CarnegieMellonUniversity,USA
+
+Generativepre-trainedmodelspowerintelligentsoftwarefeaturesusedbymillionsofuserscontrolledby
+developer-writtennaturallanguageprompts.Despitetheimpactofprompt-poweredsoftware,littleisknown
+aboutitsdevelopmentprocessanditsrelationshiptoprogramming.Inthiswork,wearguethatsomeprompts
+areprogramsandthatthedevelopmentofpromptsisadistinctphenomenoninprogrammingknownas
+“promptprogramming”.WedevelopanunderstandingofpromptprogrammingusingStraussiangrounded
+theorythroughinterviewswith20developersengagedinpromptdevelopmentacrossavarietyofcontexts,
+models,domains,andpromptstructures.Wecontribute15observationstoformapreliminaryunderstanding
+ofcurrentpromptprogrammingpractices.Forexample,ratherthanbuildingmentalmodelsofcode,prompt
+programmersdevelopmentalmodelsofthefoundationmodel(FM)’sbehavioronthepromptbyinteracting
+withtheFM.Whilepriorresearchshowsthatexpertshavewell-formedmentalmodels,wefindthatprompt
+programmerswhohavedevelopeddozensofpromptsstillstruggletodevelopreliablementalmodels.Our
+observationsshowthatpromptprogrammingdiffersfromtraditionalsoftwaredevelopment,motivatingthe
+creationofpromptprogrammingtoolsandprovidingimplicationsforsoftwareengineeringstakeholders.
+CCSConcepts:•Softwareanditsengineering→Softwaredevelopmentmethods;•Human-centered
+computing→EmpiricalstudiesinHCI;•Computingmethodologies→Artificialintelligence.
+AdditionalKeyWordsandPhrases:Promptprogramming,promptengineering,Straussiangroundedtheory
+
+### ACMReferenceFormat:
+
+JennyT.Liang,MelissaLin,NikithaRao,andBradMyers.2025.PromptsAreProgramsToo!Understanding
+HowDevelopersBuildSoftwareContainingPrompts.Proc.ACMSoftw.Eng.2,FSE,ArticleFSE072(July2025),
+24pages.https://doi.org/10.1145/3729342
+1 Introduction
+“Isuspectthatmachinestobeprogrammedinournativetongues—beitDutch,English,American,
+French,German,orSwahili—areasdamneddifficulttomakeastheywouldbetouse.”
+—EdsgerW.Dijkstra(1979)
+Generativepre-trainedmodels(e.g.,GPT-4[9],Dall-E[15])—alsoknownasfoundationmodels
+(FMs)—havechangedhowprogrammersbuildsoftware.AIprogrammingassistantsthatgenerate
+code (e.g., GitHub Copilot [20]) have improved developer productivity [63, 85, 86] by helping
+∗Authorscontributedequallytothisresearch.
+Authors’ContactInformation:JennyT.Liang,CarnegieMellonUniversity,Pittsburgh,USA,jtliang@cs.cmu.edu;Melissa
+Lin,CarnegieMellonUniversity,Pittsburgh,USA,mylin@andrew.cmu.edu;NikithaRao,CarnegieMellonUniversity,
+Pittsburgh,USA,nikitharao@cmu.edu;BradMyers,CarnegieMellonUniversity,Pittsburgh,USA,bam@cs.cmu.edu.
+Permissiontomakedigitalorhardcopiesofallorpartofthisworkforpersonalorclassroomuseisgrantedwithoutfee
+providedthatcopiesarenotmadeordistributedforprofitorcommercialadvantageandthatcopiesbearthisnoticeandthe
+fullcitationonthefirstpage.Copyrightsforcomponentsofthisworkownedbyothersthantheauthor(s)mustbehonored.
+Abstractingwithcreditispermitted.Tocopyotherwise,orrepublish,topostonserversortoredistributetolists,requires
+priorspecificpermissionand/orafee.Requestpermissionsfrompermissions@acm.org.
+©2025Copyrightheldbytheowner/author(s).PublicationrightslicensedtoACM.
+
+## Acm2994-970X/2025/7-Artfse072
+
+https://doi.org/10.1145/3729342
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+5202
+rpA
+52
+]ES.sc[
+2v74421.9042:viXra
+
+<!-- Page 2 -->
+
+
+### FSE072:2 Liang,Lin,Rao,Myers
+
+developerswritesignificantportionsofcode,learnnewAPIsandprogramminglanguages,and
+writetests[47].Recently,instruction-tunedFMs[59]likeChatGPT[2]haveexpandedtheassistance
+withsoftwaredevelopmenttasksbywritingnaturallanguageprompts.Thisincludesresolving
+codeissues,developingnewfeatures,refactoring,andinformationseeking[18,32].
+The rising prominence of prompts has ushered in “prompt engineering”, whereby FM users
+repeatedly write and revise natural language prompts. These prompts enable new intelligent
+featureswhenintegratedinpopularsoftwareapplications[60],suchasGoogleSearch[4]and
+MicrosoftOffice[3],reachingmillionsofusers[1].AsofJanuary2024,engineeredpromptshave
+alsopoweredover3millioncustomversionsofChatGPTforspecifictasks,knownasGPTs[5].
+Yet,littleisknownaboutpromptengineeringanditsrelationshiptoprogramming.Relevant
+worksinclude Dolataetal.[26]’sstudy of52freelancedevelopersbuildingsolutionsbased on
+generative AI and Parnin et al. [60]’s study of 26 professional software developers integrating
+generativeAIintoproducts.Whilethesestudiesofferinsightonpromptdevelopment,theyare
+constrainedtofreelanceandprofessionalsoftwaredevelopment,limitingthegeneralizabilityofthe
+resultstootherprogrammingcontexts.Weaddressthesegapsbyfollowingamoresystematicand
+rigorousqualitativemethodology—Straussiangroundedtheory[22]—tostudyadiversesampleof
+programmerstounderstandtheprocessofdevelopingpromptsembeddedinsoftwareapplications.
+Inthiswork,wearguethatsomepromptsfunctionasprograms,aphenomenonwecallprompt
+programming[35].Inpromptprogramming,promptsareauthoredatdesign-timeandexecutedat
+runtimewithvariableuserinputs,butarewritteninnaturallanguageinsteadofaprogramming
+language. Prompt programming is a specific form of prompt engineering—broadly defined as
+iteratingonpromptstoimproveFMoutputs[84]—wherethesameprompthandlesvariableinputs
+given at runtime. For example, a prompt program on a teleconferencing platform may take a
+meetingtranscriptandattendeenameandreturnbulletedtodosanddeadlinesforthatindividual.
+Inpromptprogramming,naturallanguageisaprogrammingabstraction,butunlikeformalisms
+suchasDSLsormachinecode,itintroducesambiguityandreducesprecision[23].Whiletheidea
+ofprogramminginnaturallanguagedatesasearlyasthe1970s,whereDijkstradiscussedavision
+ofinstructingmachinesin“ournativetongues”[23],ithasbecomefeasibleandwidespreadwith
+FMsduetoinstruction-tuning[59]thatteachesmodelstofollownaturallanguageinstructions.
+We argue that prompt programming is a phenomenon that warrants its own study, as the
+sociotechnicalcircumstanceoftheprogrammingtaskinfluencesthenatureoftheprogramming.For
+example,theprogrammingprocessofend-userswhowritesoftwareforpersonaluse(i.e.,end-user
+programming[42])isdifferentfromthatofdatascientistswhowritesoftwaretoexploredifferent
+possibilitiesincode(i.e.,exploratoryprogramming[40,68]),andbothdifferfromaprofessional
+programmerwhofocusesonasmallcomponentwithinalargersystem.Theprogrammingtaskalso
+varieswiththedeveloper’stools(e.g.,visualprogramminglanguagesvs.Jupyternotebooks),focus
+ontheformalityoftheprocess(e.g.,accomplishingagoalvs.exploringideas),andkeychallenges
+(e.g.,findingtherightabstractionsvs.managingcodeversions)[40,42].Thiscreatesdisparate
+experiences and necessitates the development of support tools unique to each context. Thus,
+studyingpromptprogramscouldinformthedevelopmentoftoolstosupportpromptprogrammers.
+WeformapreliminaryunderstandingofcurrentpromptprogrammingpracticesusingStraussian
+groundedtheory[22],aqualitativeresearchmethodologythatdevelopsanovelexploratoryexplanationofadomainknownasa“groundedtheory”.Tothisend,weinterview20developersbuilding
+software that is based on prompts to understand: How do programmers develop programs that
+incorporatenaturallanguageprompts? First,weconsiderthedefinitionsofaprompt andprogram.
+
+### Wedefineaprompt as:
+
+AnaturallanguagequerytoaFM.
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 3 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:3
+StudyFindings:BarriersinPromptProgramming
+
+### Programmer(Section4.1)
+
+1. (cid:17)ProgrammersmustdevelopamentalmodelabouttheFM’sbehaviorontheprompt.
+2. (cid:17)Programmers’mentalmodelsarenotreliable.
+3. (cid:17)Programmersuseexternalknowledgesourcesandpriorexperiencetobuildtheirmentalmodel.
+
+### FoundationModel(Section4.2)
+
+4. (cid:17)EachFMhasitsownsetofqualitiesandcapabilities.
+
+### Prompt(Section4.3)
+
+5. (cid:1)Minutedetailsinthepromptmatter.
+6. (cid:1)Promptsarefinickyandfragile.
+
+### Requirements(Section5.1)
+
+
+## DAssumptionsoftherequirementsmustbeexplicitlystated.
+
+8. (cid:17)RequirementscanevolveasthecapabilitiesoftheFMarediscovered.
+
+### Design(Section5.2)
+
+
+## DDevelopersmakedecisionsabouthowpromptprogramsshouldbecomposedanddecomposed.
+
+10. (cid:17)Dependentpromptsaretightlycoupled.
+
+### Implementation(Section5.3)
+
+11. (cid:17)Promptprogrammingisrapidandunsystematic.
+
+### Debugging(Section5.4)
+
+12. (cid:1)Faultlocalizationisdifficult.
+
+### DataCuration(Section5.5)
+
+13. (cid:192)Programmersneedtofindrepresentativedataforthetask.
+
+### Evaluation(Section5.6)
+
+14. (cid:192)Evaluatingpromptprogramsrequiresassessingqualitativeconstructs.
+15. (cid:192)Testingoccursatdifferentscopes.
+Fig.1. Anoverviewofthe15studyfindingsonthebarriersinpromptprogramming.Thesecanbedivided
+intofourtypesofbarriers:understandingFMbehavior((cid:17)),dealingwithstochasticity((cid:1)),programmingin
+naturallanguage(D),andtestingpromptprogrambehavior((cid:192)).
+Forthedefinitionofaprogram,weconsiderKoetal.[42]’sdefinition,whichis“acollectionof
+specificationsthatmaytakevariableinputs,andthatcanbeexecuted(orinterpreted)byadevice
+withcomputationalcapabilities.”Weextendthistoderivethedefinitionofapromptprogram:
+ApromptthatacceptsvariableinputsandcouldbeinterpretedbyaFMtoperformspecifiedactions
+and/orgenerateoutput.ThispromptisexecutedwithinasoftwareapplicationorcodebyaFM.
+This definition includes developing prompts for applications like GPTs and chatbots. It also
+coverslanguageagents,wherelargelanguagemodels(LLM)receivearbitraryuserrequestsand
+executethemindynamicenvironmentsusingexternalmodulesknownas“tools"(e.g.,modulesfor
+mathematicalreasoning[67]andcodeinterpreters[28]).However,thisdefinitionexcludescases
+whereadeveloperconverseswithanFMoncetoachieveatask(e.g.,promptengineeringwith
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 4 -->
+
+
+### FSE072:4 Liang,Lin,Rao,Myers
+
+ChatGPTtodebugaspecificerrormessage).Thesepromptsdonotacceptvariableinputs,donot
+generalizebeyondthespecificcase,andarenotexecutedwithinabroadersoftwareapplication.
+Throughourinvestigation,wecontribute15observationsthatidentifybarriersinpromptprogramming(seeFigure1).Theseformapreliminaryunderstandingofcurrentpromptprogramming
+practices. To aid discussion, we organize these into four types of barriers: understanding FM
+behavior((cid:17)),dealingwithstochasticity((cid:1)),programminginnaturallanguage(D),andtesting
+promptprogrambehavior((cid:192)).WhilesomeresultscorroboratethosefromDolataetal.[26]’sand
+parnin2023building’sstudies(e.g.,faultlocalizationbeingdifficult((cid:1) )),ourresultsdifferinno-
+# 12
+tableways.First,wefindpromptprogrammersinteractwithFMstodevelopmentalmodelsofthe
+FM’sbehaviorontheprompt((cid:17) )anditsuniquequalities((cid:17) ).Althoughtheliteraturesuggests
+# 1 #4
+thatexpertshavewell-formedmentalmodelscomparedtonovices[69],promptprogrammersstruggletodevelopreliablementalmodels((cid:17) )evenafterwritingdozensofprompts,eachwithmany
+# 2
+iterations.Thiscontributestoarapidandunsystematicdevelopmentprocess((cid:17) ).Wealsofind
+# 11
+thatpromptscanbecomposedanddecomposed(D )andtestingoccursatdifferentscopes((cid:192) ).
+# 9 #15
+Whiletheseobservationsexhibitsimilaritiestosoftwaredevelopment,wealsofinddifferences
+comparedtotheprocessofdevelopingtraditionalsoftware,necessitatingthecreationofnewtools
+andprocessestosupportpromptprogramming.Thishasimplicationsforsoftwarepractitioners,
+academics,toolcreators,andeducatorsinterestedingenerativeAIinsoftwareengineering.
+2 RelatedWork
+We discuss related work on prompt engineering (Section 2.1) and software engineering for AI
+(SE4AI;seeSection2.2).DuetotherapidlyevolvinglandscapeofpromptengineeringandFMs,
+thisdiscussionwillnecessarilymissmorerecentdevelopments.
+2.1 PromptEngineering
+Priorliteraturehasexaminedpromptengineeringinavarietyofcontexts.Thisincludesuserstudies
+onpromptengineering,promptengineeringtools,andretrospectiveinterviewstudiesonprompt
+engineeringinsoftwaredevelopment.Wediscussthisinmoredetailbelow.
+Previousworkhasconductedempiricaluserstudiesofpromptengineering.Someworkshave
+focusedonthedevelopmentofchatbotswithendusersusingprompts[82–84].Inauserstudyof10
+peoplewhousedatooltocreatechatbotsthroughprompts,Zamfirescu-Pereiraetal.[84]identified
+severalchallengesofpromptdevelopment,includingopportunisticpromptdesignapproaches,a
+lackofsystematictesting,andwritingpromptsthatwerenotgeneralized.Jiangetal.[35]evaluated
+apromptdevelopmenttoolin11usersinvariousroles,includingdesigners,contentstrategists,
+andfront-enddevelopers.Theproblemsparticipantsfacedincludedtheprompteasilybreaking
+andoverfittingonexamples,aswellashavingdifficultyevaluatinglargeamountsoftext.
+Otherworkhasinvestigatedthecreationofpromptingtoolstoassistwithvariousprompting
+tasks.Promptpatterncatalogscansolvecommonproblemsencounteredwhenconversingwithan
+LLM[76],suchasquestionrefinement,aswellassoftwareengineeringtasks[77],suchasspecificationdisambiguation.Otherrelevanttoolsincludepromptinginterfaces,suchasPromptAid[56],
+PromptMaker[35],andPromptIDE[70].Thesetoolsincludedseparateviewstoshowthedataset,
+iterateontheprompt,tracktheperformanceoftheprompt,andsearchfortheprompts.
+Mostrelatedtothisstudyareretrospectiveinterviewstudiesthatinvestigatepromptdevelopment
+insoftwareengineering.Dolataetal.[26]conductedastudywith52freelancedevelopersontheir
+experiencewithbuildingprompt-poweredsoftware.Theirinterviewfocusesonthepositiveand
+negative experiences with generative AI, project uncertainties, and views on freelancing. The
+methodologyinvolvedrecruitingfromUpwork,conductingretrospectiveinterviews,performing
+athematicanalysis,andcomparingthefindingswithfourmeta-reviewsofSE4AIliterature.The
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 5 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:5
+participantsenumeratedseveralchallenges,includinghavingdifficultyidentifyingthesourceof
+incorrectresponses,budgetconstraints,andunrealisticclientexpectations.Meanwhile,Parnin
+etal.[60]conductedaninterviewstudywith26professionalprogrammerswhodevelopedproduct
+copilots.InterviewtopicsincludedmotivationforusingAIinproducts,majortasksforbuildingthe
+generativeAIapplication,promptengineering,testing,tooling,challenges,learning-relatedskills,
+andconcernswithAI.TheirmethodologyinvolvedrecruitingparticipantsfromUserInterviews.com,
+conducting retrospective interviews and structured brainstorming sessions, and performing a
+thematic analysis. They found that the participants followed a general process of exploration,
+implementation,evaluation,andproductization.Thisworknotedseveralchallenges,includingthe
+trial-and-errornatureofpromptdevelopmentandcreatingbenchmarks.
+Thisliteratureprovidesaninitialunderstandingoftheuniqueaspectsofpromptprogramming.
+However,theyareconstrainedtospecifictypesofdevelopers(i.e.,end-users,professionalprogrammers,andfreelancers),limitingthegeneralizabilityoftheresults.Additionally,theseworksdo
+notstudytheprocessofwritingpromptprogramswithrespecttosoftwaredevelopmentactivities.
+Our study builds upon these works by employing a more systematic and rigorous qualitative
+methodology,Straussiangroundedtheory[22],tostudytheprocessofwritingpromptprograms.
+Wesampleabroadrangeofpromptprogrammersalongvariousaxes,suchaspromptstructure,
+programmingcontext,androle,aswellasaskquestionsabouttheend-to-enddevelopmentprocess.
+2.2 SoftwareEngineeringforAI
+NumerousworkshavestudiedthehumanaspectsofbuildingML-enabledsystems,alsoknownas
+softwareengineeringforAI.Theseworkshavedocumentedtheexperiencesofpractitionersand
+theircommonchallengesinthisdomain.Weelaboratefurtherbelow.
+BuildingML-enabledsystemsinvolvesworkingwithandwranglingnondeterministic,opaque
+neuralmodels[30].Thisissimilartopromptprogramming,asdevelopersmustalsocontendwith
+non-transparent,stochasticFMs.Previousworkdescribesthedevelopmentofmodelsashighly
+experimental [30, 57, 58, 73, 78]. The literature also stresses the importance of collecting highqualitydataforthedomain[12,26,30,57,58,64]aswellastheuseofquantitativemetrics,suchas
+precision,precision,andrecall,tomeasuremodelperformance[58,73].
+However,thedevelopmentofMLcomponentspresentsuniquechallenges.Modelscanbedifficult
+todebugduetotheirdeterminism[30],whiletraining-servingskewcanarisewhentrainingdata
+failtogeneralizetoproduction[57,58,73].Tomitigatethis,modelsareperiodicallyre-trained[57].
+Inaddition,expertiseinavarietyofdomains,suchassoftwareengineeringanddatascience,is
+distributed between roles [30, 58, 73]. In an interview study with 45 practitioners, Nahar et al.
+[58]foundthisintroducedcollaborationchallengesbetweendifferentroles,suchasunclearmodel
+requirements,handlingevolvingdata,andinadequatedatasets.Finally,alackofAIliteracycanmake
+requirementselicitation,communication,andcollaborationwithclientschallenging[25,58,78].
+Thisbodyofliteratureservesasafoundationforunderstandingpromptprogramming.Weextend
+thisbodyofworkbycomparingthebuildingofML-enabledsystemstopromptprogrammingand
+understandingwhataspectsofthispriorliteratureapplytopromptprogramming.
+3 Methodology
+Sincethereislimitedliteratureonpromptprogramming,weusedaqualitativeapproachtoexplore
+theprocessofdevelopingprompt-poweredsoftware.Weusedthegroundedtheorymethodology,
+whichallowsresearcherstodevelopanovelexploratoryexplanationforadomain.
+Therearethreepopularapproachestogroundedtheory:Glaserian/classical[31],Straussian[22],
+andconstructivist[17]methodologies,whichvaryintheirproceduresandepistemology[21].Our
+approach is based on Straussian grounded theory [22] (see Figure 2). This involves defining a
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 6 -->
+
+FSE072:6 Liang,Lin,Rao,Myers
+Fit Assessment
+9 Reviewers
+Prior Literature Data Collection Qualitative Analysis
+5 Papers Interviews (45 min.) Open / Axial Coding
+Literature Triangulation
+33 Papers
+Domain Expertise Maximum Variation Sampling
+Inter-Rater Reliability
+
+### Cohen’s K
+
+Theoretical Grounded Theory
+Grounded Theory Development
+
+### Sensitivity Validation
+
+Fig.2. AnoverviewoftheStraussiangroundedtheorymethodologyperformedinthestudy.
+researchquestion;developingtheoreticalsensitivitytothephenomenonthroughpriorliterature
+and domain expertise; generating a grounded theory via diverse sampling and simultaneous
+datacollectionandanalysis;andvalidatingthegroundedtheorybytriangulatingwithliterature,
+performinganassessmentofthefitofthegroundedtheory,andcomputinginter-raterreliability[21,
+22].Inthissection,wefirstdiscussourgroundedtheoryprocess(Section3.1).Wethendescribe
+ourparticipants(Section3.2)andinterviewprotocol(Section3.3),andclosewithadiscussionof
+thelimitationsofourmethod(Section3.4).WepresentourresultsinSection4andSection5.
+3.1 GroundedTheoryProcess
+Wedescribeourgroundedtheoryprocessbelow.Itcontainsfivemainstages:definingaresearch
+question,developingtheoreticalsensitivity,generatingthegroundedtheory,triangulatingwiththe
+literature,andvalidatingthegroundedtheory.Wedescribethisprocessinfurtherdetailbelow.
+Definingaresearchquestion. Ourprocessbeganwithdefiningaresearchquestion.Westudythe
+phenomenonwheredeveloperswriteapromptprogramusingnaturallanguageprompts,rather
+thanpurecode:Howdoprogrammersdevelopprogramsthatincorporatenaturallanguageprompts?
+Promptscanbeusedinavarietyofcontexts,suchasinteractingwithChatGPTinconversation[18],
+butarenotprograms.Thus,weapplythedefinitionofapromptprogramdescribedinSection1.
+Developingtheoreticalsensitivity. Beforethestudy,theinvestigatorshoulddevelopanintuition
+forthephenomenonbeingstudied,knownastheoreticalsensitivity[21].Thiscanbedonethrough
+professional experience and understanding the prior literature so that researchers can extract
+insightsfromthedata.However,theinvestigatorsshouldnotbeconstrainedbypriorknowledge
+whiledevelopingthegroundedtheory[22].Weenteredthestudywithsometheoreticalsensitivity
+sincetwoauthorsaresoftwareengineeringandAIresearchersandhavedevelopedmultipleprompt
+programs.Followingpriorwork[55],weconsideredourbackgroundandoptedforalightweight
+overview of prompting literature. We considered foundational prompting papers in machine
+learningvenues[16,75],anotablesurveypaperonpromptingtechniquesinnaturallanguage
+processing(NLP)[51]aswellastwoempiricalstudiesonhowpeopledevelopprompts[26,84]
+fromhuman-computerinteraction(HCI)andsoftwareengineeringvenues.Weconsideredthis
+literatureandtheauthors’existingdomainexpertisetodeveloptheinterviewprotocol(Section3.3).
+Generatingthegroundedtheory. Weconducted45-minuteinterviewswithadiversesetof20
+promptprogrammers(seeTable1)overZoom.Theinterviewswererecordedandtranscribed;the
+recordingswerelaterdeleted.Twoauthorswerepresentforthefirstsixinterviewstobecome
+familiarwiththedata.Thefirstauthorconductedtheremaininginterviews.
+Todeveloptheinitialgroundedtheory,threeauthorsfirstindependentlyperformedline-by-line
+codingonthefirsttwointerviewsinseparatecodebookstobecomemoresensitizedtothedata.
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 7 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:7
+Eachcodecontainedadescriptionofthecodeaswellasobservationsfromtheinterviews.The
+authors then reconvened to merge the individual codebooks by identifying codes with similar
+conceptsandmergingthemintoasharedcodebook.Theremainingcodeswerethendiscussed
+andaddedorremovedtothecodebookbyunanimousvote.Thefirstauthorthencodedthenext
+interview,andtheotherauthorsreviewedthecodesforagreement.Weidentifiedfiveinstancesof
+disagreement,whichwerediscussedandresolved.Thethreeauthorsthenperformedaxialcoding,
+groupingtheemergingcodesintopreliminarycategoriesonunanimousvote.
+Fortheremaininginterviews,theauthorsindividuallyopencodedtheinterviewtranscripts,
+notingnewcodesthatemergedinthesharedcodebook.Amemowascreatedforeachinterviewto
+capturekeyinsightsandrefinetheemerginggroundedtheory.Theauthorsmetregularlytodiscuss
+thenewcodesandobservations.Newcodesandobservationswereaddedtothesharedcodebook
+uponunanimousvote,andthecategorieswerefurtherrefinedasmoredatawascollected.
+Asthegroundedtheorydeveloped,weperformedmaximumvariationsampling[71]toobtain
+a diverseset of participantsthat couldchallenge or extendthe grounded theory. Werecruited
+participantswhometthedefinitionofcreatingapromptprogram(Section1)bysnowballsampling
+withintheauthors’socialnetworksandrecruitinginonlineopen-sourcecommunities.Participants
+were recruited based on the types of models used (e.g., open-source models vs. closed-source
+models,visionlanguagemodelsvs.languagemodels),applicationdomain(e.g.,robotics,education,
+productivity),organizationsize(e.g.,largetechnologycompanyvs.startup),programmingcontext
+(e.g.,academia,industry,freelance,open-sourcesoftware),role,and/orpromptstructure(e.g.,a
+languageagentthatisabletousetoolsvs.singlepromptvs.multi-prompt).Weinitiallyachieved
+theoreticalsaturationafterinterviewing14participants.Wecontinuedtorecruitparticipantsto
+ensurethatourobservationsheldacrossavarietyofsituations,includingopen-sourcesoftware
+andstartups.Westoppeddatacollectionafterreaching20participants.
+Triangulatingwithliterature. Whiledevelopingthegroundedtheoryofpromptprogramming,we
+triangulatedourfindingswiththepriorliterature.Sincetherelevantliteraturewasnotidentifiable
+throughkeywordsearch,wefollowedpreviouswork[58]inperformingafocused,best-effortliteraturereviewbyperformingforwardand/orbackwardsnowballingontheinitialsetoffivepapers.
+TherelevantpaperswerefirstidentifiedbasedontitlesrelatedtobuildingAIsystemsorprompt
+engineering.Theywerelaterverifiedbyreadingthemanuscript.Intheend,thisliteraturespanned
+several communities, including NLP, HCI, programming languages, software engineering, and
+machinelearning.Ofthe502papersconsidered,weidentified33asrelevant.Seethesupplemental
+materialsforthissetofpapers[46].Foreachpaper,thefirstauthoridentifiedtextrelatedtoprompt
+programmingandappliedcodesfromthecodebook,updatingthecodesasnecessarytofurther
+refinethegroundedtheory.
+Validatingthegroundedtheory. Tovalidatethegroundedtheory,weassessitsfit.Straussian
+groundedtheorysuggestsvalidatingthegroundedtheorywithprofessionalsandstudyparticipants
+toseeiftheyresonatewiththefindings[22].Tothisend,wesentanemailcontainingasummary
+ofthegroundedtheoryaswellasadraftofSection4,Section5,andTable1tothe20participants
+andoneexternalresearcherwhostudiespromptprogramming.Weaskedthemtoreflectonthefit
+ofthegroundedtheoryandprovidefeedbackbasedontheirexperience.Ninepeoplerespondedto
+thisinquiryandindicatedgeneralagreementwiththefindings,somewithwordingchanges.
+Additionally, to assess the reliability of the coding, the first author randomly selected and
+open-codedtwointerviewsatthecategorylevel.Thelabelswerethenremoved,withtheoriginal
+highlightedtextspansremainingintact.Oneauthorwasassignedtoeachinterviewandappliedthe
+codecategoriestoeachhighlightedtextspan.Basedonthisprocedure,ourinter-raterreliability
+was0.89and0.81basedonCohen’s𝜅—indicatingthatbotharealmostinperfectagreement[44].
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 8 -->
+
+
+### FSE072:8 Liang,Lin,Rao,Myers
+
+Table1. Anoverviewoftheparticipantsinthestudy.Wereporttheparticipant’sdevelopmentcontext,
+numberofyearsofprogrammingexperience,numberofpromptprogramsdevelopedpriortotheinterview,
+promptstructure,modeltype,applicationdomain,andtask.Promptstructurescanbeasingleprompt,
+multiplechainedprompts(multi-prompt),oralanguageagent(agent).Modeltypescanbeopensource( )
+
+## Os
+
+orclosedsource( )andcanbealanguagemodel( )oravision-languagemodel( ).
+
+## Cs Lm Vlm
+
+
+### ID Context Exp. #Prompts Structure Model AppDomain Task
+
+P1 Academia 16yrs 30 Singleprompt OS LM Security Classification
+P2 Personal 10yrs 40 Singleprompt CS LM Productivity Text summarization
+project (chatbot)
+P3 Academia 8yrs 30 Singleprompt CS LM Researchanalysis Classification
+P4 Bigtech(R&D) 8yrs 10 Singleprompt OS LM Softwaretesting Codegeneration
+P5 Academia 14yrs 35 Singleprompt CS LM Education Generation
+P6 Academia 10yrs 3 Multi-prompt CS LM Softwaretesting Codegeneration
+P7 Bigtech(Eng) 10yrs 4 Singleprompt CS LM Education Generation
+P8 Academia 10yrs 20 Agent CS LM Softwaretesting Codegeneration
+P9 Academia 14yrs 20 Multi-prompt OS VLM VisualQ&A Retrieval,Q&A
+P10 Bigtech(Eng) 7yrs 10 Multi-prompt CS LM Education Textediting
+P11 Bigtech(R&D) 8yrs 5 Agent CS LM Productivity Datageneration
+P12 Bigtech(Eng) 14yrs 100+ Multi-prompt CS LM Productivity Codesummarization
+P13 Bigtech(Eng) 20yrs 6 Multi-prompt CS LM Productivity Codegeneration
+P14 Bigtech(Eng) 5yrs 3 Singleprompt CS LM Productivity Codegeneration
+P15 Bigtech(Eng) 5yrs 3 Singleprompt CS LM Career Q&A(chatbot)
+
+### P16 OSS 8yrs — Agent CS LM Softwaredev. End-to-endworkflow
+
+P17 Startup(R&D) 6yrs 5 Singleprompt CS LM Robotics Codegeneration
+P18 Startup(Eng), 3.5yrs 15 Agent CS LM Softwaretesting Testgeneration
+
+## Oss
+
+P19 Startup(Eng) 3yrs 5 Agent CS LM Researchanalysis End-to-endworkflow
+P20 Freelance 9yrs 1 Singleprompt CS LM Literature Q&A(chatbot)
+3.2 Participants
+A summary of our participants is in Table 1. The inclusion criterion was developers who had
+previouslycreatedatleastonepromptprogram,accordingtothedefinitionpresentedinSection1.
+Ourparticipantsweremen(𝑁 =17)andwomen(𝑁 =3)fromawiderangeoftechnologyroles,
+includingMachineLearningEngineer,SeniorSoftwareEngineer,Ph.D.Student,andPrincipalData
+andAppliedScientist.Allparticipantshadpriorprogrammingexperience(median8.5years)and
+hadwrittenapromptprogrambefore(median10suchprograms).Participantsalsoregularlyused
+foundationmodels:10participantsreportedusingthemmorethanonceaday,fiveparticipants
+reportedusingthemoncedaily,andfiveparticipantsreportedusingthemweekly.
+3.3 InterviewProtocol
+Interviewswere45minuteslongandconductedoverZoom.Theprocedurewasapprovedbyour
+Institution’sReviewBoard.Participantswerecompensatedwitha$20USDAmazongiftcertificate.
+To begin, the participant completed a demographic and background survey with questions
+suchasgender,thenumberofyearsofprogrammingexperience,andnumberofpromptprograms
+developed.WefollowbestpracticesinreportinggenderinHCI[66].Theinterviewerthenpresented
+theparticipantwiththedefinitionofapromptprogramandaskedtheparticipanttorecallthe
+lasttimetheywrotesuchaprogram.Iftheparticipanthadaccesstotheprompt,theyretrieved
+thepromptandanyassociatedhistory,andprovidedabriefoverviewoftheprompt.17ofthe20
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 9 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:9
+
+### InterviewQuestions
+
+• Thinkofthemostrecenttimeyouwrotesuchaprompt.Doyouhaveoneinmind?
+• Doyoucurrentlyhaveaccesstotheprompt?Ifso,couldyoupleasepullupthepromptandany
+associatedhistory(e.g.,onChatGPT/BardUIorGitHub),ifapplicable?
+• Didyouexperienceanydifficultieswhileusingexistingtoolstodevelopaprompt?
+• Didyourefertoexternalinformationsourcestodeveloptheprompt?Ifso,whichones?
+• Didyoueverrefertoapreviousversionofthepromptasyouweredevelopinganewversion?
+• Didyouuseanymetricsorheuristicstodeterminewhenthepromptwassuccessful?
+• Howdidyouidentifywhatcausedanincorrectoutput?Wereyouconfidentinyouranswer?
+• Didyourpromptchangeafterdeployment?
+Fig.3. Asubsetoftheinterviewquestions.Thefullprotocolisinthesupplementalmaterials[46]
+.
+participantsaccessedtheirprompts.P15,P17,andP19didnotduetoprivacyconcernsorlimited
+accesstoworkplaceresources.Tore-familiarizetheparticipantwiththeirpromptandtheirprocess,
+theparticipantdiscussedtheprompt’sdesignchoices(i.e.,adecisionmadeinhowtoimplement
+theprompt)anddiscussedthechallengestheyfacedwhiledevelopingtheprompt.Finally,the
+participantdiscussedtheoverallprocessthattheyusedtodevelopthepromptprogram.
+Todeveloptheinterviewprotocol,weidentifiedthemestoexplore:data,requirements,design,
+implementation,evaluation,debugging,anddeployment,basedontheliteratureandtheauthors’
+priorexperiencedevelopingpromptprograms(Section3.1).Wegeneratedquestionsforeachtheme
+intheprotocol.Thechallengeswerediscussedbeforetheprocess,sotheywerenotbiasedbythe
+discussionaboutthepromptingprocess.AsampleoftheinterviewquestionsareinFigure3;the
+completeprotocolanddemographicandbackgroundsurveyareinthesupplementalmaterials[46].
+Followingbestpracticesinsoftwareengineeringresearch[43],wepilotedtheprotocolwith
+threeindividualswhohaddevelopedpromptprogramstoclarifythewordingofthesurveyand
+theinterviewandensurethatourdefinitionofapromptprogramwasclear.
+3.4 ThreatstoValidity
+Below,wediscussthethreatstovalidityofthisstudy.
+Internalvalidity. Memorybiasescouldintroduceerrorsindescribingpromptdesignchoicesand
+developmentexperience.Toreducethisthreat,participantsrecountedtheirmostrecentprompt
+thatmetthedefinitionofapromptprogram.Whenpossible,theparticipantsreviewedtheirprompt.
+Although P15, P17, and P19 did not do so, which could produce different data, this threat had
+limitedimpact,astheirdatadidnotintroducenewcodes.Inaddition,theauthors’experience
+withpromptprogrammingandtheinterviewstructurecouldintroduceconfirmationbiasestothe
+generatedcategoriesandthedevelopedgroundedtheory.Wereducedthesethreatsbyperforming
+triangulationwithliteratureandvalidatingthegroundedtheorywithstudyparticipantsandan
+externalprofessionalwhohadengagedinpromptprogrammingresearch.However,theliterature
+samplingstrategywasnotfullysystematic,whichcouldintroduceselectionbiasinrelevantstudies.
+Externalvalidity. Theresultsofthisstudymaynotgeneralizebeyondoursample.Theparticipants may not be representative of all prompt programmers as snowball sampling, recruiting
+withintheauthors’socialnetworks,andself-selectionbiascouldintroducesamplingbias.Study
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 10 -->
+
+FSE072:10 Liang,Lin,Rao,Myers
+Update prompt Input
+
+### Prompt in
+
+natural language
+Programmer Experimentation Foundation
+Mental Model Loop Model
+
+### Output
+
+from model
+Observe & update
+
+### Generate
+
+mental model
+Fig.4. Aprogrammerusestheirpriorexperiencewiththefoundationmodel(FM)toconstructamental
+modelofhowtheFMmayperformonthetask.Theprogrammerusesthismentalmodeltowritetheprompt.
+Afterobservinghowthemodelresponds,thedeveloperusesthisnewinformationtoupdatetheirmental
+model,whichinfluencesthenextiterationoftheprompt.
+interviewswereconductedinEnglish,whichcouldcauselessrepresentationfromnonnativespeakers.Someparticipantswereunabletodisclosealldetailsoftheirprocessduetocompanypolicy.In
+addition,participantssharedrecentexperienceswithpromptprogramming,whichcouldlimitthe
+generalizabilityofourfindings.SinceFMperformanceevolvesovertime[19],observationsrelated
+tomodelbehavior(e.g.,promptsensitivity)maynotremainconsistent.
+Conclusionvalidity. Qualitativestudiesrelyontheinterpretationoftheparticipantinterview
+data,whichintroducessubjectivityandthepotentialforbiasintheanalysis.Tomitigatethisthreat,
+allauthorsinvolvedintheanalysisattendedmultipleinterviewsessionstofamiliarizethemselves
+with the data. The grounded theory was iteratively developed through unanimous agreement
+amongresearchers.Additionally,weassessedinter-raterreliabilityandconductedvalidationwith
+eightparticipantsandanexternalexperttoensurethecredibilityofourfindings.
+4 PropertiesofPromptProgramming
+Fromtheaxialcoding,wefindthatpromptprogrammingistheinteractionbetweenthreeentities:
+theprogrammer(Section4.1),thefoundationmodel(Section4.2),andtheprompt(Section4.3).We
+provideanoverviewofthisprocessinFigure4.First,aprogrammerusestheirpriorexperience
+withtheFMtoconstructamentalmodelofhowtheFMmightperformonthetask.Thismental
+modelinformshowthepromptiswritten.Afterthepromptisrun,thedeveloperobservesthe
+generatedoutputtocreateahypothesisornewbeliefaboutthemodel’sbehavior,whichthenis
+usedtoupdatethedeveloper’smentalmodel.Theupdatedmentalmodeltheninfluencesthenext
+promptversion.Thus,promptprogramsarebothveryflexible intermsofacceptingarangeof
+inputs,butalsoveryoverfit astheyaretheproductofthespecificFMbeingused,thetaskathand,
+andobservationsofthedeveloper.
+4.1 Programmer
+Duringpromptprogramming,theprogrammerspendssignificanteffortdevelopingamentalmodel
+ofhowtheFMmightbehaveonthetask.
+ProgrammersmustdevelopamentalmodelabouttheFM’sbehaviorontheprompttopredicthowitmaybehave((cid:17) ). Technologyusersformmentalrepresentationsofinteractionswith
+# 1
+devices,whichcanbedevelopedbyusingthetechnology[69].Researchshowsthatunderstanding
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 11 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:11
+theabilitiesofamachinelearning(ML)modelisimportantbutchallengingtobuildML-enabled
+systems[12,25,30,78],andthisappliestoFMsaswell[10,33,35,79].Justasdevelopersform
+mentalmodelsofcodebyexploringthecodebaseortalkingtocolleagues[45],participantsdescribeddevelopingamentalmodeloftheFM’sbehavioronthepromptbyrunningtheprompt.All
+participantsdevelopedtheirmentalmodelbyobservingtheFM’sperformance,eitherbyexamining
+individualexamples(P6,P7,P8,P9,P10,P12,P14,P15,P16,P17,P18,P19,P20)orlookingatmetrics
+(P4,P5,P7,P8,P9,P11,P14,P15,P16,P18,P19).Basedontheseobservations,theparticipantformed
+ahypothesisorbeliefaboutthemodel’sbehaviorandupdatedthepromptaccordingly.Thisoften
+includedcreatinganewexplicitinstruction,“guideline” (P8),“rule” (P14),or“mandate” (P20)inthe
+prompttoaddresstheobservation,asnotedbyZamfirescu-Pereiraetal.[83].
+Theprogrammer’smentalmodelwastheaccumulatedbeliefsabouttheFM’sbehavior,which
+coulddifferorevencontradictbetweenindividuals.Forexample,whilesomeparticipants(P1,P4,
+P5,P6,P9,P15,P16,P18,P20)includedexamplesinthepromptforfew-shotlearning[16]toachieve
+better results, others (P7, P13, P19) believed that the inclusion of examples caused the prompt
+tooverfittothoseexamples:“[Wedidnot]usefew-shotpromptingbecause...itover-indexesonthe
+examples.Afterawhile,youstartseeingveryrepetitiveandmonotonousoutput” (P7).Thisoverfitting
+ofexampleshasbeenfoundintheNLPliterature[51]andhasalsobeenobservedinpractice[35].
+Programmers’mentalmodelsarenotreliable((cid:17) ). Mentalmodelsareknowntobeincomplete
+# 2
+andinaccurate[69].Duetothelackoftransparencyofneuralmodels[12]likeFMsinprompt
+engineering[56],participantsmentionedthattheywerenotalwaysconfidentintheirdeveloped
+mentalmodels(P2,P4,P5,P6,P8,P9,P10,P15,P17,P18,P19):“It’sablackboxmodel.Nobodyknows
+what’sgoingoninside.It’sascienceoffaith” (P17).Furthermore,thestochasticnatureofFMs[14]
+madeitdifficultforparticipantstopredictthemodel’sbehavior,asfoundinpriorwork[35]:“I
+haveneverbeenconfident[inpredictinganFM’sbehavior]...andIdon’tthinkIeverwill” (P10).
+Someparticipants(P1,P3,P9,P13,P19)hadtheFMgenerateexplanationstounderstandits
+behavior.WhereasinNLPliterature,theseexplanationsarenotfaithfultotheFM(i.e.,accurately
+reflectingthemodel’sactualreasoningprocess)[34],participantsfeltthatithelpedthemunderstand
+themodel’sbehavior:“Youcanreasonabout[theLLM]ifyoucansee[its]thoughtprocess” (P19).
+Programmersuseexternalknowledgesourcesandpriorexperiencetobuildtheirmental
+model((cid:17) ). Participants(P1,P2,P4,P11,P12,P15,P16,P18)developedtheirmentalmodelofthe
+# 3
+FMvia“promptintuition” (P15)(i.e.,priorexperiencewithFMs):“Iknewwhatworksgenerally
+justbeinginthefield” (P8).Theliteraturealsopointstoexternalknowledgesourcesashelpful
+forpromptprogramming[35,60].Participantsusedofficialresources,suchasguidebooksfrom
+organizationsorAIcompaniessuchasOpenAI(P6,P10,P14,P15),onlinecourses(P7),research
+papers(P1,P2,P5);informalresources,likeblogs,articles(P5,P10,P16,P20),andpostsonsocial
+networks(P5,P16,P20)from“everydayusers” (P20);expertcolleagues(P1,P14,P15);andother
+exampleprompts(P16,P18).
+Althoughtheseresourceswerehelpful,theparticipants(P2,P10,P14,P15,P16,P20)expressed
+doubtsaboutwhethertheyimprovedtheprompt:“Idon’tknowifthebestpracticesarethebest.
+They are there for a reason, but sometimes they just don’t actually make that much of a change.
+There’sareasonthe[expert]issayingthat...Ijusttakeittheyknowbetterthanme” (P14).Even
+company-specificresourcesdidnothelp:“Evenwithfollowingbestpractices...[from]thecompany,
+someofthemjuststraightupdidn’twork” (P10).Thus,someparticipantsfeltthattherewerenosuch
+thingsasbestpractices:“Therearenostandardsforwhat’sagoodpromptorwhat’sabadprompt.It
+allseemslikeahaphazardscienceofjustaddingawordandmaybeitwilllookbetter” (P17).
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 12 -->
+
+FSE072:12 Liang,Lin,Rao,Myers
+4.2 FoundationModel
+TheFMonwhichthepromptisruninfluenceshowthepromptiswritten.
+Each FM has its own set of qualities and capabilities ((cid:17) ). Study participants ran their
+# 4
+promptsonmodelsthatvariedincapabilities(seeTable1).Somequalitieswereexplicitorobvious.
+Thisincludedthetypesofinputthemodelaccepted(e.g.,imagesandtext(P9)),outputgenerated
+(e.g.,“GPT-3.5model’sJSONoutput[mode]” (P7)),contextwindowsize(P2,P3,P8,P19),prompt
+formattingrequirements(P6),generationspeed(P4,P11,P15,P19),andmodelprivacy(P4).
+Somecapabilitieswerelatentandwerediscoveredbyinteractingwiththemodel,asnotedin
+previouswork[10,35].TheliteraturesuggeststhatFMshavelatentcapabilities,asFMperformance
+can improve on some tasks and regress on others over time [19, 53]. Study participants found
+somedifferencesbetweenFMstobequalitative:“[One]modelwascapturingsomeinstructionsin
+thepromptinamuchmorefocusedmanner,whereasthe[other]wasalittlemorelax” (P15).Inour
+sample,participants(P1,P4)observedaqualitydifferenceinopen-sourcemodels(e.g.,Llama[72])
+comparedtoclosed-sourcemodels(e.g.,GPT-4[9]):“Getting[theprompt]toworkonasmallermodel
+wasveryfrustratingwhenwithazero-shotprompt,GPT-4wouldalmostachieveahundredpercent
+performance” (P4).Participants(P1,P9)alsonotedthatsomeFMswereunabletocompletethetask:
+“[Themodelwas]generatinggarbage,and[after30iterations]Iconcludedthemodelistrash” (P1).
+4.3 Prompt
+Sincepromptsaretheproductoftheprogrammer’sobservationsaboutmodelbehaviorandthe
+qualitiesandcapabilitiesoftheFM,promptscanbefragile,andsensitivetosmalldetails.
+Minutedetailsinthepromptmatter((cid:1) ). Participantsdevelopedtechniquestoinfluence
+# 5
+theFMtogeneratethedesiredoutput.Inadditiontousingtechniquesfromtheliterature(e.g.,
+assigningpersonas,selectingapromptingstrategy,andprovidingdatacontext)[7,49],participants
+usedavarietyofsubtlestrategieslikeusingspecificphrasingforclarityorgenerality(P5,P13,P14,
+P16,P20);repeatingphrasesforemphasis(P4,P6,P10,P20);avoidingnegations(P2,P12);oradding
+specificcharacters,suchasemojis,toencouragetheirappearance(P6,P10).Someparticipants
+notedstrategiestovisuallyorganizetheprompt,suchasusingnumberedorbulletedlists(P8,P9,
+P10,P16)aswellasnewlinesandspacing(P1,P3,P5,P11,P12,P18).Othersusedtechniquesto
+emphasizespecificpartsoftheprompt,likebolding(P10,P18)andcapitalization(P7,P10,P12,P20).
+Theparticipants(P10,P12)alsodecidedoncreativedetailstoincludeinthepromptforbetter
+performance.Forexample,topreventtheFMfromleakingprompts,oneparticipant“bulliedGPT”
+(P10):“Wehaveaverylightthreatintheresaying,‘Ifyoushareanyofthisinformation...you[and]I
+willgetinalotoftroubleanditwillcausegreatcareerharm.”’(P10).Anotherparticipantsummarizing
+codetoldtheFMtoexplainthecode“‘soasixthgraderwhodoesn’tunderstandprogrammingcan
+understandit’.Theexplanations...wereverbose,soIadded,‘sixthgradersdon’treallylikereading’and
+forsomereason,thatgotittobeshorter” (P12).
+Finally,participantsnotedthattheinputandoutputdataformatimpactedthepromptperformance.Consistentwithpreviousstudies[50,60],participantsselectedstructuredandstandardized
+dataformats,suchasJSON(P3,P7,P9,P10,P11,P18),Markdown(P2,P7,P12)andXMLtags(P1,P3,
+P7,P10,P20).Theparticipantswouldchangethedatarepresentationtoachievebetterperformance
+(P4,P13,P20):“[Whatworkedbetteris]describingtheAPIsasthoughtheyarePythonfunctionsand
+havingthedocumentationinasimilarformattopubliclyavailablePythonfunctions” (P13).
+Promptsarefinickyandfragile((cid:1) ). AsnotedintheNLPliterature[37,81]andempirical
+# 6
+studies on prompting [51, 83], the performance of a prompt varies based on its language. In
+practice,participantsfoundpromptstobe“finicky” (P4),“fragile” (P20),“sensitive” (P1,P13),and
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 13 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:13
+Table2. Acomparisonbetweentraditionalsoftwaredevelopmentandpromptprogrammingintermsof
+promptprogrammingactivities.
+
+### Traditionalsoftwaredevelopment Promptprogramming
+
+•Expressedoutsideofcode •Expressedinaprompt,whichisalsothe
+
+### Requirements implementation(D #7)
+
+(Section5.1) •DependentontheperformanceoftheFMon
+thetask((cid:17) #8)
+Design •Basecomponent:Class/function •Basecomponent:Singleprompt(D #9)
+(Section5.2) •Chainedpromptsaretightlycoupled((cid:17) #10)
+•Writeaprogramthatimplementsaspecifi- •Writeapromptthatisanaturallanguage
+Implementation cationincode specificationthatwhenrunonaFM,imple-
+(Section5.3) mentsthespecification
+•Focusonrapidexperimentation((cid:17) #11)
+
+### Debugging
+
+•Faultcanbeisolatedtoasinglelineofcode •Faultlocalizationisnotcertain((cid:1) #12)
+•Canusedebuggingtoolsformoresystematic •Nodebuggingtools;relianceonshotgunde-
+(Section5.4)
+debugging bugging((cid:1) #12)
+DataCuration •N/A •Focusongatheringarepresentativedataset
+(Section5.5) thatreflectsthetaskdata((cid:192) #13)
+
+### Evaluation
+
+•Focusoncodecoveragemetrics •Focusonqualitativeevaluation((cid:192) #14)
+•Testingatvaryingscopes(e.g.,unittesting •Testingatvaryingscopes(e.g.,testingsingle
+(Section5.6)
+vs.integrationtesting) promptvs.testingchainedprompts)((cid:192) #15)
+“temperamental” (P15),sincepromptperformancecouldsuddenlyworsenduringdevelopment,as
+corroboratedinpreviousstudiesonpromptengineering[33,35,60,79,82,83].Thiscouldbedue
+toaFM’sabilitytofollowinstructions,whichcanchangeovertime[19].Forinstance,participants
+notedperformanceregressions(P2,P8,P10,P12,P15,P16,P19,P20),oftencausedbyaddingin“a
+bunchofnewrequirements” (P2)thatwouldcausepreviousinstructionstosuddenly“deactivate”
+(P20)orbe“disregarded” (P8)inthenewversion:“IfIprovidemultipleguidelines,[theFM]would
+followsomeanddisregardothers,especiallywhenthey’reconflictingoroverlappinginnature” (P8).
+WhilepreviousNLPstudiespointtopromptsbeingtransferablebetweenFMs[51],participants
+found prompts to be “finicky between models” (P4), causing the prompt to break and require
+additionaldevelopmenteffort(P4,P10,P15,P18):“Atonepoint,wehadtodo...aminormodelversion
+change...Thatbrokealmosteverything.Wehadtorewritesomanyprompts” (P10).Thisisbecausea
+FMchangecouldresultin“adifferentformat...Ihavearegexconverting[theoutput]...andthewhole
+thinggetsbroken” (P18).Thishasalsobeenobservedinexistingpromptengineeringstudies[26].
+5 PromptProgrammingProcess
+The prompt programming process has significant differences compared to standard software
+development(seeTable2).Weidentifiedsixactivitiesinpromptprogrammingfromaxialcoding:
+requirements(Section5.1),design(Section5.2),implementation(Section5.3),debugging(Section5.4,
+datacuration(Section5.5),andevaluation(Section5.6).
+5.1 Requirements
+Intraditionalsoftware,requirementsareseparatefromcode,whileinpromptprogramming,they
+are stated in the prompt and may evolve with the behavior of the FM. As in prior work [27,
+60],participantsnotedfunctionalandnon-functionalrequirements,suchasusability(P13,P15),
+reliability(P7,P19),latency(P4,P11,P15,P19),safety(P7,P10,P13,P19),privacy(P4,P13,P14),
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 14 -->
+
+
+### FSE072:14 Liang,Lin,Rao,Myers
+
+availability(P4),andcost(P5,P8,P10,P11,P14,P16,P19,P20).Companiesfoundsafetyandprivacy
+important,asnotedintheliterature[33,61].
+Assumptionsoftherequirementsmustbeexplicitlystated(D ). Attimes,theFMperformed
+# 7
+anincorrectactionnot becauseofanFMerror,butduetoanunder-specifiedorconflictingrequirementintheprompt(P3,P4,P5,P6,P8,P12,P19).Thus,promptprogrammingrequiredexplicitly
+statingassumptions:“Whenyou’reinteractingwithaperson,youmakealltheseassumptions,but
+everybodycanreadbetweenthelines...Themoreyoudesignprompts,themoreyourealizethatit’s
+notthesameascommunicatingwithanotherperson.Themodelneedsmorespecificinstructions” (P3).
+However,predictingwhichassumptionstoelaborateonwaschallenging,as“it’shardtotellwhen
+themodelcouldgowrong” (P3):“Ithinkobservationislike80%[oftherequirements].Iknewwhat
+Iwanted20%ofthetime” (P8).Thus,“capturingalltherules...isverydifficultinthestart,andjust
+generalizingoveralltheusecasescanbeverydifficult” (P19).
+RequirementscanevolveasthecapabilitiesoftheFMarediscovered((cid:17) ). Similartobuilding
+# 8
+ML-enabledsystems[73],promptrequirementscouldchangeastheFM’scapabilityonthetask
+wasdiscovered.Thisincludedmakingnewtrade-offsbetweennon-functionalrequirements,such
+assafetyvs.quality[27](P7):“Ourrequirementsdidchangeastohowtheproductwasperceived...So,
+strivingforthatbalancebetweentheresponsequalityandthelatencyinducedquiteafewiterations”
+(P15).TheparticipantsalsodefinednewfeaturesafterobservinghowtheFMperformedonthe
+task(P2,P4,P13,P18,P20):“IdoaddinrequirementsasIiterate.‘Oh,Ididn’tknowthatyouwould
+beabletodothis.Let’sseehowmuchIcouldpushthisfunctionality”’(P2).
+5.2 Design
+Justastraditionalsoftwarecouldbedecomposedtobasecomponentsofclassesandfunctions,
+complexpromptscouldbedecomposedintomultipletightlycoupledprompts.
+Developersmakedecisionsabouthowpromptprogramsshouldbecomposedanddecomposed (D ). Participants decomposed prompt programs into smaller components. For a single
+# 9
+prompt,theparticipantsdecomposedthepromptintosubcomponentssuchassubsections(P1,P2,
+P5,P6,P7,P8,P13,P20).Oneparticipantnoted“itisimportanttostructurethepromptinawaythat
+makessensetoyou.Otherwise,you’renotabletomaintainitgoingforward” (P13).
+Prompts can be composed or “chained” together for greater capabilities [10, 51, 79, 80]. The
+participantsdecidedhowtodecomposetheprompts:“Weknowwhatthecomplextasklookslike,
+andthenourjobistobreakthatdown” (P9).Eachprompthaditsownresponsibility:“Ifyouare
+creatingarobot,themotionofthehandinanyscenariocouldbearesponsibility[and]themovement
+ofthelegscouldbeanother” (P19).Similarlytopurecodesystems,promptsactedasasinglemodule
+withitsownconcern[24]thatcouldbecomposedintoamorecomplexsystem.
+Dependentpromptsaretightlycoupled((cid:17) ). Asobservedinotherstudies[26,79],dependent
+# 10
+promptsposedchallengessincedevelopersneededtoformmentalmodelsofhowtheprompts
+performedtogether,ratherthanindividually:“Twochangesthatdoreallywellseparatelycouldmerge
+andbecomeaterribleexperienceforunexplainablereasons” (P13).Thisissimilartoengineering
+ML-enabledsystems,whosecomponentshavetightcoupling[73].Participants(P8,P12,P13,P19)
+foundthatintegrationresultedinbreakageandrequiredsignificantpromptchangestoworkwith
+each other. When working individually, P19 performed regular integration testing of multiple
+prompts:“[Integrationtestingis]highlycorrelatedwithhowit’sgoingtoperforminaproduction
+environment.Intheend,wearegoingtointegrateeverything” (P19).However,collaborationcould
+posechallenges,sinceprogrammersmaybeunabletotestwithotherin-progressprompts.P13
+reportedchanginghowshewould“splitupthework” (P13)withhercolleaguesandfelta“rushto
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 15 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:15
+getmyPR[(pullrequest)]inbeforetheotheronedoes” (P13)toavoidtheadditionalworkassociated
+withintegration.ParticipantstriedtoaddressthischallengebyallowingAPIslikeLangChain(P4,
+P9,P10)orLangGraph(P19)tohandleorchestration,asnotedinpreviouswork[26,79].
+5.3 Implementation
+Inpromptprogramming,naturallanguagepromptsserveasboththespecificationandimplementation,whiletraditionalsoftwareimplementsspecificationsincode.AsmentionedinSection4,
+promptprogramminginvolvesconstant“experimentation[comparedto]traditionalsoftwaredevelopment” (P15)andisaprocessof“trialanderror” (P3,P7,P10,P15).
+Prompt programming is rapid and unsystematic (cid:17) ). To test the prompt’s feasibility,
+# 11
+participants(P1,P4,P6,P7,P8,P12,P13,P14,P15,P19,P20)startedwithabasicpromptforthe
+taskwhichincludedadescriptionofthetaskandhowahumanwouldintuitivelyperformthetask.
+Eachupdatecouldresultinunwantedbehaviorandrequirepromptupdates,thusrestartingthe
+update-testloop.WhiledevelopingamentalmodeloftheFM(Section4.1),thepromptbecame
+morecomplexastheprogrammerrefineditandobservedtheFM’sbehavior.Thisprocesswas
+“unscientific” (P4):“Iwouldtryalotofdifferentthingsonapromptandit’snotaverywellthought-out
+procedure” (P6).Italsooccurredevenwithexistingpromptprograms(P14).Previousworkhas
+characterized prompt engineering as highly iterative [10, 26, 49, 50, 60, 82–84], similar to the
+experimentalnatureofengineeringML-enabledsystems[30,57,58,73,78].
+Duringexperimentation,“thespeedandthevelocityofmakingchanges[was]high” (P19).The
+literatureindicatesthatfindinganoptimalpromptischallenging[10,56],astherapidexperimentationproducesmanyoutputsthataredifficulttomakesenseof[29,35,36,50].Participantscreated
+manypromptversionstotestnewapproaches(P1,P5,P19),addfunctionality(P2,P6,P13,P16),
+fixbugs(allparticipants),experimentwithnewmodelsorhyperparameters(P4),orincorporate
+feedbackafteracodereview(P1,P14,P16).Promptversionsoftenbranchedofffromeachother
+(P4,P6,P12,P13,P15,P17,P19,P20),butcouldbereverted(P4,P5,P8,P10,P15,P16,P20).
+Asnotedinearlierstudies[83],changeswerelessdrasticasthemodificationshadlessofan
+effectontheprompt,leading“promptengineering[tofeel]likeawasteoftime” (P5):“Ifwegraphed
+thenumberof...changesoverthenumberofiterations,thegradientwouldbeprettyhighduringthefirst
+iterations.Thenitflattensquiteabit...becausetheprompthasmatured...suchthatwedon’tneed...big
+changes” (P15).P16avoidedtestingsmallchangesandpreferredtobatchthemtoreducecosts:“For
+smallchanges,wewillwaitandmergethisevaluationintothenexttimeweconductit” (P16).
+Consistentwithpriorstudiesinpromptengineering[35,60]andbuildingML-enabledsystems[12,
+30,57,58],theAI’snondeterminismmakesit“hardtomeasureoverallprogress” (P6):“Youcanthink
+youhavesomethingthat’sreallygood,andthentryitoutonacompletelydifferentsetofinputsand
+it’sjustterrible.Alotofthisisfeelingofmakingprogressandthenbacktracking” (P10).Participants
+developedstrategiestoaddressthis,suchasmakingsmallchanges(P2,P4,P8,P15)orviewing
+theevaluationmetricscomputedonalargenumberofexamples(P4,P18):“IfeellikeIwasn’tthat
+confident,otherthanthefactthatourintrinsicnumberswentup” (P4).
+Thestudyparticipantsusedavarietyoftools.GUI-basedtools(P2,P4,P5,P6,P8)suchasGPT
+playgroundandnotebooks(P1,P3,P5,P18,P19)enabledrapidprototyping;texteditorsandIDEs(P1,
+P11,P14,P17,P20)revealedformatting,likenewlinecharacters;andFMshelpedinspireorgenerate
+parts of the prompt (P2, P18). The prompts were manually transferred between environments,
+usuallybycopy-pasting(P1,P2,P3,P4,P5,P8).Thisintroducedissueslikeformattingerrors(P1,
+P5)andinconsistentbehaviorbetweenusingtheGUIversustheAPIenvironments(P5).
+Duetorapidexperimentation,theparticipants(P3,P18,P19)struggledtorecallpreviousversions
+andtheiroutput.SometriedtoaddressthisbytrackingversionsofthepromptasfoundinParnin
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 16 -->
+
+
+### FSE072:16 Liang,Lin,Rao,Myers
+
+et al. [60]’s study by using Git (P5, P6, P7, P10, P16, P17, P18) or even custom systems. These
+systemsvariedinsophistication,fromatextdocumenttrackingallpromptsandoutputs(P1,P2,
+P5,P12)andarbitraryfile-namingsystems(P9,P12,P19),tospreadsheettables(P1,P4,P5)and
+custom-builttools(P8).However,participantsfounditdifficulttoretrievepreviouspromptversions
+(P4,P12)andconfusedversionsduetosubtledifferencesbetweenversions(P9,P12).
+5.4 Debugging
+Participantsobserveddefectslikehallucinations(P9,P14,P15,P17,P19)ornotfollowingdirections
+(P2,P3,P4,P6,P8,P9,P10,P12,P18,P19,P20).Unliketraditionalsoftware,wheredebuggingtools
+canisolatefaultstoalineofcode,promptdebuggingisunsystematicduetoFMstochasticity.
+Faultlocalizationisdifficult((cid:1) ). Tofixerrors,theparticipantsdebuggedprompts,which
+# 12
+isknowntobechallenging[26,35].ThestochasticandopaquenatureofFMsmadeitimpossibleto
+determinethesourceofthedefect:“Comingfromasoftwareengineeringbackground,you...wantto
+setbreakpoints...lookingattheresultsstepbystep.There’snosuchmechanismforprompts” (P13).One
+challengewastoknowhowtochangetheprompttofixthedefect[56]:“Idon’tevenknowwhat
+tochangeinmyprompttogetthere” (P5).Participantsengagedinshotgundebuggingbytrying
+randomchangestofixthedefect(P2,P7,P8,P10,P15,P18):“Inmostcases,itislikehitandtrial.
+SomaybeIwilltryadifferentprompt...[or]example” (P18).Thus,priorexperienceandintuition
+werehelpfulindebugging(P2,P4,P15,P16).Studyparticipantsalsodescribedstrategiestogain
+moreconfidenceinunderstandingwhatcouldfixtheerror.ThisincludedhavingtheFMgenerate
+reasoning(P1,P3,P9,P13,P19);testingsmallchanges(P12);andrestrictinginstructionstospecific
+partsoftheprompt(P14,P20).However,thechangedidnotalwaysfixtheerror(P3,P4,P5,P6,P15,
+P16,P18,P20),asitcouldintroducenewerrors(P3,P4,P7),asdocumentedinpreviouswork[60].
+5.5 DataCuration
+Todeveloppromptprograms,programmersmustcreatedatasets,aprocessreferredtoas“data
+curation”[64].Thisbecameacentralactivitythatisnotpresentintraditionalsoftwareengineering.
+Programmersneedtofindrepresentativedataforthetask((cid:192) ). UsingFM-basedcompo-
+# 13
+nentsshiftsthefocustofindinghigh-qualitydata,consistentwithpreviouswork[12,25,30,33,57,
+58,73].Toevaluatethepromptandprovideexamplesforfew-shotlearning[16],datacurationwas
+paramount.Sincemanyparticipanttaskswerecustomorspecific,theexistingbenchmarkswere
+notsufficientexceptformorecommontaskslikejailbreaking(P19).Studyparticipantscreatedtheir
+owndatasetsbyminingdatafromtheinternetorfromtheirorganization,aswellasannotatingdata
+(P1,P3,P4,P5,P6,P7,P8,P11,P13,P14,P15,P17,P18,P20).Thechallengewastofindrepresentative
+datathatworkedinpractice,aspromptprogrammersneeded“topredicthowpeoplearegoingtouse
+[theapplication]” (P20).Datasetsdidnotalwaysworkinpracticeduetotraining-servingskew(i.e.,
+whentrainingdatadoesnotgeneralizetoproductiondata)[57,58,73]:“Youcantestwithyourown
+dataset,butattheendoftheday,you’restillnotcompletelysurehowgoodtheoutputis” (P7).
+Theparticipantsensureddiverseinputsbycategorizingtheinputsandselectingexamplesfor
+eachcategory(P1,P8,P9,P15,P19,P20).PreviousworkindicatesthatthenondeterminismofML
+modelsposesdifficultiesinevaluation[33,73].Theparticipantsaddressedthisbyparaphrasingthe
+inputs(P16,P18,P19,P20).Despitetheirefforts,thedatasetsdidnotcapturetheinputdistribution,
+so the participants relied on several methods to obtain more data like using FMs to generate
+examples(P12,P18,P19);askingcolleaguestostresstest,“databash” (P13),orredteam[27]the
+prompt(P7,P10,P13,P17,P19);andobtaininguserfeedback(P7,P10,P13,P15,P17,P19).
+Asfoundinotherwork[12],participantsstruggledtocreatedatasets.Despitetheemphasis
+onsafetyandfairnessintheliterature[12,30],promptprogramsperformedworseonculturally
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 17 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:17
+diverseaudiencesduringdeployment(P7,P10,P13).ThisreflectsNLPresearch,whereFMsand
+datasetsalignwithcertaindemographics(i.e.,Western,college-educated,andyoungerpopulations)
+morethanothers[38,62,65].Datalabelingwasalsochallenging,asannotationscouldbeoflower
+quality:“The[annotationsfromsomecolleagues]wouldbeincorrect...theyhavesomelimitationson
+howmuchtheyknow,[so]theydon’tknowwhattheexpectedoutcomeis” (P13).Meanwhile,the
+correctlabelcouldbeunclear(P3,P13):“Whendoyouclassifyas[LabelA]?Itwasfuzzyonhowyou
+wouldinterpret[thelabels]” (P3).Thisreflectsthechallengesofhandlingannotatordisagreement
+andsubjectivityinNLPresearch[11],wheregroundtruthlabelscanbesubjective.
+5.6 Evaluation
+Bothtraditionalsoftwareandpromptprogramsinvolvetestingatmultiplescopes.Traditional
+softwareusescodecoverage,whilepromptprogrammingoftenreliesonqualitativeevaluation.
+Evaluatingpromptprogramsrequiresassessingqualitativeconstructs((cid:192) ). Thepar-
+# 14
+ticipantshadcustomtasksthatdidnothaveaquantifiednotionofcorrectness,makingtheevaluation difficult [26, 60]. For building ML-enabled systems, many evaluations are quantitative
+metrics[30,58,73],whilepromptengineeringusesmanualinspection[29,56].ParticipantsperformedmanualtestsbyqualitativelyassessingFMoutputs(P2,P4,P6,P7,P8,P12,P13,P14,P16,
+P17,P18,P19,P20)asitwasdifficultto“quantifytheconceptofgood” (P10).Forexample,P2,who
+createdavoicememosummarizationtool,didthefollowingtotesthisapplication:“Iwould...talk
+tomyphoneforlike10minutesjusttofine-tuneandsee,‘Doesthesummarymakesense?”’(P2).
+Manualtestingwasdifficulttoscaleandquantifyprogress(P6,P15):“Itisextremelyhardtorealize
+theimpactofthe[changes]without...apersonwhoisveryfinelycheckingoutthedifferences” (P15),
+especiallyinthefaceofregressions.Participantssupplementedthiswithquantitativemetricsvia
+scaledprogrammatictesting(P1,P5,P8,P9,P11,P13,P14,P16,P18):“Irun[myprompt]manuallyon
+3to4examples...[When]Ihaveaproperevaluationsetup,Irunon50to100cases.Those50casesmake
+memoreconfident”(P18).ThisinvolvedusingotherFMstogeneratescoresforqualitativeconstructs
+(P4,P7,P9,P10,P15,P19),likesafety[27]:“Ihaveascoringmechanismwith...anevaluationagent
+[wherethe]scoreisfrom0to100” (P19).However,FM-basedevaluationscouldalsointroduceerrors:
+“[Theevaluationagent]itselfisanLLM...So10%ofthetime,ifthetestcaseisfailing,it’sbecausethe
+evaluationagentwasn’tabletoscoreitcorrectly” (P19).
+Testingoccursatdifferentscopes((cid:192) ). Participantstestedtheirpromptsatvaryingscopes.
+# 15
+Forapplicationswithmultipleprompts,participantstestedindividualcomponentsoftheprompt
+program(P8,P16,P19,P20),akintounittesting:“Usually,eachtestcasethatwehadwrittenwas
+aimedattestingonespecificpartoftheprompt” (P20).Theparticipantsalsodescribedperforming
+integrationtests(P2,P8,P9,P11,P12,P13,P14,P16,P18,P19):“Weevaluatedeachof[theprompts]
+separately,andnowweareevaluatingthatasacollection” (P11).However,thistypeoftestingwas
+difficult,ascombiningpromptscouldyieldunexpectedinteractions.
+6 Discussion
+Wediscusshowourfindingsrelatetopromptengineeringandtraditionalsoftwareengineering
+(Section6.1),theirimplications(Section6.2),andtakeawaysforvariousstakeholders(Section6.3).
+6.1 PromptProgramming:WhereSoftwareEngineeringMeetsPromptEngineering
+Promptprogrammingcombineselementsoftraditionalsoftwareengineeringandpromptengineering.Liketraditionalprograms,promptprogramsmusthandlearbitraryinputs,oftenrequiring
+thedecompositionofcomplextasksintomodularcomponents[10,51,79,80](D )thatrequire
+# 9
+differentformsoftesting((cid:192) ).Atthesametime,likepromptengineering[10,26,49,50,70,82–84],
+# 15
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 18 -->
+
+
+### FSE072:18 Liang,Lin,Rao,Myers
+
+interactionswithopaqueFMsdriverapidandunsystematicexperimentation((cid:17) ),apracticeless
+# 11
+commonintraditionalsoftwareengineering.However,somechallengesareparticularlyprominent
+inpromptprogramming,whichwediscussbelow.
+Emphasisontrial-and-error((cid:17) ). PromptprogrammersmustdevelopamentalmodelofFM
+# 11
+behavior on diverse inputs [10, 33, 35, 79] by running the prompt ((cid:17) #1−#4,#8 ). This reliance on
+executionstemsfromtheinherentopaquenessofFMs[12,56],whichlackthedeterministicand
+interpretablepropertiesofmostconventionalsoftware.Althoughunderstandingprogrambehavior
+intraditionalsoftwareengineeringcanbechallenging[54],thisissueisespeciallycriticalinprompt
+programming,wherereadingcodeorconsultingdocumentationaloneisinsufficient.
+Qualityassuranceviamanualtestinganddatasetcuration((cid:192)
+# 13−#14
+). Handlingarbitraryinputsin
+promptprogramsalsorequiresextensivetesting[70]((cid:192)
+# 13−#15
+)andacleararticulationoftheimplicit
+andexplicitrequirements(D )toensurereliabilityandgeneralizability.Consequently,prompt
+# 7
+programmingplacesgreateremphasisondatasetcuration((cid:192) )andsubjectiveevaluation[29,56]
+# 13
+((cid:192) ),bothlessprevalentintraditionalsoftwareengineeringandpromptengineering.
+# 14
+Handlingnondeterministicprogrambehavior((cid:1) #5−#6,#12 ). Arbitraryinputsmakethestochastic
+natureofFMspronouncedinpromptprogramming[37,51,81,83]fromimplementation((cid:1)
+# 5−#6
+)to
+debugging((cid:1) ).Whilenondeterministicbehaviorintraditionalsoftware(e.g.,flakytests)canbe
+# 12
+identifiableandmitigable(e.g.,testorderdependencies)[52],itishardertodiagnoseinprompt
+programminggiventhelackofunderstandingofFMbehavior.
+ImplicationsforevolvingFMcapabilities. WiththerapidevolutionofFMcapabilities,prompt
+fragility ((cid:1) ) may become less relevant over time. Findings related to stochasticity will likely
+# 6
+persist,albeittoalesserextent,sincenaturallanguageambiguitywillstillmakepromptdetails
+influential((cid:1) )andcontributetouncertaintiesinfaultlocalization((cid:1) ),evenasmodelsimprove.
+# 5 #12
+RegardlessofFMperformance,weexpectprogrammerstocontinuetoformmentalmodelsofFM
+behavior((cid:17)),testpromptprogrambehavior((cid:192)),andprograminnaturallanguage(D).
+6.2 Implications
+PromptprogrammersarebothMLpractitionersandsoftwaredevelopers. DevelopingML-enabled
+systemsrequiresavarietyofexpertisesuchassoftwareengineering,datascience,andmath[30,73].
+Thisexpertiseiscapturedacrossteammembers,whichcanintroducecollaborationchallenges[58].
+ThoughpromptprogramminginvolvesbothMLandprogrammingknowledge,thisexpertiseis
+nowcentralizedinasingleindividual.Thiscouldreducefrictionbetweendifferentroles.However,
+inadditiontotraditionalsoftwareengineeringexpertiselikedebugging,testing,orknowledgein
+specificprogramminglanguages[13,48],promptprogrammersmustdevelopnewskillsasthey
+engageinnovelactivitieslikebuildingdatasetsanddebuggingmodelerrorswithdata[64].
+SincepromptprogrammersareessentiallyMLpractitioners,theseprogrammersencountermany
+ofthelong-standingchallengescontendedbytheMLandNLPcommunities,likemodeldrift[19],
+languageandculturalbiasesindatasetsandmodels[38,62,65],andannotatorsubjectivity[11].
+ClosecollaborationbetweenthesoftwareengineeringandMLcommunitiesisparamounttoinform
+techniquesthataddressthesechallengesinpromptprogramming.
+Promptprogrammersareinundatedwithinformation. Therapiditerationinvolvedinprompt
+programmingmeansthatpromptprogrammersmustmakesenseofadelugeofinformation.For
+eachiteration,theparticipantmusttracktheprompt,thechangebeingmade,theFM’soutput,
+andassociatedmetrics.However,participantsreportedhavingdifficultymakingsenseofallof
+thisinformation(P3,P6,P18,P19).Thisparallelsexploratoryprogramming,whichisalsohighly
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 19 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:19
+
+### PromptProgrammingRecommendations
+
+• Gethands-onexperiencewithpromptprogrammingtodevelopamentalmodelofFMbehavior.
+• Treatpromptprogrammingbestpracticesasastartingpointandvettheminthespecificcontext.
+• Learndatascienceskills.
+• Curatediverseandevolvingdatasetswithvaryingexamplesthatcapturethedomain.
+• RecordpromptchangesandFMbehaviorinastructuredformatduringeachiteration.
+• Coordinatewithcolleaguesandconductfrequentintegrationtestsforchainedprompts.
+Fig.5. Recommendationsforpromptprogrammingforeducatorsandpractitioners.
+iterativeandunsystematicinnature[40]andrequirestrackingofmanyartifacts,includingsource
+code,inputdata,outputdata,codesnippets,andanalysisprogress[39].
+Arethe“bestpractices”bestpractices? Inourstudy,participants’mentalmodelsonFMsconflicted,
+such as whether few-shot learning [16] was beneficial for prompt performance. Although the
+inclusionofexamplesislistedwithinOpenAI’sofficialpromptingguide[7],someofourparticipants
+(P7,P13,P19)wereskepticalofthispracticeafterobservingtheFM.Thisunderscorestheimportance
+oftheobservationsofdevelopersinpromptprogramming,especiallyinthefaceofevolvingmodel
+behaviors[19,53].However,suchknowledgeandobservationsarerarelyshared,aresiloedin
+informalsocialmediaposts[60],andarenotsystematicallycollectedandcentralized.
+6.3 Takeaways
+Forpractitionersandeducators. Thelackofstandardizedbestpracticesandunreliablemental
+modelsofpromptprogrammersposechallengesinteachingandlearningpromptprogramming.
+Futureworkshouldinvestigatemethodstoeffectivelyteachpromptprogramming.Inthemeantime,
+educatorsshouldconsiderthefollowingrecommendations,whicharesummarizedinFigure5.
+HavingpriorexperiencewithFMsand“promptintuition” (P15)madeiteasiertobuildprompt
+programs((cid:17) ).Sincethisknowledgeistacit,practitionersshouldfocusonobtaininghands-on
+# 3
+experiencewithpromptdevelopmenttobuildapreliminaryunderstandingofFMbehavior.Since
+promptprogrammingbestpractices(e.g.,fromOpenAI)donotworkinallsituations((cid:17) ),they
+# 3
+shouldbetreatedasastartingpoint.Asourparticipantsshowed,theseguidelinesshouldbevetted,
+suchasthroughonlinecommunities,andvalidatedwithintheprogrammer’sspecificcontext.
+Sincepromptprogrammingalsorequiresanunderstandingofdataforrigoroustestingofprompts
+((cid:192) ),practitionersshouldlearndatascienceskillslikedatasetcuration,datacleaning,datashaping,
+# 13
+anddebuggingmodelerrorswithdata[41,64].Programmersshoulddevelopbenchmarkswithrepresentativedatatocatchperformanceregressionsandevolvetoaddresstraining-servingskew[58].
+Studyparticipantsdidsobycollectingdifferentcategoriesofdata,suchasinputparaphrasingand
+linguisticallydiverseinputs.
+Lastly, practitioners should consider changes to their development processes. Since prompt
+programmingisunsystematic((cid:17) ),programmersshouldrecorditerationsinastructuredmanner,
+# 11
+summarizingchangestothepromptandFMbehaviortoincreasesystematicness.Studyparticipants
+didsobyrecordingdifferentversionsandtheirdesignrationalesinspreadsheets.Practitioners
+shouldalsoprioritizecollaborationduetothetightcouplingofchainedprompts((cid:17) )byperforming
+# 10
+regularcheck-inswithcolleaguesandfrequentintegrationtesting.
+Forresearchersandtoolmakers. “[Promptprogramming]willrequireany...developertoadjusttheir
+mindset...Itismuchmorescientificandexperimentalthantraditionalsoftwaredevelopment” (P15).
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 20 -->
+
+
+### FSE072:20 Liang,Lin,Rao,Myers
+
+Participantsstruggledateachstep,fromrequirementstoevaluation,asexistingdevelopertools
+werenotdesignedtohandlethechallengesofpromptprogramming.WefollowHassanetal.[33]
+andParninetal.[60]inunderscoringtheimportanceofdevelopertoolsforpromptprogramming.
+Suchexplorationshavebeguninearnest[e.g.,10,35,56,79].Futuretoolecosystemsshouldsupport
+thefullrangeofactivitiesinpromptprogramming,frominterfacesforrapidprototyping,dataset
+curation,anddatasensemaking,toregressiontesting,promptchaining,collaboration,andmore.
+Weelaborateonpotentialpromptprogrammingtooldirectionsbelow.
+Giventhelargevolumeofinformationpromptprogrammersprocessperiteration(e.g.,examples,
+promptmodifications,andFMoutputchanges),futureworkshouldexploreimprovedmethodsfor
+versioningandnavigatingpromptiterationsandartifacts.Thiscouldproviderichinformationon
+promptprovenanceandcouldbeusedforautomaticpromptprogramrepair.Akeychallengeis
+decidingwhattoversionandhowtorepresentbothpromptandFMoutputchanges.Becauseprompt
+changes are made with varying granularity, from editing single words to changing prompting
+strategies, research is needed to understand how to visualize these changes between versions.
+Meanwhile,researchshouldstudynewvisualizationsforFMoutputchanges.Thisischallenging
+aspromptprogrammersqualitativelycomparethesamepromptacrossmultipleexamples[29].
+Future work is also needed for the reuse of prompts, since the fragility of prompts and the
+uniquequalitiesofeachFMmakeitdifficulttoreusepromptswithoutmodification.Reuseathigher
+levelsofabstraction(e.g.,template-basedapproaches[76,77]),andcommunity-basedsolutionsfor
+promptsharing(e.g.,ShareGPT[8],LangSmithHub[6],Wordflow[74])couldbepromisingavenues
+forpromptreuse.Researchisneededtounderstandhowtoretrieverelevantprompts.Prompt
+programmerscouldquerypromptsbasedondifferentinformation,rangingfromspecifickeywords
+intheinputandFMoutputtogeneralFMbehaviororperformancemetrics.Anotherchallengeis
+ensuringthattherecommendationscangeneralizeacrossdiverse,situation-specificcontextsof
+differentpromptprogrammers(e.g.,identifyingoptimalwordingforspecificapplications).
+7 Conclusion
+Foundation models (FMs) enable programmers to write natural language prompts that power
+AI-drivensoftwarefeatures.Westudythisphenomenon—promptprogramming—via20interviews
+withdevelopersacrossvariouscontexts,usingStraussiangroundedtheorytoanalyzetheprocess.
+Weidentified15observationsaboutpromptprogrammingbarriers.Wefindthatpromptsarethe
+product of the developer’s understanding of FM and the developer’s observations of the FM’s
+behavioronthetask.Wealsofindstrongparallelsbetweenthepromptprogrammingprocessand
+thetraditionalsoftwareengineeringprocess,butalsosignificantdifferences.Ourfindingsinform
+bothresearchersdevelopingpromptprogrammingtoolsandpractitionerswhousethem.
+
+### DataAvailability
+
+Tofacilitatereplication,oursupplementalmaterialsareavailableonFigShare[46],includingour
+surveyinstrument,interviewprotocol,codebook,andthe33reviewedpapers.
+
+### Acknowledgments
+
+Wethankourparticipantsfortheirinsights.WeexpressgratitudetoChenyangYang,NadiaNahar,
+Travis Breaux, and Christian Kaestner for their feedback. Last but not least, we give a special
+thankstoMei ,anoutstandingcaninesoftwareengineeringresearcher,forprovidingsupport
+andmotivation.JennyT.LiangwassupportedbytheNationalScienceFoundationundergrants
+DGE1745016andDGE2140739.Anyopinions,findings,conclusions,orrecommendationsexpressed
+inthismaterialarethoseoftheauthorsanddonotnecessarilyreflecttheviewsofthesponsors.
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 21 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:21
+
+### References
+
+[1] 2024.BringingMicrosoftCopilottomorecustomersworldwide.RetrievedAugust29,2024fromhttps://www.microsoft.
+com/en-us/microsoft-365/blog/2024/03/14/bringing-copilot-to-more-customers-worldwide-across-life-and-work/.
+[2] 2024.ChatGPT. RetrievedAugust29,2024fromhttps://chatgpt.com/.
+[3] 2024.CopilotforMicrosoft365groundedinyourdata. RetrievedAugust29,2024fromhttps://copilot.cloud.microsoft/
+en-US/copilot-microsoft365-chat/.
+[4] 2024.GoogleI/O2024:NewgenerativeAIexperiencesinsearch. RetrievedAugust29,2024fromhttps://blog.google/
+products/search/generative-ai-google-search-may-2024/.
+[5] 2024.IntroducingtheGPTStore|OpenAI. RetrievedAugust29,2024fromhttps://openai.com/index/introducing-thegpt-store/.
+[6] 2024.LangSmithHub. RetrievedAugust29,2024fromhttps://smith.langchain.com/hub.
+[7] 2024.Promptengineering-OpenAI.RetrirevedAugust29,2024fromhttps://platform.openai.com/docs/guides/promptengineering/strategy-write-clear-instructions.
+[8] 2024. ShareGPT:ShareyourwildestChatGPTconversationswithoneclick. RetrievedAugust29,2024from
+https://sharegpt.com/.
+[9] JoshAchiam,StevenAdler,SandhiniAgarwal,LamaAhmad,IlgeAkkaya,FlorenciaLeoniAleman,DiogoAlmeida,
+JankoAltenschmidt,SamAltman,ShyamalAnadkat,etal.2023.Gpt-4technicalreport.arXivpreprintarXiv:2303.08774
+(2023).
+[10] IanArawjo,PriyanVaithilingam,MartinWattenberg,andElenaGlassman.2023.ChainForge:Anopen-sourcevisual
+programmingenvironmentforpromptengineering.InACMSymposiumonUserInterfaceSoftwareandTechnology
+(UIST).1–3.doi:10.1145/3586182.3616660
+[11] LoraAroyoandChrisWelty.2015.Truthisalie:Crowdtruthandthesevenmythsofhumanannotation.AIMagazine
+36,1(2015),15–24.doi:10.1609/aimag.v36i1.2564
+[12] AndersArpteg,BjörnBrinne,LukaCrnkovic-Friis,andJanBosch.2018. Softwareengineeringchallengesofdeep
+learning.InEuromicroConferenceonSoftwareEngineeringandAdvancedApplications(SEAA).IEEE,50–59. doi:10.
+
+## 1109/Seaa.2018.00018
+
+[13] SebastianBaltesandStephanDiehl.2018.Towardsatheoryofsoftwaredevelopmentexpertise.InACMJointMeeting
+onEuropeanSoftwareEngineeringConferenceandSymposiumontheFoundationsofSoftwareEngineering(ESEC/FSE).
+187–200.doi:10.1145/3236024.3236061
+[14] EmilyMBender,TimnitGebru,AngelinaMcMillan-Major,andShmargaretShmitchell.2021. Onthedangersof
+stochasticparrots:Canlanguagemodelsbetoobig?.InACMconferenceonFairness,Accountability,andTransparency
+(FAccT).610–623.doi:10.1145/3442188.3445922
+[15] JamesBetker,GabrielGoh,LiJing,TimBrooks,JianfengWang,LinjieLi,LongOuyang,JuntangZhuang,JoyceLee,
+YufeiGuo,etal.2023.Improvingimagegenerationwithbettercaptions.2,3(2023),8.doi:papers/dall-e-3.pdf
+[16] TomBrown,BenjaminMann,NickRyder,MelanieSubbiah,JaredDKaplan,PrafullaDhariwal,ArvindNeelakantan,
+PranavShyam,GirishSastry,AmandaAskell,etal.2020.Languagemodelsarefew-shotlearners.AdvancesinNeural
+InformationProcessingSystems(NeurIPS)33(2020),1877–1901.
+[17] KathyCharmaz.2006.Constructinggroundedtheory:Apracticalguidethroughqualitativeanalysis.Sage.
+[18] OmkarSandipChavan,DivyaDilipHinge,SohamSanjayDeo,YaxuanWang,andMohamedWiemMkaouer.2024.
+Analyzingdeveloper-ChatGPTconversationsforsoftwarerefactoring:Anexploratorystudy.InInternationalConference
+onMiningSoftwareRepositories(MSR).207–211.doi:10.1145/3643991.3645082
+[19] LingjiaoChen,MateiZaharia,andJamesZou.2024.HowisChatGPT’sbehaviorchangingovertime?HarvardData
+
+### ScienceReview6,2(2024).doi:10.1162/99608f92.5317da47
+
+[20] MarkChen,JerryTworek,HeewooJun,QimingYuan,HenriquePondeDeOliveiraPinto,JaredKaplan,HarriEdwards,
+YuriBurda,NicholasJoseph,GregBrockman,etal.2021.Evaluatinglargelanguagemodelstrainedoncode.arXiv
+preprintarXiv:2107.03374(2021).
+[21] TomColeandMarcoGillies.2022. Morethanabitofcoding:(un-)Grounded(non-)theoryinHCI.InACMCHI
+ConferenceonHumanFactorsinComputingSystemsExtendedAbstracts(CHI).1–11.doi:10.1145/3491101.3516392
+[22] JulietCorbinandAnselmStrauss.2015.Basicsofqualitativeresearch.Vol.14.Sage.doi:10.1177/1094428108324514
+[23] EdsgerWDijkstra.1979.Onthefoolishnessof"naturallanguageprogramming".(1979),51–53.doi:10.1007/BFb0014656
+[24] EdsgerWDijkstra.1982.Ontheroleofscientificthought.Selectedwritingsoncomputing:Apersonalperspective(1982),
+60–66.doi:10.1007/978-1-4612-5695-3_12
+[25] MateuszDolataandKevinCrowston.2023.MakingsenseofAIsystemsdevelopment.IEEETransactionsonSoftware
+
+### Engineering(TSE)(2023).doi:10.1109/TSE.2023.3338857
+
+[26] MateuszDolata,NorbertLange,andGerhardSchwabe.2024.Developmentintimesofhype:Howfreelancersexplore
+generativeAI?.InIEEE/ACMInternationalConferenceonSoftwareEngineering(ICSE).1–13.doi:10.1145/3597503.3639111
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 22 -->
+
+
+### FSE072:22 Liang,Lin,Rao,Myers
+
+[27] MichalFurmakiewicz,ChangLiu,AngusTaylor,andIlyaVenger.2024.DesignandevaluationofAIcopilots–Case
+studiesofretailcopilottemplates.arXivpreprintarXiv:2407.09512(2024).
+[28] LuyuGao,AmanMadaan,ShuyanZhou,UriAlon,PengfeiLiu,YimingYang,JamieCallan,andGrahamNeubig.2023.
+Pal:Program-aidedlanguagemodels.InInternationalConferenceonMachineLearning(ICML).PMLR,10764–10799.
+[29] KatyIlonkaGero,JonathanKKummerfeld,andElenaLGlassman.2022.SensemakingInterfacesforHumanEvaluation
+ofLanguageModelOutputs.InNeurIPS:WorkshoponHumanEvaluationofGenerativeModels.
+[30] GörkemGiray.2021.Asoftwareengineeringperspectiveonengineeringmachinelearningsystems:Stateoftheart
+andchallenges.JournalofSystemsandSoftware180(2021),111031.doi:10.1016/j.jss.2021.111031
+[31] BarneyGlaserandAnselmStrauss.2017.Discoveryofgroundedtheory:Strategiesforqualitativeresearch.Routledge.
+doi:10.4324/9780203793206
+[32] EbtesamAlHaque,ChrisBrown,ThomasDLaToza,andBrittanyJohnson.2024. InformationseekingusingAI
+assistants.arXivpreprintarXiv:2408.04032(2024).
+[33] AhmedEHassan,DayiLin,GopiKrishnanRajbahadur,KeheliyaGallaba,FilipeRoseiroCogo,BoyuanChen,Haoxiang
+Zhang,KishanthanThangarajah,GustavoOliva,JiahueiLin,etal.2024.Rethinkingsoftwareengineeringintheera
+offoundationmodels:AcuratedcatalogueofchallengesinthedevelopmentoftrustworthyFMware.InCompanion
+ProceedingsACMInternationalConferenceontheFoundationsofSoftwareEngineering.294–305.doi:10.1145/3663529.
+3663849
+[34] AlonJacoviandYoavGoldberg.2020. TowardsfaithfullyinterpretableNLPsystems:Howshouldwedefineand
+evaluatefaithfulness?.InAnnualMeetingoftheAssociationforComputationalLinguistics(ACL),DanJurafsky,Joyce
+Chai,NatalieSchluter,andJoelTetreault(Eds.).4198–4205.doi:10.18653/v1/2020.acl-main.386
+[35] EllenJiang,KristenOlson,EdwinToh,AlejandraMolina,AaronDonsbach,MichaelTerry,andCarrieJCai.2022.
+Promptmaker:Prompt-basedprototypingwithlargelanguagemodels.InACMCHIConferenceonHumanFactorsin
+ComputingSystemsExtendedAbstracts(CHI).1–8.doi:10.1145/3491101.3503564
+[36] PeilingJiang,JudeRayan,StevenPDow,andHaijunXia.2023. Graphologue:Exploringlargelanguagemodel
+responseswithinteractivediagrams.InACMSymposiumonUserInterfaceSoftwareandTechnology(UIST).1–20.
+doi:10.1145/3586183.3606737
+[37] ZhengbaoJiang,FrankFXu,JunAraki,andGrahamNeubig.2020.Howcanweknowwhatlanguagemodelsknow?
+TransactionsoftheAssociationforComputationalLinguistics8(2020),423–438.doi:10.1162/tacl_a_00324
+[38] PratikJoshi,SebastinSanty,AmarBudhiraja,KalikaBali,andMonojitChoudhury.2020.Thestateandfateoflinguistic
+diversityandinclusionintheNLPworld.InAnnualMeetingoftheAssociationforComputationalLinguistics(ACL).
+6282–6293.doi:10.18653/v1/2020.acl-main.560
+[39] MaryBethKery,AmberHorvath,andBradAMyers.2017. Variolite:Supportingexploratoryprogrammingby
+datascientists..InACMCHIConferenceonHumanFactorsinComputingSystemsExtendedAbstracts(CHI),Vol.10.
+3025453–3025626.doi:10.1145/3025453.3025626
+[40] MaryBethKeryandBradAMyers.2017.Exploringexploratoryprogramming.InIEEESymposiumonVisualLanguages
+andHuman-CentricComputing(VL/HCC).IEEE,25–29.doi:10.1109/VLHCC.2017.8103446
+[41] MiryungKim,ThomasZimmermann,RobertDeLine,andAndrewBegel.2016.Theemergingroleofdatascientistson
+softwaredevelopmentteams.InInternationalConferenceonSoftwareEngineering(ICSE).96–107.doi:10.1145/2884781.
+2884783
+[42] AmyJKo,RobinAbraham,LauraBeckwith,AlanBlackwell,MargaretBurnett,MartinErwig,ChrisScaffidi,Joseph
+Lawrance,HenryLieberman,BradMyers,etal.2011. Thestateoftheartinend-usersoftwareengineering. ACM
+ComputingSurveys(CSUR)43,3(2011),1–44.doi:10.1145/1922649.1922658
+[43] AmyJKo,ThomasDLaToza,andMargaretMBurnett.2015.Apracticalguidetocontrolledexperimentsofsoftware
+engineeringtoolswithhumanparticipants.EmpiricalSoftwareEngineering20(2015),110–141.doi:10.1007/s10664-
+013-9279-3
+[44] JRichardLandisandGaryGKoch.1977.Themeasurementofobserveragreementforcategoricaldata.biometrics
+(1977),159–174.doi:10.2307/2529310
+[45] ThomasDLaToza,GinaVenolia,andRobertDeLine.2006.Maintainingmentalmodels:astudyofdeveloperwork
+habits.InInternationalConferenceonSoftwareEngineering(ICSE).492–501.doi:10.1145/1134285.1134355
+[46] JennyTLiang,MelissaLin,NikithaRao,andBradMyers.2025.SupplementalMaterialsto"Promptsareprogramstoo!
+Understandinghowdevelopersbuildsoftwarecontainingprompts".doi:10.6084/m9.figshare.24210468
+[47] JennyTLiang,ChenyangYang,andBradAMyers.2024.Alarge-scalesurveyontheusabilityofAIprogramming
+assistants:Successesandchallenges.InIEEE/ACMInternationalConferenceonSoftwareEngineering(ICSE).1–13.
+doi:10.1145/3597503.3608128
+[48] JennyTLiang,ThomasZimmermann,andDenaeFord.2022.UnderstandingskillsforOSScommunitiesonGitHub.
+InACMJointEuropeanSoftwareEngineeringConferenceandSymposiumontheFoundationsofSoftwareEngineering
+(ESEC/FSE).170–182.doi:10.1145/3540250.3549082
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 23 -->
+
+PromptsAreProgramsToo!UnderstandingHowDevelopersBuildSoftwareContainingPrompts FSE072:23
+[49] ZhichengLin.2024.Howtowriteeffectivepromptsforlargelanguagemodels.NatureHumanBehaviour8,4(2024),
+611–615.doi:10.1038/s41562-024-01847-2
+[50] MichaelXieyangLiu,FrederickLiu,AlexanderJFiannaca,TerryKoo,LucasDixon,MichaelTerry,andCarrieJCai.
+2024."Weneedstructuredoutput":Towardsuser-centeredconstraintsonlargelanguagemodeloutput.InACMCHI
+ConferenceonHumanFactorsinComputingSystemsExtendedAbstracts(CHI).1–9.doi:10.1145/3613905.3650756
+[51] PengfeiLiu,WeizheYuan,JinlanFu,ZhengbaoJiang,HiroakiHayashi,andGrahamNeubig.2023.Pre-train,prompt,
+andpredict:Asystematicsurveyofpromptingmethodsinnaturallanguageprocessing. ACMComputingSurveys
+(CSUR)55,9(2023),1–35.doi:10.1145/3560815
+[52] QingzhouLuo,FarahHariri,LamyaaEloussi,andDarkoMarinov.2014.Anempiricalanalysisofflakytests.InACM
+SIGSOFTInternationalSymposiumonFoundationsofSoftwareEngineering(FSE).643–653.doi:10.1145/2635868.2635920
+[53] WanqinMa,ChenyangYang,andChristianKästner.2024.(Why)ismypromptgettingworse?Rethinkingregression
+testingforevolvingLLMAPIs.InProceedingsoftheIEEE/ACM3rdInternationalConferenceonAIEngineering-Software
+
+### EngineeringforAI.166–171.doi:10.1145/3644815.3644950
+
+[54] WalidMaalej,RebeccaTiarks,TobiasRoehm,andRainerKoschke.2014.Onthecomprehensionofprogramcomprehension.ACMTransactionsonSoftwareEngineeringandMethodology(TOSEM)23,4(2014),1–37.doi:10.1145/26226
+[55] GerryMcGhee,GlennRMarland,andJacquelineAtkinson.2007.Groundedtheoryresearch:Literaturereviewingand
+reflexivity.JournalofAdvancedNursing60,3(2007),334–342.doi:10.1111/j.1365-2648.2007.04436.x
+[56] AditiMishra,BrethoDanzy,UtkarshSoni,AnjanaArunkumar,JinbinHuang,BumChulKwon,andChrisBryan.2025.
+PromptAid:Visualpromptexploration,perturbation,testinganditerationforlargelanguagemodels.IEEETransactions
+onVisualizationandComputerGraphics(2025).doi:10.1109/TVCG.2025.3535332
+[57] NadiaNahar,HaoranZhang,GraceLewis,ShuruiZhou,andChristianKästner.2023.Ameta-summaryofchallenges
+inbuildingproductswithMLcomponents–Collectingexperiencesfrom4758+practitioners.InIEEE/ACMInternational
+ConferenceonAIEngineering–SoftwareEngineeringforAI(CAIN).171–183.doi:10.1109/CAIN58948.2023.00034
+[58] NadiaNahar,ShuruiZhou,GraceLewis,andChristianKästner.2022.Collaborationchallengesinbuildingml-enabled
+systems:Communication,documentation,engineering,andprocess.InIEEE/ACMInternationalConferenceonSoftware
+
+### Engineering(ICSE).413–425.doi:10.1145/3510003.3510209
+
+[59] LongOuyang,JeffreyWu,XuJiang,DiogoAlmeida,CarrollWainwright,PamelaMishkin,ChongZhang,Sandhini
+Agarwal,KatarinaSlama,AlexRay,etal.2022.Traininglanguagemodelstofollowinstructionswithhumanfeedback.
+AdvancesinNeuralInformationProcessingSystems35(2022),27730–27744.
+[60] ChrisParnin,GustavoSoares,RahulPandita,SumitGulwani,JessicaRich,andAustinZHenley.2023.Buildingyour
+ownproductcopilot:Challenges,opportunities,andneeds.arXivpreprintarXiv:2312.14231(2023).
+[61] HarshPatel,DominiqueBoucher,EmadFallahzadeh,AhmedEHassan,andBramAdams.2025.Astate-of-the-practice
+release-readinesschecklistforgenerativeAI-basedsoftwareproducts:Agrayliteraturesurvey.IEEESoftware42,01
+(2025),74–83.doi:10.1109/MS.2024.3440190
+[62] JiaxinPeiandDavidJurgens.2023. Whendoannotatordemographicsmatter?MeasuringtheinfluenceofannotatordemographicswiththePOPQUORNdataset.InLinguisticAnnotationWorkshop(LAW-XVII).Associationfor
+ComputationalLinguistics,252–265.doi:10.18653/v1/2023.law-1.25
+[63] SidaPeng,EiriniKalliamvakou,PeterCihon,andMertDemirer.2023.TheimpactofAIondeveloperproductivity:
+EvidencefromGitHubCopilot.arXivpreprintarXiv:2302.06590(2023).
+[64] CrystalQian,EmilyReif,andMinsukKahng.2024.Understandingthedatasetpractitionersbehindlargelanguage
+models.InACMCHIConferenceonHumanFactorsinComputingSystemsExtendedAbstracts(CHI).1–7.doi:10.1145/
+3613905.3651007
+[65] SebastinSanty*,JennyTLiang*,RonanLeBras,KatharinaReinecke,andMaartenSap.2023.NLPositionality:Characterizingdesignbiasesofdatasetsandmodels.InAnnualMeetingoftheAssociationforComputationalLinguistics(ACL).
+9080–9102.doi:10.18653/v1/2023.acl-long.505
+[66] MorganKlausScheuerman,KattaSpiel,OliverLHaimson,FoadHamidi,andStacyMBranham.2020.HCIguidelines
+forgenderequityandinclusivity.(2020).
+[67] TimoSchick,JaneDwivedi-Yu,RobertoDessì,RobertaRaileanu,MariaLomeli,EricHambro,LukeZettlemoyer,Nicola
+Cancedda,andThomasScialom.2024.Toolformer:Languagemodelscanteachthemselvestousetools.Advancesin
+NeuralInformationProcessingSystems(NeurIPs)36(2024).
+[68] BeauSheil.1986. Datamation®:Powertoolsforprogrammers. InReadingsinArtificialIntelligenceandSoftware
+Engineering.Elsevier,573–580.doi:10.1016/B978-0-934613-12-5.50048-3
+[69] NancyStaggersandAnthonyFNorcio.1993. Mentalmodels:conceptsforhuman-computerinteractionresearch.
+InternationalJournalofMan-machinestudies38,4(1993),587–605.doi:10.1006/imms.1993.1028
+[70] HendrikStrobelt,AlbertWebson,VictorSanh,BenjaminHoover,JohannaBeyer,HanspeterPfister,andAlexanderM
+Rush.2022.Interactiveandvisualpromptengineeringforad-hoctaskadaptationwithlargelanguagemodels.IEEE
+TransactionsonVisualizationandComputerGraphics29,1(2022),1146–1156.doi:10.1109/TVCG.2022.3209479
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+<!-- Page 24 -->
+
+
+### FSE072:24 Liang,Lin,Rao,Myers
+
+[71] HarshSuri.2011.Purposefulsamplinginqualitativeresearchsynthesis.Qualitativeresearchjournal11,2(2011),63–75.
+doi:10.3316/QRJ1102063
+[72] HugoTouvron,ThibautLavril,GautierIzacard,XavierMartinet,Marie-AnneLachaux,TimothéeLacroix,Baptiste
+Rozière,NamanGoyal,EricHambro,FaisalAzhar,etal.2023.Llama:Openandefficientfoundationlanguagemodels.
+arXivpreprintarXiv:2302.13971(2023).
+[73] ZhiyuanWan,XinXia,DavidLo,andGailCMurphy.2019.Howdoesmachinelearningchangesoftwaredevelopment
+practices?IEEETransactionsonSoftwareEngineering47,9(2019),1857–1871.doi:10.1109/TSE.2019.2937083
+[74] ZijieJWang,AishwaryaChakravarthy,DavidMunechika,andDuenHorngChau.2024.Wordflow:Socialprompt
+engineeringforlargelanguagemodels.arXivpreprintarXiv:2401.14447(2024).
+[75] JasonWei,XuezhiWang,DaleSchuurmans,MaartenBosma,FeiXia,EdChi,QuocVLe,DennyZhou,etal.2022.
+Chain-of-thoughtpromptingelicitsreasoninginlargelanguagemodels.AdvancesinNeuralInformationProcessing
+Systems35(2022),24824–24837.
+[76] JulesWhite,QuchenFu,SamHays,MichaelSandborn,CarlosOlea,HenryGilbert,AshrafElnashar,JesseSpencer-
+Smith,andDouglasCSchmidt.2023.ApromptpatterncatalogtoenhancepromptengineeringwithChatGPT.arXiv
+preprintarXiv:2302.11382(2023).
+[77] JulesWhite,SamHays,QuchenFu,JesseSpencer-Smith,andDouglasCSchmidt.2024. Chatgptpromptpatterns
+forimprovingcodequality,refactoring,requirementselicitation,andsoftwaredesign.InGenerativeAIforEffective
+SoftwareDevelopment.Springer,71–108.doi:10.1007/978-3-031-55642-5_4
+[78] ChristineTWolfandDrewPaine.2020.SensemakingpracticesintheeverydayworkofAI/MLsoftwareengineering.
+InIEEE/ACMInternationalConferenceonSoftwareEngineeringWorkshops.86–92.doi:10.1109/TSE.2019.2937083
+[79] TongshuangWu,EllenJiang,AaronDonsbach,JeffGray,AlejandraMolina,MichaelTerry,andCarrieJCai.2022.
+Promptchainer:Chaininglargelanguagemodelpromptsthroughvisualprogramming.InACMCHIConferenceon
+HumanFactorsinComputingSystemsExtendedAbstracts(CHI).1–10.doi:10.1145/3491101.3519729
+[80] TongshuangWu,MichaelTerry,andCarrieJunCai.2022.Aichains:Transparentandcontrollablehuman-aiinteraction
+bychaininglargelanguagemodelprompts.InACMCHIConferenceonHumanFactorsinComputingSystems(CHI).
+1–22.doi:10.1145/3491102.3517582
+[81] QinyuanYe,MohamedAhmed,ReidPryzant,andFereshteKhani.2024.Promptengineeringapromptengineer.In
+FindingsoftheAssociationforComputationalLinguisticsACL(ACL),Lun-WeiKu,AndreMartins,andVivekSrikumar
+(Eds.).355–385.doi:10.18653/v1/2024.findings-acl.21
+[82] JDZamfirescu-Pereira,BjoernHartmann,andQianYang.2023.Conversationregressiontesting:Adesigntechnique
+forprototypinggeneralizablepromptstrategiesforpre-trainedlanguagemodels. arXivpreprintarXiv:2302.03154
+(2023).
+[83] JDZamfirescu-Pereira,HeatherWei,AmyXiao,KittyGu,GraceJung,MatthewGLee,BjoernHartmann,andQian
+Yang.2023. HerdingAIcats:LessonsfromdesigningachatbotbypromptingGPT-3.InACMDesigningInteractive
+SystemsConference(DIS).2206–2220.doi:10.1145/3563657.3596138
+[84] JDZamfirescu-Pereira,RichmondYWong,BjoernHartmann,andQianYang.2023.WhyJohnnycan’tprompt:How
+non-AIexpertstry(andfail)todesignLLMprompts.InACMCHIConferenceonHumanFactorsinComputingSystems
+(CHI).1–21.doi:10.1145/3544548.3581388
+[85] AlbertZiegler,EiriniKalliamvakou,XAliceLi,AndrewRice,DevonRifkin,ShawnSimister,GaneshSittampalam,
+andEdwardAftandilian.2022.Productivityassessmentofneuralcodecompletion.InACMSIGPLANInternational
+SymposiumonMachineProgramming(MAPS).21–29.doi:10.1145/3520312.3534864
+[86] AlbertZiegler,EiriniKalliamvakou,XAliceLi,AndrewRice,DevonRifkin,ShawnSimister,GaneshSittampalam,and
+EdwardAftandilian.2024.MeasuringGitHubCopilot’simpactonproductivity.CommunicationsoftheACM(CACM)
+67,3(2024),54–63.doi:10.1145/3633453
+
+### Received2025-02-25;accepted2025-04-01
+
+Proc.ACMSoftw.Eng.,Vol.2,No.FSE,ArticleFSE072.Publicationdate:July2025.
+
+## Tables
+
+**Table (Page 10):**
+
+| Prompt in natural language Experimentation |
+|---|
+| Loop Output from model |
