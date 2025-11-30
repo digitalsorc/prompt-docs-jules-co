@@ -5,23 +5,21 @@ FastAPI REST API for the document converter application.
 
 import os
 import io
-import shutil
 import zipfile
-import tempfile
 import uuid
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 
-from fastapi import FastAPI, File, UploadFile, HTTPException, Query, BackgroundTasks
+from fastapi import FastAPI, File, UploadFile, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, StreamingResponse, JSONResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
-from .converter import ConversionConfig, DocumentConverter, get_pdf_support
-from .config import ConfigManager, get_config_manager
-from .queue_manager import QueueManager, get_queue_manager, ConversionJob, QueueStatus, ConversionStatus
-from .database import Database, get_database
+from .converter import ConversionConfig, get_pdf_support
+from .config import get_config_manager
+from .queue_manager import get_queue_manager, ConversionStatus
+from .database import get_database
 
 
 # Environment configuration
@@ -179,29 +177,29 @@ async def upload_files(files: List[UploadFile] = File(...)):
     """
     queue_manager = get_queue_manager()
     jobs = []
-    
+
     for file in files:
         # Validate file type
         ext = os.path.splitext(file.filename)[1].lower()
-        if ext not in ['.pdf', '.md', '.markdown', '.txt']:
+        if ext not in ['.pdf', '.md', '.markdown', '.txt', '.html', '.json']:
             continue
-        
+
         # Save uploaded file
         file_id = str(uuid.uuid4())
         safe_filename = f"{file_id}_{file.filename}"
         filepath = os.path.join(UPLOAD_DIR, safe_filename)
-        
+
         with open(filepath, "wb") as f:
             content = await file.read()
             f.write(content)
-        
+
         # Add to queue
         job = queue_manager.add_job(filepath, file.filename)
         jobs.append(JobResponse(**job.to_dict()))
-    
+
     if not jobs:
         raise HTTPException(status_code=400, detail="No valid files uploaded")
-    
+
     return jobs
 
 
@@ -209,24 +207,24 @@ async def upload_files(files: List[UploadFile] = File(...)):
 async def upload_single_file(file: UploadFile = File(...)):
     """Upload a single file for conversion."""
     queue_manager = get_queue_manager()
-    
+
     # Validate file type
     ext = os.path.splitext(file.filename)[1].lower()
-    if ext not in ['.pdf', '.md', '.markdown', '.txt']:
+    if ext not in ['.pdf', '.md', '.markdown', '.txt', '.html', '.json']:
         raise HTTPException(status_code=400, detail=f"Unsupported file type: {ext}")
-    
+
     # Save uploaded file
     file_id = str(uuid.uuid4())
     safe_filename = f"{file_id}_{file.filename}"
     filepath = os.path.join(UPLOAD_DIR, safe_filename)
-    
+
     with open(filepath, "wb") as f:
         content = await file.read()
         f.write(content)
-    
+
     # Add to queue
     job = queue_manager.add_job(filepath, file.filename)
-    
+
     return JobResponse(**job.to_dict())
 
 
@@ -467,8 +465,8 @@ async def get_profile(name: str):
     try:
         config = config_manager.load_profile(name)
         return config.to_dict()
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="Profile not found")
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=404, detail="Profile not found") from exc
 
 
 @app.post("/api/config/profiles")
@@ -492,7 +490,7 @@ async def create_profile(profile: ProfileCreate):
 async def delete_profile(name: str):
     """Delete a configuration profile."""
     config_manager = get_config_manager()
-    
+
     try:
         deleted = config_manager.delete_profile(name)
         if deleted:
@@ -500,7 +498,7 @@ async def delete_profile(name: str):
         else:
             raise HTTPException(status_code=404, detail="Profile not found")
     except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        raise HTTPException(status_code=400, detail=str(e)) from e
 
 
 @app.post("/api/config/profiles/{name}/apply")
@@ -508,14 +506,14 @@ async def apply_profile(name: str):
     """Apply a configuration profile."""
     config_manager = get_config_manager()
     queue_manager = get_queue_manager()
-    
+
     try:
         config = config_manager.load_profile(name)
         config_manager.update_default_config(config)
         queue_manager.update_config(config)
         return {"message": f"Profile '{name}' applied", "config": config.to_dict()}
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="Profile not found")
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=404, detail="Profile not found") from exc
 
 
 # History endpoints
@@ -572,4 +570,4 @@ async def get_statistics():
 
 
 # Serve static files for frontend (in production)
-# app.mount("/", StaticFiles(directory="app/frontend/dist", html=True), name="static")
+app.mount("/", StaticFiles(directory="app/frontend/dist", html=True), name="static")
