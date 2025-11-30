@@ -1,0 +1,20 @@
+{
+  "optimization_level": "standard",
+  "preserve_tables": true,
+  "preserve_code_blocks": true,
+  "heading_structure": "auto",
+  "max_heading_level": 4,
+  "enable_ocr": false,
+  "language": "auto",
+  "max_file_size_mb": 100,
+  "timeout_seconds": 300,
+  "error_handling": "skip",
+  "filename_pattern": "kebab",
+  "output_structure": "flat",
+  "add_front_matter": true,
+  "generate_summary": true,
+  "extract_keywords": true,
+  "max_workers": 2,
+  "memory_limit_mb": 1024,
+  "cleanup_temp_files": true
+}
