@@ -1,0 +1,407 @@
+name: Build Executable
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: app/frontend/package-lock.json
+      
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+      
+      - name: Build frontend
+        working-directory: app/frontend
+        run: |
+          npm ci
+          npm run build
+      
+      - name: Create PyInstaller spec file
+        run: |
+          @"
+          # -*- mode: python ; coding: utf-8 -*-
+          import os
+          
+          block_cipher = None
+          
+          # Collect all data files
+          datas = [
+              ('app/frontend/dist', 'app/frontend/dist'),
+              ('config_profiles', 'config_profiles'),
+          ]
+          
+          # Add converted documents if they exist
+          if os.path.exists('converted-documents'):
+              datas.append(('converted-documents', 'converted-documents'))
+          
+          a = Analysis(
+              ['app/main.py'],
+              pathex=[],
+              binaries=[],
+              datas=datas,
+              hiddenimports=[
+                  'uvicorn.logging',
+                  'uvicorn.loops',
+                  'uvicorn.loops.auto',
+                  'uvicorn.protocols',
+                  'uvicorn.protocols.http',
+                  'uvicorn.protocols.http.auto',
+                  'uvicorn.protocols.websockets',
+                  'uvicorn.protocols.websockets.auto',
+                  'uvicorn.lifespan',
+                  'uvicorn.lifespan.on',
+                  'pdfplumber',
+                  'pypdf',
+                  'yaml',
+                  'aiofiles',
+                  'multipart',
+              ],
+              hookspath=[],
+              hooksconfig={},
+              runtime_hooks=[],
+              excludes=[],
+              win_no_prefer_redirects=False,
+              win_private_assemblies=False,
+              cipher=block_cipher,
+              noarchive=False,
+          )
+          
+          pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+          
+          exe = EXE(
+              pyz,
+              a.scripts,
+              a.binaries,
+              a.zipfiles,
+              a.datas,
+              [],
+              name='DocumentConverter',
+              debug=False,
+              bootloader_ignore_signals=False,
+              strip=False,
+              upx=True,
+              upx_exclude=[],
+              runtime_tmpdir=None,
+              console=True,
+              disable_windowed_traceback=False,
+              argv_emulation=False,
+              target_arch=None,
+              codesign_identity=None,
+              entitlements_file=None,
+              icon=None,
+          )
+          "@ | Out-File -FilePath DocumentConverter.spec -Encoding utf8
+      
+      - name: Build executable with PyInstaller
+        run: |
+          pyinstaller DocumentConverter.spec --clean
+      
+      - name: Upload Windows executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: DocumentConverter-Windows
+          path: dist/DocumentConverter.exe
+          if-no-files-found: error
+
+  build-linux:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: app/frontend/package-lock.json
+      
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+      
+      - name: Build frontend
+        working-directory: app/frontend
+        run: |
+          npm ci
+          npm run build
+      
+      - name: Create PyInstaller spec file
+        run: |
+          cat > DocumentConverter.spec << 'EOF'
+          # -*- mode: python ; coding: utf-8 -*-
+          import os
+          
+          block_cipher = None
+          
+          # Collect all data files
+          datas = [
+              ('app/frontend/dist', 'app/frontend/dist'),
+              ('config_profiles', 'config_profiles'),
+          ]
+          
+          # Add converted documents if they exist
+          if os.path.exists('converted-documents'):
+              datas.append(('converted-documents', 'converted-documents'))
+          
+          a = Analysis(
+              ['app/main.py'],
+              pathex=[],
+              binaries=[],
+              datas=datas,
+              hiddenimports=[
+                  'uvicorn.logging',
+                  'uvicorn.loops',
+                  'uvicorn.loops.auto',
+                  'uvicorn.protocols',
+                  'uvicorn.protocols.http',
+                  'uvicorn.protocols.http.auto',
+                  'uvicorn.protocols.websockets',
+                  'uvicorn.protocols.websockets.auto',
+                  'uvicorn.lifespan',
+                  'uvicorn.lifespan.on',
+                  'pdfplumber',
+                  'pypdf',
+                  'yaml',
+                  'aiofiles',
+                  'multipart',
+              ],
+              hookspath=[],
+              hooksconfig={},
+              runtime_hooks=[],
+              excludes=[],
+              noarchive=False,
+          )
+          
+          pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+          
+          exe = EXE(
+              pyz,
+              a.scripts,
+              a.binaries,
+              a.zipfiles,
+              a.datas,
+              [],
+              name='DocumentConverter',
+              debug=False,
+              bootloader_ignore_signals=False,
+              strip=False,
+              upx=True,
+              upx_exclude=[],
+              runtime_tmpdir=None,
+              console=True,
+              disable_windowed_traceback=False,
+              argv_emulation=False,
+              target_arch=None,
+              codesign_identity=None,
+              entitlements_file=None,
+              icon=None,
+          )
+          EOF
+      
+      - name: Build executable with PyInstaller
+        run: |
+          pyinstaller DocumentConverter.spec --clean
+      
+      - name: Upload Linux executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: DocumentConverter-Linux
+          path: dist/DocumentConverter
+          if-no-files-found: error
+
+  build-macos:
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: app/frontend/package-lock.json
+      
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+      
+      - name: Build frontend
+        working-directory: app/frontend
+        run: |
+          npm ci
+          npm run build
+      
+      - name: Create PyInstaller spec file
+        run: |
+          cat > DocumentConverter.spec << 'EOF'
+          # -*- mode: python ; coding: utf-8 -*-
+          import os
+          
+          block_cipher = None
+          
+          # Collect all data files
+          datas = [
+              ('app/frontend/dist', 'app/frontend/dist'),
+              ('config_profiles', 'config_profiles'),
+          ]
+          
+          # Add converted documents if they exist
+          if os.path.exists('converted-documents'):
+              datas.append(('converted-documents', 'converted-documents'))
+          
+          a = Analysis(
+              ['app/main.py'],
+              pathex=[],
+              binaries=[],
+              datas=datas,
+              hiddenimports=[
+                  'uvicorn.logging',
+                  'uvicorn.loops',
+                  'uvicorn.loops.auto',
+                  'uvicorn.protocols',
+                  'uvicorn.protocols.http',
+                  'uvicorn.protocols.http.auto',
+                  'uvicorn.protocols.websockets',
+                  'uvicorn.protocols.websockets.auto',
+                  'uvicorn.lifespan',
+                  'uvicorn.lifespan.on',
+                  'pdfplumber',
+                  'pypdf',
+                  'yaml',
+                  'aiofiles',
+                  'multipart',
+              ],
+              hookspath=[],
+              hooksconfig={},
+              runtime_hooks=[],
+              excludes=[],
+              noarchive=False,
+          )
+          
+          pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+          
+          exe = EXE(
+              pyz,
+              a.scripts,
+              a.binaries,
+              a.zipfiles,
+              a.datas,
+              [],
+              name='DocumentConverter',
+              debug=False,
+              bootloader_ignore_signals=False,
+              strip=False,
+              upx=True,
+              upx_exclude=[],
+              runtime_tmpdir=None,
+              console=True,
+              disable_windowed_traceback=False,
+              argv_emulation=False,
+              target_arch=None,
+              codesign_identity=None,
+              entitlements_file=None,
+              icon=None,
+          )
+          EOF
+      
+      - name: Build executable with PyInstaller
+        run: |
+          pyinstaller DocumentConverter.spec --clean
+      
+      - name: Upload macOS executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: DocumentConverter-macOS
+          path: dist/DocumentConverter
+          if-no-files-found: error
+
+  create-release:
+    needs: [build-windows, build-linux, build-macos]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: DocumentConverter-Windows
+          path: windows
+      
+      - name: Download Linux artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: DocumentConverter-Linux
+          path: linux
+      
+      - name: Download macOS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: DocumentConverter-macOS
+          path: macos
+      
+      - name: Create release archives
+        run: |
+          cd windows && zip -r ../DocumentConverter-Windows.zip . && cd ..
+          cd linux && tar -czvf ../DocumentConverter-Linux.tar.gz . && cd ..
+          cd macos && tar -czvf ../DocumentConverter-macOS.tar.gz . && cd ..
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            DocumentConverter-Windows.zip
+            DocumentConverter-Linux.tar.gz
+            DocumentConverter-macOS.tar.gz
+          generate_release_notes: true
