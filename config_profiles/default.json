@@ -1,12 +1,12 @@
 {
-  "optimization_level": "standard",
+  "optimization_level": "maximum",
   "preserve_tables": true,
   "preserve_code_blocks": true,
   "heading_structure": "auto",
   "max_heading_level": 4,
   "enable_ocr": false,
-  "language": "auto",
-  "max_file_size_mb": 100,
+  "language": "en",
+  "max_file_size_mb": 400,
   "timeout_seconds": 300,
   "error_handling": "skip",
   "filename_pattern": "kebab",
@@ -14,7 +14,7 @@
   "add_front_matter": true,
   "generate_summary": true,
   "extract_keywords": true,
-  "max_workers": 8,
-  "memory_limit_mb": 1024,
+  "max_workers": 32,
+  "memory_limit_mb": 4048,
   "cleanup_temp_files": true
 }
