@@ -17,7 +17,7 @@ jobs:
     runs-on: windows-latest
     
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
       
       - name: Set up Python
@@ -50,19 +50,20 @@ jobs:
           @"
           # -*- mode: python ; coding: utf-8 -*-
           import os
-          
+
           block_cipher = None
-          
+
           # Collect all data files
           datas = [
               ('app/frontend/dist', 'app/frontend/dist'),
               ('config_profiles', 'config_profiles'),
+              ('app/backend', 'app/backend'),
           ]
-          
+
           # Add converted documents if they exist
           if os.path.exists('converted-documents'):
               datas.append(('converted-documents', 'converted-documents'))
-          
+
           a = Analysis(
               ['app/main.py'],
               pathex=[],
@@ -84,6 +85,7 @@ jobs:
                   'yaml',
                   'aiofiles',
                   'multipart',
+                  'app.backend.api',
               ],
               hookspath=[],
               hooksconfig={},
@@ -94,9 +96,9 @@ jobs:
               cipher=block_cipher,
               noarchive=False,
           )
-          
+
           pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
-          
+
           exe = EXE(
               pyz,
               a.scripts,
@@ -176,6 +178,7 @@ jobs:
           datas = [
               ('app/frontend/dist', 'app/frontend/dist'),
               ('config_profiles', 'config_profiles'),
+              ('app/backend', 'app/backend'),
           ]
           
           # Add converted documents if they exist
@@ -203,6 +206,7 @@ jobs:
                   'yaml',
                   'aiofiles',
                   'multipart',
+                  'app.backend.api',
               ],
               hookspath=[],
               hooksconfig={},
@@ -292,6 +296,7 @@ jobs:
           datas = [
               ('app/frontend/dist', 'app/frontend/dist'),
               ('config_profiles', 'config_profiles'),
+              ('app/backend', 'app/backend'),
           ]
           
           # Add converted documents if they exist
@@ -319,6 +324,7 @@ jobs:
                   'yaml',
                   'aiofiles',
                   'multipart',
+                  'app.backend.api',
               ],
               hookspath=[],
               hooksconfig={},
