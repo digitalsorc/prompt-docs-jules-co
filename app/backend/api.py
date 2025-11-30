@@ -570,4 +570,7 @@ async def get_statistics():
 
 
 # Serve static files for frontend (in production)
-app.mount("/", StaticFiles(directory="app/frontend/dist", html=True), name="static")
+# Only mount if the dist directory exists (frontend has been built)
+FRONTEND_DIST_DIR = "app/frontend/dist"
+if os.path.exists(FRONTEND_DIST_DIR) and os.path.isdir(FRONTEND_DIST_DIR):
+    app.mount("/", StaticFiles(directory=FRONTEND_DIST_DIR, html=True), name="static")
